@@ -51,12 +51,14 @@ st.markdown(
         color: white;
     }
 
-    /* 박스 스타일 */
+    /* 커스텀 컨테이너 스타일 */
     .custom-container {
         background-color: #333333; /* 박스 배경색 */
         padding: 20px;
         border-radius: 10px;
-        margin: 20px 0;
+        width: 100%; /* 화면 전체 너비 사용 */
+        max-width: 1200px; /* 최대 너비 설정 */
+        margin: 20px auto; /* 상하 여백과 수평 중앙 정렬 */
         color: white;
     }
 
@@ -112,11 +114,11 @@ with st.container():
     col1, col2, col3 = st.columns(3)
 
     with col1:
-        st.markdown("<div class='custom-label'>날짜를 선택하세요</div>", unsafe_allow_html=True)
+        st.markdown("<div class='custom-label'>날짜를 선택하세요 :</div>", unsafe_allow_html=True)
         selected_date = st.date_input("", help="맛집에 방문할 날짜를 선택해주세요.")
         
     with col2:
-        st.markdown("<div class='custom-label'>시간대를 선택하세요</div>", unsafe_allow_html=True)
+        st.markdown("<div class='custom-label'>시간대를 선택하세요 :</div>", unsafe_allow_html=True)
         time_slot = st.selectbox(
             "", 
             ("아침", "점심", "저녁"),
@@ -124,7 +126,7 @@ with st.container():
         )
 
     with col3:
-        st.markdown("<div class='custom-label'>인원수를 선택하세요</div>", unsafe_allow_html=True)
+        st.markdown("<div class='custom-label'>인원수를 선택하세요 :</div>", unsafe_allow_html=True)
         members_num = st.selectbox(
             "", 
             ("혼자", "2명", "3명", "4명 이상"),
