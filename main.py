@@ -49,7 +49,7 @@ st.markdown(
     """
     <div class="full-width-banner">
         <h1>Welcome to team 예쁘DA</h1>
-        <h2>제주 맛집 추천 챗봇</h2>
+        <h2>상황 맞춤형 제주 맛집 찾기를 돕습니다.</h2>
     </div>
     """,
     unsafe_allow_html=True
