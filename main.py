@@ -46,7 +46,7 @@ st.markdown(
 
     .centered-subtext {
         font-size: 1.2em;
-        margin: 0; /* 상단과 하단 마진 모두 0으로 설정 */
+        margin: 10; /* 상단과 하단 마진 모두 0으로 설정 */
         text-align: center; /* 텍스트 중앙 정렬 */
         color: white;
     }
