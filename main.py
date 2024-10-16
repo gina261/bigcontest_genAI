@@ -1,7 +1,7 @@
 import streamlit as st
 
-# CSS and JavaScript for scroll animation
-st.components.v1.html(
+# CSS for adding a full-width background image
+st.markdown(
     """
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
@@ -36,48 +36,24 @@ st.components.v1.html(
         font-family: 'Nanum Gothic', sans-serif;
         margin: 0;
         color: white;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 텍스트에 그림자 추가 */
         margin-top: 10px; /* 상단 마진 추가 */
-        opacity: 0; /* 초기 상태에서 숨김 */
-        transform: translateY(20px); /* 애니메이션 효과를 위해 아래로 이동 */
-        transition: opacity 1s ease-out, transform 1s ease-out; /* 애니메이션 설정 */
-    }
-
-    .show {
-        opacity: 1; /* 보이도록 설정 */
-        transform: translateY(0); /* 원래 위치로 이동 */
     }
     </style>
-
-    <div class="full-width-banner">
-        <h1>Welcome to team 예쁘DA</h1>
-        <h2 class="reveal-text">제주 맛집 추천 챗봇</h2>
-    </div>
-
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        function revealOnScroll() {
-            var element = document.querySelector('.reveal-text');
-            if (element) {
-                var position = element.getBoundingClientRect().top;
-                var windowHeight = window.innerHeight;
-                
-                if (position < windowHeight) {
-                    element.classList.add('show');
-                }
-            }
-        }
-
-        window.addEventListener('scroll', revealOnScroll);
-        revealOnScroll();
-    });
-    </script>
     """,
-    height=600,
+    unsafe_allow_html=True
 )
 
-# Sample content to create scroll space
+# HTML for the full-width banner
+st.markdown(
+    """
+    <div class="full-width-banner">
+        <h1>Welcome to team 예쁘DA</h1>
+        <h2>상황 맞춤형 제주 맛집 찾기를 돕습니다.</h2>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+# Sample content
 st.write("This is the content of the app below the banner.")
 st.write("You can add more Streamlit components here.")
-st.write("Scroll down to see the animation effect when the text appears.")
-st.write("\n" * 150)  # Create enough space to scroll
