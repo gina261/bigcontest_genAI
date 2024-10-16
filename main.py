@@ -11,8 +11,8 @@ st.markdown(
     }
     
     .full-width-banner {
-        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)), 
-                    url('https://ifh.cc/g/lD0gY1.jpg');
+        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)),
+                          url('https://ifh.cc/g/lD0gY1.jpg');
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
@@ -22,7 +22,6 @@ st.markdown(
         display: flex;
         align-items: flex-end;
         justify-content: center;
-        color: white;
         position: relative;
         z-index: 1;
         font-family: 'Nanum Gothic', sans-serif;
@@ -37,9 +36,7 @@ st.markdown(
     }
 
     header, footer, .css-1lsmgbg {
-        visibility: hidden;
-        height: 0px;
-        margin: 0;
+        display: none; /* 숨기기 위해 display: none 사용 */
     }
     </style>
     """,
