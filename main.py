@@ -89,4 +89,4 @@ st.markdown(
 st.write("This is the content of the app below the banner.")
 st.write("You can add more Streamlit components here.")
 st.write("Scroll down to see the animation effect when the text appears.")
-st.write("\n" * 50)  # Create enough space to scroll
+st.write("\n" * 150)  # Create enough space to scroll
