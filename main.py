@@ -155,7 +155,7 @@ with col3:
         ("혼자", "2명", "3명", "4명 이상")
     )
     
-st.write(f"{selected_date} {time_slot}, {memoryview} 가시는 것이 맞나요?")
+st.write(f"{selected_date} {time_slot}, {members_num} 가시는 것이 맞나요?")
 
 # 새 박스를 추가
 st.markdown(
