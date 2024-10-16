@@ -55,15 +55,15 @@ st.markdown(
     .box {
         background-color: #333333; /* 박스 배경색 */
         padding: 20px;
-        border-radius: 10px;
+        border-radius: 7px;
         margin: 20px 0;
         color: white;
     }
 
     .box h3 {
-        font-size: 1.5em;
-        margin-bottom: 15px;
-        text-align: center;
+        font-size: 1.2em;
+        margin-bottom: 10px;
+        text-align: left;
         color: white;
     }
     </style>
