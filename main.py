@@ -1,7 +1,7 @@
 import streamlit as st
 
 # CSS and JavaScript for scroll animation
-st.markdown(
+st.components.v1.html(
     """
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
@@ -49,40 +49,31 @@ st.markdown(
     }
     </style>
 
+    <div class="full-width-banner">
+        <h1>Welcome to team 예쁘DA</h1>
+        <h2 class="reveal-text">제주 맛집 추천 챗봇</h2>
+    </div>
+
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // 요소를 감지하여 클래스 추가하는 함수
         function revealOnScroll() {
-            var element = document.querySelector('.full-width-banner h2');
-            var position = element.getBoundingClientRect().top;
-            var windowHeight = window.innerHeight;
-
-            // 요소가 보이면 'show' 클래스 추가
-            if (position < windowHeight) {
-                element.classList.add('show');
+            var element = document.querySelector('.reveal-text');
+            if (element) {
+                var position = element.getBoundingClientRect().top;
+                var windowHeight = window.innerHeight;
+                
+                if (position < windowHeight) {
+                    element.classList.add('show');
+                }
             }
         }
 
-        // 스크롤 이벤트 리스너 추가
         window.addEventListener('scroll', revealOnScroll);
-
-        // 초기 실행
         revealOnScroll();
     });
     </script>
     """,
-    unsafe_allow_html=True
-)
-
-# HTML for the full-width banner
-st.markdown(
-    """
-    <div class="full-width-banner">
-        <h1>Welcome to team 예쁘DA</h1>
-        <h2>제주 맛집 추천 챗봇</h2>
-    </div>
-    """,
-    unsafe_allow_html=True
+    height=600,
 )
 
 # Sample content to create scroll space
