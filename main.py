@@ -61,8 +61,11 @@ st.markdown(
     <div class="centered-text">
         반갑습니다. 오늘 어떤 하루를 보내고 계신가요?
     </div>
-    <div class="centered-subtext">
+    <div class="centered-text">
         당신의 기분에 맞는 제주 맛집을 추천해드리겠습니다.
+    </div>
+    <div class="centered-text">
+        추천을 위해 몇 가지 질문에 답해주세요.
     </div>
     """,
     unsafe_allow_html=True
