@@ -21,23 +21,6 @@ import streamlit as st
 
 st.set_page_config(page_title="예쁘DA🍊")
 
-# 글꼴 설정
-# Custom CSS style for changing the font
-# st.markdown(
-#     """
-#     <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap" rel="stylesheet">
-#     <style>
-#     .custom-title {
-#         font-family: 'Karla', sans-serif;
-#         font-size: 48px;
-#         color: #294f7e;
-#     }
-#     </style>
-#     """,
-#     unsafe_allow_html=True
-# )
-
-# st.markdown('<h1 class="custom-title">Hello, Ybigta!</h1>', unsafe_allow_html=True)
 
 
 # CSS for adding a full-width background image with gradient
@@ -45,6 +28,13 @@ st.markdown(
     """
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
     <style>
+    /* 페이지 전체를 감싸는 상위 컨테이너의 패딩을 없애기 위한 CSS */
+    .css-18e3th9, .css-1d391kg {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+    
+    /* 배너 영역 설정 */
     .full-width-banner {
         background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)), 
                     url('https://ifh.cc/g/lD0gY1.jpg'); /* 배경으로 사용할 이미지 URL */
@@ -72,9 +62,9 @@ st.markdown(
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 텍스트에 그림자 추가 */
     }
 
-    /* Streamlit 기본 상단 여백 제거 */
-    .css-18e3th9 {
-        padding-top: 0 !important;
+    /* 불필요한 텍스트 숨기기 */
+    .stText, .stMarkdown p {
+        display: none; /* 모든 텍스트 요소를 숨깁니다 */
     }
     </style>
     """,
