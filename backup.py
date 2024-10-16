@@ -6,6 +6,10 @@ st.markdown(
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 
+    body, .full-width-banner h1, .centered-text, .centered-subtext {
+        font-family: 'Nanum Gothic', sans-serif; /* 모든 텍스트에 Nanum Gothic 폰트 적용 */
+    }
+
     .full-width-banner {
         position: relative;
         background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://ifh.cc/g/tyYadc.jpg'); /* 반투명 검정색 오버레이와 이미지 */
@@ -25,7 +29,6 @@ st.markdown(
     /* 텍스트 스타일 */
     .full-width-banner h1 {
         font-size: 3em;
-        font-family: 'Nanum Gothic', sans-serif;
         margin: 0;
         color: white;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 텍스트에 그림자 추가 */
@@ -33,7 +36,6 @@ st.markdown(
 
     .centered-text {
         font-size: 1.5em;
-        font-family: 'Nanum Gothic', sans-serif;
         margin: 40px 0 20px 0; /* 위쪽에 40px, 아래쪽에 20px 마진 추가 */
         text-align: center; /* 텍스트 중앙 정렬 */
         color: black;
@@ -41,7 +43,6 @@ st.markdown(
 
     .centered-subtext {
         font-size: 1.2em;
-        font-family: 'Nanum Gothic', sans-serif;
         margin: 10px 0; /* 위쪽과 아래쪽에 10px 마진 추가 */
         text-align: center; /* 텍스트 중앙 정렬 */
         color: black;
@@ -58,10 +59,13 @@ st.markdown(
         <h1>Welcome to team 예쁘DA</h1>
     </div>
     <div class="centered-text">
+        상황 맞춤형 제주 맛집 찾기
+    </div>
+    <div class="centered-subtext">
         반갑습니다. 오늘 어떤 하루를 보내고 계신가요?
     </div>
     <div class="centered-subtext">
-        당신의 기분에 맞는 제주 맛집을 추천해드리겠습니다.
+        당신의 오늘 상황과 기분에 맞는 제주 맛집을 추천해드리겠습니다.
     </div>
     <div class="centered-subtext">
         추천을 위해 몇 가지 질문에 답해주세요.
