@@ -1,6 +1,6 @@
 import streamlit as st
 
-# CSS for changing the entire background color and styling the page
+# CSS for styling the page
 st.markdown(
     """
     <style>
@@ -55,7 +55,7 @@ st.markdown(
     .box {
         background-color: #333333; /* 박스 배경색 */
         padding: 20px;
-        border-radius: 7px;
+        border-radius: 5px;
         margin: 20px 0;
         color: white;
     }
@@ -90,18 +90,18 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# HTML for the box around the date input
-st.markdown(
-    """
-    <div class="box">
-        <h3>언제 방문하실 예정인가요?</h3>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-
-# 날짜 입력 위젯 추가
-selected_date = st.date_input("날짜를 선택하세요", help="맛집에 방문할 날짜를 선택해주세요.")
+# 박스 스타일을 유지하면서 날짜 입력 위젯을 포함하기 위해 Streamlit 컨테이너 사용
+with st.container():
+    st.markdown(
+        """
+        <div class="box">
+            <h3>맛집에 언제 방문하실 예정인가요?</h3>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+    # 날짜 입력 위젯 추가
+    selected_date = st.date_input("날짜를 선택하세요", help="맛집에 방문할 날짜를 선택해주세요.")
 
 # 선택된 날짜 출력
 st.write(f"선택한 날짜: {selected_date}")

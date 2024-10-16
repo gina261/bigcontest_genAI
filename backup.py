@@ -50,6 +50,22 @@ st.markdown(
         text-align: center; /* 텍스트 중앙 정렬 */
         color: white;
     }
+
+    /* 박스 스타일 */
+    .box {
+        background-color: #333333; /* 박스 배경색 */
+        padding: 20px;
+        border-radius: 0px;
+        margin: 20px 0;
+        color: white;
+    }
+
+    .box h3 {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+        text-align: left;
+        color: white;
+    }
     </style>
     """,
     unsafe_allow_html=True
@@ -74,10 +90,11 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+# HTML for the box around the date input
 st.markdown(
     """
-    <div class="centered-subtext">
-        언제 방문하실 예정인가요?
+    <div class="box">
+        <h3>맛집에 언제 방문하실 예정인가요?</h3>
     </div>
     """,
     unsafe_allow_html=True
