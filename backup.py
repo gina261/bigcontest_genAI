@@ -8,7 +8,7 @@ st.markdown(
 
     /* Streamlit 전체 페이지의 배경을 변경하기 위한 설정 */
     .stApp {
-        background-color: #f0f8ff; /* Alice Blue 색상 */
+        background-color: #020202;
         font-family: 'Nanum Gothic', sans-serif; /* Nanum Gothic 폰트 적용 */
         color: black; /* 기본 텍스트 색상 */
     }
@@ -41,14 +41,14 @@ st.markdown(
         font-size: 1.5em;
         margin: 40px 0 20px 0; /* 위쪽에 40px, 아래쪽에 20px 마진 추가 */
         text-align: center; /* 텍스트 중앙 정렬 */
-        color: black;
+        color: white;
     }
 
     .centered-subtext {
         font-size: 1.2em;
         margin: 10px 0; /* 위쪽과 아래쪽에 10px 마진 추가 */
         text-align: center; /* 텍스트 중앙 정렬 */
-        color: black;
+        color: white;
     }
     </style>
     """,
@@ -67,6 +67,24 @@ st.markdown(
     <div class="centered-subtext">
         당신의 기분에 맞는 제주 맛집을 추천해드리겠습니다.
     </div>
+    <div class="centered-subtext">
+        추천을 위해 몇 가지 질문에 답해주세요.
+    </div>
     """,
     unsafe_allow_html=True
 )
+
+st.markdown(
+    """
+    <div class="centered-subtext">
+        언제 방문하실 예정인가요?
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+# 날짜 입력 위젯 추가
+selected_date = st.date_input("날짜를 선택하세요", help="맛집에 방문할 날짜를 선택해주세요.")
+
+# 선택된 날짜 출력
+st.write(f"선택한 날짜: {selected_date}")
