@@ -4,6 +4,8 @@ import streamlit as st
 st.markdown(
     """
     <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
     .full-width-banner {
         background-image: url('https://ifh.cc/g/lD0gY1.jpg'); /* 배경으로 사용할 이미지 URL */
         background-size: cover; /* 이미지 크기를 전체 영역에 맞춤 */
@@ -23,7 +25,7 @@ st.markdown(
     /* 텍스트 스타일 */
     .full-width-banner h1 {
         font-size: 3em;
-        font-family: 'Karla', sans-serif;
+        font-family: 'Nanum Gothic', sans-serif;
         margin: 0;
         color: white;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 텍스트에 그림자 추가 */
@@ -31,7 +33,7 @@ st.markdown(
 
     .full-width-banner h2 {
         font-size: 2em;
-        font-family: 'Karla', sans-serif;
+        font-family: 'Nanum Gothic', sans-serif;
         margin: 0;
         color: white;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 텍스트에 그림자 추가 */
