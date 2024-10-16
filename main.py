@@ -15,19 +15,19 @@ st.markdown(
     .full-width-banner {
         background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)), 
                     url('https://ifh.cc/g/lD0gY1.jpg'); /* 배경 이미지 URL */
-        background-size: cover; /* 이미지 크기를 전체 영역에 맞춤 */
-        background-repeat: no-repeat; /* 반복 없이 한 번만 이미지 사용 */
-        background-position: center; /* 이미지 중앙 정렬 */
-        height: 500px; /* 배너의 높이 설정 */
-        width: 100vw; /* 페이지의 전체 너비를 사용 */
-        margin-left: calc(-50vw + 50%); /* 페이지 중앙 정렬 후 왼쪽으로 이동 */
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 500px;
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
         display: flex;
-        align-items: flex-end; /* 텍스트를 배너 하단에 배치 */
+        align-items: flex-end;
         justify-content: center;
         color: white;
         position: relative;
         z-index: 1;
-        font-family: 'Nanum Gothic', sans-serif; /* Nanum Gothic 폰트 적용 */
+        font-family: 'Nanum Gothic', sans-serif;
     }
 
     /* 텍스트 스타일 */
@@ -36,10 +36,10 @@ st.markdown(
         margin: 0;
         padding: 20px;
         color: white;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 텍스트에 그림자 추가 */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
 
-    /* Streamlit의 상단 툴바 및 불필요한 요소 숨기기 */
+    /* 불필요한 Streamlit 기본 요소 숨기기 */
     header, footer, .css-1lsmgbg {
         visibility: hidden;
         height: 0px;
