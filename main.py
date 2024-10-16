@@ -53,11 +53,17 @@ st.markdown(
 
     /* 박스 스타일 */
     .box {
-        background-color: #333333; /* 박스 배경색 */
+        background-image: url('https://ifh.cc/g/kAKpaD.png'); /* 박스에 사용할 이미지 URL */
+        background-size: cover; /* 이미지 크기를 전체 영역에 맞춤 */
+        background-position: center; /* 이미지 중앙 정렬 */
+        background-repeat: no-repeat; /* 이미지 반복 방지 */
         padding: 20px;
         border-radius: 0px;
         margin: 50px 0; /* 상단과 하단에 50px 마진 추가 */
         color: white;
+        display: flex;
+        align-items: center; /* 수직 중앙 정렬 */
+        height: 100px; /* 박스 높이 설정 */
     }
 
     .box h3 {
