@@ -5,16 +5,14 @@ st.markdown(
     """
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
     <style>
-    /* 페이지 상단 여백 제거 */
     .css-18e3th9, .css-1d391kg {
         padding-top: 0 !important;
         padding-bottom: 0 !important;
     }
     
-    /* 배너 영역 설정 */
     .full-width-banner {
         background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)), 
-                    url('https://ifh.cc/g/lD0gY1.jpg'); /* 배경 이미지 URL */
+                    url('https://ifh.cc/g/lD0gY1.jpg');
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
@@ -30,7 +28,6 @@ st.markdown(
         font-family: 'Nanum Gothic', sans-serif;
     }
 
-    /* 텍스트 스타일 */
     .full-width-banner h1 {
         font-size: 3em;
         margin: 0;
@@ -39,7 +36,6 @@ st.markdown(
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
 
-    /* 불필요한 Streamlit 기본 요소 숨기기 */
     header, footer, .css-1lsmgbg {
         visibility: hidden;
         height: 0px;
