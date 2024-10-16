@@ -94,7 +94,7 @@ st.markdown(
 st.markdown(
     """
     <div class="box">
-        <h1>맛집에 언제 방문하실 예정인가요?</h3>
+        <h3>맛집에 언제 방문하실 예정인가요?</h3>
     </div>
     """,
     unsafe_allow_html=True
