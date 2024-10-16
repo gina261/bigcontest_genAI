@@ -6,7 +6,7 @@ st.markdown(
     <style>
     .full-width-banner {
         background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)), 
-                    url('https://your-image-url-here.jpg'); /* 배경으로 사용할 이미지 URL */
+                    url('https://ifh.cc/g/lD0gY1.jpg'); /* 배경으로 사용할 이미지 URL */
         background-size: cover; /* 이미지 크기를 전체 영역에 맞춤 */
         background-repeat: no-repeat; /* 반복 없이 한 번만 이미지 사용 */
         background-position: center; /* 이미지 중앙 정렬 */
