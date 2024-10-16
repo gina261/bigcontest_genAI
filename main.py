@@ -39,16 +39,20 @@ st.markdown(
 
     .centered-text {
         font-size: 1.5em;
-        margin: 40px 0 20px 0; /* 위쪽에 40px, 아래쪽에 20px 마진 추가 */
+        margin: 40px 0 0 0; /* 위쪽에 40px, 아래쪽에 0px 마진 추가 */
         text-align: center; /* 텍스트 중앙 정렬 */
         color: white;
     }
 
     .centered-subtext {
         font-size: 1.2em;
-        margin: 10px 0 50px 0; /* 위쪽과 아래쪽에 10px 마진 추가, 아래쪽 50px로 확장 */
+        margin: 0; /* 상단과 하단 마진 모두 0으로 설정 */
         text-align: center; /* 텍스트 중앙 정렬 */
         color: white;
+    }
+
+    .centered-subtext.bottom-margin {
+        margin-bottom: 50px; /* 마지막 문구에만 하단 50px 마진 추가 */
     }
 
     /* 박스 스타일 */
@@ -58,9 +62,6 @@ st.markdown(
         border-radius: 0px;
         margin: 50px 0; /* 상단과 하단에 50px 마진 추가 */
         color: white;
-        display: flex;
-        align-items: center; /* 수직 중앙 정렬 */
-        height: 100px; /* 박스 높이 설정 */
     }
 
     .box h3 {
@@ -95,7 +96,7 @@ st.markdown(
     <div class="centered-subtext">
         당신의 기분에 맞는 제주 맛집을 추천해드리겠습니다.
     </div>
-    <div class="centered-subtext">
+    <div class="centered-subtext bottom-margin">
         추천을 위해 몇 가지 질문에 답해주세요.
     </div>
     """,

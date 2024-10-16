@@ -46,7 +46,7 @@ st.markdown(
 
     .centered-subtext {
         font-size: 1.2em;
-        margin: 10px 0; /* 위쪽과 아래쪽에 10px 마진 추가 */
+        margin: 10px 0 50px 0; /* 위쪽과 아래쪽에 10px 마진 추가, 아래쪽 50px로 확장 */
         text-align: center; /* 텍스트 중앙 정렬 */
         color: white;
     }
@@ -56,15 +56,20 @@ st.markdown(
         background-color: #333333; /* 박스 배경색 */
         padding: 20px;
         border-radius: 0px;
-        margin: 20px 0;
+        margin: 50px 0; /* 상단과 하단에 50px 마진 추가 */
         color: white;
+        display: flex;
+        align-items: center; /* 수직 중앙 정렬 */
+        height: 100px; /* 박스 높이 설정 */
     }
 
     .box h3 {
         font-size: 1.2em;
-        margin-bottom: 10px;
+        margin: 0;
         text-align: left;
         color: white;
+        width: 100%;
+        text-align: center; /* 텍스트 중앙 정렬 */
     }
 
     /* 레이블 스타일 */
