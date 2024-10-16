@@ -5,7 +5,7 @@ st.markdown(
     """
     <style>
     .full-width-banner {
-        background-image: url('https://your-image-url-here.jpg'); /* 배경으로 사용할 이미지 URL */
+        background-image: url('https://ifh.cc/g/lD0gY1.jpg'); /* 배경으로 사용할 이미지 URL */
         background-size: cover; /* 이미지 크기를 전체 영역에 맞춤 */
         background-position: center; /* 이미지 중앙 정렬 */
         height: 400px; /* 배너의 높이 설정 */
