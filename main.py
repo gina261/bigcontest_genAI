@@ -40,22 +40,17 @@ st.markdown(
 # st.markdown('<h1 class="custom-title">Hello, Ybigta!</h1>', unsafe_allow_html=True)
 
 
-
-# CSS for adding a background image to the top section
-import streamlit as st
-
-import streamlit as st
-
 # CSS for adding a full-width background image with gradient
 st.markdown(
     """
     <style>
     .full-width-banner {
-        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0)), 
-                          url('https://ifh.cc/g/lD0gY1.jpg'); /* 배경으로 사용할 이미지 URL */
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)), 
+                    url('https://ifh.cc/g/lD0gY1.jpg'); /* 배경으로 사용할 이미지 URL */
         background-size: cover; /* 이미지 크기를 전체 영역에 맞춤 */
+        background-repeat: no-repeat; /* 반복 없이 한 번만 이미지 사용 */
         background-position: center; /* 이미지 중앙 정렬 */
-        height: 400px; /* 배너의 높이 설정 */
+        height: 500px; /* 배너의 높이 설정 */
         width: 100vw; /* 페이지의 전체 너비를 사용 */
         margin-left: calc(-50vw + 50%); /* 페이지 중앙 정렬 후 왼쪽으로 이동 */
         display: flex;
