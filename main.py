@@ -19,24 +19,22 @@ import streamlit as st
 # Gemini 모델 선택
 # model = genai.GenerativeModel("gemini-1.5-flash")
 
-st.set_page_config(page_title="🍊🍊🍊")
+st.set_page_config(page_title="예쁘DA🍊")
 
-st.title("Hello Ybigta👋")
-st.subheader("Ybigta Team DA's Bigcontest")
-
+# 글꼴 설정
 # Custom CSS style for changing the font
 st.markdown(
     """
+    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap" rel="stylesheet">
     <style>
     .custom-title {
-        font-family: 'Courier New', monospace;
+        font-family: 'Karla', sans-serif;
         font-size: 48px;
-        color: #2E86C1;
+        color: #294f7e;
     }
     </style>
     """,
     unsafe_allow_html=True
 )
 
-# Using HTML directly to apply the custom style to the title
-st.markdown('<h1 class="custom-title">Hello, Streamlit!</h1>', unsafe_allow_html=True)
+st.markdown('<h1 class="custom-title">Hello, Ybigta!</h1>', unsafe_allow_html=True)
