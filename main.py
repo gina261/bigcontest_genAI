@@ -1,42 +1,39 @@
 import streamlit as st
 
-# Importing the Nanum Gothic font from Google Fonts
+# CSS for adding a full-width background image with gradient
 st.markdown(
     """
-    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
     <style>
-    .css-18e3th9, .css-1d391kg {
-        padding-top: 0 !important;
-        padding-bottom: 0 !important;
-    }
-    
     .full-width-banner {
-        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)),
-                          url('https://ifh.cc/g/lD0gY1.jpg');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-        height: 500px;
-        width: 100vw;
-        margin-left: calc(-50vw + 50%);
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)), 
+                    url('https://your-image-url-here.jpg'); /* 배경으로 사용할 이미지 URL */
+        background-size: cover; /* 이미지 크기를 전체 영역에 맞춤 */
+        background-repeat: no-repeat; /* 반복 없이 한 번만 이미지 사용 */
+        background-position: center; /* 이미지 중앙 정렬 */
+        height: 400px; /* 배너의 높이 설정 */
+        width: 100vw; /* 페이지의 전체 너비를 사용 */
+        margin-left: calc(-50vw + 50%); /* 페이지 중앙 정렬 후 왼쪽으로 이동 */
         display: flex;
-        align-items: flex-end;
+        align-items: flex-end; /* 텍스트를 배너 하단에 배치 */
         justify-content: center;
+        color: white;
         position: relative;
         z-index: 1;
-        font-family: 'Nanum Gothic', sans-serif;
     }
 
+    /* 텍스트 스타일 */
     .full-width-banner h1 {
         font-size: 3em;
+        font-family: 'Karla', sans-serif;
         margin: 0;
         padding: 20px;
         color: white;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 텍스트에 그림자 추가 */
     }
 
-    header, footer, .css-1lsmgbg {
-        display: none; /* 숨기기 위해 display: none 사용 */
+    /* Streamlit 기본 상단 여백 제거 */
+    .css-18e3th9 {
+        padding-top: 0 !important;
     }
     </style>
     """,
