@@ -8,7 +8,7 @@ st.markdown(
 
     body {
         font-family: 'Nanum Gothic', sans-serif; /* Nanum Gothic 폰트 적용 */
-        background-color: #a7bad1; /* 전체 배경 색 변경 */
+        background-color: #a7bad1 !important; /* 전체 배경 색 변경 */
         color: black; /* 기본 텍스트 색상 */
         margin: 0;
         padding: 0;
@@ -59,14 +59,6 @@ st.markdown(
 # HTML for the full-width banner and the centered texts below it
 st.markdown(
     """
-    body {
-        font-family: 'Nanum Gothic', sans-serif; /* Nanum Gothic 폰트 적용 */
-        background-color: #a7bad1; /* 전체 배경 색 변경 */
-        color: black; /* 기본 텍스트 색상 */
-        margin: 0;
-        padding: 0;
-    }
-    
     <div class="full-width-banner">
         <h1>Welcome to team 예쁘DA</h1>
     </div>
