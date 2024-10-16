@@ -41,27 +41,43 @@ st.markdown('<h1 class="custom-title">Hello, Ybigta!</h1>', unsafe_allow_html=Tr
 
 
 
-# CSS for changing the color of the Streamlit header
+# CSS for adding a background image to the top section
 st.markdown(
     """
     <style>
-    /* 상단 바의 배경색 변경 */
-    ._streamlitAppContainer_nim44_1 {
-        background-color: #4CAF50 !important; /* 원하는 색상으로 변경하세요 */
-        border-bottom: 1px solid #333333;
-        visibility: visible;
+    .top-banner {
+        background-image: url('https://img.siksinhot.com/seeon/1551856689061267.jpg'); /* 배경으로 사용할 이미지 URL */
+        background-size: cover; /* 이미지 크기를 전체 영역에 맞춤 */
+        background-position: center; /* 이미지 중앙 정렬 */
+        height: 300px; /* 배너의 높이 설정 */
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
     }
 
-    /* 내부 컨테이너 스타일 조정 */
-    ._stateContainer_nim44_26 {
-        padding-top: 10px; /* 필요 시 여백 조정 */
+    /* 텍스트 스타일 */
+    .top-banner h1 {
+        font-size: 3em;
+        font-family: 'Karla', sans-serif;
+        margin: 0;
     }
     </style>
     """,
     unsafe_allow_html=True
 )
 
+# HTML for the top banner
+st.markdown(
+    """
+    <div class="top-banner">
+        <h1>Welcome to My Streamlit App</h1>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
 # Sample content
-st.title("Hello, Ybigta!")
-st.write("Customized Streamlit App")
-st.write("This app has a customized top bar.")
+st.write("This is the content of the app below the banner.")
+st.write("You can add more Streamlit components here.")
