@@ -23,3 +23,20 @@ st.set_page_config(page_title="🍊🍊🍊")
 
 st.title("Hello Ybigta👋")
 st.subheader("Ybigta Team DA's Bigcontest")
+
+# Custom CSS style for changing the font
+st.markdown(
+    """
+    <style>
+    .custom-title {
+        font-family: 'Courier New', monospace;
+        font-size: 48px;
+        color: #2E86C1;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# Using HTML directly to apply the custom style to the title
+st.markdown('<h1 class="custom-title">Hello, Streamlit!</h1>', unsafe_allow_html=True)
