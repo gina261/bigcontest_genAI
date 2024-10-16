@@ -8,7 +8,7 @@ st.markdown(
 
     /* Streamlit 전체 페이지의 배경을 변경하기 위한 설정 */
     .stApp {
-        background-color: #01142b;
+        background-color: #020202;
         font-family: 'Nanum Gothic', sans-serif; /* Nanum Gothic 폰트 적용 */
         color: white; /* 기본 텍스트 색상 */
     }
