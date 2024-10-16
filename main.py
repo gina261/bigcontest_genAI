@@ -41,7 +41,7 @@ st.markdown(
         font-size: 1.5em;
         margin: 40px 0 20px 0; /* 위쪽에 40px, 아래쪽에 20px 마진 추가 */
         text-align: center; /* 텍스트 중앙 정렬 */
-        color: black;
+        color: white;
     }
 
     .centered-subtext {
@@ -66,6 +66,9 @@ st.markdown(
     </div>
     <div class="centered-subtext">
         당신의 기분에 맞는 제주 맛집을 추천해드리겠습니다.
+    </div>
+    <div class="centered-subtext">
+        추천을 위해 몇 가지 질문에 답해주세요.
     </div>
     """,
     unsafe_allow_html=True
