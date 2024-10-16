@@ -46,14 +46,17 @@ st.markdown(
 
     .centered-subtext {
         font-size: 1.2em;
-        margin: 10px 0 50px 0; /* 위쪽과 아래쪽에 10px 마진 추가, 아래쪽 50px로 확장 */
+        margin: 20px 0; /* 상단과 하단에 20px 마진 추가 */
         text-align: center; /* 텍스트 중앙 정렬 */
         color: white;
     }
 
     /* 박스 스타일 */
     .box {
-        background-color: #333333; /* 박스 배경색 */
+        background-image: url('https://ifh.cc/g/66L6Y8.png'); /* 박스에 사용할 이미지 URL */
+        background-size: cover; /* 이미지 크기를 전체 영역에 맞춤 */
+        background-position: center; /* 이미지 중앙 정렬 */
+        background-repeat: no-repeat; /* 이미지 반복 방지 */
         padding: 20px;
         border-radius: 0px;
         margin: 50px 0; /* 상단과 하단에 50px 마진 추가 */
