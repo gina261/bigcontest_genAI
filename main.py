@@ -1,16 +1,13 @@
 import streamlit as st
 
-# CSS for changing the entire background color and styling the page
+# CSS for adding a full-width background image with transparency
 st.markdown(
     """
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 
-    /* Streamlit 전체 페이지의 배경을 변경하기 위한 설정 */
-    .stApp {
-        background-color: #f0f8ff; /* Alice Blue 색상 */
-        font-family: 'Nanum Gothic', sans-serif; /* Nanum Gothic 폰트 적용 */
-        color: black; /* 기본 텍스트 색상 */
+    body, .full-width-banner h1, .centered-text, .centered-subtext {
+        font-family: 'Nanum Gothic', sans-serif; /* 모든 텍스트에 Nanum Gothic 폰트 적용 */
     }
 
     .full-width-banner {
@@ -62,10 +59,16 @@ st.markdown(
         <h1>Welcome to team 예쁘DA</h1>
     </div>
     <div class="centered-text">
+        상황 맞춤형 제주 맛집 찾기
+    </div>
+    <div class="centered-subtext">
         반갑습니다. 오늘 어떤 하루를 보내고 계신가요?
     </div>
     <div class="centered-subtext">
-        당신의 기분에 맞는 제주 맛집을 추천해드리겠습니다.
+        당신의 오늘 상황과 기분에 맞는 제주 맛집을 추천해드리겠습니다.
+    </div>
+    <div class="centered-subtext">
+        추천을 위해 몇 가지 질문에 답해주세요.
     </div>
     """,
     unsafe_allow_html=True
