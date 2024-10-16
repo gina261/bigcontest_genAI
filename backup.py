@@ -31,25 +31,41 @@ st.markdown(
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 텍스트에 그림자 추가 */
     }
 
-    .full-width-banner h2 {
-        font-size: 2em;
+    .centered-text {
+        font-size: 1.5em;
         font-family: 'Nanum Gothic', sans-serif;
-        margin: 0;
-        color: white;
-        margin-top: 10px; /* 상단 마진 추가 */
+        margin: 40px 0 20px 0; /* 위쪽에 40px, 아래쪽에 20px 마진 추가 */
+        text-align: center; /* 텍스트 중앙 정렬 */
+        color: black;
+    }
+
+    .centered-subtext {
+        font-size: 1.2em;
+        font-family: 'Nanum Gothic', sans-serif;
+        margin: 10px 0; /* 위쪽과 아래쪽에 10px 마진 추가 */
+        text-align: center; /* 텍스트 중앙 정렬 */
+        color: black;
     }
     </style>
     """,
     unsafe_allow_html=True
 )
 
-# HTML for the full-width banner
+# HTML for the full-width banner and the centered texts below it
 st.markdown(
     """
     <div class="full-width-banner">
         <h1>Welcome to team 예쁘DA</h1>
     </div>
+    <div class="centered-text">
+        반갑습니다. 오늘 어떤 하루를 보내고 계신가요?
+    </div>
+    <div class="centered-subtext">
+        당신의 기분에 맞는 제주 맛집을 추천해드리겠습니다.
+    </div>
+    <div class="centered-subtext">
+        추천을 위해 몇 가지 질문에 답해주세요.
+    </div>
     """,
     unsafe_allow_html=True
 )
-
