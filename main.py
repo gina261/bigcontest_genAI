@@ -45,15 +45,16 @@ st.markdown('<h1 class="custom-title">Hello, Ybigta!</h1>', unsafe_allow_html=Tr
 st.markdown(
     """
     <style>
-    /* 상단의 기본 Streamlit 바를 숨깁니다 */
-    .css-18e3th9, .css-1d391kg {
-        visibility: hidden;
+    /* 상단 바의 배경색 변경 */
+    ._streamlitAppContainer_nim44_1 {
+        background-color: #4CAF50 !important; /* 원하는 색상으로 변경하세요 */
+        border-bottom: 1px solid #333333;
+        visibility: visible;
     }
 
-    /* 상단 바의 배경색을 원하는 색으로 변경합니다 (visible 상태일 때 사용) */
-    .css-18e3th9 {
-        background-color: #4CAF50 !important; /* 원하는 색상으로 변경하세요 */
-        visibility: visible; /* 이 줄을 주석 해제 시 색 변경만 적용됩니다 */
+    /* 내부 컨테이너 스타일 조정 */
+    ._stateContainer_nim44_26 {
+        padding-top: 10px; /* 필요 시 여백 조정 */
     }
     </style>
     """,
