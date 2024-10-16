@@ -66,6 +66,13 @@ st.markdown(
         text-align: left;
         color: white;
     }
+
+    /* 레이블 스타일 */
+    .custom-label {
+        color: white;
+        font-size: 1em;
+        margin-bottom: 5px;
+    }
     </style>
     """,
     unsafe_allow_html=True
@@ -104,18 +111,21 @@ st.markdown(
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    selected_date = st.date_input("날짜를 선택하세요", help="맛집에 방문할 날짜를 선택해주세요.")
+    st.markdown("<div class='custom-label'>날짜를 선택하세요</div>", unsafe_allow_html=True)
+    selected_date = st.date_input("", help="맛집에 방문할 날짜를 선택해주세요.")
     
 with col2:
+    st.markdown("<div class='custom-label'>시간대를 선택하세요</div>", unsafe_allow_html=True)
     time_slot = st.selectbox(
-        "시간대를 선택하세요", 
+        "", 
         ("아침", "점심", "저녁"),
         help="맛집에 방문할 시간대를 선택해주세요."
     )
 
 with col3:
+    st.markdown("<div class='custom-label'>인원수를 선택하세요</div>", unsafe_allow_html=True)
     members_num = st.selectbox(
-        "인원수를 선택하세요", 
+        "", 
         ("혼자", "2명", "3명", "4명 이상"),
         help="맛집에 함께 방문할 인원수를 선택해주세요."
     )
