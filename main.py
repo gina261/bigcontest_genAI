@@ -1,29 +1,6 @@
-import os
-import numpy as np
-import pandas as pd
-
-# from transformers import AutoTokenizer, AutoModel
-# import torch
-# from tqdm import tqdm
-# import faiss
-
 import streamlit as st
 
-# Gemini 설정
-# import google.generativeai as genai
-
-# gemini 설정
-# GOOGLE_API_KEY = st.secrets["GOOGLE_API_KEY"]
-# genai.configure(api_key=GOOGLE_API_KEY)
-
-# Gemini 모델 선택
-# model = genai.GenerativeModel("gemini-1.5-flash")
-
-st.set_page_config(page_title="예쁘DA🍊")
-
-
-
-# CSS for adding a full-width background image with gradient
+# Importing the Nanum Gothic font from Google Fonts
 st.markdown(
     """
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
@@ -63,8 +40,9 @@ st.markdown(
     }
 
     /* 불필요한 텍스트 숨기기 */
-    .stText, .stMarkdown p {
-        display: none; /* 모든 텍스트 요소를 숨깁니다 */
+    div[data-testid="stToolbar"] {
+        visibility: hidden;
+        height: 0px;
     }
     </style>
     """,
