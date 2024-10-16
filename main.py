@@ -10,7 +10,7 @@ st.markdown(
     .stApp {
         background-color: #020202;
         font-family: 'Nanum Gothic', sans-serif; /* Nanum Gothic 폰트 적용 */
-        color: white; /* 기본 텍스트 색상 */
+        color: black; /* 기본 텍스트 색상 */
     }
 
     .full-width-banner {
