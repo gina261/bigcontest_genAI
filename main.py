@@ -78,7 +78,7 @@ st.markdown(
         background-repeat: no-repeat;
         padding: 20px;
         border-radius: 0px;
-        margin: 50px 0;
+        margin: 100px 0 50px 0; /* 상단에 50px, 하단에 50px 마진 추가 */
         color: white;
         display: flex;
         align-items: center;
@@ -159,7 +159,7 @@ with col3:
 st.markdown(
     """
     <div class="box-2">
-        <h3>어떤 요리를 선호하시나요?</h3>
+        <h3>어디로 가시나요?</h3>
     </div>
     """,
     unsafe_allow_html=True

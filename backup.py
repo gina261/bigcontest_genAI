@@ -52,12 +52,12 @@ st.markdown(
     }
 
     .centered-subtext.last {
-        margin-bottom: 100px; /* 마지막 텍스트와 박스 사이의 간격을 추가 */
+        margin-bottom: 150px; /* 마지막 텍스트와 박스 사이의 간격을 추가 */
     }
 
     /* 박스 스타일 */
     .box {
-        background-image: url('https://ifh.cc/g/66L6Y8.png'); /* 박스에 사용할 이미지 URL */
+        background-image: url('https://ifh.cc/g/66L6Y8.png');
         background-size: cover; /* 이미지 크기를 전체 영역에 맞춤 */
         background-position: center; /* 이미지 중앙 정렬 */
         background-repeat: no-repeat; /* 이미지 반복 방지 */
@@ -70,7 +70,22 @@ st.markdown(
         height: 100px; /* 박스 높이 설정 */
     }
 
-    .box h3 {
+    /* 새 박스 스타일 */
+    .box-2 {
+        background-image: url('https://ifh.cc/g/n7tgX0.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        padding: 20px;
+        border-radius: 0px;
+        margin: 50px 0;
+        color: white;
+        display: flex;
+        align-items: center;
+        height: 100px;
+    }
+
+    .box h3, .box-2 h3 {
         font-size: 1.2em;
         margin: 0;
         text-align: left;
@@ -140,9 +155,17 @@ with col3:
         ("혼자", "2명", "3명", "4명 이상")
     )
 
+# 새 박스를 추가
+st.markdown(
+    """
+    <div class="box-2">
+        <h3>어디로 가시나요?</h3>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
 # 선택된 값 출력
 st.write(f"선택한 날짜: {selected_date}")
 st.write(f"선택한 시간대: {time_slot}")
 st.write(f"선택한 인원수: {members_num}")
-
-
