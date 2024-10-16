@@ -23,19 +23,19 @@ st.set_page_config(page_title="예쁘DA🍊")
 
 # 글꼴 설정
 # Custom CSS style for changing the font
-st.markdown(
-    """
-    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-    .custom-title {
-        font-family: 'Karla', sans-serif;
-        font-size: 48px;
-        color: #294f7e;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+# st.markdown(
+#     """
+#     <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap" rel="stylesheet">
+#     <style>
+#     .custom-title {
+#         font-family: 'Karla', sans-serif;
+#         font-size: 48px;
+#         color: #294f7e;
+#     }
+#     </style>
+#     """,
+#     unsafe_allow_html=True
+# )
 
 # st.markdown('<h1 class="custom-title">Hello, Ybigta!</h1>', unsafe_allow_html=True)
 
@@ -43,6 +43,7 @@ st.markdown(
 # CSS for adding a full-width background image with gradient
 st.markdown(
     """
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
     <style>
     .full-width-banner {
         background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)), 
@@ -59,12 +60,12 @@ st.markdown(
         color: white;
         position: relative;
         z-index: 1;
+        font-family: 'Nanum Gothic', sans-serif; /* Nanum Gothic 폰트 적용 */
     }
 
     /* 텍스트 스타일 */
     .full-width-banner h1 {
         font-size: 3em;
-        font-family: 'Karla', sans-serif;
         margin: 0;
         padding: 20px;
         color: white;
