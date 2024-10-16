@@ -8,9 +8,9 @@ st.markdown(
 
     /* Streamlit 전체 페이지의 배경을 변경하기 위한 설정 */
     .stApp {
-        background-color: #f0f8ff; /* Alice Blue 색상 */
+        background-color: #172b44;
         font-family: 'Nanum Gothic', sans-serif; /* Nanum Gothic 폰트 적용 */
-        color: black; /* 기본 텍스트 색상 */
+        color: white; /* 기본 텍스트 색상 */
     }
 
     .full-width-banner {
