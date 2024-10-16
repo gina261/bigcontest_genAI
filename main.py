@@ -90,19 +90,9 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# 박스 스타일을 유지하면서 날짜 입력 위젯을 포함하기 위해 Streamlit 컨테이너 사용
-with st.container():
-    st.markdown(
-        """
-        <div class="box">
-            <h3>맛집에 언제 방문하실 예정인가요?</h3>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-    # 날짜 입력 위젯 추가
+# 날짜 선택 위젯을 포함하는 박스 스타일 적용
+with st.markdown('<div class="box">', unsafe_allow_html=True):
+    st.markdown("<h3>맛집에 언제 방문하실 예정인가요?</h3>", unsafe_allow_html=True)
     selected_date = st.date_input("날짜를 선택하세요", help="맛집에 방문할 날짜를 선택해주세요.")
-    
-    # 선택된 날짜 출력
     st.write(f"선택한 날짜: {selected_date}")
-
+    st.markdown("</div>", unsafe_allow_html=True)
