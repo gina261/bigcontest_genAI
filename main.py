@@ -93,8 +93,8 @@ st.markdown(
 # HTML for the box around the date input
 st.markdown(
     """
-    <div class="full-width-banner">
-        <h1>맛집에 언제 방문하실 예정인가요?</h1>
+    <div class="box">
+        <h1>맛집에 언제 방문하실 예정인가요?</h3>
     </div>
     """,
     unsafe_allow_html=True
