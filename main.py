@@ -5,7 +5,7 @@ st.markdown(
     """
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
     <style>
-    /* 페이지 전체를 감싸는 상위 컨테이너의 패딩을 없애기 위한 CSS */
+    /* 페이지 상단 여백 제거 */
     .css-18e3th9, .css-1d391kg {
         padding-top: 0 !important;
         padding-bottom: 0 !important;
@@ -14,7 +14,7 @@ st.markdown(
     /* 배너 영역 설정 */
     .full-width-banner {
         background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)), 
-                    url('https://ifh.cc/g/lD0gY1.jpg'); /* 배경으로 사용할 이미지 URL */
+                    url('https://ifh.cc/g/lD0gY1.jpg'); /* 배경 이미지 URL */
         background-size: cover; /* 이미지 크기를 전체 영역에 맞춤 */
         background-repeat: no-repeat; /* 반복 없이 한 번만 이미지 사용 */
         background-position: center; /* 이미지 중앙 정렬 */
@@ -39,10 +39,11 @@ st.markdown(
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 텍스트에 그림자 추가 */
     }
 
-    /* 불필요한 텍스트 숨기기 */
-    div[data-testid="stToolbar"] {
+    /* Streamlit의 상단 툴바 및 불필요한 요소 숨기기 */
+    header, footer, .css-1lsmgbg {
         visibility: hidden;
         height: 0px;
+        margin: 0;
     }
     </style>
     """,
