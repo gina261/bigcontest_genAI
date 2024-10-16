@@ -79,7 +79,8 @@ st.markdown(
     <div class="centered-subtext">
         언제 방문하실 예정인가요?
     </div>
-    """
+    """,
+    unsafe_allow_html=True
 )
 
 # 날짜 입력 위젯 추가
