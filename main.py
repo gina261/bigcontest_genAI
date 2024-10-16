@@ -6,8 +6,12 @@ st.markdown(
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 
-    body, .full-width-banner h1, .centered-text, .centered-subtext {
-        font-family: 'Nanum Gothic', sans-serif; /* 모든 텍스트에 Nanum Gothic 폰트 적용 */
+    body {
+        font-family: 'Nanum Gothic', sans-serif; /* Nanum Gothic 폰트 적용 */
+        background-color: #f0f8ff; /* 전체 배경 색 변경 (예: Alice Blue) */
+        color: black; /* 기본 텍스트 색상 */
+        margin: 0;
+        padding: 0;
     }
 
     .full-width-banner {
@@ -62,8 +66,12 @@ st.markdown(
         상황 맞춤형 제주 맛집 찾기
     </div>
     <div class="centered-subtext">
-        반갑습니다. 오늘 어떤 하루를 보내고 계신가요?\n
-        당신의 오늘 상황과 기분에 맞는 제주 맛집을 추천해드리겠습니다.\n\n        
+        반갑습니다. 오늘 어떤 하루를 보내고 계신가요?
+    </div>
+    <div class="centered-subtext">
+        당신의 오늘 상황과 기분에 맞는 제주 맛집을 추천해드리겠습니다.
+    </div>
+    <div class="centered-subtext">
         추천을 위해 몇 가지 질문에 답해주세요.
     </div>
     """,
