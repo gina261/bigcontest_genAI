@@ -94,7 +94,7 @@ st.markdown(
 st.markdown(
     """
     <div class="box">
-        <h3>맛집에 언제 방문하실 예정인가요?</h3>
+        <h3>맛집에 언제 방문할 계획이신가요?</h3>
     </div>
     """,
     unsafe_allow_html=True
@@ -102,6 +102,34 @@ st.markdown(
 
 # 날짜 입력 위젯 추가
 selected_date = st.date_input("날짜를 선택하세요", help="맛집에 방문할 날짜를 선택해주세요.")
-
-# 선택된 날짜 출력
 st.write(f"선택한 날짜: {selected_date}")
+
+# 시간대 선택 위젯을 포함하는 새로운 박스
+st.markdown(
+    """
+    <div class="box">
+        <h3>어느 시간대에 방문할 계획이신가요?</h3>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+# 시간대 선택 위젯 추가
+time_slot = st.selectbox(
+    "시간대를 선택하세요", 
+    ("아침", "점심", "저녁"),
+    help="맛집에 방문할 시간대를 선택해주세요."
+)
+
+# 선택된 시간대 출력
+st.write(f"선택한 시간대: {time_slot}")
+
+# 인원수 선택 위젯 추가
+members_num = st.selectbox(
+    "인원수를 선택하세요", 
+    ("혼자", "2명", "3명", "4명 이상"),
+    help="맛집에 함께 방문할 인원수를 선택해주세요."
+)
+
+# 선택된 시간대 출력
+st.write(f"선택한 인원수: {members_num}")

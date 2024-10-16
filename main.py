@@ -90,46 +90,37 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# HTML for the box around the date input
+# 날짜, 시간대, 인원수 선택 위젯을 한 행에 배치
 st.markdown(
     """
     <div class="box">
-        <h3>맛집에 언제 방문할 계획이신가요?</h3>
+        <h3>방문 계획을 선택하세요</h3>
     </div>
     """,
     unsafe_allow_html=True
 )
 
-# 날짜 입력 위젯 추가
-selected_date = st.date_input("날짜를 선택하세요", help="맛집에 방문할 날짜를 선택해주세요.")
+# 3개의 열을 생성하여 위젯을 한 행에 배치
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    selected_date = st.date_input("날짜를 선택하세요", help="맛집에 방문할 날짜를 선택해주세요.")
+    
+with col2:
+    time_slot = st.selectbox(
+        "시간대를 선택하세요", 
+        ("아침", "점심", "저녁"),
+        help="맛집에 방문할 시간대를 선택해주세요."
+    )
+
+with col3:
+    members_num = st.selectbox(
+        "인원수를 선택하세요", 
+        ("혼자", "2명", "3명", "4명 이상"),
+        help="맛집에 함께 방문할 인원수를 선택해주세요."
+    )
+
+# 선택된 값 출력
 st.write(f"선택한 날짜: {selected_date}")
-
-# 시간대 선택 위젯을 포함하는 새로운 박스
-st.markdown(
-    """
-    <div class="box">
-        <h3>어느 시간대에 방문할 계획이신가요?</h3>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-
-# 시간대 선택 위젯 추가
-time_slot = st.selectbox(
-    "시간대를 선택하세요", 
-    ("아침", "점심", "저녁"),
-    help="맛집에 방문할 시간대를 선택해주세요."
-)
-
-# 선택된 시간대 출력
 st.write(f"선택한 시간대: {time_slot}")
-
-# 인원수 선택 위젯 추가
-members_num = st.selectbox(
-    "인원수를 선택하세요", 
-    ("혼자", "2명", "3명", "4명 이상"),
-    help="맛집에 함께 방문할 인원수를 선택해주세요."
-)
-
-# 선택된 시간대 출력
 st.write(f"선택한 인원수: {members_num}")
