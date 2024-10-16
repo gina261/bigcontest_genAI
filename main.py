@@ -38,3 +38,71 @@ st.markdown(
 )
 
 st.markdown('<h1 class="custom-title">Hello, Ybigta!</h1>', unsafe_allow_html=True)
+
+
+
+# 상단 네비게이션 바
+st.markdown(
+    """
+    <style>
+    /* 기본 바디 스타일 */
+    body {
+        margin: 0;
+        font-family: 'Karla', sans-serif;
+    }
+    
+    /* 고정된 네비게이션 바 스타일 */
+    .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: #333;
+        color: white;
+        padding: 10px;
+        text-align: center;
+        z-index: 1000; /* 컨텐츠 위로 네비게이션 바를 고정합니다 */
+    }
+
+    .navbar a {
+        color: white;
+        text-decoration: none;
+        padding: 14px 20px;
+        display: inline-block;
+    }
+
+    .navbar a:hover {
+        background-color: #555;
+    }
+
+    /* 메뉴바 아래 컨텐츠가 네비게이션 바 아래로 내려오게 하기 위한 마진 */
+    .content {
+        margin-top: 60px;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# HTML for the navbar
+st.markdown(
+    """
+    <div class="navbar">
+        <a href="#section1">Home</a>
+        <a href="#section2">About</a>
+        <a href="#section3">Contact</a>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+# Content sections
+st.markdown('<div class="content">', unsafe_allow_html=True)
+st.header("Section 1: Home")
+st.write("Welcome to the home section.")
+
+st.header("Section 2: About")
+st.write("This is the about section.")
+
+st.header("Section 3: Contact")
+st.write("Feel free to contact us.")
+st.markdown('</div>', unsafe_allow_html=True)
