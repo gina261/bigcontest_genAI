@@ -8,7 +8,7 @@ st.markdown(
 
     body {
         font-family: 'Nanum Gothic', sans-serif; /* Nanum Gothic 폰트 적용 */
-        background-color: #f0f8ff; /* 전체 배경 색 변경 (예: Alice Blue) */
+        background-color: #a7bad1; /* 전체 배경 색 변경 (예: Alice Blue) */
         color: black; /* 기본 텍스트 색상 */
         margin: 0;
         padding: 0;
