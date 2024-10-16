@@ -46,27 +46,30 @@ st.markdown(
 
     .centered-subtext {
         font-size: 1.2em;
-        margin: 10px 0; /* 위쪽과 아래쪽에 10px 마진 추가 */
+        margin: 10px 0 50px 0; /* 위쪽과 아래쪽에 10px 마진 추가, 아래쪽 50px로 확장 */
         text-align: center; /* 텍스트 중앙 정렬 */
         color: white;
     }
 
-    /* 커스텀 컨테이너 스타일 */
-    .custom-container {
+    /* 박스 스타일 */
+    .box {
         background-color: #333333; /* 박스 배경색 */
         padding: 20px;
-        border-radius: 10px;
-        width: 100%; /* 화면 전체 너비 사용 */
-        max-width: 1200px; /* 최대 너비 설정 */
-        margin: 20px auto; /* 상하 여백과 수평 중앙 정렬 */
+        border-radius: 0px;
+        margin: 50px 0; /* 상단과 하단에 50px 마진 추가 */
         color: white;
+        display: flex;
+        align-items: center; /* 수직 중앙 정렬 */
+        height: 100px; /* 박스 높이 설정 */
     }
 
-    .custom-container h3 {
+    .box h3 {
         font-size: 1.2em;
-        margin-bottom: 10px;
+        margin: 0;
         text-align: left;
         color: white;
+        width: 100%;
+        text-align: center; /* 텍스트 중앙 정렬 */
     }
 
     /* 레이블 스타일 */
@@ -99,39 +102,36 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# HTML로 스타일링한 박스 안에 3개의 위젯 열을 배치
+# 날짜, 시간대, 인원수 선택 위젯을 한 행에 배치
 st.markdown(
     """
-    <div class="custom-container">
+    <div class="box">
         <h3>언제, 누구와 가시나요?</h3>
     </div>
     """,
     unsafe_allow_html=True
 )
 
-# 3개의 열을 생성하여 HTML 박스 안에 위젯을 배치
-with st.container():
-    col1, col2, col3 = st.columns(3)
+# 3개의 열을 생성하여 위젯을 한 행에 배치
+col1, col2, col3 = st.columns(3)
 
-    with col1:
-        st.markdown("<div class='custom-label'>날짜를 선택하세요 :</div>", unsafe_allow_html=True)
-        selected_date = st.date_input("", help="맛집에 방문할 날짜를 선택해주세요.")
-        
-    with col2:
-        st.markdown("<div class='custom-label'>시간대를 선택하세요 :</div>", unsafe_allow_html=True)
-        time_slot = st.selectbox(
-            "", 
-            ("아침", "점심", "저녁"),
-            help="맛집에 방문할 시간대를 선택해주세요."
-        )
+with col1:
+    st.markdown("<div class='custom-label'>날짜를 선택하세요 :</div>", unsafe_allow_html=True)
+    selected_date = st.date_input("")
+    
+with col2:
+    st.markdown("<div class='custom-label'>시간대를 선택하세요 :</div>", unsafe_allow_html=True)
+    time_slot = st.selectbox(
+        "", 
+        ("아침", "점심", "저녁")
+    )
 
-    with col3:
-        st.markdown("<div class='custom-label'>인원수를 선택하세요 :</div>", unsafe_allow_html=True)
-        members_num = st.selectbox(
-            "", 
-            ("혼자", "2명", "3명", "4명 이상"),
-            help="맛집에 함께 방문할 인원수를 선택해주세요."
-        )
+with col3:
+    st.markdown("<div class='custom-label'>인원수를 선택하세요 :</div>", unsafe_allow_html=True)
+    members_num = st.selectbox(
+        "", 
+        ("혼자", "2명", "3명", "4명 이상")
+    )
 
 # 선택된 값 출력
 st.write(f"선택한 날짜: {selected_date}")
