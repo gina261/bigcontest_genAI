@@ -6,12 +6,11 @@ st.markdown(
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 
-    body {
+    /* Streamlit 전체 페이지의 배경을 변경하기 위한 설정 */
+    .stApp {
+        background-color: #f0f8ff; /* Alice Blue 색상 */
         font-family: 'Nanum Gothic', sans-serif; /* Nanum Gothic 폰트 적용 */
-        background-color: #f0f8ff !important; /* 전체 배경 색 변경 (예: Alice Blue) */
         color: black; /* 기본 텍스트 색상 */
-        margin: 0;
-        padding: 0;
     }
 
     .full-width-banner {
