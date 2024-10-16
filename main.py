@@ -52,15 +52,15 @@ st.markdown(
     }
 
     /* 박스 스타일 */
-    .box {
+    .custom-container {
         background-color: #333333; /* 박스 배경색 */
         padding: 20px;
-        border-radius: 5px;
+        border-radius: 10px;
         margin: 20px 0;
         color: white;
     }
 
-    .box h3 {
+    .custom-container h3 {
         font-size: 1.2em;
         margin-bottom: 10px;
         text-align: left;
@@ -97,18 +97,18 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# 박스 안에 3개의 위젯 열을 배치하기 위해 컨테이너 사용
-with st.container():
-    st.markdown(
-        """
-        <div class="box">
-            <h3>언제, 누구와 가시나요?</h3>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+# HTML로 스타일링한 박스 안에 3개의 위젯 열을 배치
+st.markdown(
+    """
+    <div class="custom-container">
+        <h3>언제, 누구와 가시나요?</h3>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
-    # 3개의 열을 생성하여 박스 안에 위젯을 배치
+# 3개의 열을 생성하여 HTML 박스 안에 위젯을 배치
+with st.container():
     col1, col2, col3 = st.columns(3)
 
     with col1:
