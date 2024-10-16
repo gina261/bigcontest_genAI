@@ -74,8 +74,16 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+st.markdown(
+    """
+    <div class="centered-subtext">
+        언제 방문하실 예정인가요?
+    </div>
+    """
+)
+
 # 날짜 입력 위젯 추가
-selected_date = st.date_input("날짜를 선택하세요", help="맛집 추천을 위한 날짜를 선택해주세요.")
+selected_date = st.date_input("날짜를 선택하세요", help="맛집에 방문할 날짜를 선택해주세요.")
 
 # 선택된 날짜 출력
 st.write(f"선택한 날짜: {selected_date}")
