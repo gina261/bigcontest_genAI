@@ -102,6 +102,7 @@ with st.container():
     )
     # 날짜 입력 위젯 추가
     selected_date = st.date_input("날짜를 선택하세요", help="맛집에 방문할 날짜를 선택해주세요.")
+    
+    # 선택된 날짜 출력
+    st.write(f"선택한 날짜: {selected_date}")
 
-# 선택된 날짜 출력
-st.write(f"선택한 날짜: {selected_date}")
