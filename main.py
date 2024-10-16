@@ -154,6 +154,8 @@ with col3:
         "", 
         ("혼자", "2명", "3명", "4명 이상")
     )
+    
+st.write(f"{selected_date} {time_slot}, {memoryview} 가시는 것이 맞나요?")
 
 # 새 박스를 추가
 st.markdown(
@@ -164,8 +166,3 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
-# 선택된 값 출력
-st.write(f"선택한 날짜: {selected_date}")
-st.write(f"선택한 시간대: {time_slot}")
-st.write(f"선택한 인원수: {members_num}")
