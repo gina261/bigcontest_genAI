@@ -45,15 +45,15 @@ st.markdown('<h1 class="custom-title">Hello, Ybigta!</h1>', unsafe_allow_html=Tr
 st.markdown(
     """
     <style>
-    /* Streamlit 기본 상단 바의 배경색과 테두리 색 변경 */
-    .css-18e3th9 {
-        background-color: #333333; /* 원하는 배경색으로 변경 */
-        border-bottom: 1px solid #444444; /* 테두리 색상 */
+    /* 상단의 기본 Streamlit 바를 숨깁니다 */
+    .css-18e3th9, .css-1d391kg {
+        visibility: hidden;
     }
-    
-    /* Streamlit 메뉴 버튼(햄버거 메뉴)와 메뉴 아이콘 색 변경 */
-    .css-1q8dd3e, .css-1v3fvcr {
-        color: white; /* 텍스트 및 아이콘 색을 흰색으로 설정 */
+
+    /* 상단 바의 배경색을 원하는 색으로 변경합니다 (visible 상태일 때 사용) */
+    .css-18e3th9 {
+        background-color: #4CAF50 !important; /* 원하는 색상으로 변경하세요 */
+        visibility: visible; /* 이 줄을 주석 해제 시 색 변경만 적용됩니다 */
     }
     </style>
     """,
@@ -61,5 +61,6 @@ st.markdown(
 )
 
 # Sample content
-st.title("Customized Streamlit App")
+st.title("Hello, Ybigta!")
+st.write("Customized Streamlit App")
 st.write("This app has a customized top bar.")
