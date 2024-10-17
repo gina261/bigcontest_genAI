@@ -1,26 +1,34 @@
 import streamlit as st
 import folium
 from streamlit_folium import st_folium
+from PIL import Image
 
 # CSS for changing the entire background color and styling the page
 st.markdown(
     """
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+    @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
+    /* 기본 마진과 패딩 제거 */
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    
     /* Streamlit 전체 페이지의 배경을 변경하기 위한 설정 */
     .stApp {
-        background-color: #020202;
-        font-family: 'Nanum Gothic', sans-serif; /* Nanum Gothic 폰트 적용 */
+        background-color: #ffefcc;
+        font-family: 'Pretendard', sans-serif; /* 폰트 적용 */
         color: black; /* 기본 텍스트 색상 */
+        padding: 0; /* 추가적인 패딩 제거 */
     }
 
     .full-width-banner {
         position: relative;
-        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://ifh.cc/g/tyYadc.jpg'); /* 반투명 검정색 오버레이와 이미지 */
+        background-image: url('https://github.com/gina261/bigcontest_genAI/blob/main/images/banner.png?raw=true');
         background-size: cover; /* 이미지 크기를 전체 영역에 맞춤 */
         background-position: center; /* 이미지 중앙 정렬 */
-        height: 500px; /* 배너의 높이 설정 */
+        height: 400px; /* 배너의 높이 설정 */
         width: 100vw; /* 페이지의 전체 너비를 사용 */
         margin-left: calc(-50vw + 50%); /* 페이지 중앙 정렬 후 왼쪽으로 이동 */
         display: flex;
@@ -111,7 +119,7 @@ st.markdown(
 st.markdown(
     """
     <div class="full-width-banner">
-        <h1>Welcome to team 예쁘DA</h1>
+        <h1></h1>
     </div>
     <div class="centered-text">
         반갑습니다. 오늘 어떤 하루를 보내고 계신가요?
