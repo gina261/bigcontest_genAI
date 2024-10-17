@@ -1,4 +1,6 @@
 import streamlit as st
+import folium
+from streamlit_folium import st_folium
 
 # CSS for changing the entire background color and styling the page
 st.markdown(
@@ -155,7 +157,7 @@ with col3:
         ("혼자", "2명", "3명", "4명 이상")
     )
     
-st.write(f"{selected_date} {time_slot}, {members_num} 가시는 것이 맞나요?")
+st.write(f"{selected_date} {time_slot}에 {members_num} 방문할 예정입니다.")
 
 # 새 박스를 추가
 st.markdown(
@@ -166,3 +168,20 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
+# 제주도 중심 좌표
+jeju_center = [33.4996, 126.5312]
+
+# Folium 지도 객체 생성
+jeju_map = folium.Map(location=jeju_center, zoom_start=10)
+
+# 마커 추가 예시
+folium.Marker(
+    location=[33.4996, 126.5312],
+    popup="제주시",
+    icon=folium.Icon(color="blue")
+).add_to(jeju_map)
+
+# Streamlit에서 지도 표시
+st.markdown("<div class='box-2'><h3>제주 지역을 선택하세요:</h3></div>", unsafe_allow_html=True)
+st_data = st_folium(jeju_map, width=700, height=500)
