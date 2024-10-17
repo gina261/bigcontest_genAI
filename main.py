@@ -1,6 +1,7 @@
 import streamlit as st
 import folium
 from streamlit_folium import st_folium
+from PIL import Image
 
 # CSS for changing the entire background color and styling the page
 st.markdown(
@@ -11,13 +12,13 @@ st.markdown(
     /* Streamlit 전체 페이지의 배경을 변경하기 위한 설정 */
     .stApp {
         background-color: #ffefcc;
-        font-family: 'Pretendard', sans-serif; /* Nanum Gothic 폰트 적용 */
+        font-family: 'Pretendard', sans-serif; /* 폰트 적용 */
         color: black; /* 기본 텍스트 색상 */
     }
 
     .full-width-banner {
         position: relative;
-        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://ifh.cc/g/tyYadc.jpg'); /* 반투명 검정색 오버레이와 이미지 */
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/banner.png');
         background-size: cover; /* 이미지 크기를 전체 영역에 맞춤 */
         background-position: center; /* 이미지 중앙 정렬 */
         height: 500px; /* 배너의 높이 설정 */
