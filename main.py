@@ -42,7 +42,7 @@ st.markdown(
         background-position: center; /* 이미지 중앙 정렬 */
         height: 400px; /* 배너의 높이 설정 */
         width: 100vw; /* 페이지의 전체 너비를 사용 */
-        margin-left: calc(-50vw + 30%); /* 페이지 중앙 정렬 후 왼쪽으로 이동 */
+        margin-left: calc(-50vw + 55%); /* 페이지 중앙 정렬 후 왼쪽으로 이동 */
         display: flex;
         align-items: center;
         justify-content: center;
