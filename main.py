@@ -18,7 +18,7 @@ st.markdown(
 
     .full-width-banner {
         position: relative;
-        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/banner.png');
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://github.com/gina261/bigcontest_genAI/blob/main/images/banner.png?raw=true');
         background-size: cover; /* 이미지 크기를 전체 영역에 맞춤 */
         background-position: center; /* 이미지 중앙 정렬 */
         height: 500px; /* 배너의 높이 설정 */
