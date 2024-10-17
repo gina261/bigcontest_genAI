@@ -9,11 +9,18 @@ st.markdown(
     <style>
     @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
+    /* 기본 마진과 패딩 제거 */
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    
     /* Streamlit 전체 페이지의 배경을 변경하기 위한 설정 */
     .stApp {
         background-color: #ffefcc;
         font-family: 'Pretendard', sans-serif; /* 폰트 적용 */
         color: black; /* 기본 텍스트 색상 */
+        padding: 0; /* 추가적인 패딩 제거 */
     }
 
     .full-width-banner {
