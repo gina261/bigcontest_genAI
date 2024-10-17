@@ -23,7 +23,6 @@ st.markdown(
         background-position: center; /* 이미지 중앙 정렬 */
         height: 400px; /* 배너의 높이 설정 */
         width: 100vw; /* 페이지의 전체 너비를 사용 */
-        margin-left: calc(-50vw + 50%); /* 페이지 중앙 정렬 후 왼쪽으로 이동 */
         display: flex;
         align-items: center;
         justify-content: center;
@@ -112,7 +111,7 @@ st.markdown(
 st.markdown(
     """
     <div class="full-width-banner">
-        <h1>Welcome to team 예쁘DA</h1>
+        <h1></h1>
     </div>
     <div class="centered-text">
         반갑습니다. 오늘 어떤 하루를 보내고 계신가요?
