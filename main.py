@@ -65,14 +65,14 @@ st.markdown(
         font-size: 1.5em;
         margin: 40px 0 20px 0; /* 위쪽에 40px, 아래쪽에 20px 마진 추가 */
         text-align: center; /* 텍스트 중앙 정렬 */
-        color: white;
+        color: black;
     }
 
     .centered-subtext {
         font-size: 1.2em;
         margin: 20px 0 20px 0; /* 위쪽과 아래쪽에 20px 마진 추가 */
         text-align: center; /* 텍스트 중앙 정렬 */
-        color: white;
+        color: black;
     }
 
     .centered-subtext.last {
