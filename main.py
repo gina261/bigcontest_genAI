@@ -26,7 +26,7 @@ st.markdown(
     /* 상단 여백 제거 */
     .block-container {
         padding-top: 0;
-        padding-bottom: 0;
+        
         padding-right: 0;
     }
     

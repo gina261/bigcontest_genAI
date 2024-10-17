@@ -22,6 +22,20 @@ st.markdown(
         color: black; /* 기본 텍스트 색상 */
         padding: 0; /* 추가적인 패딩 제거 */
     }
+    
+    /* 상단 여백 제거 */
+    .block-container {
+        padding-top: 0;
+        padding-bottom: 0;
+        padding-right: 0;
+    }
+    
+    /* 상단 여백 제거를 위한 추가 설정 */
+    .css-18e3th9 {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        padding-right: 0 !important;
+    }
 
     .full-width-banner {
         position: relative;
@@ -51,14 +65,14 @@ st.markdown(
         font-size: 1.5em;
         margin: 40px 0 20px 0; /* 위쪽에 40px, 아래쪽에 20px 마진 추가 */
         text-align: center; /* 텍스트 중앙 정렬 */
-        color: white;
+        color: black;
     }
 
     .centered-subtext {
         font-size: 1.2em;
         margin: 20px 0 20px 0; /* 위쪽과 아래쪽에 20px 마진 추가 */
         text-align: center; /* 텍스트 중앙 정렬 */
-        color: white;
+        color: black;
     }
 
     .centered-subtext.last {
