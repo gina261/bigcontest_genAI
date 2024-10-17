@@ -6,12 +6,12 @@ from streamlit_folium import st_folium
 st.markdown(
     """
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+    @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
     /* Streamlit 전체 페이지의 배경을 변경하기 위한 설정 */
     .stApp {
-        background-color: #020202;
-        font-family: 'Nanum Gothic', sans-serif; /* Nanum Gothic 폰트 적용 */
+        background-color: #ffefcc;
+        font-family: 'Pretendard', sans-serif; /* Nanum Gothic 폰트 적용 */
         color: black; /* 기본 텍스트 색상 */
     }
 
@@ -183,5 +183,4 @@ folium.Marker(
 ).add_to(jeju_map)
 
 # Streamlit에서 지도 표시
-st.markdown("<div class='box-2'><h3>제주 지역을 선택하세요:</h3></div>", unsafe_allow_html=True)
 st_data = st_folium(jeju_map, width=700, height=500)
