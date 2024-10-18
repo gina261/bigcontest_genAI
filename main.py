@@ -263,7 +263,7 @@ custom_style_url = f'https://api.mapbox.com/styles/v1/gina261/cm2f34dvz000g01pyg
 # Folium 지도 객체 생성
 jeju_map = folium.Map(
     location=jeju_center, 
-    zoom_start=20, 
+    zoom_start=12,
     tiles=custom_style_url,
     attr='Mapbox',
     name='Mapbox Custom Style'
