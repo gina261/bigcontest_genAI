@@ -219,7 +219,7 @@ st.markdown(
 
 
 # 중앙에 selectbox를 배치
-col_center = st.columns([2, 1, 2])  # 가운데 열을 더 좁게 설정
+col_center = st.columns([1, 1, 1])  # 가운데 열을 더 좁게 설정
 with col_center[1]:
     visit_purpose = st.selectbox(
         "",
