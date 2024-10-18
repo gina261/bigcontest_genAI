@@ -1,7 +1,6 @@
 import streamlit as st
 import folium
 from streamlit_folium import st_folium
-from PIL import Image
 
 # CSS for changing the entire background color and styling the page
 st.markdown(
@@ -97,11 +96,22 @@ st.markdown(
         height: 250px; /* 박스 높이 설정 */
         text-align: center;
     }
+    
+    .box h3 {
+        font-size: 1.2em;
+        font-weight: 400;
+        margin: 0;
+        text-align: center;
+        color: white;
+        width: 100%;
+        padding-top: 113px; /* 텍스트와 상단 간격 설정 */
+        padding-left: 30px;
+    }
 
     /* 새 박스 스타일 */
     .box-2 {
-        background-image: url('https://ifh.cc/g/n7tgX0.png');
-        background-size: cover;
+        background-image: url('https://github.com/gina261/bigcontest_genAI/blob/main/images/box2.png?raw=true');
+        background-size: 500px;
         background-position: center;
         background-repeat: no-repeat;
         padding: 20px;
@@ -109,32 +119,30 @@ st.markdown(
         margin: 100px 0 50px 0; /* 상단에 50px, 하단에 50px 마진 추가 */
         color: white;
         display: flex;
-        align-items: center;
+        justify-content: center;
+        align-items: flex-start;
         height: 100px;
-    }
-
-    .box h3 {
-        font-size: 1.2em;
-        margin: 0;
         text-align: center;
-        color: white;
-        width: 100%;
-        padding-top: 113px; /* 텍스트와 상단 간격 설정 */
     }
     
     .box-2 h3 {
         font-size: 1.2em;
+        font-weight: 400;
         margin: 0;
         text-align: center;
         color: white;
         width: 100%;
+        paddint-top: 10px;
+        padding-left: 40px
     }
 
     /* 레이블 스타일 */
     .custom-label {
         color: black;
+        font-family: 'Pretendard', sans-serif;
+        font-weight: 300; /* 얇은 글꼴 적용 */
         font-size: 1em;
-        margin-bottom: 3px;
+        margin-bottom: -25px;
     }
     </style>
     """,
@@ -174,21 +182,21 @@ st.markdown(
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    st.markdown("<div class='custom-label'>날짜를 선택하세요 :</div>", unsafe_allow_html=True)
+    st.markdown("<div class='custom-label'>날짜를 선택해주세요.</div>", unsafe_allow_html=True)
     selected_date = st.date_input("")
     
 with col2:
-    st.markdown("<div class='custom-label'>시간대를 선택하세요 :</div>", unsafe_allow_html=True)
+    st.markdown("<div class='custom-label'>시간대를 선택해주세요.</div>", unsafe_allow_html=True)
     time_slot = st.selectbox(
         "", 
-        ("아침", "점심", "저녁")
+        ("아침", "점심", "오후", "저녁", "밤", "선택 안함")
     )
 
 with col3:
-    st.markdown("<div class='custom-label'>인원수를 선택하세요 :</div>", unsafe_allow_html=True)
+    st.markdown("<div class='custom-label'>인원수를 선택해주세요.</div>", unsafe_allow_html=True)
     members_num = st.selectbox(
         "", 
-        ("혼자", "2명", "3명", "4명 이상")
+        ("혼자", "2명", "3명", "4명 이상", "선택 안함")
     )
 
 
@@ -196,7 +204,7 @@ with col3:
 st.markdown(
     """
     <div class="box-2">
-        <h3>어디로 가시나요?</h3>
+        <h3>2. 방문 목적이 무엇인가요?</h3>
     </div>
     """,
     unsafe_allow_html=True
