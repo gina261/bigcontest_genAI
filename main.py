@@ -254,14 +254,20 @@ st.markdown(
 # 제주도 중심 좌표
 jeju_center = [33.4996, 126.5312]
 
+mapbox_token = st.secrets['folium_key']
+
+# 커스텀 Mapbox 스타일 URL 적용
+mapbox_style = 'mapbox://styles/gina261/cm2f34dvz000g01pygoj0g41c'
+custom_style_url = f'https://api.mapbox.com/styles/v1/gina261/cm2f34dvz000g01pygoj0g41c/tiles/{{z}}/{{x}}/{{y}}?access_token={mapbox_token}'
+
 # Folium 지도 객체 생성
 jeju_map = folium.Map(
     location=jeju_center, 
-    zoom_start=10,
-    tiles="Stamen Watercolor",
-    attr="Stamen",
-    max_bounds=True
-    )
+    zoom_start=10, 
+    tiles=custom_style_url,
+    attr='Mapbox',
+    name='Mapbox Custom Style'
+)
 
 # Custom minimal tile layer (removing roads, terrain, etc.)
 folium.TileLayer(
