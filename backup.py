@@ -254,17 +254,28 @@ st.markdown(
 # 제주도 중심 좌표
 jeju_center = [33.4996, 126.5312]
 
+mapbox_token = st.secrets["MAPBOX_API_KEY"]
+
+# 커스텀 Mapbox 스타일 URL 적용
+mapbox_style = 'mapbox://styles/gina261/cm2f34dvz000g01pygoj0g41c'
+custom_style_url = f'https://api.mapbox.com/styles/v1/gina261/cm2f34dvz000g01pygoj0g41c/tiles/{{z}}/{{x}}/{{y}}?access_token={mapbox_token}'
+
 # Folium 지도 객체 생성
 jeju_map = folium.Map(
     location=jeju_center, 
     zoom_start=10,
-    tiles=None,
-    max_bounds=True
-    )
+    tiles=custom_style_url,
+    attr='Mapbox',
+    name='Mapbox Custom Style'
+)
 
 # Load GeoJSON data from GitHub link
 geojson_url = 'https://raw.githubusercontent.com/raqoon886/Local_HangJeongDong/master/hangjeongdong_%EC%A0%9C%EC%A3%BC%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84.geojson'
 geojson_data = requests.get(geojson_url).json()
+
+# Restricting bounds to Jeju Island to avoid showing other regions
+jeju_bounds = [[33.1, 125.9], [34.0, 127.0]]  # Adjust the lat/lon for Jeju boundaries
+jeju_map.fit_bounds(jeju_bounds)
 
 # Add GeoJSON data to the map with interactive features
 def on_click(feature):
@@ -275,15 +286,14 @@ def on_click(feature):
         'fillOpacity': 0.6,
         'highlight': True
     }
-    
+
 geo_json = folium.GeoJson(
     geojson_data,
     name='jeju_districts',
     style_function=lambda feature: {
-        'fillColor': 'gray',
         'color': 'black',
         'weight': 1,
-        'fillOpacity': 0.5,
+        'fillOpacity': 0,
     },
     highlight_function=on_click,
     tooltip=folium.GeoJsonTooltip(

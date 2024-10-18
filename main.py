@@ -277,36 +277,5 @@ geojson_data = requests.get(geojson_url).json()
 jeju_bounds = [[33.1, 125.9], [34.0, 127.0]]  # Adjust the lat/lon for Jeju boundaries
 jeju_map.fit_bounds(jeju_bounds)
 
-# Add GeoJSON data to the map with interactive features
-def on_click(feature):
-    return {
-        'fillColor': 'blue',
-        'color': 'black',
-        'weight': 2,
-        'fillOpacity': 0.6,
-        'highlight': True
-    }
-
-geo_json = folium.GeoJson(
-    geojson_data,
-    name='jeju_districts',
-    style_function=lambda feature: {
-        'color': 'blue',
-        'weight': 1,
-        'fillOpacity': 0,
-    },
-    highlight_function=on_click,
-    tooltip=folium.GeoJsonTooltip(
-        fields=['adm_nm'],  # Ensure that 'adm_nm' is the field name for the region name
-        aliases=['Region'],
-        localize=True
-    )
-).add_to(jeju_map)
-
 # Streamlit에서 지도 표시
 st_data = st_folium(jeju_map, width=700, height=500)
-
-# Retrieve selected region from folium
-if st_data and st_data.get('last_active_drawing'):
-    selected_region = st_data['last_active_drawing']['properties']['adm_nm']
-    st.write(f"Selected Region: {selected_region}")
