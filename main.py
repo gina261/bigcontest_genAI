@@ -252,7 +252,7 @@ st.markdown(
     
 
 # 제주도 중심 좌표
-jeju_center = [33.4996, 126.532]
+jeju_center = [33.4996, 126.54]
 
 mapbox_token = st.secrets["MAPBOX_API_KEY"]
 
