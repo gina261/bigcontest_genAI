@@ -160,7 +160,7 @@ st.markdown(
 st.markdown(
     """
     <div class="box">
-        <h3>언제, 누구와 가시나요?</h3>
+        <h3>1. 언제, 누구와 방문할 예정이신가요?</h3>
     </div>
     """,
     unsafe_allow_html=True
