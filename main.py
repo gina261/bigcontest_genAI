@@ -96,6 +96,15 @@ st.markdown(
         height: 250px; /* 박스 높이 설정 */
         text-align: center;
     }
+    
+    .box h3 {
+        font-size: 1.2em;
+        margin: 0;
+        text-align: center;
+        color: white;
+        width: 100%;
+        padding-top: 113px; /* 텍스트와 상단 간격 설정 */
+    }
 
     /* 새 박스 스타일 */
     .box-2 {
@@ -110,15 +119,7 @@ st.markdown(
         display: flex;
         align-items: center;
         height: 100px;
-    }
-
-    .box h3 {
-        font-size: 1.2em;
-        margin: 0;
         text-align: center;
-        color: white;
-        width: 100%;
-        padding-top: 113px; /* 텍스트와 상단 간격 설정 */
     }
     
     .box-2 h3 {
