@@ -39,10 +39,10 @@ st.markdown(
 
     .full-width-banner {
         position: relative;
-        background-image: url('https://github.com/gina261/bigcontest_genAI/blob/main/images/banner.png?raw=true');
+        background-image: url('https://github.com/gina261/bigcontest_genAI/blob/main/images/banner_edited.png?raw=true');
         background-size: cover; /* 이미지 크기를 전체 영역에 맞춤 */
         background-position: center; /* 이미지 중앙 정렬 */
-        height: 400px; /* 배너의 높이 설정 */
+        height: 600px; /* 배너의 높이 설정 */
         width: 100vw; /* 페이지의 전체 너비를 사용 */
         margin-left: calc(-50vw + 50%); /* 페이지 중앙 정렬 후 왼쪽으로 이동 */
         display: flex;
@@ -53,7 +53,7 @@ st.markdown(
         flex-direction: column; /* 세로 방향 정렬을 위한 추가 */
     }
 
-    /* 텍스트 스타일 */
+    /* 배너 텍스트 스타일 */
     .full-width-banner h1 {
         font-size: 3em;
         margin: 0;
@@ -61,13 +61,15 @@ st.markdown(
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 텍스트에 그림자 추가 */
     }
 
+    /* 배경 큰 글씨 */
     .centered-text {
         font-size: 1.5em;
-        margin: 40px 0 20px 0; /* 위쪽에 40px, 아래쪽에 20px 마진 추가 */
+        margin: 0px 0 20px 0; /* 위쪽에 0px, 아래쪽에 20px 마진 추가 */
         text-align: center; /* 텍스트 중앙 정렬 */
         color: black;
     }
 
+    /* 배경 중간 글씨 */
     .centered-subtext {
         font-size: 1.2em;
         margin: 20px 0 20px 0; /* 위쪽과 아래쪽에 20px 마진 추가 */
@@ -76,22 +78,24 @@ st.markdown(
     }
 
     .centered-subtext.last {
-        margin-bottom: 150px; /* 마지막 텍스트와 박스 사이의 간격을 추가 */
+        margin-bottom: 50px; /* 마지막 텍스트와 박스 사이의 간격을 추가 */
     }
 
     /* 박스 스타일 */
     .box {
-        background-image: url('https://ifh.cc/g/66L6Y8.png');
-        background-size: cover; /* 이미지 크기를 전체 영역에 맞춤 */
+        background-image: url('https://github.com/gina261/bigcontest_genAI/blob/main/images/box1.png?raw=true');
+        background-size: 500px;
         background-position: center; /* 이미지 중앙 정렬 */
         background-repeat: no-repeat; /* 이미지 반복 방지 */
-        padding: 20px;
+        padding: 50px 0 20px 0; /* 상단 50px 여백, 하단 20px */
         border-radius: 0px;
         margin: 50px 0; /* 상단과 하단에 50px 마진 추가 */
         color: white;
         display: flex;
-        align-items: center; /* 수직 중앙 정렬 */
-        height: 100px; /* 박스 높이 설정 */
+        justify-content: center;
+        align-items: flex-start; /* 텍스트를 박스 상단에서부터 정렬 */
+        height: 250px; /* 박스 높이 설정 */
+        text-align: center;
     }
 
     /* 새 박스 스타일 */
@@ -109,20 +113,28 @@ st.markdown(
         height: 100px;
     }
 
-    .box h3, .box-2 h3 {
+    .box h3 {
         font-size: 1.2em;
         margin: 0;
-        text-align: left;
+        text-align: center;
         color: white;
         width: 100%;
-        text-align: center; /* 텍스트 중앙 정렬 */
+        padding-top: 113px; /* 텍스트와 상단 간격 설정 */
+    }
+    
+    .box-2 h3 {
+        font-size: 1.2em;
+        margin: 0;
+        text-align: center;
+        color: white;
+        width: 100%;
     }
 
     /* 레이블 스타일 */
     .custom-label {
-        color: white;
+        color: black;
         font-size: 1em;
-        margin-bottom: 5px;
+        margin-bottom: 3px;
     }
     </style>
     """,
@@ -152,7 +164,7 @@ st.markdown(
 st.markdown(
     """
     <div class="box">
-        <h3>언제, 누구와 가시나요?</h3>
+        <h3>1. 언제, 누구와 방문할 예정이신가요?</h3>
     </div>
     """,
     unsafe_allow_html=True
@@ -178,8 +190,7 @@ with col3:
         "", 
         ("혼자", "2명", "3명", "4명 이상")
     )
-    
-st.write(f"{selected_date} {time_slot}에 {members_num} 방문할 예정입니다.")
+
 
 # 새 박스를 추가
 st.markdown(

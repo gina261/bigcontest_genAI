@@ -1,7 +1,6 @@
 import streamlit as st
 import folium
 from streamlit_folium import st_folium
-from PIL import Image
 
 # CSS for changing the entire background color and styling the page
 st.markdown(
@@ -174,8 +173,7 @@ st.markdown(
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    st.markdown("<div class='custom-label'>날짜를 선택하세요 :</div>", unsafe_allow_html=True)
-    selected_date = st.date_input("")
+    selected_date = st.date_input("날짜를 선택해주세요.")
     
 with col2:
     st.markdown("<div class='custom-label'>시간대를 선택하세요 :</div>", unsafe_allow_html=True)
