@@ -41,7 +41,7 @@ st.markdown(
     iframe {
         width: 100% !important;
         height: 100% !important;
-        min-height: 600px;
+        min-height: 400px;
         border: none; /* 검은 테두리 없애기 */
     }
 
