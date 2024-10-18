@@ -132,6 +132,8 @@ st.markdown(
         text-align: center;
         color: white;
         width: 100%;
+        paddint-top: 10px;
+        padding-left: 50px
     }
 
     /* 레이블 스타일 */
