@@ -116,7 +116,7 @@ st.markdown(
         background-repeat: no-repeat;
         padding: 20px;
         border-radius: 0px;
-        margin: 150px 0 20px 0; /* 상단에 100px, 하단에 20px 마진 추가 */
+        margin: 100px 0 20px 0; /* 상단에 80px, 하단에 20px 마진 추가 */
         color: white;
         display: flex;
         justify-content: center;
@@ -135,6 +135,17 @@ st.markdown(
         padding-top: 17px;
         padding-left: 40px
     }
+    
+    .box-2 h4 {
+        font-size: 1.2em;
+        font-weight: 400;
+        margin: 0;
+        text-align: center;
+        color: white;
+        width: 100%;
+        padding-top: 17px;
+        padding-left: 30px
+    }
 
     /* 레이블 스타일 */
     .custom-label {
@@ -144,13 +155,7 @@ st.markdown(
         font-size: 1em;
         margin-bottom: -25px;
     }
-    
-    /* Selectbox 중앙 배치 */
-    .center-selectbox {
-        display: flex;
-        justify-content: center;
-    }
-    
+
     /* Selectbox 크기 조정 */
     .stSelectbox div[data-baseweb="select"] {
         max-width: 250px;  /* selectbox의 최대 너비 설정 */
@@ -224,16 +229,33 @@ st.markdown(
 )
 
 
-visit_purpose = st.selectbox(
-    "",
-    ("식사", "카페/디저트", "선택 안함")
+# 중앙에 selectbox를 배치
+col_center = st.columns([1, 1, 1])
+with col_center[1]:
+    visit_purpose = st.selectbox(
+        "",
+        ("식사", "카페/디저트", "선택 안함")
+    )
+    
+
+st.markdown(
+    """
+    <div class="box-2">
+        <h4>3. 어디로 가시나요?</h4>
+    </div>
+    """,
+    unsafe_allow_html=True
 )
+
+    
 
 # 제주도 중심 좌표
 jeju_center = [33.4996, 126.5312]
 
 # Folium 지도 객체 생성
 jeju_map = folium.Map(location=jeju_center, zoom_start=10)
+
+
 
 # 마커 추가 예시
 folium.Marker(
