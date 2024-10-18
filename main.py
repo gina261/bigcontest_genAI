@@ -145,6 +145,12 @@ st.markdown(
         margin-bottom: -25px;
     }
     
+    /* Selectbox 중앙 배치 */
+    .center-selectbox {
+        display: flex;
+        justify-content: center;
+    }
+    
     /* Selectbox 크기 조정 */
     .stSelectbox div[data-baseweb="select"] {
         max-width: 250px;  /* selectbox의 최대 너비 설정 */
@@ -217,11 +223,13 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-
+# 중앙에 정렬된 selectbox 추가
+st.markdown('<div class="center-selectbox">', unsafe_allow_html=True)
 visit_purpose = st.selectbox(
     "",
     ("식사", "카페/디저트", "선택 안함")
 )
+st.markdown('</div>', unsafe_allow_html=True)
 
 # 제주도 중심 좌표
 jeju_center = [33.4996, 126.5312]

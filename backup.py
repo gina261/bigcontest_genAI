@@ -88,7 +88,7 @@ st.markdown(
         background-repeat: no-repeat; /* 이미지 반복 방지 */
         padding: 50px 0 20px 0; /* 상단 50px 여백, 하단 20px */
         border-radius: 0px;
-        margin: 50px 0; /* 상단과 하단에 50px 마진 추가 */
+        margin: 50px 0 20px 0; /* 상단 50px 하단 20px 마진 추가 */
         color: white;
         display: flex;
         justify-content: center;
@@ -116,7 +116,7 @@ st.markdown(
         background-repeat: no-repeat;
         padding: 20px;
         border-radius: 0px;
-        margin: 100px 0 50px 0; /* 상단에 50px, 하단에 50px 마진 추가 */
+        margin: 150px 0 20px 0; /* 상단에 100px, 하단에 20px 마진 추가 */
         color: white;
         display: flex;
         justify-content: center;
@@ -132,7 +132,7 @@ st.markdown(
         text-align: center;
         color: white;
         width: 100%;
-        paddint-top: 10px;
+        padding-top: 17px;
         padding-left: 40px
     }
 
@@ -144,6 +144,19 @@ st.markdown(
         font-size: 1em;
         margin-bottom: -25px;
     }
+    
+    /* Selectbox 중앙 배치 */
+    .center-selectbox {
+        display: flex;
+        justify-content: center;
+    }
+    
+    /* Selectbox 크기 조정 */
+    .stSelectbox div[data-baseweb="select"] {
+        max-width: 250px;  /* selectbox의 최대 너비 설정 */
+        margin-bottom: 20px;  /* selectbox와 아래 내용 간의 간격 설정 */
+    }
+    
     </style>
     """,
     unsafe_allow_html=True
@@ -208,6 +221,12 @@ st.markdown(
     </div>
     """,
     unsafe_allow_html=True
+)
+
+
+visit_purpose = st.selectbox(
+    "",
+    ("식사", "카페/디저트", "선택 안함")
 )
 
 # 제주도 중심 좌표
