@@ -273,9 +273,5 @@ jeju_map = folium.Map(
 geojson_url = 'https://raw.githubusercontent.com/raqoon886/Local_HangJeongDong/master/hangjeongdong_%EC%A0%9C%EC%A3%BC%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84.geojson'
 geojson_data = requests.get(geojson_url).json()
 
-# Restricting bounds to Jeju Island to avoid showing other regions
-jeju_bounds = [[33.1, 125.9], [34.0, 127.0]]  # Adjust the lat/lon for Jeju boundaries
-jeju_map.fit_bounds(jeju_bounds)
-
 # Streamlit에서 지도 표시
 st_data = st_folium(jeju_map, width=700, height=500)
