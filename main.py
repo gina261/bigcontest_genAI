@@ -91,7 +91,7 @@ st.markdown(
         color: white;
         display: flex;
         align-items: center; /* 수직 중앙 정렬 */
-        height: 200px; /* 박스 높이 설정 */
+        height: 250px; /* 박스 높이 설정 */
     }
 
     /* 새 박스 스타일 */
