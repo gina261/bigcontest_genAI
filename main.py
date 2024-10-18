@@ -37,6 +37,13 @@ st.markdown(
         padding-bottom: 0 !important;
         padding-right: 0 !important;
     }
+    
+    iframe {
+        width: 100% !important;
+        height: 100% !important;
+        min-height: 600px;
+        border: none; /* 검은 테두리 없애기 */
+    }
 
     .full-width-banner {
         position: relative;
