@@ -210,6 +210,12 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+
+visit_purpose = st.selectbox(
+    "",
+    ("식사", "카페/디저트", "선택 안함")
+)
+
 # 제주도 중심 좌표
 jeju_center = [33.4996, 126.5312]
 
