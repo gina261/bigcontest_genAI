@@ -232,7 +232,8 @@ st.markdown(
     <div class="box-2">
         <h3>3. 어디로 가시나요?</h3>
     </div>
-    """
+    """,
+    unsafe_allow_html=True
 )
 
     
