@@ -53,7 +53,7 @@ st.markdown(
         flex-direction: column; /* 세로 방향 정렬을 위한 추가 */
     }
 
-    /* 텍스트 스타일 */
+    /* 배너 텍스트 스타일 */
     .full-width-banner h1 {
         font-size: 3em;
         margin: 0;
@@ -61,6 +61,7 @@ st.markdown(
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 텍스트에 그림자 추가 */
     }
 
+    /* 배경 큰 글씨 */
     .centered-text {
         font-size: 1.5em;
         margin: 0px 0 20px 0; /* 위쪽에 0px, 아래쪽에 20px 마진 추가 */
@@ -68,6 +69,7 @@ st.markdown(
         color: black;
     }
 
+    /* 배경 중간 글씨 */
     .centered-subtext {
         font-size: 1.2em;
         margin: 20px 0 20px 0; /* 위쪽과 아래쪽에 20px 마진 추가 */
@@ -120,10 +122,9 @@ st.markdown(
     .box-2 h3 {
         font-size: 1.2em;
         margin: 0;
-        text-align: left;
+        text-align: center;
         color: white;
         width: 100%;
-        text-align: center; /* 텍스트 중앙 정렬 */
     }
 
     /* 레이블 스타일 */
