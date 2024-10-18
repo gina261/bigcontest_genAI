@@ -109,7 +109,15 @@ st.markdown(
         height: 100px;
     }
 
-    .box h3, .box-2 h3 {
+    .box h3 {
+        font-size: 1.2em;
+        margin: 0;
+        text-align: center;
+        color: white;
+        width: 100%;
+    }
+    
+    .box-2 h3 {
         font-size: 1.2em;
         margin: 0;
         text-align: left;
