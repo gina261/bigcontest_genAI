@@ -22,6 +22,12 @@ st.markdown(
         font-family: 'Pretendard', sans-serif; /* 폰트 적용 */
         color: black; /* 기본 텍스트 색상 */
         padding: 0; /* 추가적인 패딩 제거 */
+        width: 100vw; /* 페이지 너비를 100%로 설정 */
+        height: 100vh; /* 페이지 높이를 100%로 설정 */
+        display: flex; /* 컨텐츠를 중앙 정렬하기 위해 flex 사용 */
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
     
     /* 상단 여백 제거 */
@@ -36,6 +42,13 @@ st.markdown(
         padding-top: 0 !important;
         padding-bottom: 0 !important;
         padding-right: 0 !important;
+    }
+    
+    /* 지도 너비와 높이를 페이지 크기에 맞춤 */
+    iframe {
+        width: 100% !important;
+        height: 100% !important;
+        border: none; /* 테두리를 제거하여 검정색 경계를 방지 */
     }
 
     .full-width-banner {
