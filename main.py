@@ -133,7 +133,7 @@ st.markdown(
         color: white;
         width: 100%;
         padding-top: 17px;
-        padding-left: 40px
+        padding-left: 40px;
     }
 
     /* 레이블 스타일 */
@@ -144,19 +144,17 @@ st.markdown(
         font-size: 1em;
         margin-bottom: -25px;
     }
-    
-    /* Selectbox 중앙 배치 */
+
+    /* Selectbox 크기 조정 및 중앙 배치 */
     .center-selectbox {
         display: flex;
         justify-content: center;
     }
-    
-    /* Selectbox 크기 조정 */
+
     .stSelectbox div[data-baseweb="select"] {
-        max-width: 250px;  /* selectbox의 최대 너비 설정 */
+        max-width: 200px;  /* selectbox의 최대 너비 설정 */
         margin-bottom: 20px;  /* selectbox와 아래 내용 간의 간격 설정 */
     }
-    
     </style>
     """,
     unsafe_allow_html=True
@@ -231,18 +229,3 @@ visit_purpose = st.selectbox(
 )
 st.markdown('</div>', unsafe_allow_html=True)
 
-# 제주도 중심 좌표
-jeju_center = [33.4996, 126.5312]
-
-# Folium 지도 객체 생성
-jeju_map = folium.Map(location=jeju_center, zoom_start=10)
-
-# 마커 추가 예시
-folium.Marker(
-    location=[33.4996, 126.5312],
-    popup="제주시",
-    icon=folium.Icon(color="blue")
-).add_to(jeju_map)
-
-# Streamlit에서 지도 표시
-st_data = st_folium(jeju_map, width=700, height=500)
