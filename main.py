@@ -294,7 +294,7 @@ geo_json = folium.GeoJson(
     style_function=lambda feature: {
         'color': 'black',
         'weight': 1,
-        'fillOpacity': 0.5,
+        'fillOpacity': 0,
     },
     highlight_function=on_click,
     tooltip=folium.GeoJsonTooltip(
