@@ -63,7 +63,7 @@ st.markdown(
 
     .centered-text {
         font-size: 1.5em;
-        margin: 40px 0 20px 0; /* 위쪽에 40px, 아래쪽에 20px 마진 추가 */
+        margin: 0px 0 20px 0; /* 위쪽에 40px, 아래쪽에 20px 마진 추가 */
         text-align: center; /* 텍스트 중앙 정렬 */
         color: black;
     }
