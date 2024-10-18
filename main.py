@@ -120,7 +120,7 @@ st.markdown(
         color: white;
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: flex-start;
         height: 100px;
         text-align: center;
     }
