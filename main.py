@@ -133,7 +133,7 @@ st.markdown(
         color: white;
         width: 100%;
         padding-top: 17px;
-        padding-left: 40px;
+        padding-left: 40px
     }
 
     /* 레이블 스타일 */
@@ -145,16 +145,12 @@ st.markdown(
         margin-bottom: -25px;
     }
 
-    /* Selectbox 크기 조정 및 중앙 배치 */
-    .center-selectbox {
-        display: flex;
-        justify-content: center;
-    }
-
+    /* Selectbox 크기 조정 */
     .stSelectbox div[data-baseweb="select"] {
-        max-width: 200px;  /* selectbox의 최대 너비 설정 */
+        max-width: 250px;  /* selectbox의 최대 너비 설정 */
         margin-bottom: 20px;  /* selectbox와 아래 내용 간의 간격 설정 */
     }
+    
     </style>
     """,
     unsafe_allow_html=True
@@ -221,11 +217,27 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# 중앙에 정렬된 selectbox 추가
-st.markdown('<div class="center-selectbox">', unsafe_allow_html=True)
-visit_purpose = st.selectbox(
-    "",
-    ("식사", "카페/디저트", "선택 안함")
-)
-st.markdown('</div>', unsafe_allow_html=True)
 
+# 중앙에 selectbox를 배치
+col_center = st.columns([2, 1, 2])  # 가운데 열을 더 좁게 설정
+with col_center[1]:
+    visit_purpose = st.selectbox(
+        "",
+        ("식사", "카페/디저트", "선택 안함")
+    )
+
+# 제주도 중심 좌표
+jeju_center = [33.4996, 126.5312]
+
+# Folium 지도 객체 생성
+jeju_map = folium.Map(location=jeju_center, zoom_start=10)
+
+# 마커 추가 예시
+folium.Marker(
+    location=[33.4996, 126.5312],
+    popup="제주시",
+    icon=folium.Icon(color="blue")
+).add_to(jeju_map)
+
+# Streamlit에서 지도 표시
+st_data = st_folium(jeju_map, width=700, height=500)
