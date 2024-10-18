@@ -133,7 +133,7 @@ st.markdown(
     .custom-label {
         color: black;
         font-size: 1em;
-        margin-bottom: -10px;
+        margin-bottom: -20px;
     }
     </style>
     """,
