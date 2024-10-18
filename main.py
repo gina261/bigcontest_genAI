@@ -82,7 +82,7 @@ st.markdown(
     /* 박스 스타일 */
     .box {
         background-image: url('https://github.com/gina261/bigcontest_genAI/blob/main/images/box1.png?raw=true');
-        background-size: 450px; /* 이미지 크기를 전체 영역에 맞춤 */
+        background-size: 500px;
         background-position: center; /* 이미지 중앙 정렬 */
         background-repeat: no-repeat; /* 이미지 반복 방지 */
         padding: 20px;
@@ -91,7 +91,7 @@ st.markdown(
         color: white;
         display: flex;
         align-items: center; /* 수직 중앙 정렬 */
-        height: 100px; /* 박스 높이 설정 */
+        height: 200px; /* 박스 높이 설정 */
     }
 
     /* 새 박스 스타일 */
