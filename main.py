@@ -105,7 +105,7 @@ st.markdown(
         color: white;
         width: 100%;
         padding-top: 113px; /* 텍스트와 상단 간격 설정 */
-        padding-left: 60px;
+        padding-left: 50px;
     }
 
     /* 새 박스 스타일 */
