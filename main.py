@@ -269,13 +269,6 @@ jeju_map = folium.Map(
     name='Mapbox Custom Style'
 )
 
-# Custom minimal tile layer (removing roads, terrain, etc.)
-folium.TileLayer(
-    tiles='https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', 
-    attr='CartoDB Positron',
-    name='Minimal Map'
-).add_to(jeju_map)
-
 
 # Load GeoJSON data from GitHub link
 geojson_url = 'https://raw.githubusercontent.com/raqoon886/Local_HangJeongDong/master/hangjeongdong_%EC%A0%9C%EC%A3%BC%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84.geojson'
