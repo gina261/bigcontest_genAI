@@ -222,7 +222,7 @@ with col3:
 st.markdown(
     """
     <div class="box-2">
-        <h4>2. 방문 목적이 무엇인가요?</h4>
+        <h3>2. 방문 목적이 무엇인가요?</h3>
     </div>
     """,
     unsafe_allow_html=True
@@ -241,7 +241,7 @@ with col_center[1]:
 st.markdown(
     """
     <div class="box-2">
-        <h3>3. 어디로 가시나요?</h3>
+        <h4>3. 어디로 가시나요?</h4>
     </div>
     """,
     unsafe_allow_html=True
