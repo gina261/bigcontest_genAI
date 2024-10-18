@@ -263,12 +263,11 @@ custom_style_url = f'https://api.mapbox.com/styles/v1/gina261/cm2f34dvz000g01pyg
 # Folium 지도 객체 생성
 jeju_map = folium.Map(
     location=jeju_center, 
-    zoom_start=15,
+    zoom_start=10,
     tiles=custom_style_url,
     attr='Mapbox',
     name='Mapbox Custom Style'
 )
-
 
 # Load GeoJSON data from GitHub link
 geojson_url = 'https://raw.githubusercontent.com/raqoon886/Local_HangJeongDong/master/hangjeongdong_%EC%A0%9C%EC%A3%BC%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84.geojson'
@@ -305,7 +304,7 @@ geo_json = folium.GeoJson(
 ).add_to(jeju_map)
 
 # Streamlit에서 지도 표시
-st_data = st_folium(jeju_map, width=700, height=500)
+st_data = st_folium(jeju_map, width=700, height=600)
 
 # Retrieve selected region from folium
 if st_data and st_data.get('last_active_drawing'):
