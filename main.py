@@ -132,7 +132,7 @@ st.markdown(
         text-align: center;
         color: white;
         width: 100%;
-        padding-top: 10px;
+        padding-top: 20px;
         padding-left: 40px
     }
 
