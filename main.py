@@ -125,7 +125,7 @@ st.markdown(
     
     .box-2 h3 {
         font-size: 1.2em;
-        font-weight: 200;
+        font-weight: 400;
         margin: 0;
         text-align: center;
         color: white;
