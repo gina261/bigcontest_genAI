@@ -133,7 +133,7 @@ st.markdown(
     .custom-label {
         color: black;
         font-size: 1em;
-        margin-bottom: -20px;
+        margin-bottom: -25px;
     }
     </style>
     """,
@@ -173,18 +173,18 @@ st.markdown(
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    st.markdown("<div class='custom-label'>날짜를 선택하세요 :</div>", unsafe_allow_html=True)
+    st.markdown("<div class='custom-label'>날짜를 선택해주세요.</div>", unsafe_allow_html=True)
     selected_date = st.date_input("")
     
 with col2:
-    st.markdown("<div class='custom-label'>시간대를 선택하세요 :</div>", unsafe_allow_html=True)
+    st.markdown("<div class='custom-label'>시간대를 선택해주세요.</div>", unsafe_allow_html=True)
     time_slot = st.selectbox(
         "", 
         ("아침", "점심", "저녁")
     )
 
 with col3:
-    st.markdown("<div class='custom-label'>인원수를 선택하세요 :</div>", unsafe_allow_html=True)
+    st.markdown("<div class='custom-label'>인원수를 선택해주세요.</div>", unsafe_allow_html=True)
     members_num = st.selectbox(
         "", 
         ("혼자", "2명", "3명", "4명 이상")
