@@ -88,7 +88,7 @@ st.markdown(
         background-repeat: no-repeat; /* 이미지 반복 방지 */
         padding: 50px 0 20px 0; /* 상단 50px 여백, 하단 20px */
         border-radius: 0px;
-        margin: 50px 0; /* 상단과 하단에 50px 마진 추가 */
+        margin: 50px 0 20px 0; /* 상단과 하단에 50px 마진 추가 */
         color: white;
         display: flex;
         justify-content: center;
