@@ -119,7 +119,7 @@ st.markdown(
         text-align: center;
         color: white;
         width: 100%;
-        padding-top: 50px; /* 텍스트와 상단 간격 50px 설정 */
+        padding-top: 150px; /* 텍스트와 상단 간격 50px 설정 */
     }
     
     .box-2 h3 {
