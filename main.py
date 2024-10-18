@@ -117,6 +117,7 @@ st.markdown(
         margin: 100px 0 50px 0; /* 상단에 50px, 하단에 50px 마진 추가 */
         color: white;
         display: flex;
+        justify-content: center;
         align-items: center;
         height: 100px;
         text-align: center;
