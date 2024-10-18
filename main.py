@@ -254,7 +254,7 @@ st.markdown(
 # 제주도 중심 좌표
 jeju_center = [33.4996, 126.5312]
 
-mapbox_token = st.secrets['folium_key']
+mapbox_token = st.secrets["MAPBOX_API"]
 
 # 커스텀 Mapbox 스타일 URL 적용
 mapbox_style = 'mapbox://styles/gina261/cm2f34dvz000g01pygoj0g41c'
