@@ -285,24 +285,18 @@ geojson_data = requests.get(geojson_url).json()
 # jeju_map.fit_bounds(jeju_bounds)
 
 # Add GeoJSON data to the map with interactive features
-def on_click(feature):
+def style_function(feature):
     return {
         'fillColor': '#ff8015',
         'color': 'black',
         'weight': 2,
         'fillOpacity': 0.6,
-        'highlight': True
     }
 
 geo_json = folium.GeoJson(
     geojson_data,
     name='jeju_districts',
-    style_function=lambda feature: {
-        'color': 'black',
-        'weight': 1,
-        'fillOpacity': 0,
-    },
-    highlight_function=on_click,
+    style_function=style_function,
     tooltip=folium.GeoJsonTooltip(
         fields=['adm_nm'],  # Ensure that 'adm_nm' is the field name for the region name
         aliases=['Region'],
