@@ -37,13 +37,6 @@ st.markdown(
         padding-bottom: 0 !important;
         padding-right: 0 !important;
     }
-    
-    /* 지도 너비와 높이를 페이지 크기에 맞춤 */
-    iframe {
-        width: 100% !important;
-        height: 100% !important;
-        border: none; /* 테두리를 제거하여 검정색 경계를 방지 */
-    }
 
     .full-width-banner {
         position: relative;
