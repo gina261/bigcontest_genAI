@@ -87,13 +87,15 @@ st.markdown(
         background-size: 500px;
         background-position: center; /* 이미지 중앙 정렬 */
         background-repeat: no-repeat; /* 이미지 반복 방지 */
-        padding: 20px;
+        padding: 50px 0 20px 0; /* 상단 50px 여백, 하단 20px */
         border-radius: 0px;
         margin: 50px 0; /* 상단과 하단에 50px 마진 추가 */
         color: white;
         display: flex;
-        align-items: center; /* 수직 중앙 정렬 */
+        justify-content: center;
+        align-items: flex-start; /* 텍스트를 박스 상단에서부터 정렬 */
         height: 250px; /* 박스 높이 설정 */
+        text-align: center;
     }
 
     /* 새 박스 스타일 */
@@ -117,6 +119,7 @@ st.markdown(
         text-align: center;
         color: white;
         width: 100%;
+        padding-top: 50px; /* 텍스트와 상단 간격 50px 설정 */
     }
     
     .box-2 h3 {
