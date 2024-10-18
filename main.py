@@ -63,7 +63,7 @@ st.markdown(
 
     .centered-text {
         font-size: 1.5em;
-        margin: 0px 0 20px 0; /* 위쪽에 40px, 아래쪽에 20px 마진 추가 */
+        margin: 0px 0 20px 0; /* 위쪽에 0px, 아래쪽에 20px 마진 추가 */
         text-align: center; /* 텍스트 중앙 정렬 */
         color: black;
     }
@@ -76,12 +76,12 @@ st.markdown(
     }
 
     .centered-subtext.last {
-        margin-bottom: 150px; /* 마지막 텍스트와 박스 사이의 간격을 추가 */
+        margin-bottom: 50px; /* 마지막 텍스트와 박스 사이의 간격을 추가 */
     }
 
     /* 박스 스타일 */
     .box {
-        background-image: url('https://ifh.cc/g/66L6Y8.png');
+        background-image: url('https://github.com/gina261/bigcontest_genAI/blob/main/images/box1.png?raw=true');
         background-size: cover; /* 이미지 크기를 전체 영역에 맞춤 */
         background-position: center; /* 이미지 중앙 정렬 */
         background-repeat: no-repeat; /* 이미지 반복 방지 */
