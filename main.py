@@ -22,6 +22,14 @@ st.markdown(
         padding: 0; /* 추가적인 패딩 제거 */
     }
     
+    /* 위젯 텍스트에 Pretendard 얇은 글꼴 적용 */
+    .stSelectbox label, .stDateInput label {
+        font-family: 'Pretendard', sans-serif;
+        font-weight: 300; /* 얇은 글꼴 */
+        color: black; /* 텍스트 색상 */
+    }
+    
+    
     /* 상단 여백 제거 */
     .block-container {
         padding-top: 0;
