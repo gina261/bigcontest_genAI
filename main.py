@@ -22,12 +22,6 @@ st.markdown(
         font-family: 'Pretendard', sans-serif; /* 폰트 적용 */
         color: black; /* 기본 텍스트 색상 */
         padding: 0; /* 추가적인 패딩 제거 */
-        width: 100vw; /* 페이지 너비를 100%로 설정 */
-        height: 100vh; /* 페이지 높이를 100%로 설정 */
-        display: flex; /* 컨텐츠를 중앙 정렬하기 위해 flex 사용 */
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
     }
     
     /* 상단 여백 제거 */
@@ -317,7 +311,7 @@ geo_json = folium.GeoJson(
 ).add_to(jeju_map)
 
 # Streamlit에서 지도 표시
-st_data = st_folium(jeju_map, width=700, height=500)
+st_data = st_folium(jeju_map, width=800, height=600)
 
 # Retrieve selected region from folium
 if st_data and st_data.get('last_active_drawing'):
