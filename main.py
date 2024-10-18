@@ -144,6 +144,13 @@ st.markdown(
         font-size: 1em;
         margin-bottom: -25px;
     }
+    
+    /* Selectbox 크기 조정 */
+    .stSelectbox div[data-baseweb="select"] {
+        max-width: 200px;  /* selectbox의 최대 너비 설정 */
+        margin-bottom: 20px;  /* selectbox와 아래 내용 간의 간격 설정 */
+    }
+    
     </style>
     """,
     unsafe_allow_html=True
