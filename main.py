@@ -99,11 +99,13 @@ st.markdown(
     
     .box h3 {
         font-size: 1.2em;
+        font-weight: 400;
         margin: 0;
         text-align: center;
         color: white;
         width: 100%;
         padding-top: 113px; /* 텍스트와 상단 간격 설정 */
+        padding-left: 200px;
     }
 
     /* 새 박스 스타일 */
