@@ -258,7 +258,8 @@ jeju_center = [33.4996, 126.5312]
 jeju_map = folium.Map(
     location=jeju_center, 
     zoom_start=10,
-    tiles=None,
+    tiles="Stamen Watercolor",
+    attr="Stamen",
     max_bounds=True
     )
 
