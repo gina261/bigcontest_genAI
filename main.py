@@ -99,8 +99,8 @@ st.markdown(
 
     /* 새 박스 스타일 */
     .box-2 {
-        background-image: url('https://ifh.cc/g/n7tgX0.png');
-        background-size: cover;
+        background-image: url('https://github.com/gina261/bigcontest_genAI/blob/main/images/box2.png?raw=true');
+        background-size: 500px;
         background-position: center;
         background-repeat: no-repeat;
         padding: 20px;
@@ -197,7 +197,7 @@ with col3:
 st.markdown(
     """
     <div class="box-2">
-        <h3>어디로 가시나요?</h3>
+        <h3>2. 방문 목적이 무엇인가요?</h3>
     </div>
     """,
     unsafe_allow_html=True
