@@ -119,7 +119,7 @@ st.markdown(
         text-align: center;
         color: white;
         width: 100%;
-        padding-top: 113px; /* 텍스트와 상단 간격 50px 설정 */
+        padding-top: 113px; /* 텍스트와 상단 간격 설정 */
     }
     
     .box-2 h3 {
@@ -132,9 +132,9 @@ st.markdown(
 
     /* 레이블 스타일 */
     .custom-label {
-        color: white;
+        color: black;
         font-size: 1em;
-        margin-bottom: 5px;
+        margin-bottom: 3px;
     }
     </style>
     """,
@@ -190,8 +190,7 @@ with col3:
         "", 
         ("혼자", "2명", "3명", "4명 이상")
     )
-    
-st.write(f"{selected_date} {time_slot}에 {members_num} 방문할 예정입니다.")
+
 
 # 새 박스를 추가
 st.markdown(
