@@ -1,6 +1,8 @@
 import streamlit as st
 import folium
 from streamlit_folium import st_folium
+import json
+import requests
 
 # CSS for changing the entire background color and styling the page
 st.markdown(
@@ -253,16 +255,48 @@ st.markdown(
 jeju_center = [33.4996, 126.5312]
 
 # Folium 지도 객체 생성
-jeju_map = folium.Map(location=jeju_center, zoom_start=10)
+jeju_map = folium.Map(
+    location=jeju_center, 
+    zoom_start=10,
+    tiles=None,
+    max_bounds=True
+    )
 
+# Load GeoJSON data from GitHub link
+geojson_url = 'https://raw.githubusercontent.com/raqoon886/Local_HangJeongDong/master/hangjeongdong_%EC%A0%9C%EC%A3%BC%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84.geojson'
+geojson_data = requests.get(geojson_url).json()
 
-
-# 마커 추가 예시
-folium.Marker(
-    location=[33.4996, 126.5312],
-    popup="제주시",
-    icon=folium.Icon(color="blue")
+# Add GeoJSON data to the map with interactive features
+def on_click(feature):
+    return {
+        'fillColor': 'blue',
+        'color': 'black',
+        'weight': 2,
+        'fillOpacity': 0.6,
+        'highlight': True
+    }
+    
+geo_json = folium.GeoJson(
+    geojson_data,
+    name='jeju_districts',
+    style_function=lambda feature: {
+        'fillColor': 'gray',
+        'color': 'black',
+        'weight': 1,
+        'fillOpacity': 0.5,
+    },
+    highlight_function=on_click,
+    tooltip=folium.GeoJsonTooltip(
+        fields=['adm_nm'],  # Ensure that 'adm_nm' is the field name for the region name
+        aliases=['Region'],
+        localize=True
+    )
 ).add_to(jeju_map)
 
 # Streamlit에서 지도 표시
 st_data = st_folium(jeju_map, width=700, height=500)
+
+# Retrieve selected region from folium
+if st_data and st_data.get('last_active_drawing'):
+    selected_region = st_data['last_active_drawing']['properties']['adm_nm']
+    st.write(f"Selected Region: {selected_region}")

@@ -262,9 +262,21 @@ jeju_map = folium.Map(
     max_bounds=True
     )
 
+# Custom minimal tile layer (removing roads, terrain, etc.)
+folium.TileLayer(
+    tiles='https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', 
+    attr='CartoDB Positron',
+    name='Minimal Map'
+).add_to(jeju_map)
+
+
 # Load GeoJSON data from GitHub link
 geojson_url = 'https://raw.githubusercontent.com/raqoon886/Local_HangJeongDong/master/hangjeongdong_%EC%A0%9C%EC%A3%BC%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84.geojson'
 geojson_data = requests.get(geojson_url).json()
+
+# Restricting bounds to Jeju Island to avoid showing other regions
+jeju_bounds = [[33.1, 125.9], [34.0, 127.0]]  # Adjust the lat/lon for Jeju boundaries
+jeju_map.fit_bounds(jeju_bounds)
 
 # Add GeoJSON data to the map with interactive features
 def on_click(feature):
@@ -275,7 +287,7 @@ def on_click(feature):
         'fillOpacity': 0.6,
         'highlight': True
     }
-    
+
 geo_json = folium.GeoJson(
     geojson_data,
     name='jeju_districts',
