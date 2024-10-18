@@ -116,7 +116,7 @@ st.markdown(
         background-repeat: no-repeat;
         padding: 20px;
         border-radius: 0px;
-        margin: 150px 0 20px 0; /* 상단에 100px, 하단에 20px 마진 추가 */
+        margin: 100px 0 20px 0; /* 상단에 80px, 하단에 20px 마진 추가 */
         color: white;
         display: flex;
         justify-content: center;
