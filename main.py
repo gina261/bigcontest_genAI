@@ -291,7 +291,7 @@ geo_json = folium.GeoJson(
     geojson_data,
     name='jeju_districts',
     style_function=lambda feature: {
-        'color': 'black',
+        'color': 'blue',
         'weight': 1,
         'fillOpacity': 0,
     },
@@ -304,7 +304,7 @@ geo_json = folium.GeoJson(
 ).add_to(jeju_map)
 
 # Streamlit에서 지도 표시
-st_data = st_folium(jeju_map, width=700, height=600)
+st_data = st_folium(jeju_map, width=700, height=500)
 
 # Retrieve selected region from folium
 if st_data and st_data.get('last_active_drawing'):
