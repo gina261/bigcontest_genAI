@@ -292,7 +292,6 @@ geo_json = folium.GeoJson(
     geojson_data,
     name='jeju_districts',
     style_function=lambda feature: {
-        'fillColor': 'gray',
         'color': 'black',
         'weight': 1,
         'fillOpacity': 0.5,
