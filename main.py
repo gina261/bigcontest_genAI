@@ -133,7 +133,7 @@ st.markdown(
     .custom-label {
         color: black;
         font-size: 1em;
-        margin-bottom: 3px;
+        margin-bottom: -10px;
     }
     </style>
     """,
@@ -173,7 +173,8 @@ st.markdown(
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    selected_date = st.date_input("날짜를 선택해주세요.")
+    st.markdown("<div class='custom-label'>날짜를 선택하세요 :</div>", unsafe_allow_html=True)
+    selected_date = st.date_input("")
     
 with col2:
     st.markdown("<div class='custom-label'>시간대를 선택하세요 :</div>", unsafe_allow_html=True)
