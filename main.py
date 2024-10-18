@@ -255,7 +255,12 @@ st.markdown(
 jeju_center = [33.4996, 126.5312]
 
 # Folium 지도 객체 생성
-jeju_map = folium.Map(location=jeju_center, zoom_start=10)
+jeju_map = folium.Map(
+    location=jeju_center, 
+    zoom_start=10,
+    tiles=None,
+    max_bounds=True
+    )
 
 # Load GeoJSON data from GitHub link
 geojson_url = 'https://raw.githubusercontent.com/raqoon886/Local_HangJeongDong/master/hangjeongdong_%EC%A0%9C%EC%A3%BC%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84.geojson'
