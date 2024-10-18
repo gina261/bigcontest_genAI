@@ -135,6 +135,17 @@ st.markdown(
         padding-top: 17px;
         padding-left: 40px
     }
+    
+    .box-2 h4 {
+        font-size: 1.2em;
+        font-weight: 400;
+        margin: 0;
+        text-align: center;
+        color: white;
+        width: 100%;
+        padding-top: 17px;
+        padding-left: 30px
+    }
 
     /* 레이블 스타일 */
     .custom-label {
@@ -211,7 +222,7 @@ with col3:
 st.markdown(
     """
     <div class="box-2">
-        <h3>2. 방문 목적이 무엇인가요?</h3>
+        <h4>2. 방문 목적이 무엇인가요?</h4>
     </div>
     """,
     unsafe_allow_html=True
