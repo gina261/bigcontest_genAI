@@ -37,6 +37,13 @@ st.markdown(
         padding-bottom: 0 !important;
         padding-right: 0 !important;
     }
+    
+    iframe {
+        width: 100% !important;
+        height: 100% !important;
+        min-height: 400px;
+        border: none; /* 검은 테두리 없애기 */
+    }
 
     .full-width-banner {
         position: relative;
@@ -274,8 +281,8 @@ geojson_url = 'https://raw.githubusercontent.com/raqoon886/Local_HangJeongDong/m
 geojson_data = requests.get(geojson_url).json()
 
 # Restricting bounds to Jeju Island to avoid showing other regions
-jeju_bounds = [[33.1, 125.9], [34.0, 127.0]]  # Adjust the lat/lon for Jeju boundaries
-jeju_map.fit_bounds(jeju_bounds)
+# jeju_bounds = [[33.1, 125.9], [34.0, 127.0]]  # Adjust the lat/lon for Jeju boundaries
+# jeju_map.fit_bounds(jeju_bounds)
 
 # Add GeoJSON data to the map with interactive features
 def on_click(feature):
@@ -304,9 +311,19 @@ geo_json = folium.GeoJson(
 ).add_to(jeju_map)
 
 # Streamlit에서 지도 표시
-st_data = st_folium(jeju_map, width=700, height=500)
+st_data = st_folium(jeju_map, width=800, height=400)
 
 # Retrieve selected region from folium
 if st_data and st_data.get('last_active_drawing'):
     selected_region = st_data['last_active_drawing']['properties']['adm_nm']
     st.write(f"Selected Region: {selected_region}")
+    
+    
+st.markdown(
+    """
+    <div class="centered-subtext">
+        오늘의 기분이나 상황을 입력해주세요. 그에 맞는 제주의 멋진 곳을 추천해드립니다.
+    </div>
+    """,
+    unsafe_allow_html=True
+)
