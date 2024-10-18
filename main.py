@@ -270,7 +270,7 @@ custom_style_url = f'https://api.mapbox.com/styles/v1/gina261/cm2f34dvz000g01pyg
 # Folium 지도 객체 생성
 jeju_map = folium.Map(
     location=jeju_center, 
-    zoom_start=10,
+    zoom_start=9.8, # 10 => 9.8
     tiles=custom_style_url,
     attr='Mapbox',
     name='Mapbox Custom Style'
@@ -287,7 +287,7 @@ geojson_data = requests.get(geojson_url).json()
 # Add GeoJSON data to the map with interactive features
 def on_click(feature):
     return {
-        'fillColor': 'blue',
+        'fillColor': '#ff8015',
         'color': 'black',
         'weight': 2,
         'fillOpacity': 0.6,

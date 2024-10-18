@@ -259,7 +259,7 @@ st.markdown(
     
 
 # 제주도 중심 좌표
-jeju_center = [33.4996, 126.5312]
+jeju_center = [33.38, 126.6] # 기존 33.4996, 126.5312
 
 mapbox_token = st.secrets["MAPBOX_API_KEY"]
 
@@ -270,7 +270,7 @@ custom_style_url = f'https://api.mapbox.com/styles/v1/gina261/cm2f34dvz000g01pyg
 # Folium 지도 객체 생성
 jeju_map = folium.Map(
     location=jeju_center, 
-    zoom_start=10,
+    zoom_start=9.8, #10
     tiles=custom_style_url,
     attr='Mapbox',
     name='Mapbox Custom Style'
