@@ -251,7 +251,7 @@ col_center = st.columns([1, 1, 1])
 with col_center[1]:
     visit_purpose = st.selectbox(
         "",
-        ("식사", "카페/디저트", "선택 안함")
+        ("선택 안함", "식사", "카페/디저트")
     )
     
 
@@ -324,7 +324,7 @@ st_data = st_folium(jeju_map, width=800, height=400)
 # Retrieve selected region from folium
 if st_data and st_data.get('last_active_drawing'):
     selected_region = st_data['last_active_drawing']['properties']['adm_nm']
-    st.write(f"Selected Region: {selected_region}")
+    st.write(f"선택한 지역: {selected_region.split(' ')[2]}")
     
     
 st.markdown(
