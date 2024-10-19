@@ -324,7 +324,7 @@ st_data = st_folium(jeju_map, width=800, height=400)
 # Retrieve selected region from folium
 if st_data and st_data.get('last_active_drawing'):
     selected_region = st_data['last_active_drawing']['properties']['adm_nm']
-    st.write(f"선택한 지역: {selected_region.split(' ')[2]}")
+    st.write(f"선택한 지역: {selected_region.split(' ')[1]} {selected_region.split(' ')[2]}")
     
     
 st.markdown(
