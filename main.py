@@ -224,14 +224,14 @@ with col2:
     st.markdown("<div class='custom-label'>시간대를 선택해주세요.</div>", unsafe_allow_html=True)
     time_slot = st.selectbox(
         "", 
-        ("아침", "점심", "오후", "저녁", "밤", "선택 안함")
+        ("선택 안함", "아침", "점심", "오후", "저녁", "밤")
     )
 
 with col3:
     st.markdown("<div class='custom-label'>인원수를 선택해주세요.</div>", unsafe_allow_html=True)
     members_num = st.selectbox(
         "", 
-        ("혼자", "2명", "3명", "4명 이상", "선택 안함")
+        ("선택 안함", "혼자", "2명", "3명", "4명 이상")
     )
 
 
