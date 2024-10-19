@@ -47,7 +47,7 @@ st.markdown(
 
     .full-width-banner {
         position: relative;
-        background-image: url('https://github.com/gina261/bigcontest_genAI/blob/main/images/banner_edited.png?raw=true');
+        background-image: url('https://github.com/gina261/bigcontest_genAI/blob/main/images/banner.png?raw=true');
         background-size: cover; /* 이미지 크기를 전체 영역에 맞춤 */
         background-position: center; /* 이미지 중앙 정렬 */
         height: 600px; /* 배너의 높이 설정 */
@@ -208,22 +208,30 @@ st.markdown(
 # 3개의 열을 생성하여 위젯을 한 행에 배치
 col1, col2, col3 = st.columns(3)
 
+# '선택 안함' 옵션을 추가한 selectbox를 사용하여 날짜 선택 유무 결정
 with col1:
     st.markdown("<div class='custom-label'>날짜를 선택해주세요.</div>", unsafe_allow_html=True)
-    selected_date = st.date_input("")
+    date_option = st.selectbox("", ["선택 안함", "날짜 선택"])
+
+    # 선택한 옵션에 따라 date_input 표시
+    if date_option == "날짜 선택":
+        selected_date = st.date_input("")
+    else:
+        selected_date = None
+
     
 with col2:
     st.markdown("<div class='custom-label'>시간대를 선택해주세요.</div>", unsafe_allow_html=True)
     time_slot = st.selectbox(
         "", 
-        ("아침", "점심", "오후", "저녁", "밤", "선택 안함")
+        ("선택 안함", "아침", "점심", "오후", "저녁", "밤")
     )
 
 with col3:
     st.markdown("<div class='custom-label'>인원수를 선택해주세요.</div>", unsafe_allow_html=True)
     members_num = st.selectbox(
         "", 
-        ("혼자", "2명", "3명", "4명 이상", "선택 안함")
+        ("선택 안함", "혼자", "2명", "3명", "4명 이상")
     )
 
 
@@ -243,7 +251,7 @@ col_center = st.columns([1, 1, 1])
 with col_center[1]:
     visit_purpose = st.selectbox(
         "",
-        ("식사", "카페/디저트", "선택 안함")
+        ("선택 안함", "식사", "카페/디저트")
     )
     
 
@@ -276,8 +284,8 @@ jeju_map = folium.Map(
     name='Mapbox Custom Style'
 )
 
-# Load GeoJSON data from GitHub link
-geojson_url = 'https://raw.githubusercontent.com/raqoon886/Local_HangJeongDong/master/hangjeongdong_%EC%A0%9C%EC%A3%BC%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84.geojson'
+# Load GeoJSON data from GitHub linkㅌ
+geojson_url = 'https://raw.githubusercontent.com/gina261/bigcontest_genAI/main/geojson/jeju_edited.geojson'
 geojson_data = requests.get(geojson_url).json()
 
 # Restricting bounds to Jeju Island to avoid showing other regions
@@ -316,7 +324,7 @@ st_data = st_folium(jeju_map, width=800, height=400)
 # Retrieve selected region from folium
 if st_data and st_data.get('last_active_drawing'):
     selected_region = st_data['last_active_drawing']['properties']['adm_nm']
-    st.write(f"Selected Region: {selected_region}")
+    st.write(f"선택한 지역: {selected_region.split(' ')[1]} {selected_region.split(' ')[2]}")
     
     
 st.markdown(

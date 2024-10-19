@@ -47,7 +47,7 @@ st.markdown(
 
     .full-width-banner {
         position: relative;
-        background-image: url('https://github.com/gina261/bigcontest_genAI/blob/main/images/banner_edited.png?raw=true');
+        background-image: url('https://github.com/gina261/bigcontest_genAI/blob/main/images/banner.png?raw=true');
         background-size: cover; /* 이미지 크기를 전체 영역에 맞춤 */
         background-position: center; /* 이미지 중앙 정렬 */
         height: 600px; /* 배너의 높이 설정 */
