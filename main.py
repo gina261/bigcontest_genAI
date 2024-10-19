@@ -208,9 +208,17 @@ st.markdown(
 # 3개의 열을 생성하여 위젯을 한 행에 배치
 col1, col2, col3 = st.columns(3)
 
+# '선택 안함' 옵션을 추가한 selectbox를 사용하여 날짜 선택 유무 결정
 with col1:
     st.markdown("<div class='custom-label'>날짜를 선택해주세요.</div>", unsafe_allow_html=True)
-    selected_date = st.date_input("")
+    date_option = st.selectbox("날짜 선택 여부", ["선택 안함", "날짜 선택"])
+
+    # 선택한 옵션에 따라 date_input 표시
+    if date_option == "날짜 선택":
+        selected_date = st.date_input("방문 날짜를 선택해주세요.")
+    else:
+        selected_date = None
+
     
 with col2:
     st.markdown("<div class='custom-label'>시간대를 선택해주세요.</div>", unsafe_allow_html=True)
