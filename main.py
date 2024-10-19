@@ -50,8 +50,8 @@ st.markdown(
         background-image: url('https://github.com/gina261/bigcontest_genAI/blob/main/images/banner.png?raw=true');
         background-size: cover; /* 이미지 크기를 전체 영역에 맞춤 */
         background-position: center bottom;
-        height: 450px; /* 배너의 높이 설정 */
-        width: 100vw; /* 페이지의 전체 너비를 사용 - 100vw */
+        
+        width: 100vw; /* 페이지의 전체 너비를 사용 */
         margin-left: calc(-50vw + 50%); /* 페이지 중앙 정렬 후 왼쪽으로 이동 */
         display: flex;
         align-items: center;
