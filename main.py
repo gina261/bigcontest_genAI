@@ -285,7 +285,7 @@ jeju_map = folium.Map(
 )
 
 # Load GeoJSON data from GitHub linkㅌ
-geojson_url = 'https://github.com/gina261/bigcontest_genAI/blob/main/geojson/jeju_edited.geojson'
+geojson_url = 'https://raw.githubusercontent.com/gina261/bigcontest_genAI/main/geojson/jeju_edited.geojson'
 geojson_data = requests.get(geojson_url).json()
 
 # Restricting bounds to Jeju Island to avoid showing other regions
