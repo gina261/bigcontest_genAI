@@ -284,7 +284,7 @@ jeju_map = folium.Map(
     name='Mapbox Custom Style'
 )
 
-# Load GeoJSON data from GitHub link
+# Load GeoJSON data from GitHub linkㅌ
 geojson_url = 'https://raw.githubusercontent.com/raqoon886/Local_HangJeongDong/master/hangjeongdong_%EC%A0%9C%EC%A3%BC%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84.geojson'
 geojson_data = requests.get(geojson_url).json()
 
