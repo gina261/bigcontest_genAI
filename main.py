@@ -211,11 +211,11 @@ col1, col2, col3 = st.columns(3)
 # '선택 안함' 옵션을 추가한 selectbox를 사용하여 날짜 선택 유무 결정
 with col1:
     st.markdown("<div class='custom-label'>날짜를 선택해주세요.</div>", unsafe_allow_html=True)
-    date_option = st.selectbox("날짜 선택 여부", ["선택 안함", "날짜 선택"])
+    date_option = st.selectbox("", ["선택 안함", "날짜 선택"])
 
     # 선택한 옵션에 따라 date_input 표시
     if date_option == "날짜 선택":
-        selected_date = st.date_input("방문 날짜를 선택해주세요.")
+        selected_date = st.date_input("")
     else:
         selected_date = None
 
