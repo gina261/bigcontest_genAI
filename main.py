@@ -208,6 +208,16 @@ st.markdown(
         padding-left: 20px !important;
     }
     
+    .box_whatIsSelected {
+        background-color: white;
+        border-radius: 25px;
+        height: 50px;
+        width: 200px;
+        padding: 50px 0 20px 0; /* 상단 50px 여백, 하단 20px */
+        display: flex;
+        text-align: center;
+    }
+    
     </style>
     """,
     unsafe_allow_html=True
