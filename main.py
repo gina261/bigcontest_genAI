@@ -36,20 +36,14 @@ st.markdown(
         padding-left: 10px; /* 텍스트 왼쪽 패딩 추가 */
     }
     
-    /* Date input 박스의 스타일 변경 */
-    input[type="date"] {
-        background-color: white !important; /* 내부 색상 변경 */
-        color: black !important; /* 텍스트 색상 변경 */
-        height: 50px !important; /* 높이 변경 */
-        border-radius: 25px; /* 모서리 둥글게 */
-        border: 1px solid white; /* 테두리 설정 */
+    /* 날짜 선택 박스 내부 스타일 */
+    input[type='text'] {
+        background-color: white !important; /* 내부 배경을 흰색으로 설정 */
+        height: 50px !important; /* 높이를 50px로 설정 */
+        border-radius: 25px; /* 둥근 테두리 적용 */
         padding-left: 10px; /* 텍스트 왼쪽 패딩 추가 */
-    }
-    
-    /* Date input 선택된 날짜 텍스트 스타일 변경 */
-    input[type="date"]::-webkit-datetime-edit {
         color: black !important;
-        padding-left: 5px;
+        border: 1px solid #ccc; /* 테두리 색상 설정 */
     }
     
     /* 상단 여백 제거 */

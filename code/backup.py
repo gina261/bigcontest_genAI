@@ -24,6 +24,18 @@ st.markdown(
         padding: 0; /* 추가적인 패딩 제거 */
     }
     
+    /* Selectbox 내부 옵션의 스타일 변경 */
+    div[data-baseweb="select"] > div {
+        background-color: white !important;
+        color: black !important;
+        border: white !important;
+        border-radius: 25px;
+        height: 50px;
+        display: flex;
+        align-items: center; /* 텍스트를 수직 중앙 정렬 */
+        padding-left: 10px; /* 텍스트 왼쪽 패딩 추가 */
+    }
+    
     /* 상단 여백 제거 */
     .block-container {
         padding-top: 0;
@@ -110,7 +122,7 @@ st.markdown(
     
     .box h3 {
         font-size: 1.2em;
-        font-weight: 400;
+        font-weight: 550;
         margin: 0;
         text-align: center;
         color: white;
@@ -138,7 +150,7 @@ st.markdown(
     
     .box-2 h3 {
         font-size: 1.2em;
-        font-weight: 400;
+        font-weight: 550;
         margin: 0;
         text-align: center;
         color: white;
@@ -149,7 +161,7 @@ st.markdown(
     
     .box-2 h4 {
         font-size: 1.2em;
-        font-weight: 400;
+        font-weight: 550;
         margin: 0;
         text-align: center;
         color: white;
@@ -162,7 +174,7 @@ st.markdown(
     .custom-label {
         color: black;
         font-family: 'Pretendard', sans-serif;
-        font-weight: 300; /* 얇은 글꼴 적용 */
+        font-weight: 400;
         font-size: 1em;
         margin-bottom: -25px;
     }
