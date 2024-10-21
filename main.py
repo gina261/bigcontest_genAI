@@ -391,16 +391,13 @@ if st_data and st_data.get('last_active_drawing'):
     if selected_region not in st.session_state.selected_regions:
         st.session_state.selected_regions.append(selected_region)
 
-
-st.write(st.session_state.selected_regions)
-
 # 선택된 지역 업데이트
 if st.session_state.selected_regions:
     selected_regions_display = ", ".join([f"{region}" for region in st.session_state.selected_regions])
     selected_region_text.markdown(
         f"""
         <div class="box_whatIsSelected">
-            선택한 지역: {selected_regions_display}
+            **선택한 지역:** {selected_regions_display}
         </div>
         """,
         unsafe_allow_html=True
