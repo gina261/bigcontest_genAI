@@ -87,7 +87,8 @@ st.markdown(
     }
 
     .centered-subtext.last {
-        margin-bottom: -40px; /* 마지막 텍스트와 박스 사이의 간격을 추가 */
+        margin-top: -10px;
+        margin-bottom: -20px; /* 마지막 텍스트와 박스 사이의 간격을 추가 */
     }
 
     /* 박스 스타일 */
