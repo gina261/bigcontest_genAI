@@ -314,7 +314,7 @@ jeju_map = folium.Map(
     zoom_start=9.8, # 10 => 9.8
     tiles=custom_style_url,
     attr='Mapbox',
-    name='Mapbox Custom Style'
+    name='Mapbox Custom Style',
     dragging=False
 )
 
