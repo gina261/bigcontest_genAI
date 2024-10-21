@@ -467,6 +467,8 @@ if st.session_state.page == 'main':
         unsafe_allow_html=True
     )
     
+    user_firstInput = st.text_input("", placeholder="여기에 입력하세요", key="user_input")
+    
     if st.button("입력"):
         go_to_next_page()
         
