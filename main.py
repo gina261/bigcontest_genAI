@@ -219,7 +219,7 @@ st.markdown(
         margin: 0 auto;
         overflow-x: auto;
         white-space: nowrap;
-        padding: 10px 20px;
+        padding: 0px 10px;
     }
     
     </style>
