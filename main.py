@@ -425,7 +425,7 @@ if selected_regions_display:
     selected_region_text.markdown(
         f"""
         <div class="box_whatIsSelected">
-            <span class="region-label">선택된 지역: </span> <span class="region-names"> {selected_regions_display}</span>
+            <span class="region-label">선택된 지역:&nbsp;</span> <span class="region-names">{selected_regions_display}</span>
         </div>
         """,
         unsafe_allow_html=True
