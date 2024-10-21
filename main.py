@@ -220,7 +220,7 @@ st.markdown(
         overflow-x: auto;
         white-space: nowrap;
         padding-right: 20px;
-        padding-left: 40px;
+        padding-left: 60px;
     }
     
     </style>
