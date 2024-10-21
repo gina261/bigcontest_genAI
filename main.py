@@ -349,7 +349,7 @@ jeju_map = folium.Map(
     doubleClickZoom=False
 )
 
-# Load GeoJSON data from GitHub linkㅌ
+# GeoJSON 데이터 로드 및 지도에 추가
 geojson_url = 'https://raw.githubusercontent.com/gina261/bigcontest_genAI/main/geojson/jeju_edited.geojson'
 geojson_data = requests.get(geojson_url).json()
 
@@ -382,14 +382,14 @@ geo_json = folium.GeoJson(
 # Streamlit에서 지도 표시
 st_data = st_folium(jeju_map, width=800, height=400)
 
-# 선택한 지역을 가져오기
-if st_data and st_data.get('last_active_drawing'):
-    selected_region = st_data['last_active_drawing']['properties']['adm_nm']
+# 선택한 지역을 가져오기 및 중복되지 않도록 관리
+if st_data and 'last_clicked' in st_data:
+    selected_region = st_data['last_clicked']['properties']['adm_nm']
 
     # 지역이 이미 선택된 리스트에 없으면 추가
     if selected_region not in selected_regions:
         selected_regions.append(selected_region)
-
+        
 # 선택된 지역 업데이트
 if selected_regions:
     selected_regions_display = ", ".join([f"{region}" for region in selected_regions])
