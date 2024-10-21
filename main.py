@@ -184,7 +184,13 @@ st.markdown(
         max-width: 250px;  /* selectbox의 최대 너비 설정 */
         margin-bottom: 20px;  /* selectbox와 아래 내용 간의 간격 설정 */
     }
-
+    
+    /* 날짜 선택 박스의 외부 회색 컨테이너 제거 */
+    .stDateInput div {
+        background-color: transparent !important; /* 배경색 투명하게 */
+        box-shadow: none !important; /* 그림자 제거 */
+    }
+    
     /* 날짜 선택 박스 내부 스타일 */
     input[type='text'] {
         background-color: white !important; /* 내부 배경을 흰색으로 설정 */
