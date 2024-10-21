@@ -43,7 +43,7 @@ st.markdown(
         border-radius: 25px; /* 둥근 테두리 적용 */
         padding-left: 10px; /* 텍스트 왼쪽 패딩 추가 */
         color: black !important;
-        border: 1px solid #ccc; /* 테두리 색상 설정 */
+        border: white; /* 테두리 색상 설정 */
     }
     
     /* 상단 여백 제거 */
