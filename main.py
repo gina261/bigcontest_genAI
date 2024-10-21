@@ -462,12 +462,11 @@ st.markdown(
 if 'chat_history' not in st.session_state:
     st.session_state.chat_history = []
     
-user_input = st.text_input("메시지를 입력하세요", key="user_input")
-
-# 사용자가 입력한 메시지를 세션 상태에 저장
-if st.button("보내기"):
-    if user_input:
-        # 채팅 기록에 추가
-        st.session_state.chat_history.append(f"사용자: {user_input}")
-        # 입력 창 초기화
-        st.session_state.user_input = ""
+def send_message():
+    # 사용자가 입력한 메시지를 세션 상태에 저장
+    if st.session_state["user_input"]:
+        st.session_state.chat_history.append(f"사용자: {st.session_state.user_input}")
+        st.session_state["user_input"] = ""  # 입력 필드 초기화
+    
+# 텍스트 입력 필드에 on_change 콜백을 사용하여 메시지 전송
+st.text_input("메시지를 입력하세요", key="user_input", on_change=send_message)
