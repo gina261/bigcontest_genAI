@@ -189,11 +189,12 @@ st.markdown(
     input[type='text'] {
         background-color: white !important; /* 내부 배경을 흰색으로 설정 */
         color: black !important;
-        border: white !important; /* 테두리 색상 설정 */
-        border-radius: 25px; /* 둥근 테두리 적용 */
+        border: white !important;
+        border-radius: 25px;
         height: 50px !important; /* 높이를 50px로 설정 */
-        padding-left: 10px; /* 텍스트 왼쪽 패딩 추가 */
-        padding-left: 10px        
+        display: flex;
+        align-items: center;
+        padding-left: 10px;
     }
     
     </style>
