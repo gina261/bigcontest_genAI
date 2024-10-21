@@ -24,6 +24,11 @@ st.markdown(
         padding: 0; /* 추가적인 패딩 제거 */
     }
     
+    /* Selectbox 내부 스타일 변경: 흰색 배경 */
+    div[data-baseweb="select"] {
+        border: 1px solid white;
+    }
+    
     /* Selectbox 내부 옵션의 스타일 변경 */
     div[data-baseweb="select"] > div {
         background-color: white !important;
