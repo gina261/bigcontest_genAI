@@ -230,8 +230,8 @@ st.markdown(
     .text-bold {
         font-weight: 650;
     }
-    .spacing-200px {
-        margin-bottom: 200px;
+    .spacing-100px {
+        margin-bottom: 100px;
     }
     </style>
     
@@ -443,7 +443,7 @@ else:
         unsafe_allow_html=True
     )
     
-st.markdown('<div class="spacing-200px"></div>', unsafe_allow_html=True)
+st.markdown('<div class="spacing-100px"></div>', unsafe_allow_html=True)
     
 st.markdown(
     """
