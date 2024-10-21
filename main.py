@@ -221,6 +221,13 @@ st.markdown(
         white-space: nowrap;
     }
     
+    .region-label {
+        font-weight: 200;
+    }
+    .region-names {
+        font-weight: 400;
+    }
+    
     </style>
     """,
     unsafe_allow_html=True
@@ -412,7 +419,7 @@ if selected_regions_display:
     selected_region_text.markdown(
         f"""
         <div class="box_whatIsSelected">
-            선택한 지역: {selected_regions_display}
+            <span class="region-label">선택한 지역:</span> <span class="region-names">{selected_regions_display}</span>
         </div>
         """,
         unsafe_allow_html=True
