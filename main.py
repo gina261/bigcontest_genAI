@@ -325,6 +325,9 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+# 선택된 지역 텍스트를 위한 placeholder 생성
+selected_region_text = st.empty()
+
 # 제주도 중심 좌표
 jeju_center = [33.38, 126.6] # 기존 33.4996, 126.5312
 
@@ -384,11 +387,29 @@ geo_json = folium.GeoJson(
 # Streamlit에서 지도 표시
 st_data = st_folium(jeju_map, width=800, height=400)
 
-# Retrieve selected region from folium
+# 선택한 지역을 가져오기
 if st_data and st_data.get('last_active_drawing'):
     selected_region = st_data['last_active_drawing']['properties']['adm_nm']
-    st.write(f"선택한 지역: {selected_region.split(' ')[1]} {selected_region.split(' ')[2]}")
     
+    # '선택한 지역' 텍스트를 업데이트
+    selected_region_text.markdown(
+        f"""
+        <div class="box_whatIsSelected">
+            선택한 지역: {selected_region.split(' ')[1]} {selected_region.split(' ')[2]}
+        </div>
+        """, 
+        unsafe_allow_html=True
+    )
+else:
+    # 선택되지 않았을 때 기본 텍스트 유지
+    selected_region_text.markdown(
+        """
+        <div class="box_whatIsSelected">
+            선택된 지역
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
     
 st.markdown(
     """
