@@ -213,7 +213,7 @@ st.markdown(
         top: 20px;
         left: 50%;
         transform: translateX(-50%);
-        z-index: 1000;  /* 지도 위로 박스를 배치하기 위한 z-index 설정 */
+        z-index: 9999;  /* 지도 위로 박스를 배치하기 위한 z-index 설정 */
         background-color: white;
         border-radius: 25px;
         height: 50px;
@@ -224,9 +224,11 @@ st.markdown(
         margin: 0 auto;
     }
     
-    /* 지도를 감싸는 div */
-    .folium-map {
+    /* 지도와 박스가 겹치도록 상대적 위치 지정 */
+    .map-container {
         position: relative;
+        width: 800px;
+        height: 400px;
     }
     
     </style>
@@ -387,11 +389,21 @@ geo_json = folium.GeoJson(
     )
 ).add_to(jeju_map)
 
-# "선택된 지역" 박스를 지도 위에 배치하기 위한 div
-st.markdown("<div class='folium-map'>", unsafe_allow_html=True)
+# 지도와 박스가 겹치는 구조를 위한 div 컨테이너
+st.markdown("<div class='map-container'>", unsafe_allow_html=True)
 
-# Streamlit에서 지도 표시
+# 지도 표시
 st_data = st_folium(jeju_map, width=800, height=400)
+
+# "선택된 지역" 박스를 지도 위에 표시
+st.markdown(
+    """
+    <div class="box_whatIsSelected">
+        선택된 지역
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
 # "선택된 지역" 박스 표시를 위한 세션 상태 관리
 if 'selected_regions' not in st.session_state:
