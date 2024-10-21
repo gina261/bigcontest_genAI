@@ -232,6 +232,23 @@ if st.session_state.page == 'main':
             white-space: nowrap;
         }
         
+        /* 채팅 첫 입력 박스 */
+        input.first {
+            background-color: #ffffff;
+            border: 2px solid #ffffff;
+            border-radius: 15px;
+            padding: 10px;
+            width: 400px;
+            height: 60px;
+            font-size: 1em;
+            color: #000;
+            display: block;
+            margin: 20px auto;
+        }
+        input.custom-input::placeholder {
+            color: #888;
+        }
+        
         .region-label {
             font-weight: 200;
         }
@@ -244,7 +261,6 @@ if st.session_state.page == 'main':
         .spacing-100px {
             margin-bottom: 100px;
         }
-        </style>
         
         
         </style>
@@ -468,6 +484,13 @@ if st.session_state.page == 'main':
     )
     
     user_firstInput = st.text_input("", placeholder="여기에 입력하세요", key="user_input")
+    
+    st.markdown(
+        f"""
+        <input class="custom-input" type="text" placeholder="여기에 기분이나 상황을 입력하세요" value="{user_firstInput}">
+        """,
+        unsafe_allow_html=True
+    )
     
     if st.button("입력"):
         go_to_next_page()
