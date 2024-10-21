@@ -217,6 +217,8 @@ st.markdown(
         justify-content: center;
         align-items: center;
         margin: 0 auto;
+        overflow-x: auto;
+        white-space: nowrap;
     }
     
     </style>
@@ -324,7 +326,7 @@ st.markdown(
 # 선택된 지역을 저장할 리스트 생성 (세션 상태에서 관리)
 if 'selected_regions' not in st.session_state:
     st.session_state.selected_regions = []
-    
+
 # 선택 초기화 버튼 클릭 시 선택된 지역 초기화
 if st.button("선택 초기화"):
     st.session_state.selected_regions = []
