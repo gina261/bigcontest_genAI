@@ -189,6 +189,7 @@ st.markdown(
     .stDateInput div {
         background-color: transparent !important; /* 배경색 투명하게 */
         box-shadow: none !important; /* 그림자 제거 */
+        border: transparent !important;
     }
     
     /* 날짜 선택 박스 내부 스타일 */
