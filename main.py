@@ -174,7 +174,7 @@ st.markdown(
     .custom-label {
         color: black;
         font-family: 'Pretendard', sans-serif;
-        font-weight: 300; /* 얇은 글꼴 적용 */
+        font-weight: 400; /* 얇은 글꼴 적용 */
         font-size: 1em;
         margin-bottom: -25px;
     }
