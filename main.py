@@ -209,11 +209,6 @@ st.markdown(
     }
     
     .box_whatIsSelected {
-        position: absolute;
-        top: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 9999;  /* 지도 위로 박스를 배치하기 위한 z-index 설정 */
         background-color: white;
         border-radius: 25px;
         height: 50px;
@@ -222,13 +217,6 @@ st.markdown(
         justify-content: center;
         align-items: center;
         margin: 0 auto;
-    }
-    
-    /* 지도와 박스가 겹치도록 상대적 위치 지정 */
-    .map-container {
-        position: relative;
-        width: 800px;
-        height: 400px;
     }
     
     </style>
@@ -329,6 +317,10 @@ st.markdown(
     <div class="centered-subtext first">
         두 개 이상의 지역을 선택하실 경우, 차례대로 클릭해주세요.
     </div>
+    
+    <div class="box_whatIsSelected">
+        선택된 지역
+    </div>
     """,
     unsafe_allow_html=True
 )
@@ -389,44 +381,15 @@ geo_json = folium.GeoJson(
     )
 ).add_to(jeju_map)
 
-# 지도와 박스가 겹치는 구조를 위한 div 컨테이너
-st.markdown("<div class='map-container'>", unsafe_allow_html=True)
-
-# 지도 표시
+# Streamlit에서 지도 표시
 st_data = st_folium(jeju_map, width=800, height=400)
-
-# "선택된 지역" 박스를 지도 위에 표시
-st.markdown(
-    """
-    <div class="box_whatIsSelected">
-        선택된 지역
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-
-# "선택된 지역" 박스 표시를 위한 세션 상태 관리
-if 'selected_regions' not in st.session_state:
-    st.session_state.selected_regions = []
 
 # Retrieve selected region from folium
 if st_data and st_data.get('last_active_drawing'):
     selected_region = st_data['last_active_drawing']['properties']['adm_nm']
+    st.write(f"선택한 지역: {selected_region.split(' ')[1]} {selected_region.split(' ')[2]}")
     
-    # 이미 선택한 지역이 아닌 경우에만 추가
-    if selected_region not in st.session_state.selected_regions:
-        st.session_state.selected_regions.append(selected_region)
     
-# "선택된 지역" 박스 표시
-st.markdown(
-    f"""
-    <div class="box_whatIsSelected">
-        {", ".join(st.session_state.selected_regions) if st.session_state.selected_regions else "선택된 지역 없음"}
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-
 st.markdown(
     """
     <div class="centered-subtext">
