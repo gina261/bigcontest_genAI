@@ -390,14 +390,23 @@ if st_data and st_data.get('last_active_drawing'):
     # 지역이 이미 선택된 리스트에 없으면 추가
     if selected_region not in st.session_state.selected_regions:
         st.session_state.selected_regions.append(selected_region)
+        
+# 선택된 지역 이름을 처리
+def format_region_name(region):
+    region_parts = region.split(' ')
+    if region_parts[0] == "제주특별자치도" and len(region_parts) >= 3:
+        return region_parts[2]  # 세 번째 단어만 저장
+    else:
+        return region_parts[0]  # 첫 단어만 저장
+    
+selected_regions_display = ", ".join([format_region_name(region) for region in st.session_state.selected_regions])
 
 # 선택된 지역 업데이트
-if st.session_state.selected_regions:
-    selected_regions_display = ", ".join([f"{region}" for region in st.session_state.selected_regions])
+if selected_regions_display:
     selected_region_text.markdown(
         f"""
         <div class="box_whatIsSelected">
-            **선택한 지역:** {selected_regions_display}
+            선택한 지역: {selected_regions_display}
         </div>
         """,
         unsafe_allow_html=True
