@@ -227,12 +227,14 @@ st.markdown(
     .region-names {
         font-weight: 400;
     }
-    .text-mid {
-        font-weight: 300;
-    }
     .text-bold {
         font-weight: 650;
     }
+    .spacing-200px {
+        margin-bottom: 200px;
+    }
+    </style>
+    
      
     </style>
     """,
@@ -440,6 +442,8 @@ else:
         """,
         unsafe_allow_html=True
     )
+    
+st.markdown('<div class="spacing-200px"></div>', unsafe_allow_html=True)
     
 st.markdown(
     """
