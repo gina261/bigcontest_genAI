@@ -29,7 +29,7 @@ st.markdown(
         background-color: white !important;
         color: black !important;
         border: white !important;
-        border-radius: 20px;
+        border-radius: 25px;
         height: 50px;
         display: flex;
         align-items: center; /* 텍스트를 수직 중앙 정렬 */
