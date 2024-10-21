@@ -297,7 +297,14 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-    
+st.markdown(
+    """
+    <div class="centered-subtext">
+        두 개 이상의 지역을 선택하실 경우, 차례대로 클릭해주세요.
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
 # 제주도 중심 좌표
 jeju_center = [33.38, 126.6] # 기존 33.4996, 126.5312
