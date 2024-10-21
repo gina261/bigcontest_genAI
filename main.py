@@ -105,7 +105,6 @@ st.markdown(
         justify-content: center;
         align-items: flex-start; /* 텍스트를 박스 상단에서부터 정렬 */
         height: 250px; /* 박스 높이 설정 */
-        width: 500px;
         text-align: center;
     }
     
