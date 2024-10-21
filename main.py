@@ -92,7 +92,7 @@ st.markdown(
     }
     
     .centered-subtext.first {
-        margin-top: -10px;
+        margin-top: -5px;
     }
 
     /* 박스 스타일 */
