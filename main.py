@@ -327,10 +327,6 @@ st.markdown(
     <div class="centered-subtext first">
         두 개 이상의 지역을 선택하실 경우, 차례대로 클릭해주세요.
     </div>
-    
-    <div class="box_whatIsSelected">
-        선택된 지역
-    </div>
     """,
     unsafe_allow_html=True
 )
@@ -413,7 +409,7 @@ if st_data and st_data.get('last_active_drawing'):
 st.markdown(
     f"""
     <div class="box_whatIsSelected">
-        {" / ".join(st.session_state.selected_regions) if st.session_state.selected_regions else "선택된 지역 없음"}
+        {", ".join(st.session_state.selected_regions) if st.session_state.selected_regions else "선택된 지역 없음"}
     </div>
     """,
     unsafe_allow_html=True
