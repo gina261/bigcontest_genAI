@@ -29,7 +29,11 @@ st.markdown(
         background-color: white !important;
         color: black !important;
         border: white !important;
+        border-radius: 20px;
         height: 50px;
+        display: flex;
+        align-items: center; /* 텍스트를 수직 중앙 정렬 */
+        padding-left: 10px; /* 텍스트 왼쪽 패딩 추가 */
     }
     
     /* 상단 여백 제거 */
