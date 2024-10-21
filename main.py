@@ -211,7 +211,7 @@ st.markdown(
     .box_whatIsSelected {
         background-color: white;
         border-radius: 25px;
-        height: 20px;
+        height: 40px;
         width: 400px;
         display: flex;
         justify-content: center;
