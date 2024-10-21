@@ -29,6 +29,7 @@ st.markdown(
         background-color: white !important;
         color: black !important;
         border: white !important;
+        height: 50px;
     }
     
     /* 상단 여백 제거 */
