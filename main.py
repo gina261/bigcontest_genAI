@@ -115,7 +115,7 @@ st.markdown(
         text-align: center;
         color: white;
         width: 100%;
-        padding-top: 130px; /* 텍스트와 상단 간격 설정 */
+        padding-top: 135px; /* 텍스트와 상단 간격 설정 */
         padding-left: 30px;
     }
 
