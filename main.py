@@ -90,6 +90,10 @@ st.markdown(
         margin-top: -10px;
         margin-bottom: -20px; /* 마지막 텍스트와 박스 사이의 간격을 추가 */
     }
+    
+    .centered-subtext.first {
+        margin-top: -20px;
+    }
 
     /* 박스 스타일 */
     .box {
@@ -299,7 +303,7 @@ st.markdown(
 
 st.markdown(
     """
-    <div class="centered-subtext">
+    <div class="centered-subtext first">
         두 개 이상의 지역을 선택하실 경우, 차례대로 클릭해주세요.
     </div>
     """,
