@@ -467,7 +467,7 @@ if st.session_state.page == 'main':
         unsafe_allow_html=True
     )
     
-    if st.buttion("입력"):
+    if st.button("입력"):
         go_to_next_page()
         
 # 두 번째 페이지
