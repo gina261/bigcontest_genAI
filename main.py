@@ -36,6 +36,17 @@ st.markdown(
         padding-left: 10px; /* 텍스트 왼쪽 패딩 추가 */
     }
     
+    /* Date input 박스의 스타일 변경 */
+    input[type="date"] {
+        background-color: white !important; /* 내부 색상 변경 */
+        color: black !important; /* 텍스트 색상 변경 */
+        height: 50px !important; /* 높이 변경 */
+        border-radius: 25px; /* 모서리 둥글게 */
+        border: 1px solid white; /* 테두리 설정 */
+        padding-left: 10px; /* 텍스트 왼쪽 패딩 추가 */
+    }
+
+    
     /* 상단 여백 제거 */
     .block-container {
         padding-top: 0;
