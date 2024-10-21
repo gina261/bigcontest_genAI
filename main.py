@@ -471,8 +471,3 @@ if st.button("보내기"):
         st.session_state.chat_history.append(f"사용자: {user_input}")
         # 입력 창 초기화
         st.session_state.user_input = ""
-
-# 채팅 기록 표시
-st.markdown("### 대화 기록")
-for chat in st.session_state.chat_history:
-    st.write(chat)
