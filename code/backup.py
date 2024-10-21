@@ -24,28 +24,6 @@ st.markdown(
         padding: 0; /* 추가적인 패딩 제거 */
     }
     
-    /* Selectbox 내부 옵션의 스타일 변경 */
-    div[data-baseweb="select"] > div {
-        background-color: white !important;
-        color: black !important;
-        border: white !important;
-        border-radius: 25px;
-        height: 50px;
-        display: flex;
-        align-items: center; /* 텍스트를 수직 중앙 정렬 */
-        padding-left: 10px; /* 텍스트 왼쪽 패딩 추가 */
-    }
-    
-    /* 날짜 선택 박스 내부 스타일 */
-    input[type='text'] {
-        background-color: white !important; /* 내부 배경을 흰색으로 설정 */
-        height: 50px !important; /* 높이를 50px로 설정 */
-        border-radius: 25px; /* 둥근 테두리 적용 */
-        padding-left: 10px; /* 텍스트 왼쪽 패딩 추가 */
-        color: black !important;
-        border: white; /* 테두리 색상 설정 */
-    }
-    
     /* 상단 여백 제거 */
     .block-container {
         padding-top: 0;
@@ -188,11 +166,42 @@ st.markdown(
         font-size: 1em;
         margin-bottom: -25px;
     }
+    
+    /* Selectbox 내부 옵션의 스타일 변경 */
+    div[data-baseweb="select"] > div {
+        background-color: white !important;
+        color: black !important;
+        border: white !important;
+        border-radius: 25px;
+        height: 50px;
+        display: flex;
+        align-items: center; /* 텍스트를 수직 중앙 정렬 */
+        padding-left: 10px; /* 텍스트 왼쪽 패딩 추가 */
+    }
 
     /* Selectbox 크기 조정 */
     .stSelectbox div[data-baseweb="select"] {
         max-width: 250px;  /* selectbox의 최대 너비 설정 */
         margin-bottom: 20px;  /* selectbox와 아래 내용 간의 간격 설정 */
+    }
+    
+    /* 날짜 선택 박스의 외부 회색 컨테이너 제거 */
+    .stDateInput div {
+        background-color: transparent !important; /* 배경색 투명하게 */
+        box-shadow: none !important; /* 그림자 제거 */
+        border: transparent !important;
+    }
+    
+    /* 날짜 선택 박스 내부 스타일 */
+    input[type='text'] {
+        background-color: white !important; /* 내부 배경을 흰색으로 설정 */
+        color: black !important;
+        border: white !important;
+        border-radius: 25px;
+        height: 50px !important; /* 높이를 50px로 설정 */
+        display: flex;
+        align-items: center;
+        padding-left: 10px !important;
     }
     
     </style>
