@@ -321,6 +321,9 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+# 선택된 지역을 저장할 리스트 생성
+selected_regions = []
+
 # 선택된 지역 텍스트를 위한 placeholder 생성
 selected_region_text = st.empty()
 
@@ -349,10 +352,6 @@ jeju_map = folium.Map(
 # Load GeoJSON data from GitHub linkㅌ
 geojson_url = 'https://raw.githubusercontent.com/gina261/bigcontest_genAI/main/geojson/jeju_edited.geojson'
 geojson_data = requests.get(geojson_url).json()
-
-# Restricting bounds to Jeju Island to avoid showing other regions
-# jeju_bounds = [[33.1, 125.9], [34.0, 127.0]]  # Adjust the lat/lon for Jeju boundaries
-# jeju_map.fit_bounds(jeju_bounds)
 
 # Add GeoJSON data to the map with interactive features
 def on_click(feature):
@@ -386,22 +385,28 @@ st_data = st_folium(jeju_map, width=800, height=400)
 # 선택한 지역을 가져오기
 if st_data and st_data.get('last_active_drawing'):
     selected_region = st_data['last_active_drawing']['properties']['adm_nm']
-    
-    # '선택한 지역' 텍스트를 업데이트
+
+    # 지역이 이미 선택된 리스트에 없으면 추가
+    if selected_region not in selected_regions:
+        selected_regions.append(selected_region)
+
+# 선택된 지역 업데이트
+if selected_regions:
+    selected_regions_display = ", ".join([f"{region.split(' ')[1]} {region.split(' ')[2]}" for region in selected_regions])
     selected_region_text.markdown(
         f"""
         <div class="box_whatIsSelected">
-            선택한 지역: {selected_region.split(' ')[1]} {selected_region.split(' ')[2]}
+            선택한 지역: {selected_regions_display}
         </div>
-        """, 
+        """,
         unsafe_allow_html=True
     )
 else:
-    # 선택되지 않았을 때 기본 텍스트 유지
+    # 선택된 지역이 없을 때 텍스트 표시
     selected_region_text.markdown(
         """
         <div class="box_whatIsSelected">
-            선택된 지역
+            선택된 지역 없음
         </div>
         """,
         unsafe_allow_html=True
