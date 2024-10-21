@@ -392,7 +392,7 @@ if st_data and st_data.get('last_active_drawing'):
 
 # 선택된 지역 업데이트
 if selected_regions:
-    selected_regions_display = ", ".join([f"{region.split(' ')[1]} {region.split(' ')[2]}" for region in selected_regions])
+    selected_regions_display = ", ".join([f"{region}" for region in selected_regions])
     selected_region_text.markdown(
         f"""
         <div class="box_whatIsSelected">
