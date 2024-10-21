@@ -211,9 +211,8 @@ st.markdown(
     .box_whatIsSelected {
         background-color: white;
         border-radius: 25px;
-        height: 7px;
+        height: 20px;
         width: 400px;
-        padding: 50px 0 20px 0; /* 상단 50px 여백, 하단 20px */
         display: flex;
         justify-content: center;
         align-items: center;
