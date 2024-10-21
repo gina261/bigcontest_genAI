@@ -24,8 +24,8 @@ st.markdown(
         padding: 0; /* 추가적인 패딩 제거 */
     }
     
-    /* Selectbox 색상 변경 (흰색 배경과 검정색 텍스트) */
-    div[data-baseweb="select"] {
+    /* Selectbox 내부 옵션의 스타일 변경 */
+    div[data-baseweb="select"] > div {
         background-color: white !important;
         color: black !important;
     }
