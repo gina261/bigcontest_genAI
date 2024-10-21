@@ -49,8 +49,8 @@ st.markdown(
         position: relative;
         background-image: url('https://github.com/gina261/bigcontest_genAI/blob/main/images/banner.png?raw=true');
         background-size: cover; /* 이미지 크기를 전체 영역에 맞춤 */
-        background-position: center; /* 이미지 중앙 정렬 */
-        height: 600px; /* 배너의 높이 설정 */
+        background-position: center;
+        height: 470px; /* 배너의 높이 설정 */
         width: 100vw; /* 페이지의 전체 너비를 사용 */
         margin-left: calc(-50vw + 50%); /* 페이지 중앙 정렬 후 왼쪽으로 이동 */
         display: flex;
@@ -71,22 +71,24 @@ st.markdown(
 
     /* 배경 큰 글씨 */
     .centered-text {
-        font-size: 1.5em;
-        margin: 0px 0 20px 0; /* 위쪽에 0px, 아래쪽에 20px 마진 추가 */
+        font-size: 1.2em;
+        font-weight: 650;
+        margin: 0px 0 40px 0; /* 위쪽에 0px, 아래쪽에 20px 마진 추가 */
         text-align: center; /* 텍스트 중앙 정렬 */
         color: black;
     }
 
     /* 배경 중간 글씨 */
     .centered-subtext {
-        font-size: 1.2em;
+        font-size: 1.0em;
         margin: 20px 0 20px 0; /* 위쪽과 아래쪽에 20px 마진 추가 */
         text-align: center; /* 텍스트 중앙 정렬 */
         color: black;
     }
 
     .centered-subtext.last {
-        margin-bottom: 50px; /* 마지막 텍스트와 박스 사이의 간격을 추가 */
+        margin-top: -10px;
+        margin-bottom: -20px; /* 마지막 텍스트와 박스 사이의 간격을 추가 */
     }
 
     /* 박스 스타일 */
@@ -113,7 +115,7 @@ st.markdown(
         text-align: center;
         color: white;
         width: 100%;
-        padding-top: 113px; /* 텍스트와 상단 간격 설정 */
+        padding-top: 133px; /* 텍스트와 상단 간격 설정 */
         padding-left: 30px;
     }
 
