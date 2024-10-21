@@ -90,6 +90,11 @@ st.markdown(
         margin-top: -10px;
         margin-bottom: -20px; /* 마지막 텍스트와 박스 사이의 간격을 추가 */
     }
+    
+    .centered-subtext.first {
+        margin-top: -5px;
+        margin-bottom: 10px;
+    }
 
     /* 박스 스타일 */
     .box {
@@ -105,7 +110,6 @@ st.markdown(
         justify-content: center;
         align-items: flex-start; /* 텍스트를 박스 상단에서부터 정렬 */
         height: 250px; /* 박스 높이 설정 */
-        text-align: center;
     }
     
     .box h3 {
@@ -201,7 +205,18 @@ st.markdown(
         height: 50px !important; /* 높이를 50px로 설정 */
         display: flex;
         align-items: center;
-        padding-left: 10px !important;
+        padding-left: 20px !important;
+    }
+    
+    .box_whatIsSelected {
+        background-color: white;
+        border-radius: 25px;
+        height: 50px;
+        width: 400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
     }
     
     </style>
@@ -297,7 +312,18 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+st.markdown(
+    """
+    <div class="centered-subtext first">
+        두 개 이상의 지역을 선택하실 경우, 차례대로 클릭해주세요.
+    </div>
     
+    <div class="box_whatIsSelected">
+        선택된 지역
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
 # 제주도 중심 좌표
 jeju_center = [33.38, 126.6] # 기존 33.4996, 126.5312
@@ -314,7 +340,11 @@ jeju_map = folium.Map(
     zoom_start=9.8, # 10 => 9.8
     tiles=custom_style_url,
     attr='Mapbox',
-    name='Mapbox Custom Style'
+    name='Mapbox Custom Style',
+    dragging=False,
+    zoom_control=False,
+    scrollWheelZoom=False,  # 마우스 휠 줌 비활성화
+    doubleClickZoom=False
 )
 
 # Load GeoJSON data from GitHub linkㅌ
