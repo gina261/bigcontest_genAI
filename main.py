@@ -150,7 +150,7 @@ st.markdown(
     
     .box-2 h3 {
         font-size: 1.2em;
-        font-weight: 400;
+        font-weight: 500;
         margin: 0;
         text-align: center;
         color: white;
@@ -174,7 +174,7 @@ st.markdown(
     .custom-label {
         color: black;
         font-family: 'Pretendard', sans-serif;
-        font-weight: 400; /* 얇은 글꼴 적용 */
+        font-weight: 400;
         font-size: 1em;
         margin-bottom: -25px;
     }
