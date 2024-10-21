@@ -338,6 +338,8 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+####### 지도 구현 #######
+
 # 선택된 지역을 저장할 리스트 생성 (세션 상태에서 관리)
 if 'selected_regions' not in st.session_state:
     st.session_state.selected_regions = []
@@ -453,3 +455,24 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
+
+####### 채팅 구현 #######
+# 세션 상태에서 채팅 기록을 관리
+if 'chat_history' not in st.session_state:
+    st.session_state.chat_history = []
+    
+user_input = st.text_input("메시지를 입력하세요", key="user_input")
+
+# 사용자가 입력한 메시지를 세션 상태에 저장
+if st.button("보내기"):
+    if user_input:
+        # 채팅 기록에 추가
+        st.session_state.chat_history.append(f"사용자: {user_input}")
+        # 입력 창 초기화
+        st.session_state.user_input = ""
+
+# 채팅 기록 표시
+st.markdown("### 대화 기록")
+for chat in st.session_state.chat_history:
+    st.write(chat)
