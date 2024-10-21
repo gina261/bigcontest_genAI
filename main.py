@@ -321,9 +321,10 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# 선택된 지역을 저장할 리스트 생성
-selected_regions = []
-
+# 선택된 지역을 저장할 리스트 생성 (세션 상태에서 관리)
+if 'selected_regions' not in st.session_state:
+    st.session_state.selected_regions = []
+    
 # 선택된 지역 텍스트를 위한 placeholder 생성
 selected_region_text = st.empty()
 
@@ -387,14 +388,15 @@ if st_data and st_data.get('last_active_drawing'):
     selected_region = st_data['last_active_drawing']['properties']['adm_nm']
 
     # 지역이 이미 선택된 리스트에 없으면 추가
-    if selected_region not in selected_regions:
-        selected_regions.append(selected_region)
+    if selected_region not in st.session_state.selected_regions:
+        st.session_state.selected_regions.append(selected_region)
 
-st.write(selected_regions)
+
+st.write(st.session_state.selected_regions)
 
 # 선택된 지역 업데이트
-if selected_regions:
-    selected_regions_display = ", ".join([f"{region}" for region in selected_regions])
+if st.session_state.selected_regions:
+    selected_regions_display = ", ".join([f"{region}" for region in st.session_state.selected_regions])
     selected_region_text.markdown(
         f"""
         <div class="box_whatIsSelected">
