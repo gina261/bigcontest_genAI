@@ -217,8 +217,25 @@ st.markdown(
         justify-content: center;
         align-items: center;
         margin: 0 auto;
+        overflow-x: auto;
+        white-space: nowrap;
     }
     
+    .region-label {
+        font-weight: 200;
+    }
+    .region-names {
+        font-weight: 400;
+    }
+    .text-bold {
+        font-weight: 650;
+    }
+    .spacing-100px {
+        margin-bottom: 100px;
+    }
+    </style>
+    
+     
     </style>
     """,
     unsafe_allow_html=True
@@ -321,8 +338,14 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+####### 지도 구현 #######
+
 # 선택된 지역을 저장할 리스트 생성 (세션 상태에서 관리)
 if 'selected_regions' not in st.session_state:
+    st.session_state.selected_regions = []
+
+# 선택 초기화 버튼 클릭 시 선택된 지역 초기화
+if st.button("선택 초기화"):
     st.session_state.selected_regions = []
     
 # 선택된 지역 텍스트를 위한 placeholder 생성
@@ -406,7 +429,7 @@ if selected_regions_display:
     selected_region_text.markdown(
         f"""
         <div class="box_whatIsSelected">
-            선택한 지역: {selected_regions_display}
+            <span class="region-label">선택된 지역:&nbsp;</span> <span class="region-names">{selected_regions_display}</span>
         </div>
         """,
         unsafe_allow_html=True
@@ -422,10 +445,12 @@ else:
         unsafe_allow_html=True
     )
     
+st.markdown('<div class="spacing-100px"></div>', unsafe_allow_html=True)
+    
 st.markdown(
     """
     <div class="centered-subtext">
-        오늘의 기분이나 상황을 입력해주세요. 그에 맞는 제주의 멋진 곳을 추천해드립니다.
+        감사합니다! 이제 오늘의 <span class="text-bold">기분</span>이나 <span class="text-bold">상황</span>을 입력해주세요. 그에 맞는 제주의 멋진 곳을 추천해드립니다.
     </div>
     """,
     unsafe_allow_html=True
