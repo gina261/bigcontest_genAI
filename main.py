@@ -73,7 +73,7 @@ st.markdown(
     .centered-text {
         font-size: 1.2em;
         font-weight: 600;
-        margin: 0px 0 20px 0; /* 위쪽에 0px, 아래쪽에 20px 마진 추가 */
+        margin: 0px 0 30px 0; /* 위쪽에 0px, 아래쪽에 20px 마진 추가 */
         text-align: center; /* 텍스트 중앙 정렬 */
         color: black;
     }
@@ -87,7 +87,6 @@ st.markdown(
     }
 
     .centered-subtext.last {
-        margin-top: -5px;
         margin-bottom: -10px; /* 마지막 텍스트와 박스 사이의 간격을 추가 */
     }
 
