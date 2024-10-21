@@ -227,7 +227,13 @@ st.markdown(
     .region-names {
         font-weight: 400;
     }
-    
+    .text-mid {
+        font-weight: 300;
+    }
+    .text-bold {
+        font-weight: 500;
+    }
+     
     </style>
     """,
     unsafe_allow_html=True
@@ -419,7 +425,7 @@ if selected_regions_display:
     selected_region_text.markdown(
         f"""
         <div class="box_whatIsSelected">
-            <span class="region-label">선택한 지역:</span> <span class="region-names">{selected_regions_display}</span>
+            <span class="region-label">선택한 지역: </span> <span class="region-names">{selected_regions_display}</span>
         </div>
         """,
         unsafe_allow_html=True
@@ -438,7 +444,7 @@ else:
 st.markdown(
     """
     <div class="centered-subtext">
-        오늘의 기분이나 상황을 입력해주세요. 그에 맞는 제주의 멋진 곳을 추천해드립니다.
+        감사합니다! 이제 오늘의 <span class="text-bold">기분</span>이나 <span class="text-bold">상황</span>을 입력해주세요. 그에 맞는 제주의 멋진 곳을 추천해드립니다.
     </div>
     """,
     unsafe_allow_html=True
