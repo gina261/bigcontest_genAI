@@ -45,7 +45,12 @@ st.markdown(
         border: 1px solid white; /* 테두리 설정 */
         padding-left: 10px; /* 텍스트 왼쪽 패딩 추가 */
     }
-
+    
+    /* Date input 선택된 날짜 텍스트 스타일 변경 */
+    input[type="date"]::-webkit-datetime-edit {
+        color: black !important;
+        padding-left: 5px;
+    }
     
     /* 상단 여백 제거 */
     .block-container {
