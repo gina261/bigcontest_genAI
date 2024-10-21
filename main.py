@@ -28,7 +28,7 @@ st.markdown(
     div[data-baseweb="select"] > div {
         background-color: white !important;
         color: black !important;
-        border: black;
+        border: white !important;
     }
     
     /* 상단 여백 제거 */
