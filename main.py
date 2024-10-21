@@ -194,7 +194,7 @@ st.markdown(
         height: 50px !important; /* 높이를 50px로 설정 */
         display: flex;
         align-items: center;
-        padding-left: 10px;
+        padding-left: 10px !important;
     }
     
     </style>
