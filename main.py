@@ -315,6 +315,7 @@ jeju_map = folium.Map(
     tiles=custom_style_url,
     attr='Mapbox',
     name='Mapbox Custom Style'
+    dragging=False
 )
 
 # Load GeoJSON data from GitHub linkㅌ
