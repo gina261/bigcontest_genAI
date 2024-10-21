@@ -211,13 +211,12 @@ st.markdown(
     .box_whatIsSelected {
         background-color: white;
         border-radius: 25px;
-        height: 40px;
+        height: 50px;
         width: 400px;
         display: flex;
         justify-content: center;
         align-items: center;
         margin: 0 auto;
-        text-align: center;
     }
     
     </style>
