@@ -122,7 +122,7 @@ st.markdown(
     
     .box h3 {
         font-size: 1.2em;
-        font-weight: 400;
+        font-weight: 550;
         margin: 0;
         text-align: center;
         color: white;
@@ -150,7 +150,7 @@ st.markdown(
     
     .box-2 h3 {
         font-size: 1.2em;
-        font-weight: 500;
+        font-weight: 550;
         margin: 0;
         text-align: center;
         color: white;
