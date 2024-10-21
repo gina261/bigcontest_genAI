@@ -72,7 +72,7 @@ st.markdown(
     /* 배경 큰 글씨 */
     .centered-text {
         font-size: 1.2em;
-        font-weight: 700;
+        font-weight: 650;
         margin: 0px 0 40px 0; /* 위쪽에 0px, 아래쪽에 20px 마진 추가 */
         text-align: center; /* 텍스트 중앙 정렬 */
         color: black;
