@@ -186,9 +186,10 @@ st.markdown(
     }
     
     /* 날짜 선택 박스의 회색 배경과 그림자 제거 */
-    .stDateInput > div {
-        background-color: transparent !important; /* 배경색 투명하게 */
+    .stDateInput div[role='textbox'] {
+        background-color: transparent !important; /* 배경을 투명하게 */
         box-shadow: none !important; /* 그림자 제거 */
+        border: none !important; /* 테두리 제거 */
     }
     
     /* 날짜 선택 박스 내부 스타일 */
