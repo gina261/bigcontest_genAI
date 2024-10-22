@@ -531,10 +531,9 @@ elif st.session_state.page == 'next_page':
         }
         
         /* chat input 박스 내부 커스터마이징 */
-        div[data-baseweb="input"] {
+        div[class^="stTextInput"] div[data-baseweb="input"] {
             border-radius: 15px !important; /* 테두리 둥글게 */
             background-color: #ffffff !important; /* 배경색 흰색으로 */
-            padding: 10px;
         }
         
         /* chat input의 텍스트 스타일 변경 */
