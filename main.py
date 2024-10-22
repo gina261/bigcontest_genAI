@@ -566,7 +566,6 @@ elif st.session_state.page == 'next_page':
             border-radius: 30px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
         }
         
         .chat-input {
