@@ -558,7 +558,7 @@ elif st.session_state.page == 'next_page':
         .input-container {
             position: fixed;
             bottom: 30px;
-            left: 15%;
+            left: 20%;
             width: 60%;
             height: 50px;
             background-color: #fff;
