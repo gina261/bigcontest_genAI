@@ -614,10 +614,12 @@ elif st.session_state.page == 'next_page':
         
         // 초기 높이 설정
         textarea.style.height = '50px';  // 기본 높이로 설정
+        textarea.style.overflowY = 'hidden';  // 스크롤 대신 높이 조정
+        textarea.style.resize = 'none';  // 사용자가 직접 크기 조정을 못 하도록 설정
         
         // 입력 영역 자동 크기 조정
         textarea.addEventListener('input', function() {
-            textarea.style.height = 'auto';  // 텍스트가 입력될 때마다 자동으로 높이를 조정
+            textarea.style.height = '50px';  // 기본 높이를 50px로 고정
             textarea.style.height = Math.min(textarea.scrollHeight, 200) + 'px';  // 최대 200px까지만 늘어남
         });
 
