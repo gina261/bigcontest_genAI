@@ -566,7 +566,7 @@ elif st.session_state.page == 'next_page':
             padding: 10px 25px;
             border-radius: 30px;
             display: flex;
-            align-items: flex-start;
+            align-items: flex-end;
             justify-content: space-between;
             box-sizing: border-box;
             transition: height 0.3s ease;
@@ -574,8 +574,8 @@ elif st.session_state.page == 'next_page':
         
         .chat-input {
             width: calc(100% - 100px);
-            min-height: 50px !important;
-            max-height: 200px !important;
+            min-height: 50px;
+            max-height: 200px;
             border: none;
             font-size: 16px;
             color: black;

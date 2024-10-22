@@ -581,6 +581,8 @@ elif st.session_state.page == 'next_page':
             color: black;
             padding: 10px;
             box-sizing: border-box;
+            overflow-y: hidden;
+            resize: none;
         }
         
         .send-btn {
