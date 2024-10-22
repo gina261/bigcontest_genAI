@@ -511,7 +511,8 @@ elif st.session_state.page == 'next_page':
             color: black; /* 기본 텍스트 색상 */
             padding: 0; /* 추가적인 패딩 제거 */
         }
-        """
+        """,
+        unsafe_allow_html=True
     )
     
     st.write("Hello!")
