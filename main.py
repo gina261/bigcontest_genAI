@@ -531,7 +531,7 @@ elif st.session_state.page == 'next_page':
         }
         
         /* chat input 박스 내부 커스터마이징 */
-        div[class^="stTextInput"] div[data-baseweb="input"] {
+        div[data-baseweb="input"] {
             border-radius: 15px !important; /* 테두리 둥글게 */
             background-color: #ffffff !important; /* 배경색 흰색으로 */
         }
@@ -546,7 +546,7 @@ elif st.session_state.page == 'next_page':
         }
         
         /* chat_input의 보내기 버튼만 스타일 변경 */
-        div[class*="stInput"] div[class*="stButton"] button {
+        div[class*="stTextInputContainer"] div[class*="stButton"] button {
             background-color: #ff8015 !important;
             border-radius: 50% !important;
             color: white !important;
