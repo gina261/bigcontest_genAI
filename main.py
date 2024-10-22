@@ -521,11 +521,10 @@ elif st.session_state.page == 'next_page':
             background-color: #ffefcc;
             font-family: 'Pretendard', sans-serif;
             color: black; /* 기본 텍스트 색상 */
-            padding: 0;
         }
         
         /* chat input 박스 외부 커스터마이징 */
-        div[class*="stInput"] {
+        div[class^="stTextInput"] {
             background-color: #ff8015 !important; /* 바깥쪽 배경색 */
             border-radius: 15px !important;
             padding: 10px !important;
