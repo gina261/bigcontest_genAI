@@ -570,7 +570,7 @@ elif st.session_state.page == 'next_page':
         }
         
         .chat-input {
-            width: calc(100% - 110px);
+            width: calc(100% - 100px);
             height: 50px;
             padding: 10px;
             border: none;
