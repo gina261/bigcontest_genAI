@@ -523,9 +523,9 @@ elif st.session_state.page == 'next_page':
             color: black; /* 기본 텍스트 색상 */
         }
         
-        /* chat input 박스 외부 커스터마이징 */
-        div[class*="stTextInputContainer"] {
-            background-color: #ff8015 !important; /* 바깥쪽 배경색 */
+        /* chat_input 외부 전체 컨테이너 배경색 (주황색) */
+        .block-container div[data-baseweb="base-input"] {
+            background-color: #ff8015 !important; /* 외부 배경색 주황색 */
             border-radius: 15px !important;
             padding: 10px !important;
         }
