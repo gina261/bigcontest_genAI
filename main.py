@@ -404,7 +404,7 @@ if st.session_state.page == 'main':
         doubleClickZoom=False
     )
 
-    # Load GeoJSON data from GitHub linkㅌ
+    # Load GeoJSON data from GitHub link
     geojson_url = 'https://raw.githubusercontent.com/gina261/bigcontest_genAI/main/geojson/jeju_edited.geojson'
     geojson_data = requests.get(geojson_url).json()
 
@@ -510,129 +510,9 @@ elif st.session_state.page == 'next_page':
             return f"챗봇: {user_input[::-1]}"
         return ""
     
-    # 기본 설정
-    st.markdown(
-        """
-        <style>
-        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-        
-        /* Streamlit 전체 페이지의 배경을 변경하기 위한 설정 */
-        .stApp {
-            background-color: #ffefcc;
-            font-family: 'Pretendard', sans-serif;
-            color: black; /* 기본 텍스트 색상 */
-            padding: 0;
-        }
-        
-        /* 채팅 컨테이너 스타일 */
-        .chat-container {
-            height: calc(100vh - 150px); /* 상단과 입력창을 제외한 영역 */
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column-reverse; /* 대화가 아래에서 위로 쌓이도록 */
-            padding: 20px;
-            margin-bottom: 60px; /* 입력창 영역을 위해 여백 추가 */
-        }
-        
-        /* 채팅 박스 스타일 */
-        .chat-box {
-            background-color: white;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            font-family: 'Pretendard', sans-serif;
-            max-width: 70%;
-            word-wrap: break-word;
-        }
-        .user-msg {
-            color: black;
-            align-self: flex-start;
-        }
-        .bot-msg {
-            color: #FF7F50;
-            align-self: flex-end;
-        }
-        
-        /* 입력 영역 고정 */
-        .input-container {
-            position: fixed;
-            bottom: 30px;
-            left: 20%;
-            width: 60%;
-            background-color: #fff;
-            padding: 5px 25px; /* 10px 25px */
-            border-radius: 30px;
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-            box-sizing: border-box;
-        }
-        
-        .chat-input {
-            width: calc(100% - 100px);
-            min-height: 40px; /* 50px */
-            max-height: 200px;
-            border: none;
-            font-size: 16px;
-            color: black;
-            padding: 10px;
-            box-sizing: border-box;
-            line-height: 1.5; /* 줄간격 */
-        }
-        
-        .send-btn {
-            width: 80px;
-            height: 30px;
-            background-color: #ff8015;
-            color: white;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            margin-left: 7px;
-        }
-        """,
-        unsafe_allow_html=True
-    )
-
-    
-    ####### 챗봇 구현 #######
-    
-    # 사용자 입력 받기
-    st.markdown(
-        """
-        <div class="input-container">
-            <textarea class="chat-input" id="chat_input" placeholder="메시지를 입력하세요" oninput="adjustHeight(this)"></textarea>
-            <button class="send-btn" onclick="sendMessage()">입력</button>
-        </div>
-
-        <script>
-        function adjustHeight(input) {
-            // 높이를 초기화한 후 입력된 텍스트의 높이에 맞게 재조정
-            input.style.height = "auto"; // 높이 초기화
-            input.style.height = input.scrollHeight + "px"; // 내용을 기준으로 높이를 조정
-            
-            // 디버깅~ 줄 수 계산 및 표시 -터미널에
-            var lineHeight = window.getComputedStyle(input).lineHeight.replace('px', ''); // line-height에서 'px' 제거
-            lineHeight = parseFloat(lineHeight); // float형으로 변환
-            var lines = Math.ceil(input.scrollHeight / lineHeight); // 전체 높이에서 줄 수 계산
-            console.log('현재 줄 수:', lines);
-        }
-
-        function sendMessage() {
-            var input = document.getElementById('chat_input').value;
-            if (input) {
-                console.log('User input:', input);
-                // 여기에 추가적인 처리 로직을 작성
-            }
-        }
-        
-        // 페이지 로드 시 textarea 높이 초기화
-        document.addEventListener("DOMContentLoaded", function() {
-            var input = document.getElementById('chat_input');
-            adjustHeight(input);
-        });
-        </script>
-        """,
-        unsafe_allow_html=True
-    )
+    # **이 부분에 사용자의 입력을 받기 위해 st.chat_input()을 다시 사용**
+    if user_input := st.chat_input("질문을 입력하세요"):
+        # 챗봇의 응답을 생성하여 대화 기록에 추가
+        chatbot_response = chatbot_response(user_input)
+        st.session_state.chat_history.append({"role": "assistant", "content": chatbot_response})
+        st.write(f"챗봇: {chatbot_response}")

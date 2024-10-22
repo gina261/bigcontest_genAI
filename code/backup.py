@@ -404,7 +404,7 @@ if st.session_state.page == 'main':
         doubleClickZoom=False
     )
 
-    # Load GeoJSON data from GitHub linkㅌ
+    # Load GeoJSON data from GitHub link
     geojson_url = 'https://raw.githubusercontent.com/gina261/bigcontest_genAI/main/geojson/jeju_edited.geojson'
     geojson_data = requests.get(geojson_url).json()
 
