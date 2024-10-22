@@ -586,7 +586,7 @@ elif st.session_state.page == 'next_page':
             border: none;
             border-radius: 30px;
             cursor: pointer;
-            margin-left: 10px;
+            margin-left: 7px;
         }
         </style>
         """,
