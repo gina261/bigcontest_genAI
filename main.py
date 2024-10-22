@@ -558,10 +558,11 @@ elif st.session_state.page == 'next_page':
         .input-container {
             position: fixed;
             bottom: 30px;
+            left: 10%;
             width: 70%;
             background-color: #fff;
             padding: 10px 20px;
-            border-radius: 20px;
+            border-radius: 30px;
         }
         
         .chat-input {
@@ -578,7 +579,7 @@ elif st.session_state.page == 'next_page':
             background-color: #ff8015;
             color: white;
             border: none;
-            border-radius: 20px;
+            border-radius: 30px;
             cursor: pointer;
         }
         </style>
