@@ -566,6 +566,7 @@ elif st.session_state.page == 'next_page':
             display: flex;
             align-items: center;
             justify-content: space-between;
+            transition: height 0.3s ease;
         }
         
         .chat-input {
@@ -577,9 +578,7 @@ elif st.session_state.page == 'next_page':
             resize: none;
             overflow-y: auto;
             max-height: 200px;
-        }
-        
-        .chat-input:focus {
+            min-height: 50px;
             height: auto;
         }
         
@@ -614,8 +613,8 @@ elif st.session_state.page == 'next_page':
         
         // 입력 영역 자동 크기 조정
         textarea.addEventListener('input', function() {
-            textarea.style.height = 'auto';
-            textarea.style.height = Math.min(textarea.scrollHeight, 200) + 'px';
+            textarea.style.height = 'auto';  // 텍스트가 짧아질 때 높이를 자동으로 줄임
+            textarea.style.height = Math.min(textarea.scrollHeight, 200) + 'px';  // 최대 200px까지만 늘어남
         });
 
         function sendMessage() {
