@@ -567,7 +567,7 @@ elif st.session_state.page == 'next_page':
         }
         
         .chat-input {
-            width: 100%;
+            width: 80%;
             padding: 10px;
             border: none;
             font-size: 16px;
