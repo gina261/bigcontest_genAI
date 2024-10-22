@@ -574,8 +574,8 @@ elif st.session_state.page == 'next_page':
         
         .chat-input {
             width: calc(100% - 100px);
-            min-height: 50px;
-            max-height: 200px;
+            min-height: 50px !important;
+            max-height: 200px !important;
             border: none;
             font-size: 16px;
             color: black;
