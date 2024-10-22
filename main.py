@@ -634,7 +634,7 @@ elif st.session_state.page == 'next_page':
             var lineHeight = window.getComputedStyle(input).lineHeight.replace('px', ''); // line-height에서 'px' 제거
             lineHeight = parseFloat(lineHeight); // float형으로 변환
             var lines = Math.ceil(input.scrollHeight / lineHeight); // 전체 높이에서 줄 수 계산
-            document.getElementById('line_count').textContent = '줄 수: ' + lines;
+            document.getElementById('line_count').textContent = '으아아아아아아악'/*'줄 수: ' + lines;*/
         }
 
         function sendMessage() {
