@@ -579,7 +579,7 @@ elif st.session_state.page == 'next_page':
             padding: 0;
             box-sizing: border-box;
             resize: none;
-            line-height: 1.5;
+            line-height: 1.0;
         }
         
         .send-btn {
