@@ -558,20 +558,25 @@ elif st.session_state.page == 'next_page':
         .input-container {
             position: fixed;
             bottom: 30px;
-            left: 10%;
+            left: 15%;
             width: 70%;
+            height: 50px;
             background-color: #fff;
             padding: 10px 20px;
             border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
         
         .chat-input {
             width: 80%;
+            height: 50px;
             padding: 10px;
-            border-radius: 5px;
             border: none;
             font-size: 16px;
             color: black;
+            border-radius: 30px;
         }
         
         .send-btn {
@@ -603,7 +608,7 @@ elif st.session_state.page == 'next_page':
             var input = document.getElementById('chat_input').value;
             if (input) {
                 console.log('User input:', input);
-                // 여기에 추가적인 처리 로직을 작성할 수 있습니다.
+                // 여기에 추가적인 처리 로직을 작성
             }
         }
         </script>
