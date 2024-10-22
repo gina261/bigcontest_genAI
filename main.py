@@ -570,6 +570,7 @@ elif st.session_state.page == 'next_page':
             border-radius: 5px;
             border: 2px solid #ddd;
             font-size: 16px;
+            color: black;
         }
         
         .send-btn {
@@ -588,40 +589,23 @@ elif st.session_state.page == 'next_page':
     
     ####### 챗봇 구현 #######
     
-    # 대화 기록 표시를 위한 컨테이너
-    st.markdown('<div class="chat-container">', unsafe_allow_html=True)
-
-    # 대화 기록을 역순으로 표시
-    for chat in reversed(st.session_state.chat_history):
-        if chat.startswith("사용자:"):
-            st.markdown(f'<div class="chat-box user-msg">{chat}</div>', unsafe_allow_html=True)
-        else:
-            st.markdown(f'<div class="chat-box bot-msg">{chat}</div>', unsafe_allow_html=True)
-
-    st.markdown('</div>', unsafe_allow_html=True)
-
-    ####### 채팅 입력 영역 #######
+    # 사용자 입력 받기
     st.markdown(
         """
         <div class="input-container">
-            <form action="/" method="get">
-                <input class="chat-input" type="text" placeholder="메시지를 입력하세요" id="chat_input">
-                <button class="send-btn" type="submit">전송</button>
-            </form>
+            <input class="chat-input" type="text" id="chat_input" placeholder="메시지를 입력하세요">
+            <button class="send-btn" onclick="sendMessage()">전송</button>
         </div>
+
+        <script>
+        function sendMessage() {
+            var input = document.getElementById('chat_input').value;
+            if (input) {
+                console.log('User input:', input);
+                // 여기에 추가적인 처리 로직을 작성할 수 있습니다.
+            }
+        }
+        </script>
         """,
         unsafe_allow_html=True
     )
-
-    # 사용자가 메시지를 입력하면 처리
-    user_input = st.text_input("메시지를 입력하세요:", key="chat_input")
-
-    # 사용자가 입력을 했을 때
-    if st.button("전송"):
-        if user_input:
-            # 사용자 메시지를 기록에 추가
-            st.session_state.chat_history.append(f"사용자: {user_input}")
-            
-            # 챗봇의 응답을 기록에 추가
-            bot_response = chatbot_response(user_input)
-            st.session_state.chat_history.append(bot_response)
