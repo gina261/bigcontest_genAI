@@ -540,15 +540,14 @@ elif st.session_state.page == 'next_page':
         }
         
         /* chat_input의 보내기 버튼만 스타일 변경 */
-        div.stButton button {
-            background-color: #ff8015 !important; /* 버튼 배경색 */
-            border-radius: 50% !important; /* 버튼을 원형으로 */
-            color: white !important; /* 텍스트 색상 */
-            width: 50px !important; /* 버튼 크기 조정 */
-            height: 50px !important; /* 버튼 크기 조정 */
+        div[class*="stInput"] div[class*="stButton"] button {
+            background-color: #ff8015 !important;
+            border-radius: 50% !important;
+            color: white !important;
+            width: 50px !important;
+            height: 50px !important;
             border: none;
         }
-        
         </style>
         """,
         unsafe_allow_html=True
