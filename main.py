@@ -524,22 +524,47 @@ elif st.session_state.page == 'next_page':
             padding: 0;
         }
         
-        /* chat input의 배경색과 텍스트 색상, 테두리 반경(border-radius)를 커스텀 */
-        div[data-baseweb="input"] > div {
-            border-radius: 15px !important;
-            background-color: #ffffff !important;
+        /* chat input 박스 스타일 커스터마이징 */
+        div[data-baseweb="input"] {
+            border-radius: 15px !important; /* 테두리 둥글게 */
+            background-color: #ffffff !important; /* 배경색 흰색으로 */
         }
-        input[type="text"] {
-            color: black !important;
+        
+        /* chat input의 텍스트 스타일 변경 */
+        div[data-baseweb="input"] input {
+            color: black !important; /* 텍스트 색상 */
+            font-family: 'Pretendard', sans-serif; /* 폰트 설정 */
+            padding: 10px; /* 입력창 안쪽 패딩 */
+            border-radius: 15px !important; /* 테두리 둥글게 */
+            background-color: #ffffff !important; /* 배경색 */
         }
+        
+        /* 입력 버튼 스타일 변경 (이 부분은 필요에 따라 추가 가능) */
+        button {
+            background-color: #ff8015 !important; /* 버튼 배경색 */
+            border-radius: 10px !important;
+            color: white !important;
+        }
+        
         </style>
         """,
         unsafe_allow_html=True
     )
     
-    # **이 부분에 사용자의 입력을 받기 위해 st.chat_input()을 다시 사용**
+    # 페이지 로드 시 사용자 입력 처리
     if user_input := st.chat_input("질문을 입력하세요"):
-        # 챗봇의 응답을 생성하여 대화 기록에 추가
-        chatbot_response = chatbot_response(user_input)
+        # 단순히 입력된 텍스트를 뒤집어서 응답하는 로직
+        chatbot_response = f"{user_input[::-1]}"
+        
+        # 사용자와 챗봇의 대화 기록을 추가
+        if "chat_history" not in st.session_state:
+            st.session_state.chat_history = []
+        
+        st.session_state.chat_history.append({"role": "user", "content": user_input})
         st.session_state.chat_history.append({"role": "assistant", "content": chatbot_response})
-        st.write(f"챗봇: {chatbot_response}")
+        
+        # 대화 기록을 화면에 표시
+        for message in st.session_state.chat_history:
+            role = message["role"]
+            content = message["content"]
+            st.write(f"{role.capitalize()}: {content}")
