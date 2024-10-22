@@ -487,7 +487,7 @@ if st.session_state.page == 'main':
     
     st.markdown(
         f"""
-        <input class="custom-input" type="text" placeholder="여기에 기분이나 상황을 입력하세요" value="{user_firstInput}">
+        <input class="custom-input" type="text" placeholder="여기에 입력하세요" value="{user_firstInput}">
         """,
         unsafe_allow_html=True
     )
@@ -497,4 +497,21 @@ if st.session_state.page == 'main':
         
 # 두 번째 페이지
 elif st.session_state.page == 'next_page':
+    
+    # 기본 설정
+    st.markdown(
+        """
+        <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+        
+        /* Streamlit 전체 페이지의 배경을 변경하기 위한 설정 */
+        .stApp {
+            background-color: #ffefcc;
+            font-family: 'Pretendard', sans-serif; /* 폰트 적용 */
+            color: black; /* 기본 텍스트 색상 */
+            padding: 0; /* 추가적인 패딩 제거 */
+        }
+        """
+    )
+    
     st.write("Hello!")
