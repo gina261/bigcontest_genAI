@@ -557,11 +557,10 @@ elif st.session_state.page == 'next_page':
         /* 입력 영역 고정 */
         .input-container {
             position: fixed;
-            bottom: 0;
-            width: 100%;
+            bottom: 10px;
+            width: 70%;
             background-color: #fff;
-            padding: 10px;
-            box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.1);
+            padding: 0px;
         }
         
         .chat-input {
@@ -594,7 +593,7 @@ elif st.session_state.page == 'next_page':
         """
         <div class="input-container">
             <input class="chat-input" type="text" id="chat_input" placeholder="메시지를 입력하세요">
-            <button class="send-btn" onclick="sendMessage()">전송</button>
+            <button class="send-btn" onclick="sendMessage()">입력</button>
         </div>
 
         <script>
