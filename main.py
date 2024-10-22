@@ -560,25 +560,22 @@ elif st.session_state.page == 'next_page':
             bottom: 30px;
             left: 20%;
             width: 60%;
+            height: 50px;
             background-color: #fff;
             padding: 10px 25px;
             border-radius: 30px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            transition: height 0.3s ease;
         }
         
         .chat-input {
             width: calc(100% - 100px);
+            height: 50px;
             padding: 10px;
             border: none;
             font-size: 16px;
             color: black;
-            max-height: 200px !important; /* 최대 높이 설정 */
-            min-height: 50px !important;  /* 최소 높이 설정 */
-            height: auto !important;
-            box-sizing: border-box;
         }
         
         .send-btn {
@@ -603,29 +600,18 @@ elif st.session_state.page == 'next_page':
     st.markdown(
         """
         <div class="input-container">
-            <textarea class="chat-input" id="chat_input" placeholder="메시지를 입력하세요"></textarea>
+            <input class="chat-input" type="text" id="chat_input" placeholder="메시지를 입력하세요">
             <button class="send-btn" onclick="sendMessage()">입력</button>
         </div>
 
         <script>
-            const textarea = document.getElementById('chat_input');
-        
-            // 초기 높이 설정
-            textarea.style.height = '50px';  // 기본 높이로 설정
-        
-            // 입력 영역 자동 크기 조정
-            textarea.addEventListener('input', function() {
-                textarea.style.height = 'auto';  // 높이 자동 초기화
-                textarea.style.height = Math.min(textarea.scrollHeight, 200) + 'px';  // 최대 200px까지만 늘어남
-            });
-
-            function sendMessage() {
-                var input = document.getElementById('chat_input').value;
-                if (input) {
-                    console.log('User input:', input);
-                    // 여기에 추가적인 처리 로직을 작성
-                }
+        function sendMessage() {
+            var input = document.getElementById('chat_input').value;
+            if (input) {
+                console.log('User input:', input);
+                // 여기에 추가적인 처리 로직을 작성
             }
+        }
         </script>
         """,
         unsafe_allow_html=True
