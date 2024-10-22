@@ -576,8 +576,6 @@ elif st.session_state.page == 'next_page':
             width: calc(100% - 100px);
             min-height: 50px;
             max-height: 200px;
-            resize: none;
-            overflow-y: hidden;
             border: none;
             font-size: 16px;
             color: black;
