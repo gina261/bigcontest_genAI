@@ -577,8 +577,8 @@ elif st.session_state.page == 'next_page':
             color: black;
             resize: none;
             overflow-y: auto;
-            max-height: 200px;
-            min-height: 50px;
+            max-height: 300px;
+            min-height: 50px;  /* 최소 높이 설정 */
             height: auto;
         }
         
@@ -611,9 +611,12 @@ elif st.session_state.page == 'next_page':
         <script>
         const textarea = document.getElementById('chat_input');
         
+        // 초기 높이 설정
+        textarea.style.height = '50px';  // 기본 높이로 설정
+        
         // 입력 영역 자동 크기 조정
         textarea.addEventListener('input', function() {
-            textarea.style.height = 'auto';  // 텍스트가 짧아질 때 높이를 자동으로 줄임
+            textarea.style.height = '50px';  // 텍스트가 짧아질 때 높이를 기본으로 설정
             textarea.style.height = Math.min(textarea.scrollHeight, 200) + 'px';  // 최대 200px까지만 늘어남
         });
 
