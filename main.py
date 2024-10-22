@@ -487,14 +487,14 @@ if st.session_state.page == 'main':
         unsafe_allow_html=True
     )
     
-    user_firstInput = st.text_input("", placeholder="여기에 입력하세요", key="user_input")
+    # user_firstInput = st.text_input("", placeholder="여기에 입력하세요", key="user_input")
     
-    st.markdown(
-        f"""
-        <input class="custom-input" type="text" placeholder="여기에 입력하세요" value="{user_firstInput}">
-        """,
-        unsafe_allow_html=True
-    )
+    # st.markdown(
+    #     f"""
+    #     <input class="custom-input" type="text" placeholder="여기에 입력하세요" value="{user_firstInput}">
+    #     """,
+    #     unsafe_allow_html=True
+    # )
     
     if st.button("입력"):
         go_to_next_page()
