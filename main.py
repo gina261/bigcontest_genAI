@@ -607,12 +607,20 @@ elif st.session_state.page == 'next_page':
             <textarea class="chat-input" id="chat_input" placeholder="메시지를 입력하세요" oninput="adjustHeight(this)"></textarea>
             <button class="send-btn" onclick="sendMessage()">입력</button>
         </div>
+        
+        /* 디버깅~ 나중에 지우기 */
+        <div class="line-count" id="line_count">줄 수: 0</div>
 
         <script>
         function adjustHeight(input) {
             // 높이를 초기화한 후 입력된 텍스트의 높이에 맞게 재조정
             input.style.height = "auto"; // 높이 초기화
             input.style.height = (input.scrollHeight) + "px"; // 내용을 기준으로 높이를 조정
+            
+            // 디버깅~ 줄 수 계산 및 표시
+            var lineHeight = parseInt(window.getComputedStyle(input).lineHeight); // line-height를 가져옴
+            var lines = Math.ceil(input.scrollHeight / lineHeight); // 전체 높이에서 줄 수 계산
+            document.getElementById('line_count').textContent = '줄 수: ' + lines;
         }
 
         function sendMessage() {
