@@ -564,10 +564,12 @@ elif st.session_state.page == 'next_page':
             background-color: #fff;
             padding: 10px 20px;
             border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
         
         .chat-input {
-            bottom: 30px;
             width: 80%;
             height: 50px;
             padding: 10px;
@@ -606,7 +608,7 @@ elif st.session_state.page == 'next_page':
             var input = document.getElementById('chat_input').value;
             if (input) {
                 console.log('User input:', input);
-                // 여기에 추가적인 처리 로직을 작성할 수 있습니다.
+                // 여기에 추가적인 처리 로직을 작성
             }
         }
         </script>
