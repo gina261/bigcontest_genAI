@@ -524,6 +524,17 @@ elif st.session_state.page == 'next_page':
             padding: 0;
         }
         
+        /* 채팅 컨테이너 스타일 */
+        .chat-container {
+            height: calc(100vh - 150px); /* 상단과 입력창을 제외한 영역 */
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column-reverse; /* 대화가 아래에서 위로 쌓이도록 */
+            padding: 20px;
+            margin-bottom: 60px; /* 입력창 영역을 위해 여백 추가 */
+        }
+        
+        /* 채팅 박스 스타일 */
         .chat-box {
             background-color: white;
             padding: 15px;
@@ -531,12 +542,45 @@ elif st.session_state.page == 'next_page':
             margin-bottom: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             font-family: 'Pretendard', sans-serif;
+            max-width: 70%;
+            word-wrap: break-word;
         }
         .user-msg {
             color: black;
+            align-self: flex-start;
         }
         .bot-msg {
             color: #FF7F50;
+            align-self: flex-end;
+        }
+        
+        /* 입력 영역 고정 */
+        .input-container {
+            position: fixed;
+            bottom: 30px;
+            left: 10%;
+            width: 70%;
+            background-color: #fff;
+            padding: 10px 20px;
+            border-radius: 30px;
+        }
+        
+        .chat-input {
+            width: 80%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+            color: black;
+        }
+        
+        .send-btn {
+            padding: 10px 20px;
+            background-color: #ff8015;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
         }
         </style>
         """,
@@ -547,22 +591,22 @@ elif st.session_state.page == 'next_page':
     ####### 챗봇 구현 #######
     
     # 사용자 입력 받기
-    user_input = st.text_input("메시지를 입력하세요:", key="chat_input")
+    st.markdown(
+        """
+        <div class="input-container">
+            <input class="chat-input" type="text" id="chat_input" placeholder="메시지를 입력하세요">
+            <button class="send-btn" onclick="sendMessage()">입력</button>
+        </div>
 
-    # 사용자가 입력을 했을 때
-    if st.button("전송"):
-        if user_input:
-            # 사용자 메시지를 기록에 추가
-            st.session_state.chat_history.append(f"사용자: {user_input}")
-            
-            # 챗봇의 응답을 기록에 추가
-            bot_response = chatbot_response(user_input)
-            st.session_state.chat_history.append(bot_response)
-
-    # 대화 기록 표시
-    st.markdown("### 대화 기록")
-    for chat in st.session_state.chat_history:
-        if chat.startswith("사용자:"):
-            st.markdown(f'<div class="chat-box user-msg">{chat}</div>', unsafe_allow_html=True)
-        else:
-            st.markdown(f'<div class="chat-box bot-msg">{chat}</div>', unsafe_allow_html=True)
+        <script>
+        function sendMessage() {
+            var input = document.getElementById('chat_input').value;
+            if (input) {
+                console.log('User input:', input);
+                // 여기에 추가적인 처리 로직을 작성할 수 있습니다.
+            }
+        }
+        </script>
+        """,
+        unsafe_allow_html=True
+    )
