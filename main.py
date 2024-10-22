@@ -572,7 +572,6 @@ elif st.session_state.page == 'next_page':
             transition: height 0.3s ease;
         }
         
-        /* 입력 필드 */
         .chat-input {
             width: calc(100% - 100px);
             min-height: 50px;
@@ -584,7 +583,6 @@ elif st.session_state.page == 'next_page':
             box-sizing: border-box;
         }
         
-        /* 보내기 버튼 */
         .send-btn {
             width: 80px;
             height: 30px;
@@ -604,24 +602,27 @@ elif st.session_state.page == 'next_page':
     ####### 챗봇 구현 #######
     
     # 사용자 입력 받기
-    with st.form(key='chat_input_form', clear_on_submit=True):
-        user_input = st.text_area(label='', placeholder="메시지를 입력하세요", key="chat_input")
-        submitted = st.form_submit_button("입력")
+    st.markdown(
+        """
+        <div class="input-container">
+            <textarea class="chat-input" id="chat_input" placeholder="메시지를 입력하세요" oninput="adjustHeight(this)"></textarea>
+            <button class="send-btn" onclick="sendMessage()">입력</button>
+        </div>
 
-    # 사용자 입력 처리
-    if submitted and user_input:
-        # 입력된 텍스트를 뒤집어서 응답하는 로직
-        chatbot_response_text = chatbot_response(user_input)
-        
-        # 사용자와 챗봇의 대화 기록을 추가
-        st.session_state.chat_history.append({"role": "user", "content": user_input})
-        st.session_state.chat_history.append({"role": "assistant", "content": chatbot_response_text})
+        <script>
+        function adjustHeight(input) {
+            input.style.height = "auto"; // 먼저 높이를 자동으로 설정하여 기존 값을 초기화
+            input.style.height = (input.scrollHeight) + "px"; // 내용을 기준으로 높이를 조정
+        }
 
-    # 대화 기록을 화면에 표시
-    for message in st.session_state.chat_history:
-        role = message["role"]
-        content = message["content"]
-        if role == "user":
-            st.markdown(f"**You**: {content}")
-        else:
-            st.markdown(f"**Chatbot**: {content}")
+        function sendMessage() {
+            var input = document.getElementById('chat_input').value;
+            if (input) {
+                console.log('User input:', input);
+                // 여기에 추가적인 처리 로직을 작성
+            }
+        }
+        </script>
+        """,
+        unsafe_allow_html=True
+    )
