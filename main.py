@@ -591,22 +591,6 @@ elif st.session_state.page == 'next_page':
             cursor: pointer;
             margin-left: 7px;
         }
-        
-        /* 디버깅용 */
-        .line-count {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 24px;
-            color: black;
-            background-color: #ffefcc;
-            padding:
-            border-radius:
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        </style>
         """,
         unsafe_allow_html=True
     )
@@ -621,8 +605,6 @@ elif st.session_state.page == 'next_page':
             <textarea class="chat-input" id="chat_input" placeholder="메시지를 입력하세요" oninput="adjustHeight(this)"></textarea>
             <button class="send-btn" onclick="sendMessage()">입력</button>
         </div>
-        
-        <div class="line-count" id="line_count">줄 수: 0</div>
 
         <script>
         function adjustHeight(input) {
@@ -630,11 +612,11 @@ elif st.session_state.page == 'next_page':
             input.style.height = "auto"; // 높이 초기화
             input.style.height = input.scrollHeight + "px"; // 내용을 기준으로 높이를 조정
             
-            // 디버깅~ 줄 수 계산 및 표시
+            // 디버깅~ 줄 수 계산 및 표시 -터미널에
             var lineHeight = window.getComputedStyle(input).lineHeight.replace('px', ''); // line-height에서 'px' 제거
             lineHeight = parseFloat(lineHeight); // float형으로 변환
             var lines = Math.ceil(input.scrollHeight / lineHeight); // 전체 높이에서 줄 수 계산
-            document.getElementById('line_count').textContent = '으아아아아아아악'/*'줄 수: ' + lines;*/
+            console.log('현재 줄 수:', lines);
         }
 
         function sendMessage() {
