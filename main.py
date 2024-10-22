@@ -580,7 +580,7 @@ elif st.session_state.page == 'next_page':
         
         .send-btn {
             width: 80px;
-            height: 40px;
+            height: 35px;
             background-color: #ff8015;
             color: white;
             border: none;
