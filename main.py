@@ -579,7 +579,7 @@ elif st.session_state.page == 'next_page':
             padding: 10px;
             box-sizing: border-box;
             resize: none;
-            line-height: 1.5;
+            line-height: 1.5; /* 줄간격 */
         }
         
         .send-btn {
@@ -610,8 +610,9 @@ elif st.session_state.page == 'next_page':
 
         <script>
         function adjustHeight(input) {
+            // 높이를 초기화한 후 입력된 텍스트의 높이에 맞게 재조정
             input.style.height = "auto"; // 높이 초기화
-            input.style.height = input.scrollHeight + "px"; // 내용을 기준으로 높이를 조정
+            input.style.height = (input.scrollHeight) + "px"; // 내용을 기준으로 높이를 조정
         }
 
         function sendMessage() {
@@ -621,6 +622,12 @@ elif st.session_state.page == 'next_page':
                 // 여기에 추가적인 처리 로직을 작성
             }
         }
+        
+        // 페이지 로드 시 textarea 높이 초기화
+        document.addEventListener("DOMContentLoaded", function() {
+            var input = document.getElementById('chat_input');
+            adjustHeight(input);
+        });
         </script>
         """,
         unsafe_allow_html=True
