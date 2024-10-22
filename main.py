@@ -7,6 +7,10 @@ import requests
 # 세션 상태에서 페이지 상태를 관리
 if 'page' not in st.session_state:
     st.session_state.page = 'main'
+    
+# 챗봇 대화 기록 상태 관리
+if 'chat_history' not in st.session_state:
+    st.session_state.chat_history = []
 
 # 페이지 이동 함수
 def go_to_next_page():
@@ -495,8 +499,16 @@ if st.session_state.page == 'main':
     if st.button("입력"):
         go_to_next_page()
         
-# 두 번째 페이지
+####### 두 번째 페이지 #######
 elif st.session_state.page == 'next_page':
+    
+    GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
+    
+    def chatbot_response(user_input):
+        # 챗봇 로직 구현
+        if user_input:
+            return f"챗봇: {user_input[::-1]}"
+        return "챗봇: input이 필요합니다."
     
     # 기본 설정
     st.markdown(
@@ -511,8 +523,50 @@ elif st.session_state.page == 'next_page':
             color: black; /* 기본 텍스트 색상 */
             padding: 0; /* 추가적인 패딩 제거 */
         }
+        
+        .chat-box {
+            background-color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-family: 'Pretendard', sans-serif;
+        }
+        .user-msg {
+            color: black;
+        }
+        .bot-msg {
+            color: #FF7F50;
+        }
+        </style>
         """,
         unsafe_allow_html=True
     )
     
     st.write("Hello!")
+    
+    ####### 챗봇 구현 #######
+    
+    # 사용자 입력 받기
+    user_input = st.text_input("메시지를 입력하세요:", key="user_input")
+
+    # 사용자가 입력을 했을 때
+    if st.button("전송"):
+        if user_input:
+            # 사용자 메시지를 기록에 추가
+            st.session_state.chat_history.append(f"사용자: {user_input}")
+            
+            # 챗봇의 응답을 기록에 추가
+            bot_response = chatbot_response(user_input)
+            st.session_state.chat_history.append(bot_response)
+            
+            # 입력 필드를 초기화
+            st.session_state.user_input = ""
+
+    # 대화 기록 표시
+    st.markdown("### 대화 기록")
+    for chat in st.session_state.chat_history:
+        if chat.startswith("사용자:"):
+            st.markdown(f'<div class="chat-box user-msg">{chat}</div>', unsafe_allow_html=True)
+        else:
+            st.markdown(f'<div class="chat-box bot-msg">{chat}</div>', unsafe_allow_html=True)
