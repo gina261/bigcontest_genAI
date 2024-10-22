@@ -576,7 +576,6 @@ elif st.session_state.page == 'next_page':
             border: none;
             font-size: 16px;
             color: black;
-            border-radius: 30px;
         }
         
         .send-btn {
