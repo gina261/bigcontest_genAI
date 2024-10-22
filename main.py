@@ -572,6 +572,7 @@ elif st.session_state.page == 'next_page':
             transition: height 0.3s ease;
         }
         
+        /* 입력 필드 */
         .chat-input {
             width: calc(100% - 100px);
             min-height: 50px;
@@ -583,6 +584,7 @@ elif st.session_state.page == 'next_page':
             box-sizing: border-box;
         }
         
+        /* 보내기 버튼 */
         .send-btn {
             width: 80px;
             height: 30px;
@@ -610,19 +612,39 @@ elif st.session_state.page == 'next_page':
         </div>
 
         <script>
-        function adjustHeight(input) {
-            input.style.height = "auto"; // 먼저 높이를 자동으로 설정하여 기존 값을 초기화
-            input.style.height = (input.scrollHeight) + "px"; // 내용을 기준으로 높이를 조정
-        }
-
         function sendMessage() {
             var input = document.getElementById('chat_input').value;
             if (input) {
-                console.log('User input:', input);
-                // 여기에 추가적인 처리 로직을 작성
+                // Streamlit에서 사용자 입력을 받아오기 위한 처리
+                const streamlit_input = document.createElement('textarea');
+                streamlit_input.name = 'user_input';
+                streamlit_input.value = input;
+                streamlit_input.style.display = 'none';
+                document.body.appendChild(streamlit_input);
+                streamlit_input.form.submit();
             }
         }
         </script>
         """,
         unsafe_allow_html=True
     )
+    
+    # 페이지 로드 시 사용자 입력 처리
+    user_input = st.experimental_get_query_params().get('user_input')
+
+    if user_input:
+        # 단순히 입력된 텍스트를 뒤집어서 응답하는 로직
+        chatbot_response_text = chatbot_response(user_input[0])
+        
+        # 사용자와 챗봇의 대화 기록을 추가
+        st.session_state.chat_history.append({"role": "user", "content": user_input[0]})
+        st.session_state.chat_history.append({"role": "assistant", "content": chatbot_response_text})
+
+    # 대화 기록을 화면에 표시
+    for message in st.session_state.chat_history:
+        role = message["role"]
+        content = message["content"]
+        if role == "user":
+            st.markdown(f"**You**: {content}")
+        else:
+            st.markdown(f"**Chatbot**: {content}")
