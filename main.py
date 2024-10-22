@@ -560,7 +560,6 @@ elif st.session_state.page == 'next_page':
             bottom: 30px;
             left: 20%;
             width: 60%;
-            height: 50px;
             background-color: #fff;
             padding: 10px 25px;
             border-radius: 30px;
@@ -571,11 +570,17 @@ elif st.session_state.page == 'next_page':
         
         .chat-input {
             width: calc(100% - 100px);
-            height: 50px;
             padding: 10px;
             border: none;
             font-size: 16px;
             color: black;
+            resize: none;
+            overflow-y: auto;
+            max-height: 200px;
+        }
+        
+        .chat-input:focus {
+            height: auto;
         }
         
         .send-btn {
@@ -600,11 +605,19 @@ elif st.session_state.page == 'next_page':
     st.markdown(
         """
         <div class="input-container">
-            <input class="chat-input" type="text" id="chat_input" placeholder="메시지를 입력하세요">
+            <textarea class="chat-input" id="chat_input" placeholder="메시지를 입력하세요"></textarea>
             <button class="send-btn" onclick="sendMessage()">입력</button>
         </div>
 
         <script>
+        const textarea = document.getElementById('chat_input');
+        
+        // 입력 영역 자동 크기 조정
+        textarea.addEventListener('input', function() {
+            textarea.style.height = 'auto';
+            textarea.style.height = Math.min(textarea.scrollHeight, 200) + 'px';
+        });
+
         function sendMessage() {
             var input = document.getElementById('chat_input').value;
             if (input) {

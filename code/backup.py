@@ -508,7 +508,7 @@ elif st.session_state.page == 'next_page':
         # 챗봇 로직 구현
         if user_input:
             return f"챗봇: {user_input[::-1]}"
-        return "챗봇: input이 필요합니다."
+        return ""
     
     # 기본 설정
     st.markdown(
@@ -558,11 +558,11 @@ elif st.session_state.page == 'next_page':
         .input-container {
             position: fixed;
             bottom: 30px;
-            left: 15%;
-            width: 70%;
+            left: 20%;
+            width: 60%;
             height: 50px;
             background-color: #fff;
-            padding: 10px 20px;
+            padding: 10px 25px;
             border-radius: 30px;
             display: flex;
             align-items: center;
@@ -570,22 +570,23 @@ elif st.session_state.page == 'next_page':
         }
         
         .chat-input {
-            width: 80%;
+            width: calc(100% - 100px);
             height: 50px;
             padding: 10px;
             border: none;
             font-size: 16px;
             color: black;
-            border-radius: 30px;
         }
         
         .send-btn {
-            padding: 10px 20px;
+            width: 80px;
+            height: 30px;
             background-color: #ff8015;
             color: white;
             border: none;
             border-radius: 30px;
             cursor: pointer;
+            margin-left: 7px;
         }
         </style>
         """,
