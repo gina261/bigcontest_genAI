@@ -505,10 +505,7 @@ elif st.session_state.page == 'next_page':
     GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
     
     def chatbot_response(user_input):
-        # 챗봇 로직 구현
-        if user_input:
-            return f"챗봇: {user_input[::-1]}"
-        return ""
+        return f"{user_input[::-1]}"
     
     # 기본 설정
     st.markdown(
@@ -521,7 +518,6 @@ elif st.session_state.page == 'next_page':
             background-color: #ffefcc;
             font-family: 'Pretendard', sans-serif;
             color: black; /* 기본 텍스트 색상 */
-            padding: 0;
         }
         
         /* 채팅 컨테이너 스타일 */
@@ -601,6 +597,18 @@ elif st.session_state.page == 'next_page':
     
     ####### 챗봇 구현 #######
     
+    # 대화 기록을 화면에 표시하는 함수
+    def display_chat():
+        st.markdown('<div class="chat-container">', unsafe_allow_html=True)
+        for message in st.session_state.chat_history[::-1]:  # 역순으로 표시
+            role = message["role"]
+            content = message["content"]
+            if role == "user":
+                st.markdown(f'<div class="chat-box user-msg"><strong>You:</strong> {content}</div>', unsafe_allow_html=True)
+            else:
+                st.markdown(f'<div class="chat-box bot-msg"><strong>Chatbot:</strong> {content}</div>', unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
+
     # 사용자 입력 받기
     with st.form(key='chat_form', clear_on_submit=True):
         user_input = st.text_area(label='', placeholder="메시지를 입력하세요", key="chat_input", label_visibility="collapsed")
@@ -615,13 +623,5 @@ elif st.session_state.page == 'next_page':
         st.session_state.chat_history.append({"role": "user", "content": user_input})
         st.session_state.chat_history.append({"role": "assistant", "content": chatbot_response_text})
 
-    # 대화 기록을 화면에 표시
-    st.markdown('<div class="chat-container">', unsafe_allow_html=True)
-    for message in st.session_state.chat_history:
-        role = message["role"]
-        content = message["content"]
-        if role == "user":
-            st.markdown(f'<div class="chat-box user-msg"><strong>You:</strong> {content}</div>', unsafe_allow_html=True)
-        else:
-            st.markdown(f'<div class="chat-box bot-msg"><strong>Chatbot:</strong> {content}</div>', unsafe_allow_html=True)
-    st.markdown('</div>', unsafe_allow_html=True)
+    # 대화 기록을 표시하는 함수 호출
+    display_chat()
