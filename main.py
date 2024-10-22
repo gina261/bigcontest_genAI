@@ -527,7 +527,7 @@ elif st.session_state.page == 'next_page':
         /* chat input의 배경색과 텍스트 색상, 테두리 반경(border-radius)를 커스텀 */
         div[data-baseweb="input"] > div {
             border-radius: 15px !important;
-            background-color: #f0f0f5 !important;
+            background-color: #ffffff !important;
         }
         input[type="text"] {
             color: black !important;
