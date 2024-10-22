@@ -595,10 +595,16 @@ elif st.session_state.page == 'next_page':
         /* 디버깅용 */
         .line-count {
             position: fixed;
-            bottom: 80px;
-            left: 20%;
-            font-size: 16px;
+            top: 50%; /* 화면의 수직 중앙 */
+            left: 50%; /* 화면의 수평 중앙 */
+            transform: translate(-50%, -50%); /* 수평, 수직으로 완벽하게 중앙 정렬 */
+            font-size: 24px; /* 글씨 크기를 키워서 더 잘 보이게 */
             color: black;
+            background-color: #ffefcc; /* 배경색 추가 */
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center; /* 텍스트 중앙 정렬 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 추가로 더 잘 보이게 */
         }
         </style>
         """,
@@ -615,6 +621,8 @@ elif st.session_state.page == 'next_page':
             <textarea class="chat-input" id="chat_input" placeholder="메시지를 입력하세요" oninput="adjustHeight(this)"></textarea>
             <button class="send-btn" onclick="sendMessage()">입력</button>
         </div>
+        
+        <div class="line-count" id="line_count">줄 수: 0</div>
 
         <script>
         function adjustHeight(input) {
@@ -624,8 +632,8 @@ elif st.session_state.page == 'next_page':
             
             // 디버깅~ 줄 수 계산 및 표시
             var lineHeight = parseInt(window.getComputedStyle(input).lineHeight, 10); // line-height를 정수로 가져옴
-            var lines = Math.ceil(input.scrollHeight / lineHeight); // 전체 높이에서 줄 수 계산
-            document.getElementById('line_count').textContent = '줄 수: ' + lines;
+        var lines = Math.ceil(input.scrollHeight / lineHeight); // 전체 높이에서 줄 수 계산
+        document.getElementById('line_count').textContent = '줄 수: ' + lines;
         }
 
         function sendMessage() {
