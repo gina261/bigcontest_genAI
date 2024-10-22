@@ -580,6 +580,7 @@ elif st.session_state.page == 'next_page':
             max-height: 300px;
             min-height: 50px;  /* 최소 높이 설정 */
             height: auto;
+            box-sizing: border-box;
         }
         
         .send-btn {
@@ -610,6 +611,9 @@ elif st.session_state.page == 'next_page':
 
         <script>
         const textarea = document.getElementById('chat_input');
+        
+        // 초기 높이 설정
+        textarea.style.height = '50px';  // 기본 높이로 설정
         
         // 입력 영역 자동 크기 조정
         textarea.addEventListener('input', function() {
