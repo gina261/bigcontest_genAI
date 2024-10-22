@@ -562,7 +562,7 @@ elif st.session_state.page == 'next_page':
             width: 60%;
             height: 50px;
             background-color: #fff;
-            padding: 10px 20px;
+            padding: 10px 25px;
             border-radius: 30px;
             display: flex;
             align-items: center;
