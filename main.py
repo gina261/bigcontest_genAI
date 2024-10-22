@@ -560,8 +560,6 @@ elif st.session_state.page == 'next_page':
             bottom: 30px;
             left: 20%;
             width: 60%;
-            min-height: 60px;
-            max-height: 220px;
             background-color: #fff;
             padding: 10px 25px;
             border-radius: 30px;
@@ -569,7 +567,6 @@ elif st.session_state.page == 'next_page':
             align-items: flex-end;
             justify-content: space-between;
             box-sizing: border-box;
-            transition: height 0.3s ease;
         }
         
         .chat-input {
@@ -581,7 +578,6 @@ elif st.session_state.page == 'next_page':
             color: black;
             padding: 10px;
             box-sizing: border-box;
-            overflow-y: hidden;
             resize: none;
         }
         
@@ -613,8 +609,8 @@ elif st.session_state.page == 'next_page':
 
         <script>
         function adjustHeight(input) {
-            input.style.height = "auto"; // 먼저 높이를 자동으로 설정하여 기존 값을 초기화
-            input.style.height = (input.scrollHeight) + "px"; // 내용을 기준으로 높이를 조정
+            input.style.height = "auto"; // 높이 초기화
+            input.style.height = input.scrollHeight + "px"; // 내용을 기준으로 높이를 조정
         }
 
         function sendMessage() {
