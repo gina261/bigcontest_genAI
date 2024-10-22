@@ -576,10 +576,10 @@ elif st.session_state.page == 'next_page':
             border: none;
             font-size: 16px;
             color: black;
-            padding: 0;
+            padding: 10px;
             box-sizing: border-box;
             resize: none;
-            line-height: 1.0;
+            line-height: 1.5;
         }
         
         .send-btn {
