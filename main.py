@@ -532,18 +532,21 @@ elif st.session_state.page == 'next_page':
         
         /* chat input의 텍스트 스타일 변경 */
         div[data-baseweb="input"] input {
-            color: black !important; /* 텍스트 색상 */
-            font-family: 'Pretendard', sans-serif; /* 폰트 설정 */
-            padding: 10px; /* 입력창 안쪽 패딩 */
-            border-radius: 15px !important; /* 테두리 둥글게 */
-            background-color: #ffffff !important; /* 배경색 */
+            color: black !important;
+            font-family: 'Pretendard', sans-serif;
+            padding: 10px;
+            border-radius: 15px !important;
+            background-color: #ffffff !important;
         }
         
-        /* 입력 버튼 스타일 변경 (이 부분은 필요에 따라 추가 가능) */
-        button {
+        /* chat_input의 보내기 버튼만 스타일 변경 */
+        div.stButton button {
             background-color: #ff8015 !important; /* 버튼 배경색 */
-            border-radius: 20px !important;
-            color: white !important;
+            border-radius: 50% !important; /* 버튼을 원형으로 */
+            color: white !important; /* 텍스트 색상 */
+            width: 50px !important; /* 버튼 크기 조정 */
+            height: 50px !important; /* 버튼 크기 조정 */
+            border: none;
         }
         
         </style>
