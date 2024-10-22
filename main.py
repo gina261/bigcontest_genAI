@@ -510,6 +510,23 @@ elif st.session_state.page == 'next_page':
             return f"챗봇: {user_input[::-1]}"
         return ""
     
+    # 기본 배경 설정
+    st.markdown(
+        """
+        <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+        
+        /* Streamlit 전체 페이지의 배경을 변경하기 위한 설정 */
+        .stApp {
+            background-color: #ffefcc;
+            font-family: 'Pretendard', sans-serif;
+            color: black; /* 기본 텍스트 색상 */
+            padding: 0;
+        }
+        """,
+        unsafe_allow_html=True
+    )
+    
     # **이 부분에 사용자의 입력을 받기 위해 st.chat_input()을 다시 사용**
     if user_input := st.chat_input("질문을 입력하세요"):
         # 챗봇의 응답을 생성하여 대화 기록에 추가
