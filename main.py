@@ -561,23 +561,23 @@ elif st.session_state.page == 'next_page':
             width: 70%;
             background-color: #fff;
             padding: 0px;
+            border-radius: 10px;
         }
         
         .chat-input {
             width: 80%;
             padding: 10px;
             border-radius: 5px;
-            border: 2px solid #ddd;
             font-size: 16px;
             color: black;
         }
         
         .send-btn {
             padding: 10px 20px;
-            background-color: #FF7F50;
+            background-color: #ff8015;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 15px;
             cursor: pointer;
         }
         </style>
