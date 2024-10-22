@@ -507,10 +507,10 @@ elif st.session_state.page == 'next_page':
     def chatbot_response(user_input):
         # 챗봇 로직 구현
         if user_input:
-            return f"챗봇: {user_input[::-1]}"
+            return f"{user_input[::-1]}"
         return ""
     
-    # 기본 설정
+    # 기본 배경 설정
     st.markdown(
         """
         <style>
@@ -521,108 +521,58 @@ elif st.session_state.page == 'next_page':
             background-color: #ffefcc;
             font-family: 'Pretendard', sans-serif;
             color: black; /* 기본 텍스트 색상 */
-            padding: 0;
         }
         
-        /* 채팅 컨테이너 스타일 */
-        .chat-container {
-            height: calc(100vh - 150px); /* 상단과 입력창을 제외한 영역 */
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column-reverse; /* 대화가 아래에서 위로 쌓이도록 */
-            padding: 20px;
-            margin-bottom: 60px; /* 입력창 영역을 위해 여백 추가 */
+        /* chat_input 외부 전체 컨테이너 배경색 (주황색) */
+        div[data-testid="stTextInput"] {
+            background-color: #ff8015 !important; /* 외부 배경색 주황색 */
+            border-radius: 15px !important;
+            padding: 10px !important;
         }
         
-        /* 채팅 박스 스타일 */
-        .chat-box {
-            background-color: white;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        /* chat input 박스 내부 커스터마이징 */
+        div[data-baseweb="input"] {
+            border-radius: 15px !important; /* 테두리 둥글게 */
+            background-color: #ffffff !important; /* 배경색 흰색으로 */
+        }
+        
+        /* chat input의 텍스트 스타일 변경 */
+        div[data-baseweb="input"] input {
+            color: black !important;
             font-family: 'Pretendard', sans-serif;
-            max-width: 70%;
-            word-wrap: break-word;
-        }
-        .user-msg {
-            color: black;
-            align-self: flex-start;
-        }
-        .bot-msg {
-            color: #FF7F50;
-            align-self: flex-end;
-        }
-        
-        /* 입력 영역 고정 */
-        .input-container {
-            position: fixed;
-            bottom: 30px;
-            left: 20%;
-            width: 60%;
-            min-height: 60px;
-            max-height: 220px;
-            background-color: #fff;
-            padding: 10px 25px;
-            border-radius: 30px;
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-            box-sizing: border-box;
-            transition: height 0.3s ease;
-        }
-        
-        .chat-input {
-            width: calc(100% - 100px);
-            min-height: 50px;
-            max-height: 200px;
-            border: none;
-            font-size: 16px;
-            color: black;
             padding: 10px;
-            box-sizing: border-box;
+            background-color: #ffffff !important;
+            border: none !important;
         }
         
-        .send-btn {
-            width: 80px;
-            height: 30px;
-            background-color: #ff8015;
-            color: white;
+        /* chat_input의 보내기 버튼만 스타일 변경 */
+        div[class*="stTextInputContainer"] div[class*="stButton"] button {
+            background-color: #ff8015 !important;
+            border-radius: 50% !important;
+            color: white !important;
+            width: 50px !important;
+            height: 50px !important;
             border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            margin-left: 7px;
         }
         </style>
         """,
         unsafe_allow_html=True
     )
-
     
-    ####### 챗봇 구현 #######
-    
-    # 사용자 입력 받기
-    st.markdown(
-        """
-        <div class="input-container">
-            <textarea class="chat-input" id="chat_input" placeholder="메시지를 입력하세요" oninput="adjustHeight(this)"></textarea>
-            <button class="send-btn" onclick="sendMessage()">입력</button>
-        </div>
-
-        <script>
-        function adjustHeight(input) {
-            input.style.height = "auto"; // 먼저 높이를 자동으로 설정하여 기존 값을 초기화
-            input.style.height = (input.scrollHeight) + "px"; // 내용을 기준으로 높이를 조정
-        }
-
-        function sendMessage() {
-            var input = document.getElementById('chat_input').value;
-            if (input) {
-                console.log('User input:', input);
-                // 여기에 추가적인 처리 로직을 작성
-            }
-        }
-        </script>
-        """,
-        unsafe_allow_html=True
-    )
+    # 페이지 로드 시 사용자 입력 처리
+    if user_input := st.chat_input("질문을 입력하세요"):
+        # 단순히 입력된 텍스트를 뒤집어서 응답하는 로직
+        chatbot_response = f"{user_input[::-1]}"
+        
+        # 사용자와 챗봇의 대화 기록을 추가
+        if "chat_history" not in st.session_state:
+            st.session_state.chat_history = []
+        
+        st.session_state.chat_history.append({"role": "user", "content": user_input})
+        st.session_state.chat_history.append({"role": "assistant", "content": chatbot_response})
+        
+        # 대화 기록을 화면에 표시
+        for message in st.session_state.chat_history:
+            role = message["role"]
+            content = message["content"]
+            st.write(f"{role.capitalize()}: {content}")
