@@ -507,7 +507,7 @@ elif st.session_state.page == 'next_page':
     def chatbot_response(user_input):
         # 챗봇 로직 구현
         if user_input:
-            return f"챗봇: {user_input[::-1]}"
+            return f"{user_input[::-1]}"
         return ""
     
     # 기본 배경 설정
@@ -523,6 +523,16 @@ elif st.session_state.page == 'next_page':
             color: black; /* 기본 텍스트 색상 */
             padding: 0;
         }
+        
+        /* chat input의 배경색과 텍스트 색상, 테두리 반경(border-radius)를 커스텀 */
+        div[data-baseweb="input"] > div {
+            border-radius: 15px !important;
+            background-color: #f0f0f5 !important;
+        }
+        input[type="text"] {
+            color: black !important;
+        }
+        </style>
         """,
         unsafe_allow_html=True
     )
