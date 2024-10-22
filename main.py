@@ -602,10 +602,9 @@ elif st.session_state.page == 'next_page':
     ####### 챗봇 구현 #######
     
     # 사용자 입력 받기
-    st.markdown('<div class="input-container">', unsafe_allow_html=True)
-    user_input = st.text_area(label='', placeholder="메시지를 입력하세요", key="chat_input", label_visibility="collapsed")
-    submit_button = st.button("입력", key="send_button")
-    st.markdown('</div>', unsafe_allow_html=True)
+    with st.form(key='chat_form', clear_on_submit=True):
+        user_input = st.text_area(label='', placeholder="메시지를 입력하세요", key="chat_input", label_visibility="collapsed")
+        submit_button = st.form_submit_button("입력")
 
     # 사용자 입력 처리
     if submit_button and user_input:
