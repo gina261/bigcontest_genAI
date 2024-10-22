@@ -604,40 +604,17 @@ elif st.session_state.page == 'next_page':
     ####### 챗봇 구현 #######
     
     # 사용자 입력 받기
-    st.markdown(
-        """
-        <div class="input-container">
-            <textarea class="chat-input" id="chat_input" placeholder="메시지를 입력하세요" oninput="adjustHeight(this)"></textarea>
-            <button class="send-btn" onclick="sendMessage()">입력</button>
-        </div>
+    with st.form(key='chat_input_form', clear_on_submit=True):
+        user_input = st.text_area(label='', placeholder="메시지를 입력하세요", key="chat_input")
+        submitted = st.form_submit_button("입력")
 
-        <script>
-        function sendMessage() {
-            var input = document.getElementById('chat_input').value;
-            if (input) {
-                // Streamlit에서 사용자 입력을 받아오기 위한 처리
-                const streamlit_input = document.createElement('textarea');
-                streamlit_input.name = 'user_input';
-                streamlit_input.value = input;
-                streamlit_input.style.display = 'none';
-                document.body.appendChild(streamlit_input);
-                streamlit_input.form.submit();
-            }
-        }
-        </script>
-        """,
-        unsafe_allow_html=True
-    )
-    
-    # 페이지 로드 시 사용자 입력 처리
-    user_input = st.experimental_get_query_params().get('user_input')
-
-    if user_input:
-        # 단순히 입력된 텍스트를 뒤집어서 응답하는 로직
-        chatbot_response_text = chatbot_response(user_input[0])
+    # 사용자 입력 처리
+    if submitted and user_input:
+        # 입력된 텍스트를 뒤집어서 응답하는 로직
+        chatbot_response_text = chatbot_response(user_input)
         
         # 사용자와 챗봇의 대화 기록을 추가
-        st.session_state.chat_history.append({"role": "user", "content": user_input[0]})
+        st.session_state.chat_history.append({"role": "user", "content": user_input})
         st.session_state.chat_history.append({"role": "assistant", "content": chatbot_response_text})
 
     # 대화 기록을 화면에 표시
