@@ -602,17 +602,19 @@ elif st.session_state.page == 'next_page':
     ####### 챗봇 구현 #######
     
     # 사용자 입력 받기
-    user_input = st.text_area(label='', placeholder="메시지를 입력하세요", key="chat_input")
+    st.markdown('<div class="input-container">', unsafe_allow_html=True)
+    user_input = st.text_area(label='', placeholder="메시지를 입력하세요", key="chat_input", label_visibility="collapsed")
+    submit_button = st.button("입력", key="send_button")
+    st.markdown('</div>', unsafe_allow_html=True)
 
     # 사용자 입력 처리
-    if st.button("입력"):
-        if user_input:
-            # 입력된 텍스트를 뒤집어서 응답하는 로직
-            chatbot_response_text = chatbot_response(user_input)
-            
-            # 사용자와 챗봇의 대화 기록을 추가
-            st.session_state.chat_history.append({"role": "user", "content": user_input})
-            st.session_state.chat_history.append({"role": "assistant", "content": chatbot_response_text})
+    if submit_button and user_input:
+        # 입력된 텍스트를 뒤집어서 응답하는 로직
+        chatbot_response_text = chatbot_response(user_input)
+        
+        # 사용자와 챗봇의 대화 기록을 추가
+        st.session_state.chat_history.append({"role": "user", "content": user_input})
+        st.session_state.chat_history.append({"role": "assistant", "content": chatbot_response_text})
 
     # 대화 기록을 화면에 표시
     st.markdown('<div class="chat-container">', unsafe_allow_html=True)
@@ -624,33 +626,3 @@ elif st.session_state.page == 'next_page':
         else:
             st.markdown(f'<div class="chat-box bot-msg"><strong>Chatbot:</strong> {content}</div>', unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
-
-    # 입력 영역 고정
-    st.markdown(
-        """
-        <div class="input-container">
-            <textarea class="chat-input" id="chat_input" placeholder="메시지를 입력하세요"></textarea>
-            <button class="send-btn" onclick="sendMessage()">입력</button>
-        </div>
-
-        <script>
-        function adjustHeight(input) {
-            input.style.height = "auto"; // 먼저 높이를 자동으로 설정하여 기존 값을 초기화
-            input.style.height = (input.scrollHeight) + "px"; // 내용을 기준으로 높이를 조정
-        }
-
-        function sendMessage() {
-            var input = document.getElementById('chat_input').value;
-            if (input) {
-                const streamlit_input = document.createElement('textarea');
-                streamlit_input.name = 'user_input';
-                streamlit_input.value = input;
-                streamlit_input.style.display = 'none';
-                document.body.appendChild(streamlit_input);
-                streamlit_input.form.submit();
-            }
-        }
-        </script>
-        """,
-        unsafe_allow_html=True
-    )
