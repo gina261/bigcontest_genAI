@@ -609,6 +609,9 @@ elif st.session_state.page == 'next_page':
                 st.markdown(f'<div class="chat-box bot-msg"><strong>Chatbot:</strong> {content}</div>', unsafe_allow_html=True)
         st.markdown('</div>', unsafe_allow_html=True)
 
+    # 대화 기록을 먼저 표시 (이전 대화 기록을 먼저 렌더링)
+    display_chat()
+
     # 사용자 입력 받기
     with st.form(key='chat_form', clear_on_submit=True):
         user_input = st.text_area(label='', placeholder="메시지를 입력하세요", key="chat_input", label_visibility="collapsed")
@@ -622,6 +625,6 @@ elif st.session_state.page == 'next_page':
         # 사용자와 챗봇의 대화 기록을 추가
         st.session_state.chat_history.append({"role": "user", "content": user_input})
         st.session_state.chat_history.append({"role": "assistant", "content": chatbot_response_text})
-
-    # 대화 기록을 표시하는 함수 호출
-    display_chat()
+        
+        # 새로운 대화가 추가되었으므로 다시 렌더링
+        display_chat()
