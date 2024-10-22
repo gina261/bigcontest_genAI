@@ -519,9 +519,9 @@ elif st.session_state.page == 'next_page':
         /* Streamlit 전체 페이지의 배경을 변경하기 위한 설정 */
         .stApp {
             background-color: #ffefcc;
-            font-family: 'Pretendard', sans-serif; /* 폰트 적용 */
+            font-family: 'Pretendard', sans-serif;
             color: black; /* 기본 텍스트 색상 */
-            padding: 0; /* 추가적인 패딩 제거 */
+            padding: 0;
         }
         
         .chat-box {
@@ -548,7 +548,7 @@ elif st.session_state.page == 'next_page':
     ####### 챗봇 구현 #######
     
     # 사용자 입력 받기
-    user_input = st.text_input("메시지를 입력하세요:", key="user_input")
+    user_input = st.text_input("메시지를 입력하세요:", key="chat_input")
 
     # 사용자가 입력을 했을 때
     if st.button("전송"):
@@ -561,7 +561,7 @@ elif st.session_state.page == 'next_page':
             st.session_state.chat_history.append(bot_response)
             
             # 입력 필드를 초기화
-            st.session_state.user_input = ""
+            st.session_state.chat_input = ""
 
     # 대화 기록 표시
     st.markdown("### 대화 기록")
