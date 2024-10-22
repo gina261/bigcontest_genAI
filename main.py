@@ -566,7 +566,7 @@ elif st.session_state.page == 'next_page':
             padding: 10px 25px;
             border-radius: 30px;
             display: flex;
-            align-items: flex-start;
+            align-items: flex-end;
             justify-content: space-between;
             box-sizing: border-box;
             transition: height 0.3s ease;

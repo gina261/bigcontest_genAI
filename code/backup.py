@@ -560,22 +560,27 @@ elif st.session_state.page == 'next_page':
             bottom: 30px;
             left: 20%;
             width: 60%;
-            height: 50px;
+            min-height: 60px;
+            max-height: 220px;
             background-color: #fff;
             padding: 10px 25px;
             border-radius: 30px;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: space-between;
+            box-sizing: border-box;
+            transition: height 0.3s ease;
         }
         
         .chat-input {
             width: calc(100% - 100px);
-            height: 50px;
-            padding: 10px;
+            min-height: 50px !important;
+            max-height: 200px !important;
             border: none;
             font-size: 16px;
             color: black;
+            padding: 10px;
+            box-sizing: border-box;
         }
         
         .send-btn {
@@ -600,11 +605,16 @@ elif st.session_state.page == 'next_page':
     st.markdown(
         """
         <div class="input-container">
-            <input class="chat-input" type="text" id="chat_input" placeholder="메시지를 입력하세요">
+            <textarea class="chat-input" id="chat_input" placeholder="메시지를 입력하세요" oninput="adjustHeight(this)"></textarea>
             <button class="send-btn" onclick="sendMessage()">입력</button>
         </div>
 
         <script>
+        function adjustHeight(input) {
+            input.style.height = "auto"; // 먼저 높이를 자동으로 설정하여 기존 값을 초기화
+            input.style.height = (input.scrollHeight) + "px"; // 내용을 기준으로 높이를 조정
+        }
+
         function sendMessage() {
             var input = document.getElementById('chat_input').value;
             if (input) {
