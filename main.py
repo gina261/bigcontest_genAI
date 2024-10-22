@@ -524,7 +524,7 @@ elif st.session_state.page == 'next_page':
         }
         
         /* chat input 박스 외부 커스터마이징 */
-        div[class^="stTextInput"] {
+        div[class*="stTextInputContainer"] {
             background-color: #ff8015 !important; /* 바깥쪽 배경색 */
             border-radius: 15px !important;
             padding: 10px !important;
