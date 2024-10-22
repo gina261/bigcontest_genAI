@@ -505,10 +505,7 @@ elif st.session_state.page == 'next_page':
     GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
     
     def chatbot_response(user_input):
-        # 챗봇 로직 구현
-        if user_input:
-            return f"챗봇: {user_input[::-1]}"
-        return ""
+        return f"{user_input[::-1]}"
     
     # 기본 설정
     st.markdown(
@@ -521,7 +518,6 @@ elif st.session_state.page == 'next_page':
             background-color: #ffefcc;
             font-family: 'Pretendard', sans-serif;
             color: black; /* 기본 텍스트 색상 */
-            padding: 0;
         }
         
         /* 채팅 컨테이너 스타일 */
@@ -601,28 +597,34 @@ elif st.session_state.page == 'next_page':
     
     ####### 챗봇 구현 #######
     
+    # 대화 기록을 화면에 표시하는 함수
+    def display_chat():
+        st.markdown('<div class="chat-container">', unsafe_allow_html=True)
+        for message in st.session_state.chat_history[::-1]:  # 역순으로 표시
+            role = message["role"]
+            content = message["content"]
+            if role == "user":
+                st.markdown(f'<div class="chat-box user-msg"><strong>You:</strong> {content}</div>', unsafe_allow_html=True)
+            else:
+                st.markdown(f'<div class="chat-box bot-msg"><strong>Chatbot:</strong> {content}</div>', unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
+
+    # 대화 기록을 먼저 표시 (이전 대화 기록을 먼저 렌더링)
+    display_chat()
+
     # 사용자 입력 받기
-    st.markdown(
-        """
-        <div class="input-container">
-            <textarea class="chat-input" id="chat_input" placeholder="메시지를 입력하세요" oninput="adjustHeight(this)"></textarea>
-            <button class="send-btn" onclick="sendMessage()">입력</button>
-        </div>
+    with st.form(key='chat_form', clear_on_submit=True):
+        user_input = st.text_area(label='', placeholder="메시지를 입력하세요", key="chat_input", label_visibility="collapsed")
+        submit_button = st.form_submit_button("입력")
 
-        <script>
-        function adjustHeight(input) {
-            input.style.height = "auto"; // 먼저 높이를 자동으로 설정하여 기존 값을 초기화
-            input.style.height = (input.scrollHeight) + "px"; // 내용을 기준으로 높이를 조정
-        }
-
-        function sendMessage() {
-            var input = document.getElementById('chat_input').value;
-            if (input) {
-                console.log('User input:', input);
-                // 여기에 추가적인 처리 로직을 작성
-            }
-        }
-        </script>
-        """,
-        unsafe_allow_html=True
-    )
+    # 사용자 입력 처리
+    if submit_button and user_input:
+        # 입력된 텍스트를 뒤집어서 응답하는 로직
+        chatbot_response_text = chatbot_response(user_input)
+        
+        # 사용자와 챗봇의 대화 기록을 추가
+        st.session_state.chat_history.append({"role": "user", "content": user_input})
+        st.session_state.chat_history.append({"role": "assistant", "content": chatbot_response_text})
+        
+        # 새로운 대화가 추가되었으므로 다시 렌더링
+        display_chat()
