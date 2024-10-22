@@ -557,11 +557,11 @@ elif st.session_state.page == 'next_page':
         /* 입력 영역 고정 */
         .input-container {
             position: fixed;
-            bottom: 10px;
+            bottom: 30px;
             width: 70%;
             background-color: #fff;
-            padding: 0px;
-            border-radius: 10px;
+            padding: 10px 20px;
+            border-radius: 20px;
         }
         
         .chat-input {
@@ -578,7 +578,7 @@ elif st.session_state.page == 'next_page':
             background-color: #ff8015;
             color: white;
             border: none;
-            border-radius: 15px;
+            border-radius: 20px;
             cursor: pointer;
         }
         </style>
