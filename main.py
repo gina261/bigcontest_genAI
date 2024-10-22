@@ -560,7 +560,7 @@ elif st.session_state.page == 'next_page':
             bottom: 30px;
             left: 15%;
             width: 70%;
-            height: 20px;
+            height: 50px;
             background-color: #fff;
             padding: 10px 20px;
             border-radius: 30px;
