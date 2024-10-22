@@ -568,6 +568,7 @@ elif st.session_state.page == 'next_page':
             width: 80%;
             padding: 10px;
             border-radius: 5px;
+            border: none;
             font-size: 16px;
             color: black;
         }
