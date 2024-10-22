@@ -567,15 +567,16 @@ elif st.session_state.page == 'next_page':
         }
         
         .chat-input {
-            width: 80%;
+            width: 100%;
             padding: 10px;
-            border-radius: 5px;
             border: none;
             font-size: 16px;
             color: black;
         }
         
         .send-btn {
+            height: 40px;
+            width: 20px;
             padding: 10px 20px;
             background-color: #ff8015;
             color: white;
