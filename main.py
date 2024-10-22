@@ -559,7 +559,7 @@ elif st.session_state.page == 'next_page':
             position: fixed;
             bottom: 30px;
             left: 20%;
-            width: 70%;
+            width: 65%;
             height: 50px;
             background-color: #fff;
             padding: 10px 25px;
