@@ -618,7 +618,7 @@ elif st.session_state.page == 'next_page':
         // 입력 영역 자동 크기 조정
         textarea.addEventListener('input', function() {
             textarea.style.height = 'auto';  // 텍스트가 입력될 때마다 자동으로 높이를 조정
-            textarea.style.height = Math.min(textarea.scrollHeight, 300) + 'px';  // 최대 300px까지만 늘어남
+            textarea.style.height = Math.min(textarea.scrollHeight, 200) + 'px';  // 최대 200px까지만 늘어남
         });
 
         function sendMessage() {
