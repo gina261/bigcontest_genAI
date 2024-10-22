@@ -578,7 +578,6 @@ elif st.session_state.page == 'next_page':
             color: black;
             padding: 10px;
             box-sizing: border-box;
-            resize: none;
             line-height: 1.5; /* 줄간격 */
         }
         
