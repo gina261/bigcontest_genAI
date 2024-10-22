@@ -524,10 +524,18 @@ elif st.session_state.page == 'next_page':
             padding: 0;
         }
         
-        /* chat input 박스 스타일 커스터마이징 */
+        /* chat input 박스 외부 커스터마이징 */
+        div[class*="stInput"] {
+            background-color: #ff8015 !important; /* 바깥쪽 배경색 */
+            border-radius: 15px !important;
+            padding: 10px !important;
+        }
+        
+        /* chat input 박스 내부 커스터마이징 */
         div[data-baseweb="input"] {
             border-radius: 15px !important; /* 테두리 둥글게 */
             background-color: #ffffff !important; /* 배경색 흰색으로 */
+            padding: 10px;
         }
         
         /* chat input의 텍스트 스타일 변경 */
@@ -535,8 +543,8 @@ elif st.session_state.page == 'next_page':
             color: black !important;
             font-family: 'Pretendard', sans-serif;
             padding: 10px;
-            border-radius: 15px !important;
             background-color: #ffffff !important;
+            border: none !important;
         }
         
         /* chat_input의 보내기 버튼만 스타일 변경 */
