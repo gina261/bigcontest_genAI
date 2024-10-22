@@ -559,9 +559,6 @@ elif st.session_state.page == 'next_page':
             # 챗봇의 응답을 기록에 추가
             bot_response = chatbot_response(user_input)
             st.session_state.chat_history.append(bot_response)
-            
-            # 입력 필드를 초기화
-            st.session_state.chat_input = ""
 
     # 대화 기록 표시
     st.markdown("### 대화 기록")
