@@ -542,7 +542,7 @@ elif st.session_state.page == 'next_page':
         /* 입력 버튼 스타일 변경 (이 부분은 필요에 따라 추가 가능) */
         button {
             background-color: #ff8015 !important; /* 버튼 배경색 */
-            border-radius: 10px !important;
+            border-radius: 20px !important;
             color: white !important;
         }
         
