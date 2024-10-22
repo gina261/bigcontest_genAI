@@ -575,12 +575,12 @@ elif st.session_state.page == 'next_page':
             border: none;
             font-size: 16px;
             color: black;
-            resize: none;
-            overflow-y: auto;
-            max-height: 300px;
+            overflow-y: hidden; /* 스크롤 숨김 */
+            max-height: 200px; /* 최대 높이 설정 */
             min-height: 50px;  /* 최소 높이 설정 */
             height: auto;
             box-sizing: border-box;
+            resize: none; /* 사용자가 크기 조정 불가 */
         }
         
         .send-btn {
@@ -614,7 +614,7 @@ elif st.session_state.page == 'next_page':
         
         // 초기 높이 설정
         textarea.style.height = '50px';  // 기본 높이로 설정
-        textarea.style.overflowY = 'hidden';  // 스크롤 대신 높이 조정
+        textarea.style.overflowY = 'hidden';  // 스크롤바 숨김
         textarea.style.resize = 'none';  // 사용자가 직접 크기 조정을 못 하도록 설정
         
         // 입력 영역 자동 크기 조정
