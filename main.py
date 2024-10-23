@@ -533,6 +533,8 @@ if st.session_state.page == 'main':
     if st.button("채팅 시작"):
         go_to_next_page()
         
+    st.markdown("")
+        
 ####### 두 번째 페이지 #######
 elif st.session_state.page == 'next_page':
     
