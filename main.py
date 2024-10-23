@@ -531,25 +531,25 @@ elif st.session_state.page == 'next_page':
             color: black !important; /* 기본 텍스트 색상 */
         }
         
-        /* 아바타 이미지 크기 조정 */
+        /* 아바타 이미지 (둘 다) */
         div[data-testid="stChatMessage"] > img {
             width: 50px !important;
             height: 60px !important;
             object-fit: cover;  /* 이미지 비율 유지하면서 크기 조정 */
         }
         
-        /* User 아바타 이미지 오른쪽 */
+        /* User 아바타 이미지 */
         div[data-testid="stChatMessage"] > img[alt="user avatar"] {
             order: 1;
         }
         
-        /* User 글씨 오른쪽 정렬 */
+        /* User 글씨 */
         div[data-testid="stChatMessageContent"][aria-label="Chat message from user"] {
             text-align: right;
-            justify-content: flex-end;
+            justify-content: center;
         }
         
-        div[data-testid="stChatMessage"] {
+        div[data-testid="stChatMessageContent"] {
             display: flex;
             justify-content: flex-start;
             align-items: flex-end;
