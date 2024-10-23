@@ -582,7 +582,7 @@ elif st.session_state.page == 'next_page':
         
         /* 채팅 입력창 스타일 */
         div [class="st-emotion-cache-128upt6 ea3mdgi6"]{
-            background-color: #ffddaf;
+            background-color: transparent; /* #ffefcc */
         }
         
         </style>
