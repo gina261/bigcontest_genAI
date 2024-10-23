@@ -554,7 +554,7 @@ elif st.session_state.page == 'next_page':
         div[data-testid="stChatMessage"] > div[data-testid="stChatMessageContent"] {
             order: 0;  /* 메시지를 왼쪽에 배치 - User만*/
             margin-right: 20px;  /* 아바타와 텍스트 사이 간격 */
-            margin-left: 10px;
+            margin-left: 20px;
         }
         
         /* assistant 메시지 스타일 */
@@ -568,7 +568,7 @@ elif st.session_state.page == 'next_page':
             justify-contet: center;
         }
         
-        /* User 글씨 */
+        /* User 메시지 스타일 */
         div[data-testid="stChatMessageContent"][aria-label="Chat message from user"] {
             justify-content: center;
             background-color: #ffddaf;
