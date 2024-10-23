@@ -110,6 +110,10 @@ if st.session_state.page == 'main':
         .centered-subtext.first {
             margin-top: 0px;
             margin-bottom: 0px;
+            
+            position: relative;
+            top: 10px;
+            z-index: 1;
         }
 
         /* 박스 스타일 */
