@@ -621,6 +621,7 @@ elif st.session_state.page == 'next_page':
             word-wrap: break-word;
             max-width: 100%;
             justify-contet: center;
+            color: #000000;
         }
         
         /* User 메시지 스타일 */
@@ -632,6 +633,7 @@ elif st.session_state.page == 'next_page':
             word-wrap: break-word;
             display: 100%;
             justify-content: center;
+            color: #000000;
         }
         
         

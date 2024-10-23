@@ -108,8 +108,12 @@ if st.session_state.page == 'main':
         }
         
         .centered-subtext.first {
-            margin-top: -5px;
-            margin-bottom: 10px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            
+            position: relative;
+            top: 30px;
+            z-index: 1;
         }
 
         /* 박스 스타일 */
@@ -228,7 +232,7 @@ if st.session_state.page == 'main':
             background-color: white;
             border-radius: 25px;
             height: 50px;
-            width: 400px;
+            width: 450px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -236,7 +240,9 @@ if st.session_state.page == 'main':
             overflow-x: auto;
             white-space: nowrap;
             
-            
+            position: relative;
+            top: 53px;
+            z-index: 1;
         }
         
         /* 채팅 첫 입력 박스 */
@@ -267,6 +273,8 @@ if st.session_state.page == 'main':
         }
         .spacing-100px {
             margin-bottom: 100px;
+        }.spacing-50px {
+            margin-bottom: 50px;
         }
         
         
@@ -284,6 +292,26 @@ if st.session_state.page == 'main':
             display: flex;
             justify-content: flex-end;
             margin: 10px;
+            padding-right: 70px;
+        }
+        
+        
+        /* 하단 채팅모양 */
+        .box_chatshape {
+            background-color: white;
+            border-radius: 25px;
+            height: 50px;
+            width: 700px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            overflow-x: auto;
+            white-space: nowrap;
+            
+            position: relative;
+            top: 52px;
+            z-index: 0;
         }
         
         
@@ -507,8 +535,8 @@ if st.session_state.page == 'main':
         
     st.markdown(
         """
-        <div class="centered-subtext">
-            감사합니다! 이제 오늘의 <span class="text-bold">기분</span>이나 <span class="text-bold">상황</span>을 입력해주세요. 그에 맞는 제주의 멋진 곳을 추천해드립니다.
+        <div class="box_chatshape">
+            감사합니다! 이제&nbsp<span class="text-bold">제주의 멋진 곳</span>을 추천해드리겠습니다☺️&nbsp&nbsp&nbsp&nbsp&nbsp
         </div>
         """,
         unsafe_allow_html=True
@@ -525,6 +553,8 @@ if st.session_state.page == 'main':
     
     if st.button("채팅 시작"):
         go_to_next_page()
+        
+    st.markdown('<div class="spacing-50px"></div>', unsafe_allow_html=True)
         
 ####### 두 번째 페이지 #######
 elif st.session_state.page == 'next_page':
