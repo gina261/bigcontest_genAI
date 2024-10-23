@@ -581,13 +581,7 @@ elif st.session_state.page == 'next_page':
             display: inline-block !important;
         }
         
-        div[data-testid="stMarkdown"] p {
-            display: inline-block;
-            width: auto;
-            max-width: 100%;
-        }
         
-          
         
         </style>
         """,
