@@ -112,7 +112,7 @@ if st.session_state.page == 'main':
             margin-bottom: 0px;
             
             position: relative;
-            top: 10px;
+            top: 20px;
             z-index: 1;
         }
 
