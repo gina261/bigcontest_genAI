@@ -550,16 +550,10 @@ elif st.session_state.page == 'next_page':
             
         }
         
-        div[data-testid="stChatMessageContent"] {
-            display: flex;
-            justify-content: flex-end;
-            align-items: flex-end;
-        }
-        
         /* 메시지 내용 왼쪽에 배치 */
         div[data-testid="stChatMessage"] > div[data-testid="stChatMessageContent"] {
-            order: 0;  /* 메시지를 왼쪽에 배치 */
-            margin-right: 10px;  /* 아바타와 텍스트 사이 간격 */
+            order: 0;  /* 메시지를 왼쪽에 배치 - User만*/
+            margin-right: 20px;  /* 아바타와 텍스트 사이 간격 */
         }
         
         
