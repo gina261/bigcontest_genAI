@@ -567,12 +567,14 @@ elif st.session_state.page == 'next_page':
             background-color: #ffffff;
             padding: 10px 20px;
             border-radius: 15px;
+            width: auto;
         }
         
         div[data-testid="stChatMessageContent"][aria-label="Chat message from user"] {
             background-color: #ffddaf;
             padding: 10px 20px;
             border-radius: 15px;
+            width: auto;
         }        
         
         </style>
@@ -616,4 +618,3 @@ elif st.session_state.page == 'next_page':
                 placeholder.markdown(full_response)
         message = {"role": "assistant", "content": full_response}
         st.session_state.messages.append(message)
-    
