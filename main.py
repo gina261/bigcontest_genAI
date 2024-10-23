@@ -275,6 +275,7 @@ if st.session_state.page == 'main':
             border: none;
             border-radius: 20px;
             height: 20px;
+            min-height: 0px;
         }
         
         
