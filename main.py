@@ -528,13 +528,19 @@ elif st.session_state.page == 'next_page':
         .stApp {
             background-color: #ffefcc;
             font-family: 'Pretendard', sans-serif;
-            color: black; /* 기본 텍스트 색상 */
+            color: black !important; /* 기본 텍스트 색상 */
+        }
+        
+        /* 오른쪽 정렬 - User */
+        .stChatMessage.user {
+            text-align: right;
+            justify-content: flex-end;
         }
         
         /* 아바타 이미지 크기 조정 */
         div[data-testid="stChatMessage"] img {
-            width: 50px !important;  /* 아바타 이미지 너비 */
-            height: 60px !important; /* 아바타 이미지 높이 */
+            width: 50px !important;
+            height: 60px !important;
             object-fit: cover;  /* 이미지 비율 유지하면서 크기 조정 */
         }
         </style>
