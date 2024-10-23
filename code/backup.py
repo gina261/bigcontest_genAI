@@ -601,21 +601,8 @@ elif st.session_state.page == 'next_page':
             width: auto !important;
             max-width: 100%;
         }
-        div[data-testid="stVerticalBlock"] {
-            display: inline-block;
-            width: auto !important;
-            max-width: 100%;
-        }
-        div[class="st-emotion-cache-1wmy9hl e1f1d6gn1"] {
-            display: inline-block;
-            width: auto !important;
-            max-width: 100%;
-        }
-        div[data-testid="stVerticalBlockBorderWrapper"] {
-            display: inline-block;
-            width: auto !important;
-            max-width: 100%;
-        }
+        
+        
         
         
         </style>
