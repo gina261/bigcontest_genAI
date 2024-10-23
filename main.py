@@ -547,7 +547,6 @@ elif st.session_state.page == 'next_page':
         div[data-testid="stChatMessage"] {
             display: flex;
             background-color: #feefcc;
-            align-items: center;
         }
         
         /* 메시지 내용 왼쪽에 배치 */
