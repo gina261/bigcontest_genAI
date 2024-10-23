@@ -455,6 +455,9 @@ if st.session_state.page == 'main':
         else:
             return region_parts[0]  # 첫 단어만 저장
         
+    if st.session_state.selected_regions[0] == 'reset':
+        st.session_state.selected_regions = st.session_state.selected_regions[2:]
+        
     selected_regions_display = ", ".join([format_region_name(region) for region in st.session_state.selected_regions])
 
     # 선택된 지역 업데이트
