@@ -440,7 +440,7 @@ if st.session_state.page == 'main':
     st_data = st_folium(jeju_map, width=800, height=400)
 
     # 선택한 지역을 가져오기
-    if st_data and st_data.get('last_active_drawing'):
+    if st_data and st_data.get('last_active_drawing') and 'reset' not in st.session_state.selected_regions:
         selected_region = st_data['last_active_drawing']['properties']['adm_nm']
 
         # 지역이 이미 선택된 리스트에 없으면 추가
