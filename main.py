@@ -377,78 +377,66 @@ if st.session_state.page == 'main':
         st.session_state.selected_regions = []
 
     # 선택 초기화 버튼 클릭 시 선택된 지역 초기화
-    def reset_selected_regions():
+    if st.button("선택 초기화"):
         st.session_state.selected_regions = []
-        st.session_state.last_active_drawing = None  # 선택된 상태 초기화
-        st.session_state.map = None  # 지도 상태도 초기화하여 강제 리렌더링
-
-        
-    st.button("선택 초기화", on_click=reset_selected_regions)
         
     # 선택된 지역 텍스트를 위한 placeholder 생성
     selected_region_text = st.empty()
-    
-    def render_map():
 
-        # 제주도 중심 좌표
-        jeju_center = [33.38, 126.6] # 기존 33.4996, 126.5312
+    # 제주도 중심 좌표
+    jeju_center = [33.38, 126.6] # 기존 33.4996, 126.5312
 
-        mapbox_token = st.secrets["MAPBOX_API_KEY"]
+    mapbox_token = st.secrets["MAPBOX_API_KEY"]
 
-        # 커스텀 Mapbox 스타일 URL 적용
-        mapbox_style = 'mapbox://styles/gina261/cm2f34dvz000g01pygoj0g41c'
-        custom_style_url = f'https://api.mapbox.com/styles/v1/gina261/cm2f34dvz000g01pygoj0g41c/tiles/{{z}}/{{x}}/{{y}}?access_token={mapbox_token}'
+    # 커스텀 Mapbox 스타일 URL 적용
+    mapbox_style = 'mapbox://styles/gina261/cm2f34dvz000g01pygoj0g41c'
+    custom_style_url = f'https://api.mapbox.com/styles/v1/gina261/cm2f34dvz000g01pygoj0g41c/tiles/{{z}}/{{x}}/{{y}}?access_token={mapbox_token}'
 
-        # Folium 지도 객체 생성
-        jeju_map = folium.Map(
-            location=jeju_center, 
-            zoom_start=9.8,
-            tiles=custom_style_url,
-            attr='Mapbox',
-            name='Mapbox Custom Style',
-            dragging=False,
-            zoom_control=False,
-            scrollWheelZoom=False,
-            doubleClickZoom=False
+    # Folium 지도 객체 생성
+    jeju_map = folium.Map(
+        location=jeju_center, 
+        zoom_start=9.8,
+        tiles=custom_style_url,
+        attr='Mapbox',
+        name='Mapbox Custom Style',
+        dragging=False,
+        zoom_control=False,
+        scrollWheelZoom=False,
+        doubleClickZoom=False
+    )
+
+    # Load GeoJSON data from GitHub link
+    geojson_url = 'https://raw.githubusercontent.com/gina261/bigcontest_genAI/main/geojson/jeju_edited.geojson'
+    geojson_data = requests.get(geojson_url).json()
+
+    # Add GeoJSON data to the map with interactive features
+    def on_click(feature):
+        return {
+            'fillColor': '#ff8015',
+            'color': 'black',
+            'weight': 2,
+            'fillOpacity': 0.6,
+            'highlight': True
+        }
+
+    geo_json = folium.GeoJson(
+        geojson_data,
+        name='jeju_districts',
+        style_function=lambda feature: {
+            'color': 'black',
+            'weight': 1,
+            'fillOpacity': 0,
+        },
+        highlight_function=on_click,
+        tooltip=folium.GeoJsonTooltip(
+            fields=['adm_nm'],  # Ensure that 'adm_nm' is the field name for the region name
+            aliases=['Region'],
+            localize=True
         )
-
-        # Load GeoJSON data from GitHub link
-        geojson_url = 'https://raw.githubusercontent.com/gina261/bigcontest_genAI/main/geojson/jeju_edited.geojson'
-        geojson_data = requests.get(geojson_url).json()
-
-        # Add GeoJSON data to the map with interactive features
-        def on_click(feature):
-            return {
-                'fillColor': '#ff8015',
-                'color': 'black',
-                'weight': 2,
-                'fillOpacity': 0.6,
-                'highlight': True
-            }
-        
-        folium.GeoJson(
-            geojson_data,
-            name='jeju_districts',
-            style_function=lambda feature: {
-                'color': 'black',
-                'weight': 1,
-                'fillOpacity': 0,
-            },
-            highlight_function=on_click,
-            tooltip=folium.GeoJsonTooltip(
-                fields=['adm_nm'],  # Ensure that 'adm_nm' is the field name for the region name
-                aliases=['Region'],
-                localize=True
-            )
-        ).add_to(jeju_map)
-        
-        return jeju_map
-    
-    if 'map' not in st.session_state or st.session_state.map is None:
-        st.session_state.map = render_map()
+    ).add_to(jeju_map)
 
     # Streamlit에서 지도 표시
-    st_data = st_folium(st.session_state.map, width=800, height=400)
+    st_data = st_folium(jeju_map, width=800, height=400)
 
     # 선택한 지역을 가져오기
     if st_data and st_data.get('last_active_drawing'):
@@ -488,8 +476,6 @@ if st.session_state.page == 'main':
             """,
             unsafe_allow_html=True
         )
-        
-    
         
     st.markdown('<div class="spacing-100px"></div>', unsafe_allow_html=True)
         
