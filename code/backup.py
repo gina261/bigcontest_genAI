@@ -268,6 +268,17 @@ if st.session_state.page == 'main':
         }
         
         
+        /* 버튼 스타일 변경 */
+        button[kind="secondary"] {
+            background-color: #ff8015 !important;
+            color: #ffffff;
+            border: none;
+            border-radius: 20px;
+            height: 35px;
+            min-height: 10px;
+        }
+        
+        
         </style>
         """,
         unsafe_allow_html=True
@@ -375,10 +386,14 @@ if st.session_state.page == 'main':
     # 선택된 지역을 저장할 리스트 생성 (세션 상태에서 관리)
     if 'selected_regions' not in st.session_state:
         st.session_state.selected_regions = []
+        
+    
+        
 
     # 선택 초기화 버튼 클릭 시 선택된 지역 초기화
-    if st.button("선택 초기화"):
+    if st.button("↺"):
         st.session_state.selected_regions = []
+        st.session_state.selected_regions.append('reset')
         
     # 선택된 지역 텍스트를 위한 placeholder 생성
     selected_region_text = st.empty()
@@ -453,6 +468,10 @@ if st.session_state.page == 'main':
             return region_parts[2]  # 세 번째 단어만 저장
         else:
             return region_parts[0]  # 첫 단어만 저장
+        
+    if st.session_state.selected_regions:
+        if st.session_state.selected_regions[0] == 'reset':
+            st.session_state.selected_regions = st.session_state.selected_regions[2:]
         
     selected_regions_display = ", ".join([format_region_name(region) for region in st.session_state.selected_regions])
 
