@@ -273,6 +273,7 @@ if st.session_state.page == 'main':
             background-color: #ff8015 !important;
             color: #ffffff;
             border: none;
+            border-radius: 20px;
         }
         
         
