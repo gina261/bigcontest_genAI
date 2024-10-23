@@ -269,8 +269,8 @@ if st.session_state.page == 'main':
         
         
         /* 버튼 스타일 변경 */
-        button [data-testid="stBaseButton-secondary"] {
-            background-color: #ff8015;
+        button[kind="secondary"] {
+            background-color: #ff8015 !important;
         }
         
         
