@@ -565,7 +565,6 @@ elif st.session_state.page == 'next_page':
             width: auto;
             word-wrap: break-word;
             max-width: 100%;
-            text-align: center;
             display: flex;
             justify-contet: center;
         }
@@ -581,7 +580,11 @@ elif st.session_state.page == 'next_page':
             word-wrap: break-word;
         }
     
-        
+        /* 한 줄일 때 텍스트 중앙에 위치 */
+        div[data-testid="stChatMessageContent"][aria-label="Chat message from user"]:only-child {
+            justify-content: center;
+            text-align: center;
+        }
         
         </style>
         """,
