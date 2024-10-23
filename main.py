@@ -592,7 +592,7 @@ elif st.session_state.page == 'next_page':
             background-color: #ffffff;
             border-color: #ffffff;
             border-radius: 20px;
-            height: 40px;
+            height: 50px;
         }
         
         </style>
