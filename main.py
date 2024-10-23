@@ -387,7 +387,7 @@ if st.session_state.page == 'main':
     if 'selected_regions' not in st.session_state:
         st.session_state.selected_regions = []
         
-    col1, col2 = st.columns([10, 1])
+    col1, col2 = st.columns([1, 1])
     
     with col2:
         # 선택 초기화 버튼 클릭 시 선택된 지역 초기화
