@@ -580,7 +580,7 @@ elif st.session_state.page == 'next_page':
         }
         
         div[data-testid="stMarkdown"] p {
-            width: auto;
+            min-width: 50px;
         }
         
         </style>
