@@ -235,6 +235,8 @@ if st.session_state.page == 'main':
             margin: 0 auto;
             overflow-x: auto;
             white-space: nowrap;
+            
+            
         }
         
         /* 채팅 첫 입력 박스 */
@@ -276,6 +278,12 @@ if st.session_state.page == 'main':
             border-radius: 20px;
             height: 35px;
             min-height: 10px;
+        }
+        
+        div [data-testid="stButton"] {
+            display: flex;
+            justify-content: flex-end;
+            margin: 10px;
         }
         
         
@@ -387,17 +395,16 @@ if st.session_state.page == 'main':
     if 'selected_regions' not in st.session_state:
         st.session_state.selected_regions = []
         
-    
-        
+    # 선택된 지역 텍스트를 위한 placeholder 생성
+    selected_region_text = st.empty()
 
+        
     # 선택 초기화 버튼 클릭 시 선택된 지역 초기화
     if st.button("↺"):
         st.session_state.selected_regions = []
         st.session_state.selected_regions.append('reset')
         
-    # 선택된 지역 텍스트를 위한 placeholder 생성
-    selected_region_text = st.empty()
-
+    
     # 제주도 중심 좌표
     jeju_center = [33.38, 126.6] # 기존 33.4996, 126.5312
 

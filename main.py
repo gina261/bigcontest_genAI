@@ -235,6 +235,10 @@ if st.session_state.page == 'main':
             margin: 0 auto;
             overflow-x: auto;
             white-space: nowrap;
+            
+            position: relative;
+            top: 10px;
+            z-index: 1;
         }
         
         /* 채팅 첫 입력 박스 */
