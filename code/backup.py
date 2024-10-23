@@ -528,14 +528,23 @@ elif st.session_state.page == 'next_page':
         .stApp {
             background-color: #ffefcc;
             font-family: 'Pretendard', sans-serif;
-            color: black; /* 기본 텍스트 색상 */
+            color: black !important; /* 기본 텍스트 색상 */
         }
         
         /* 아바타 이미지 크기 조정 */
-        .stMessageAvatar {
-            width: 100px !important;
-            height: 150px !important;
+        div[data-testid="stChatMessage"] img {
+            width: 50px !important;
+            height: 60px !important;
+            object-fit: cover;  /* 이미지 비율 유지하면서 크기 조정 */
         }
+        
+        /* User 글씨 오른쪽 정렬 */
+        div[data-testid="stChatMessageContent"][aria-label="Chat message from user"] {
+            text-align: right;
+            justify-content: flex-end;
+        }
+        
+        
         </style>
         """,
         unsafe_allow_html=True
