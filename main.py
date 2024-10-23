@@ -549,7 +549,11 @@ elif st.session_state.page == 'next_page':
             justify-content: flex-end;
         }
         
-
+        div[data-testid="stChatMessage"] {
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-end;
+        }
         
         /* 메시지 내용 왼쪽에 배치 */
         div[data-testid="stChatMessage"] > div[data-testid="stChatMessageContent"] {
