@@ -651,6 +651,7 @@ elif st.session_state.page == 'next_page':
             border-color: #ffffff;
             border-radius: 30px;
             padding: 3px 15px;
+            color: #000000;
         }
         div [data-testid="stChatInput"] {
             background-color: #ffefcc;
