@@ -597,6 +597,10 @@ elif st.session_state.page == 'next_page':
         div [data-testid="stChatInput"] {
             background-color: #ffefcc;
         }
+        div [data-testid="stBottomBlockContainer"] {
+            padding: 1rem 1rem 30px;
+        }
+        
         
         </style>
         """,
