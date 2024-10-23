@@ -274,8 +274,8 @@ if st.session_state.page == 'main':
             color: #ffffff;
             border: none;
             border-radius: 20px;
-            height: 20px;
-            min-height: 0px;
+            height: 35px;
+            min-height: 10px;
         }
         
         
