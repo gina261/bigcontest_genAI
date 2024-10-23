@@ -532,7 +532,7 @@ elif st.session_state.page == 'next_page':
         }
         
         /* 오른쪽 정렬 - User */
-        div[data-testid="stChatMessageContent"] {
+        div[data-testid="stChatMessageContent"][aria-label="Chat message from user"] {
             text-align: right;
             justify-content: flex-end;
         }
