@@ -538,7 +538,7 @@ elif st.session_state.page == 'next_page':
             object-fit: cover;  /* 이미지 비율 유지하면서 크기 조정 */
         }
         
-        /* */
+        /* User 아바타 이미지 오른쪽 */
         div[data-testid="stChatMessage"] > img[alt="user avatar"] {
             order: 1;
         }
@@ -549,12 +549,7 @@ elif st.session_state.page == 'next_page':
             justify-content: flex-end;
         }
         
-        /* 오른쪽에 이미지가 오도록 설정 */
-        div[data-testid="stChatMessage"] {
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-        }
+
         
         /* 메시지 내용 왼쪽에 배치 */
         div[data-testid="stChatMessage"] > div[data-testid="stChatMessageContent"] {
