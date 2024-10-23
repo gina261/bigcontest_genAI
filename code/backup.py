@@ -545,7 +545,7 @@ elif st.session_state.page == 'next_page':
         
         
         div[data-testid="stChatMessage"] {
-            display: flex;
+            display: inline-block;
             align-items: flex-end;
             background-color: #feefcc;
         }
