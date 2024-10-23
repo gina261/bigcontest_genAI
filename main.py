@@ -536,7 +536,7 @@ if st.session_state.page == 'main':
     st.markdown(
         """
         <div class="box_chatshape">
-            감사합니다! 이제 오늘의 <span class="text-bold">기분</span>이나 <span class="text-bold">상황</span>을 입력해주세요. 그에 맞는 제주의 멋진 곳을 추천해드립니다.
+            감사합니다! 이제 <span class="text-bold">제주의 멋진 곳</span>을 추천해드리겠습니다☺️
         </div>
         """,
         unsafe_allow_html=True
