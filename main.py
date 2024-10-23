@@ -580,7 +580,7 @@ elif st.session_state.page == 'next_page':
         }
         
         div[data-testid="stMarkdown"] p {
-            display: inline-box;
+            display: inline-block;
             width: auto;
             max-width: 100%;
         }
