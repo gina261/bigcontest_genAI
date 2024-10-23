@@ -579,7 +579,31 @@ elif st.session_state.page == 'next_page':
             width: auto;
             word-wrap: break-word;
             display: inline-block !important;
-        }        
+        }
+        
+        div[data-testid="stMarkdown"] p {
+            display: inline-block;
+            width: auto;
+            max-width: 100%;
+        }
+        div[data-testid="stMarkdownContainer"] {
+            display: inline-block;
+            width: auto;
+            max-width: 100%;
+        }
+        div[data-testid="stMarkdown"] {
+            display: inline-block;
+            width: auto !important;
+            max-width: 100%;
+        }
+        div[data-testid="stElementContainer"] {
+            display: inline-block;
+            width: auto !important;
+            max-width: 100%;
+        }
+        
+        
+        
         
         </style>
         """,
