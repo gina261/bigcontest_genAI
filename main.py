@@ -587,8 +587,9 @@ elif st.session_state.page == 'next_page':
         
         div [data-testid="stChatInput"] {
             background-color: #ffffff;
-            border: none;
-            border-radius: 20px;
+            border: 1px solid #ffffff;
+            border-radius: 30px;
+            height: 40px;
         }
         
         </style>
