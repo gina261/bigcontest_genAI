@@ -599,11 +599,10 @@ elif st.session_state.page == 'next_page':
         }
         
         /* 보내기 버튼 */
-        div [class="st-emotion-cache-f4ro0r e101d2x3se1"] {
+        button [data-testid="stChatInputSubmitButton"] {
             background-color: #ff8015;
             color: #ffffff;
             border-radius: 50px;
-            height: 80%;
         }
         
         </style>
