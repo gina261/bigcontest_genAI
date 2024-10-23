@@ -547,6 +547,7 @@ elif st.session_state.page == 'next_page':
         div[data-testid="stChatMessage"] {
             display: flex;
             background-color: #feefcc;
+            align-items: center;
         }
         
         /* 메시지 내용 왼쪽에 배치 */
@@ -563,7 +564,6 @@ elif st.session_state.page == 'next_page':
             border-radius: 15px;
             width: auto;
             word-wrap: break-word;
-            max-width: 100%
         }
         
         /* User 글씨 */
@@ -575,7 +575,6 @@ elif st.session_state.page == 'next_page':
             border-radius: 15px;
             width: auto;
             word-wrap: break-word;
-            max-width: 100%
         }
     
         
