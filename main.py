@@ -585,7 +585,9 @@ elif st.session_state.page == 'next_page':
             background-color: #ffefcc;
         }
         
-        div [data-testid="stChatInput"] {
+        
+        
+        div [data-baseweb="textarea"] {
             background-color: #ffffff;
             border: 1px solid #ffffff;
             border-radius: 30px;
