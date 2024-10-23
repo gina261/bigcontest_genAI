@@ -543,11 +543,10 @@ elif st.session_state.page == 'next_page':
             order: 1;
         }
         
-        
         div[data-testid="stChatMessage"] {
             display: flex;
-            background-color: #feefcc;
             align-items: flex-end;
+            background-color: #feefcc;
         }
         
         /* 메시지 내용 왼쪽에 배치 */
@@ -578,6 +577,12 @@ elif st.session_state.page == 'next_page':
             word-wrap: break-word;
             display: flex;
             justify-content: center;
+        }
+        
+        
+        /* 채팅 입력창 스타일 */
+        div [class="st-emotion-cache-128upt6 ea3mdgi6"]{
+            background-color: none;
         }
         
         </style>

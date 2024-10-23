@@ -545,7 +545,8 @@ elif st.session_state.page == 'next_page':
         
         
         div[data-testid="stChatMessage"] {
-            display: inline-block;
+            display: flex;
+            align-items: flex-end;
             background-color: #feefcc;
         }
         
@@ -553,45 +554,31 @@ elif st.session_state.page == 'next_page':
         div[data-testid="stChatMessage"] > div[data-testid="stChatMessageContent"] {
             order: 0;  /* 메시지를 왼쪽에 배치 - User만*/
             margin-right: 20px;  /* 아바타와 텍스트 사이 간격 */
-            margin-left: 10px;
+            margin-left: 20px;
         }
         
+        /* assistant 메시지 스타일 */
         div[data-testid="stChatMessageContent"][aria-label="Chat message from assistant"] {
             background-color: #ffffff;
             padding: 10px 20px;
             border-radius: 15px;
             width: auto;
             word-wrap: break-word;
-            display: inline-block !important;
+            max-width: 100%;
+            justify-contet: center;
         }
         
-        /* User 글씨 */
+        /* User 메시지 스타일 */
         div[data-testid="stChatMessageContent"][aria-label="Chat message from user"] {
-            text-align: right;
             justify-content: center;
             background-color: #ffddaf;
             padding: 10px 20px;
             border-radius: 15px;
             width: auto;
             word-wrap: break-word;
-            display: inline-block !important;
+            display: flex;
+            justify-content: center;
         }
-        
-        
-        
-        div[class="st-emotion-cache-1wmy9hl e1f1d6gn1"] {
-            display: inline-block;
-            width: auto !important;
-            max-width: 100%;
-        }
-        div[data-testid="stMarkdownContainer"] p{
-            display: inline-block;
-            width: auto !important;
-            max-width: 100%;
-        }
-        
-        
-        
         
         </style>
         """,
