@@ -377,11 +377,10 @@ if st.session_state.page == 'main':
         st.session_state.selected_regions = []
 
     # 선택 초기화 버튼 클릭 시 선택된 지역 초기화
-    if st.button("선택 초기화"):
-        st_data = None
-        selected_region = None
+    def reset_selected_regions():
         st.session_state.selected_regions = []
-        st.experimental_set_query_params(reset="true")  # 페이지 강제 새로고침
+        
+    st.button("선택 초기화", on_click=reset_selected_regions)
         
     # 선택된 지역 텍스트를 위한 placeholder 생성
     selected_region_text = st.empty()
