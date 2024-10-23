@@ -276,7 +276,10 @@ if st.session_state.page == 'main':
             border-radius: 20px;
             height: 35px;
             min-height: 10px;
+            justify-content: center;
         }
+        
+        div []
         
         
         </style>
