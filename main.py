@@ -375,14 +375,13 @@ if st.session_state.page == 'main':
     # 선택된 지역을 저장할 리스트 생성 (세션 상태에서 관리)
     if 'selected_regions' not in st.session_state:
         st.session_state.selected_regions = []
-    # 리셋 버튼 관리
-    if 'reset' not in st.session_state:
-        st.session_state.reset = False
 
     # 선택 초기화 버튼 클릭 시 선택된 지역 초기화
     def reset_selected_regions():
         st.session_state.selected_regions = []
-        st.session_state.reset = True
+        st.session_state.last_active_drawing = None  # 선택된 상태 초기화
+        st.session_state.map = None  # 지도 상태도 초기화하여 강제 리렌더링
+
         
     st.button("선택 초기화", on_click=reset_selected_regions)
         
@@ -417,7 +416,6 @@ if st.session_state.page == 'main':
 
     # Add GeoJSON data to the map with interactive features
     def on_click(feature):
-        st.session_state.reset = False
         return {
             'fillColor': '#ff8015',
             'color': 'black',
@@ -446,7 +444,7 @@ if st.session_state.page == 'main':
     st_data = st_folium(jeju_map, width=800, height=400)
 
     # 선택한 지역을 가져오기
-    if st_data and st_data.get('last_active_drawing') and not st.session_state.reset:
+    if st_data and st_data.get('last_active_drawing'):
         selected_region = st_data['last_active_drawing']['properties']['adm_nm']
 
         # 지역이 이미 선택된 리스트에 없으면 추가
