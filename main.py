@@ -564,6 +564,10 @@ elif st.session_state.page == 'next_page':
             border-radius: 15px;
             width: auto;
             word-wrap: break-word;
+            max-width: 100%;
+            text-align: center;
+            display: flex;
+            justify-contet: center;
         }
         
         /* User 글씨 */
