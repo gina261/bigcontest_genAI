@@ -578,12 +578,7 @@ elif st.session_state.page == 'next_page':
         }
         
         
-        div[data-testid="stMarkdownContainer"] {
-            display: inline-block;
-            width: auto;
-            max-width: 100%;
-        }
-        div[data-testid="stMarkdown"] {
+        div[data-testid="stVerticalBlock"] {
             display: inline-block;
             width: auto !important;
             max-width: 100%;
