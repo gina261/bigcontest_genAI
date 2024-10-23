@@ -417,7 +417,7 @@ if st.session_state.page == 'main':
 
     # Add GeoJSON data to the map with interactive features
     def on_click(feature):
-        reset = False
+        st.session_state.reset = False
         return {
             'fillColor': '#ff8015',
             'color': 'black',
