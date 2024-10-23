@@ -592,7 +592,11 @@ elif st.session_state.page == 'next_page':
             white-space: nowrap;
         }
         
-        
+        /* 두 줄 이상일 때 텍스트 줄바꿈 */
+        div[data-testid="stChatMessageContent"][aria-label="Chat message from user"]:not(:only-child) {
+            white-space: normal;  /* 여러 줄일 때는 줄바꿈 */
+        }
+            
         
         
         </style>
