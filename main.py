@@ -301,7 +301,7 @@ if st.session_state.page == 'main':
             background-color: white;
             border-radius: 25px;
             height: 50px;
-            width: 600px;
+            width: 700px;
             display: flex;
             justify-content: center;
             align-items: center;
