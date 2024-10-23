@@ -532,7 +532,7 @@ elif st.session_state.page == 'next_page':
         }
         
         /* 오른쪽 정렬 - User */
-        div[data-testid="stChatMessage"][data-testid*="user"] {
+        div[data-testid="stChatMessageContent"][data-testid*="user"] {
             text-align: right;
             justify-content: flex-end;
         }
