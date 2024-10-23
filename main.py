@@ -579,12 +579,6 @@ elif st.session_state.page == 'next_page':
             display: flex;
             justify-content: center;
         }
-    
-        /* 한 줄일 때 텍스트 중앙에 위치 */
-        div[data-testid="stChatMessageContent"][aria-label="Chat message from user"]:only-child {
-            justify-content: center;
-            text-align: center;
-        }
         
         </style>
         """,
