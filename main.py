@@ -296,6 +296,25 @@ if st.session_state.page == 'main':
         }
         
         
+        /* 하단 채팅모양 */
+        .box_chatshape {
+            background-color: white;
+            border-radius: 25px;
+            height: 50px;
+            width: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            overflow-x: auto;
+            white-space: nowrap;
+            
+            position: relative;
+            top: 53px;
+            z-index: 1;
+        }
+        
+        
         </style>
         """,
         unsafe_allow_html=True
@@ -516,7 +535,7 @@ if st.session_state.page == 'main':
         
     st.markdown(
         """
-        <div class="centered-subtext">
+        <div class="box_chatshape">
             감사합니다! 이제 오늘의 <span class="text-bold">기분</span>이나 <span class="text-bold">상황</span>을 입력해주세요. 그에 맞는 제주의 멋진 곳을 추천해드립니다.
         </div>
         """,
