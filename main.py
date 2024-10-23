@@ -565,11 +565,11 @@ elif st.session_state.page == 'next_page':
         
         div[data-testid="stChatMessageContent"][aria-label="Chat message from assistant"] {
             background-color: #ffffff;
-            padding: 10px;
+            padding: 10px 20px;
         }
         
         div[data-testid="stChatMessageContent"][aria-label="Chat message from user"] {
-            background-color: #ffffff;
+            background-color: #ffddaf;
             padding: 10px 20px;
         }        
         
