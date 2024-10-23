@@ -563,10 +563,9 @@ elif st.session_state.page == 'next_page':
             margin-left: 10px;
         }
         
-        div[data-testid="stMarkdownContainer"] {
+        div[data-testid="stChatMessageContent"][aria-label="Chat message from user] > div[data-testid="stMarkdownContainer"] {
             background-color: #ffffff;
             padding: 10px;
-            margin: 0px;
         }
         
         
