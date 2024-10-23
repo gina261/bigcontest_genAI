@@ -569,13 +569,12 @@ elif st.session_state.page == 'next_page':
         
         /* User 메시지 스타일 */
         div[data-testid="stChatMessageContent"][aria-label="Chat message from user"] {
-            justify-content: center;
             background-color: #ffddaf;
             padding: 10px 20px;
             border-radius: 15px;
             width: auto;
             word-wrap: break-word;
-            display: flex;
+            display: 100%;
             justify-content: center;
         }
         
@@ -583,7 +582,6 @@ elif st.session_state.page == 'next_page':
         /* 채팅 입력창 스타일 */
         div [class="st-emotion-cache-128upt6 ea3mdgi6"]{
             background-color: #ffefcc;
-            width: 80%;
         }
         
         </style>
