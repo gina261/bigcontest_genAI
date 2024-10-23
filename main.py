@@ -570,7 +570,6 @@ elif st.session_state.page == 'next_page':
         
         /* User 글씨 */
         div[data-testid="stChatMessageContent"][aria-label="Chat message from user"] {
-            text-align: center;
             justify-content: center;
             background-color: #ffddaf;
             padding: 10px 20px;
