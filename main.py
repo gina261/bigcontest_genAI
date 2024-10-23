@@ -603,6 +603,7 @@ elif st.session_state.page == 'next_page':
             background-color: #ff8015;
             color: #ffffff;
             border-radius: 50px;
+            height: 80%;
         }
         
         </style>
