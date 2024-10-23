@@ -454,7 +454,8 @@ if st.session_state.page == 'main':
         else:
             return region_parts[0]  # 첫 단어만 저장
         
-    selected_regions_display = ", ".join([format_region_name(region) for region in st.session_state.selected_regions])
+    # selected_regions_display = ", ".join([format_region_name(region) for region in st.session_state.selected_regions])
+    selected_regions_display = st.session_state.selecteed_regions
 
     # 선택된 지역 업데이트
     if selected_regions_display:
