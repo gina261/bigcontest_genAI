@@ -514,6 +514,10 @@ elif st.session_state.page == 'next_page':
         
         return response
     
+    # 프로필 이미지 설정
+    assistant_avatar = "https://github.com/gina261/bigcontest_genAI/blob/main/images/chatbot_assistant.png?raw=true"
+    user_avatar = "https://github.com/gina261/bigcontest_genAI/blob/main/images/chatbot_user.png?raw=true"
+    
     # 기본 배경 설정
     st.markdown(
         """
@@ -540,14 +544,10 @@ elif st.session_state.page == 'next_page':
     def clear_chat_history():
         st.session_state.messages = [{"role": "assistant", "content": "오늘의 기분이나 상황을 입력해주세요. 그에 맞는 제주의 멋진 곳을 추천해드립니다."}]
     
-    # 프로필 이미지 설정
-    assistant_avatar = "https://github.com/gina261/bigcontest_genAI/blob/main/images/chatbot_assistant.png?raw=true"
-    user_avatar = "https://github.com/gina261/bigcontest_genAI/blob/main/images/chatbot_user.png?raw=true"
-    
     # 채팅 화면 표시
     for message in st.session_state.messages:
-        profile = user_avatar if message["role"] == "user" else assistant_avatar
-        with st.chat_message(message["role"]):
+        avatar = user_avatar if message["role"] == "user" else assistant_avatar
+        with st.chat_message(message["role"], avatar=avatar):
             st.write(message["content"])
  
     if prompt := st.chat_input():
