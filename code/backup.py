@@ -531,35 +531,36 @@ elif st.session_state.page == 'next_page':
             color: black !important; /* 기본 텍스트 색상 */
         }
         
-        /* 아바타 이미지 크기 조정 */
+        /* 아바타 이미지 (둘 다) */
         div[data-testid="stChatMessage"] > img {
             width: 50px !important;
             height: 60px !important;
             object-fit: cover;  /* 이미지 비율 유지하면서 크기 조정 */
         }
         
-        /* User 아바타 이미지 오른쪽 */
+        /* User 아바타 이미지 */
         div[data-testid="stChatMessage"] > img[alt="user avatar"] {
             order: 1;
         }
         
-        /* User 글씨 오른쪽 정렬 */
-        div[data-testid="stChatMessageContent"][aria-label="Chat message from user"] {
-            text-align: right;
-            justify-content: flex-end;
-        }
         
-        /* 오른쪽에 이미지가 오도록 설정 */
         div[data-testid="stChatMessage"] {
             display: flex;
-            justify-content: flex-start;
-            align-items: center;
+            align-items: flex-end;
+        }
+        
+        /* User 글씨 */
+        div[data-testid="stChatMessageContent"][aria-label="Chat message from user"] {
+            text-align: right;
+            justify-content: center;
         }
         
         /* 메시지 내용 왼쪽에 배치 */
         div[data-testid="stChatMessage"] > div[data-testid="stChatMessageContent"] {
-            order: 0;  /* 메시지를 왼쪽에 배치 */
-            margin-right: 10px;  /* 아바타와 텍스트 사이 간격 */
+            order: 0;  /* 메시지를 왼쪽에 배치 - User만*/
+            margin-right: 20px;  /* 아바타와 텍스트 사이 간격 */
+            margin-left: 10px;
+            
         }
         
         
