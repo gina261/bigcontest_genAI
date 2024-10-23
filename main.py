@@ -545,14 +545,8 @@ elif st.session_state.page == 'next_page':
         
         
         div[data-testid="stChatMessage"] {
-            display: inline-block !important;
+            display: inline-block;
             background-color: #feefcc;
-        }
-        
-        /* User 글씨 */
-        div[data-testid="stChatMessageContent"][aria-label="Chat message from user"] {
-            text-align: right;
-            justify-content: center;
         }
         
         /* 메시지 내용 왼쪽에 배치 */
@@ -571,7 +565,10 @@ elif st.session_state.page == 'next_page':
             display: inline-block !important;
         }
         
+        /* User 글씨 */
         div[data-testid="stChatMessageContent"][aria-label="Chat message from user"] {
+            text-align: right;
+            justify-content: center;
             background-color: #ffddaf;
             padding: 10px 20px;
             border-radius: 15px;
