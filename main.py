@@ -545,7 +545,7 @@ elif st.session_state.page == 'next_page':
         
         
         div[data-testid="stChatMessage"] {
-            display: inline-block;
+            display: flex;
             background-color: #feefcc;
         }
         
@@ -563,9 +563,7 @@ elif st.session_state.page == 'next_page':
             border-radius: 15px;
             width: auto;
             word-wrap: break-word;
-            display: inline-block !important;
             max-width: 100%
-            white-space: nowrap;
         }
         
         /* User 글씨 */
@@ -577,26 +575,9 @@ elif st.session_state.page == 'next_page':
             border-radius: 15px;
             width: auto;
             word-wrap: break-word;
-            display: inline-block !important;
             max-width: 100%
-            white-space: nowrap;
         }
-        
-        
-        
-        
-        div[data-testid="stMarkdownContainer"] p{
-            display: inline-block;
-            width: auto !important;
-            max-width: 100%;
-            white-space: nowrap;
-        }
-        
-        /* 두 줄 이상일 때 텍스트 줄바꿈 */
-        div[data-testid="stChatMessageContent"][aria-label="Chat message from user"]:not(:only-child) {
-            white-space: normal;  /* 여러 줄일 때는 줄바꿈 */
-        }
-            
+    
         
         
         </style>
