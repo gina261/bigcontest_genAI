@@ -583,6 +583,7 @@ elif st.session_state.page == 'next_page':
         /* 입력창 배경 */
         div [class="st-emotion-cache-128upt6 ea3mdgi6"] {
             background-color: #ffefcc;
+            height: 100px;
         }
         
         div [data-baseweb="base-input"] {
@@ -598,12 +599,6 @@ elif st.session_state.page == 'next_page':
             background-color: #ffefcc;
         }
         
-        /* 보내기 버튼 */
-        button [data-testid="stChatInputSubmitButton"] {
-            background-color: #ff8015;
-            color: #ffffff;
-            border-radius: 50px;
-        }
         
         </style>
         """,
