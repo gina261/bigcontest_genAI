@@ -280,7 +280,7 @@ if st.session_state.page == 'main':
         
         div [data-testid="stButton"] {
             display: flex;
-            justify-content: center;
+            justify-content: flex-end;
             margin: 10px;
         }
         
