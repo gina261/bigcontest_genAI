@@ -585,11 +585,17 @@ elif st.session_state.page == 'next_page':
             background-color: #ffefcc;
         }
         
-        div [data-testid="stChatInput"] {
+        div [data-baseweb="base-input"] {
+            font-family: 'Pretendard', sans-serif;
+        }
+        div [data-baseweb="textarea"] {
             background-color: #ffffff;
-            border: 1px solid #ffffff;
+            border-color: #ffffff;
             border-radius: 30px;
-            height: 50px;
+            padding: 3px 15px;
+        }
+        div [data-testid="stChatInput"] {
+            background-color: #ffefcc;
         }
         
         </style>

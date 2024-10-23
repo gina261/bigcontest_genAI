@@ -598,6 +598,13 @@ elif st.session_state.page == 'next_page':
             background-color: #ffefcc;
         }
         
+        /* 보내기 버튼 */
+        button [data-testid="stChatInputSubmitButton"] {
+            background-color: #ff8015;
+            color: #ffffff;
+            border-radius: 50px;
+        }
+        
         </style>
         """,
         unsafe_allow_html=True
