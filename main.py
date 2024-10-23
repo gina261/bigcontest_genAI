@@ -580,7 +580,7 @@ elif st.session_state.page == 'next_page':
         }
         
         div[data-testid="stMarkdown"] p {
-            font-family: 'Pretendard', sans-serif;
+            width: 30px;
         }
         
         </style>
