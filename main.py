@@ -381,6 +381,7 @@ if st.session_state.page == 'main':
         st.session_state.selected_regions = []
         selected_region = None
         st_data = None
+        st_data.get('last_active_drawing') = None
         st.session_state.map_data = None
         
     st.button("선택 초기화", on_click=reset_selected_regions)
