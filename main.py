@@ -565,7 +565,6 @@ elif st.session_state.page == 'next_page':
             width: auto;
             word-wrap: break-word;
             max-width: 100%;
-            display: flex;
             justify-contet: center;
         }
         
