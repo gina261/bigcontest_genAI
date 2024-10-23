@@ -556,6 +556,7 @@ elif st.session_state.page == 'next_page':
             margin-left: 10px;
         }
         
+        /* assistant 메시지 스타일 */
         div[data-testid="stChatMessageContent"][aria-label="Chat message from assistant"] {
             background-color: #ffffff;
             padding: 10px 20px;
@@ -564,6 +565,7 @@ elif st.session_state.page == 'next_page':
             word-wrap: break-word;
             display: inline-block !important;
             max-width: 100%
+            white-space: nowrap;
         }
         
         /* User 글씨 */
@@ -577,6 +579,7 @@ elif st.session_state.page == 'next_page':
             word-wrap: break-word;
             display: inline-block !important;
             max-width: 100%
+            white-space: nowrap;
         }
         
         
@@ -586,6 +589,7 @@ elif st.session_state.page == 'next_page':
             display: inline-block;
             width: auto !important;
             max-width: 100%;
+            white-space: nowrap;
         }
         
         
