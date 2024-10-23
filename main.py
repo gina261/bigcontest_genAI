@@ -381,6 +381,7 @@ if st.session_state.page == 'main':
         st_data = None
         selected_region = None
         st.session_state.selected_regions = []
+        st.experimental_set_query_params(reset="true")  # 페이지 강제 새로고침
         
     # 선택된 지역 텍스트를 위한 placeholder 생성
     selected_region_text = st.empty()
