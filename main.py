@@ -546,7 +546,7 @@ elif st.session_state.page == 'next_page':
         
         div[data-testid="stChatMessage"] {
             display: flex;
-            justify-content: flex-start;
+            
             align-items: center;
         }
         
