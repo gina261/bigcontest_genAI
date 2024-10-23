@@ -531,6 +531,11 @@ elif st.session_state.page == 'next_page':
             color: black; /* 기본 텍스트 색상 */
         }
         
+        /* 아바타 이미지 크기 조정 */
+        .stChatMessageAvatar img {
+            width: 60px;  /* 아바타 이미지 너비 조정 */
+            height: 60px; /* 아바타 이미지 높이 조정 */
+        }
         </style>
         """,
         unsafe_allow_html=True
