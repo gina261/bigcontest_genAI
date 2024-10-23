@@ -547,6 +547,7 @@ elif st.session_state.page == 'next_page':
         div[data-testid="stChatMessage"] {
             display: flex;
             align-items: flex-end;
+            background-color: none;
         }
         
         /* User 글씨 */
