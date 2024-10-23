@@ -539,9 +539,19 @@ elif st.session_state.page == 'next_page':
         
         /* 아바타 이미지 크기 조정 */
         div[data-testid="stChatMessage"] img {
+            order: 0;
             width: 50px !important;
             height: 60px !important;
             object-fit: cover;  /* 이미지 비율 유지하면서 크기 조정 */
+        }
+        
+        /* User 메시지에서는 아바타가 오른쪽으로 */
+        div[data-testid="stChatMessage"][data-testid*="user"] > div {
+            order: 1;  /* 아바타를 오른쪽으로 */
+        }
+
+        div[data-testid="stChatMessage"][data-testid*="user"] > div.stChatMessageContent {
+            order: 0;  /* 메시지를 왼쪽으로 */
         }
         </style>
         """,
