@@ -547,11 +547,12 @@ elif st.session_state.page == 'next_page':
         div[data-testid="stChatMessageContent"][aria-label="Chat message from user"] {
             text-align: right;
             justify-content: center;
+            
         }
         
         div[data-testid="stChatMessageContent"] {
             display: flex;
-            justify-content: flex-start;
+            justify-content: flex-end;
             align-items: flex-end;
         }
         
