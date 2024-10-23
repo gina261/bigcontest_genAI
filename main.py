@@ -544,6 +544,12 @@ elif st.session_state.page == 'next_page':
         }
         
         
+        div[data-testid="stChatMessage"] {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        
         /* User 글씨 */
         div[data-testid="stChatMessageContent"][aria-label="Chat message from user"] {
             text-align: right;
@@ -555,6 +561,7 @@ elif st.session_state.page == 'next_page':
             order: 0;  /* 메시지를 왼쪽에 배치 - User만*/
             margin-right: 20px;  /* 아바타와 텍스트 사이 간격 */
             margin-left: 10px;
+            
         }
         
         
