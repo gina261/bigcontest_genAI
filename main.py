@@ -286,6 +286,7 @@ if st.session_state.page == 'main':
             display: flex;
             justify-content: flex-end;
             margin: 10px;
+            margin-right: 20px;
         }
         
         
