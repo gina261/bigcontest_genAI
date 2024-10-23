@@ -567,13 +567,56 @@ elif st.session_state.page == 'next_page':
             background-color: #ffffff;
             padding: 10px 20px;
             border-radius: 15px;
+            width: auto;
+            word-wrap: break-word;
+            display: inline-block !important;
         }
         
         div[data-testid="stChatMessageContent"][aria-label="Chat message from user"] {
             background-color: #ffddaf;
             padding: 10px 20px;
             border-radius: 15px;
-        }        
+            width: auto;
+            word-wrap: break-word;
+            display: inline-block !important;
+        }
+        
+        div[data-testid="stMarkdown"] p {
+            display: inline-block;
+            width: auto;
+            max-width: 100%;
+        }
+        div[data-testid="stMarkdownContainer"] {
+            display: inline-block;
+            width: auto;
+            max-width: 100%;
+        }
+        div[data-testid="stMarkdown"] {
+            display: inline-block;
+            width: auto !important;
+            max-width: 100%;
+        }
+        div[data-testid="stElementContainer"] {
+            display: inline-block;
+            width: auto !important;
+            max-width: 100%;
+        }
+        div[data-testid="stVerticalBlock"] {
+            display: inline-block;
+            width: auto !important;
+            max-width: 100%;
+        }
+        div[class="st-emotion-cache-1wmy9hl e1f1d6gn1"] {
+            display: inline-block;
+            width: auto !important;
+            max-width: 100%;
+        }
+        div[data-testid="stVerticalBlockBorderWrapper"] {
+            display: inline-block;
+            width: auto !important;
+            max-width: 100%;
+        }
+        
         
         </style>
         """,
@@ -616,4 +659,3 @@ elif st.session_state.page == 'next_page':
                 placeholder.markdown(full_response)
         message = {"role": "assistant", "content": full_response}
         st.session_state.messages.append(message)
-    
