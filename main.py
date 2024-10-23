@@ -577,11 +577,7 @@ elif st.session_state.page == 'next_page':
             display: inline-block !important;
         }
         
-        div[data-testid="stMarkdown"] p {
-            display: inline-block;
-            width: auto;
-            max-width: 100%;
-        }
+        
         div[data-testid="stMarkdownContainer"] {
             display: inline-block;
             width: auto;
@@ -592,7 +588,7 @@ elif st.session_state.page == 'next_page':
             width: auto !important;
             max-width: 100%;
         }
-        div[data-testid="stElementContainer"] {
+        div[class="st-emotion-cache-1wmy9hl e1f1d6gn1"] {
             display: inline-block;
             width: auto !important;
             max-width: 100%;
