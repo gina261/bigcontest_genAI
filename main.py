@@ -538,6 +538,11 @@ elif st.session_state.page == 'next_page':
             object-fit: cover;  /* 이미지 비율 유지하면서 크기 조정 */
         }
         
+        /* */
+        div[data-testid="stChatMessage"] > img[alt="user avatar"] {
+            order: 1;
+        }
+        
         /* User 글씨 오른쪽 정렬 */
         div[data-testid="stChatMessageContent"][aria-label="Chat message from user"] {
             text-align: right;
