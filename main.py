@@ -496,7 +496,7 @@ if st.session_state.page == 'main':
     #     unsafe_allow_html=True
     # )
     
-    if st.button("입력"):
+    if st.button("채팅 시작"):
         go_to_next_page()
         
 ####### 두 번째 페이지 #######
@@ -504,11 +504,30 @@ elif st.session_state.page == 'next_page':
     
     GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
     
-    def chatbot_response(user_input):
-        # 챗봇 로직 구현
-        if user_input:
-            return f"{user_input[::-1]}"
-        return ""
+    def get_gemini_response(user_input):
+        # Gemini 1.5 flash에 요청을 보내기 위한 헤더와 데이터 준비
+        headers = {
+            "Authorization": f"Bearer {GEMINI_API_KEY}",
+            "Content-Type": "application/json"
+        }
+        
+        # API 호출을 위한 데이터
+        data = {
+            "model": "gemini-1.5-flash",
+            "messages": [
+                {"role": "system", "content": "You are a helpful assistant."},
+                {"role": "user", "content": user_input}
+            ]
+        }
+        
+        # API 호출
+        response = requests.post("https://api.gemini.com/v1/flash", headers=headers, json=data)
+        
+        # 응답 데이터 파싱
+        if response.status_code == 200:
+            return response.json()["choices"][0]["message"]["content"]
+        else:
+            return "Error: Could not retrieve response from Gemini API."
     
     # 기본 배경 설정
     st.markdown(
@@ -523,37 +542,6 @@ elif st.session_state.page == 'next_page':
             color: black; /* 기본 텍스트 색상 */
         }
         
-        /* chat_input 외부 전체 컨테이너 배경색 (주황색) */
-        div[data-testid="stTextInput"] {
-            background-color: #ff8015 !important; /* 외부 배경색 주황색 */
-            border-radius: 15px !important;
-            padding: 10px !important;
-        }
-        
-        /* chat input 박스 내부 커스터마이징 */
-        div[data-baseweb="input"] {
-            border-radius: 15px !important; /* 테두리 둥글게 */
-            background-color: #ffffff !important; /* 배경색 흰색으로 */
-        }
-        
-        /* chat input의 텍스트 스타일 변경 */
-        div[data-baseweb="input"] input {
-            color: black !important;
-            font-family: 'Pretendard', sans-serif;
-            padding: 10px;
-            background-color: #ffffff !important;
-            border: none !important;
-        }
-        
-        /* chat_input의 보내기 버튼만 스타일 변경 */
-        div[class*="stTextInputContainer"] div[class*="stButton"] button {
-            background-color: #ff8015 !important;
-            border-radius: 50% !important;
-            color: white !important;
-            width: 50px !important;
-            height: 50px !important;
-            border: none;
-        }
         </style>
         """,
         unsafe_allow_html=True
@@ -561,8 +549,8 @@ elif st.session_state.page == 'next_page':
     
     # 페이지 로드 시 사용자 입력 처리
     if user_input := st.chat_input("질문을 입력하세요"):
-        # 단순히 입력된 텍스트를 뒤집어서 응답하는 로직
-        chatbot_response = f"{user_input[::-1]}"
+        # Gemini API를 통해 응답을 생성
+        chatbot_response = get_gemini_response(user_input)
         
         # 사용자와 챗봇의 대화 기록을 추가
         if "chat_history" not in st.session_state:
