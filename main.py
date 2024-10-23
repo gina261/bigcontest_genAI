@@ -379,7 +379,6 @@ if st.session_state.page == 'main':
     # 선택 초기화 버튼 클릭 시 선택된 지역 초기화
     if st.button("선택 초기화"):
         st.session_state.selected_regions = []
-        st.session_state.selected_regions.append('reset')
         
     # 선택된 지역 텍스트를 위한 placeholder 생성
     selected_region_text = st.empty()
@@ -440,7 +439,7 @@ if st.session_state.page == 'main':
     st_data = st_folium(jeju_map, width=800, height=400)
 
     # 선택한 지역을 가져오기
-    if st_data and st_data.get('last_active_drawing') and 'reset' not in st.session_state.selected_regions:
+    if st_data and st_data.get('last_active_drawing'):
         selected_region = st_data['last_active_drawing']['properties']['adm_nm']
 
         # 지역이 이미 선택된 리스트에 없으면 추가
