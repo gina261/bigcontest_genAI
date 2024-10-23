@@ -568,6 +568,7 @@ elif st.session_state.page == 'next_page':
             padding: 10px 20px;
             border-radius: 15px;
             width: auto;
+            word-wrap: break-word;
         }
         
         div[data-testid="stChatMessageContent"][aria-label="Chat message from user"] {
@@ -575,6 +576,7 @@ elif st.session_state.page == 'next_page':
             padding: 10px 20px;
             border-radius: 15px;
             width: auto;
+            word-wrap: break-word;
         }        
         
         </style>
