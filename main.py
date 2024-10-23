@@ -665,7 +665,6 @@ elif st.session_state.page == 'next_page':
             padding: 1rem 1rem 30px;
         }
         
-        
         </style>
         """,
         unsafe_allow_html=True

@@ -621,6 +621,7 @@ elif st.session_state.page == 'next_page':
             word-wrap: break-word;
             max-width: 100%;
             justify-contet: center;
+            color: #000000;
         }
         
         /* User 메시지 스타일 */
@@ -632,14 +633,18 @@ elif st.session_state.page == 'next_page':
             word-wrap: break-word;
             display: 100%;
             justify-content: center;
+            color: #000000;
         }
         
         
         /* 채팅 입력창 스타일 */
         /* 입력창 배경 */
         div [class="st-emotion-cache-128upt6 ea3mdgi6"] {
-            background-color: #ffefcc;
+            background-color: #ffefcc !important;
         }
+        div [class="st-emotion-cache-hzygls ea3mdgi6"] {
+            background-color: #ffefcc !important;
+        }        
         
         div [data-baseweb="base-input"] {
             font-family: 'Pretendard', sans-serif;
@@ -649,6 +654,9 @@ elif st.session_state.page == 'next_page':
             border-color: #ffffff;
             border-radius: 30px;
             padding: 3px 15px;
+        }
+        textarea[data-testid="stChatInputTextArea"]{
+            color: #000000;
         }
         div [data-testid="stChatInput"] {
             background-color: #ffefcc;
