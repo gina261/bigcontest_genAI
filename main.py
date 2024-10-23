@@ -642,6 +642,9 @@ elif st.session_state.page == 'next_page':
         div [class="st-emotion-cache-128upt6 ea3mdgi6"] {
             background-color: #ffefcc !important;
         }
+        div [class="st-emotion-cache-hzygls ea3mdgi6"] {
+            background-color: #ffefcc !important;
+        }        
         
         div [data-baseweb="base-input"] {
             font-family: 'Pretendard', sans-serif;
