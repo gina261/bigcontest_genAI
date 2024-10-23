@@ -109,7 +109,7 @@ if st.session_state.page == 'main':
         
         .centered-subtext.first {
             margin-top: -5px;
-            margin-bottom: 10px;
+            margin-bottom: 0px;
         }
 
         /* 박스 스타일 */
