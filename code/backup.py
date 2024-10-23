@@ -546,14 +546,7 @@ elif st.session_state.page == 'next_page':
         
         div[data-testid="stChatMessage"] {
             display: inline-block;
-            align-items: flex-end;
             background-color: #feefcc;
-        }
-        
-        /* User 글씨 */
-        div[data-testid="stChatMessageContent"][aria-label="Chat message from user"] {
-            text-align: right;
-            justify-content: center;
         }
         
         /* 메시지 내용 왼쪽에 배치 */
@@ -572,7 +565,10 @@ elif st.session_state.page == 'next_page':
             display: inline-block !important;
         }
         
+        /* User 글씨 */
         div[data-testid="stChatMessageContent"][aria-label="Chat message from user"] {
+            text-align: right;
+            justify-content: center;
             background-color: #ffddaf;
             padding: 10px 20px;
             border-radius: 15px;
@@ -581,22 +577,14 @@ elif st.session_state.page == 'next_page':
             display: inline-block !important;
         }
         
-        div[data-testid="stMarkdown"] p {
-            display: inline-block;
-            width: auto;
-            max-width: 100%;
-        }
-        div[data-testid="stMarkdownContainer"] {
-            display: inline-block;
-            width: auto;
-            max-width: 100%;
-        }
-        div[data-testid="stMarkdown"] {
+        
+        
+        div[class="st-emotion-cache-1wmy9hl e1f1d6gn1"] {
             display: inline-block;
             width: auto !important;
             max-width: 100%;
         }
-        div[data-testid="stElementContainer"] {
+        div[data-testid="stMarkdownContainer"] p{
             display: inline-block;
             width: auto !important;
             max-width: 100%;

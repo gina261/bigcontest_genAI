@@ -563,6 +563,7 @@ elif st.session_state.page == 'next_page':
             width: auto;
             word-wrap: break-word;
             display: inline-block !important;
+            max-width: 100%
         }
         
         /* User 글씨 */
