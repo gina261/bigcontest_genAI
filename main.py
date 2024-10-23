@@ -375,12 +375,12 @@ if st.session_state.page == 'main':
     # 선택된 지역을 저장할 리스트 생성 (세션 상태에서 관리)
     if 'selected_regions' not in st.session_state:
         st.session_state.selected_regions = []
-    # 지도 세션 상태에서 관리
 
-    # 선택 초기화 버튼 클릭 시 선택된 지역 초기화
-    if st.button("선택 초기화"):
+    def reset_selected_regions():
         st.session_state.selected_regions = []
         st.session_state.map = None
+        
+    st.button("선택 초기화", on_click=reset_selected_regions)
         
     # 선택된 지역 텍스트를 위한 placeholder 생성
     selected_region_text = st.empty()
@@ -441,7 +441,7 @@ if st.session_state.page == 'main':
         return jeju_map
     
     if 'map' not in st.session_state or st.session_state.map is None:
-        st.session_state.map = render_map
+        st.session_state.map = render_map()
 
     # Streamlit에서 지도 표시
     st_data = st_folium(st.session_state.map, width=800, height=400)
