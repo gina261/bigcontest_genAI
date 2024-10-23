@@ -3,6 +3,7 @@ import folium
 from streamlit_folium import st_folium
 import json
 import requests
+import google.generativeai as genai
 
 # 세션 상태에서 페이지 상태를 관리
 if 'page' not in st.session_state:
@@ -504,30 +505,14 @@ elif st.session_state.page == 'next_page':
     
     GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
     
-    def get_gemini_response(user_input):
+    def get_gemini_response(prompt):
         # Gemini 1.5 flash에 요청을 보내기 위한 헤더와 데이터 준비
-        headers = {
-            "Authorization": f"Bearer {GEMINI_API_KEY}",
-            "Content-Type": "application/json"
-        }
+        genai.configure(api_key=GEMINI_API_KEY)
         
-        # API 호출을 위한 데이터
-        data = {
-            "model": "gemini-1.5-flash",
-            "messages": [
-                {"role": "system", "content": "You are a helpful assistant."},
-                {"role": "user", "content": user_input}
-            ]
-        }
+        model = genai.GenerativeModel("gemini-1.5-flash")
+        response = model.generate_content(prompt)
         
-        # API 호출
-        response = requests.post("https://api.gemini.com/v1/flash", headers=headers, json=data)
-        
-        # 응답 데이터 파싱
-        if response.status_code == 200:
-            return response.json()["choices"][0]["message"]["content"]
-        else:
-            return "Error: Could not retrieve response from Gemini API."
+        return response
     
     # 기본 배경 설정
     st.markdown(
