@@ -583,7 +583,6 @@ elif st.session_state.page == 'next_page':
         /* 입력창 배경 */
         div [class="st-emotion-cache-128upt6 ea3mdgi6"] {
             background-color: #ffefcc;
-            height: 100px;
         }
         
         div [data-baseweb="base-input"] {
