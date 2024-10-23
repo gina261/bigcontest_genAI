@@ -536,7 +536,6 @@ elif st.session_state.page == 'next_page':
             width: 50px !important;
             height: 60px !important;
             object-fit: cover;  /* 이미지 비율 유지하면서 크기 조정 */
-            order: 1;
         }
         
         /* User 글씨 오른쪽 정렬 */
