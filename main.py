@@ -536,24 +536,28 @@ elif st.session_state.page == 'next_page':
     if "messages" not in st.session_state.keys():
         st.session_state.messages = [{"role": "assistant", "content": "오늘의 기분이나 상황을 입력해주세요. 그에 맞는 제주의 멋진 곳을 추천해드립니다."}]
     
-    # 채팅 화면 표시
-    for message in st.session_state.messages:
-        with st.chat_message(message["role"]):
-            st.write(message["content"])
-            
-    # 채팅 화면 초기화
+    # 채팅 화면 초기화 함수
     def clear_chat_history():
         st.session_state.messages = [{"role": "assistant", "content": "오늘의 기분이나 상황을 입력해주세요. 그에 맞는 제주의 멋진 곳을 추천해드립니다."}]
     
+    # 프로필 이미지 설정
+    assistant_avatar = "https://github.com/gina261/bigcontest_genAI/blob/main/images/chatbot_assistant.png?raw=true"
+    user_avatar = "https://github.com/gina261/bigcontest_genAI/blob/main/images/chatbot_user.png?raw=true"
     
+    # 채팅 화면 표시
+    for message in st.session_state.messages:
+        profile = user_avatar if message["role"] == "user" else assistant_avatar
+        with st.chat_message(message["role"]):
+            st.write(message["content"])
+ 
     if prompt := st.chat_input():
         st.session_state.messages.append({"role": "user", "content": prompt})
-        with st.chat_message("user"):
+        with st.chat_message("user", avatar=user_avatar):
             st.write(prompt)
             
     # 사용자가 새로운 메시지를 입력한 후 응답 생성
     if st.session_state.messages[-1]["role"] != "assistant":
-        with st.chat_message("assistant"):
+        with st.chat_message("assistant", avatar=assistant_avatar):
             with st.spinner("Thinking..."):
                 response = get_gemini_response(prompt)
                 placeholder = st.empty()
