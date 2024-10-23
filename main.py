@@ -640,11 +640,12 @@ elif st.session_state.page == 'next_page':
         /* 채팅 입력창 스타일 */
         /* 입력창 배경 */
         div [class="st-emotion-cache-128upt6 ea3mdgi6"] {
-            background-color: #ffefcc;
+            background-color: #ffefcc !important;
         }
         
         div [data-baseweb="base-input"] {
             font-family: 'Pretendard', sans-serif;
+            color: #000000;
         }
         div [data-baseweb="textarea"] {
             background-color: #ffffff;
