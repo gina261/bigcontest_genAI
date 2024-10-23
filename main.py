@@ -565,7 +565,7 @@ elif st.session_state.page == 'next_page':
         div[data-testid="stMarkdownContainer"] {
             background-color: #ffffff;
             padding: 10px 20px;
-            margin-bottom: 0;
+            margin-bottom: 0px;
         }
         
         
