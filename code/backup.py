@@ -543,7 +543,6 @@ elif st.session_state.page == 'next_page':
             order: 1;
         }
         
-        
         div[data-testid="stChatMessage"] {
             display: flex;
             align-items: flex-end;
@@ -570,14 +569,27 @@ elif st.session_state.page == 'next_page':
         
         /* User 메시지 스타일 */
         div[data-testid="stChatMessageContent"][aria-label="Chat message from user"] {
-            justify-content: center;
             background-color: #ffddaf;
             padding: 10px 20px;
             border-radius: 15px;
             width: auto;
             word-wrap: break-word;
-            display: flex;
+            display: 100%;
             justify-content: center;
+        }
+        
+        
+        /* 채팅 입력창 스타일 */
+        /* 입력창 배경 */
+        div [class="st-emotion-cache-128upt6 ea3mdgi6"] {
+            background-color: #ffefcc;
+        }
+        
+        div [data-testid="stChatInput"] {
+            background-color: #ffffff;
+            border: 1px solid #ffffff;
+            border-radius: 30px;
+            height: 50px;
         }
         
         </style>
