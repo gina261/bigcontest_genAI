@@ -547,20 +547,40 @@ elif st.session_state.page == 'next_page':
         unsafe_allow_html=True
     )
     
-    # 페이지 로드 시 사용자 입력 처리
-    if user_input := st.chat_input("질문을 입력하세요"):
-        # Gemini API를 통해 응답을 생성
-        chatbot_response = get_gemini_response(user_input)
-        
-        # 사용자와 챗봇의 대화 기록을 추가
-        if "chat_history" not in st.session_state:
-            st.session_state.chat_history = []
-        
-        st.session_state.chat_history.append({"role": "user", "content": user_input})
-        st.session_state.chat_history.append({"role": "assistant", "content": chatbot_response})
-        
-        # 대화 기록을 화면에 표시
-        for message in st.session_state.chat_history:
-            role = message["role"]
-            content = message["content"]
-            st.write(f"{role.capitalize()}: {content}")
+    # session_state 초기화
+    if "messages" not in st.session_state.keys():
+        st.session_state.messages = [{"role": "assistant", "content": "오늘의 기분이나 상황을 입력해주세요. 그에 맞는 제주의 멋진 곳을 추천해드립니다."}]
+    
+    # 채팅 화면 표시
+    for message in st.session_state.messages:
+        with st.chat_message(message["role"]):
+            st.write(message["content"])
+            
+    # 채팅 화면 초기화
+    def clear_chat_history():
+        st.session_state.messages = [{"role": "assistant", "content": "오늘의 기분이나 상황을 입력해주세요. 그에 맞는 제주의 멋진 곳을 추천해드립니다."}]
+    
+    
+    if prompt := st.chat_input():
+        st.session_state.messages.append({"role": "user", "content": prompt})
+        with st.chat_message("user"):
+            st.write(prompt)
+            
+    # 사용자가 새로운 메시지를 입력한 후 응답 생성
+    if st.session_state.messages[-1]["role"] != "assistant":
+        with st.chat_message("assistant"):
+            with st.spinner("Thinking..."):
+                response = get_gemini_response(prompt)
+                placeholder = st.empty()
+                full_response = ''
+                
+                # 만약 response가 GenerateContentResponse 객체라면, 문자열로 변환하여 사용합니다.
+                if isinstance(response, str):
+                    full_response = response
+                else:
+                    full_response = response.text # response 객체에서 텍스트 부분 추출
+                
+                placeholder.markdown(full_response)
+        message = {"role": "assistant", "content": full_response}
+        st.session_state.messages.append(message)
+    
