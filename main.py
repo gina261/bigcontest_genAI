@@ -569,6 +569,7 @@ elif st.session_state.page == 'next_page':
             border-radius: 15px;
             width: auto;
             word-wrap: break-word;
+            display: inline-block;
         }
         
         div[data-testid="stChatMessageContent"][aria-label="Chat message from user"] {
@@ -611,11 +612,6 @@ elif st.session_state.page == 'next_page':
             max-width: 100%;
         }
         div[data-testid="stVerticalBlockBorderWrapper"] {
-            display: inline-block;
-            width: auto !important;
-            max-width: 100%;
-        }
-        div[data-testid="stChatMessageContent"] {
             display: inline-block;
             width: auto !important;
             max-width: 100%;
