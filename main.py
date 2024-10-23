@@ -237,7 +237,7 @@ if st.session_state.page == 'main':
             white-space: nowrap;
             
             position: relative;
-            top: 10px;
+            top: 30px;
             z-index: 1;
         }
         
