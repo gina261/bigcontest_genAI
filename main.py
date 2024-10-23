@@ -533,8 +533,8 @@ elif st.session_state.page == 'next_page':
         
         /* 아바타 이미지 크기 조정 */
         .stChatMessageAvatar img {
-            width: 60px;  /* 아바타 이미지 너비 조정 */
-            height: 60px; /* 아바타 이미지 높이 조정 */
+            width: 100px !important;
+            height: 150px !important;
         }
         </style>
         """,
