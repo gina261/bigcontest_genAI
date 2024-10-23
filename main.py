@@ -108,8 +108,8 @@ if st.session_state.page == 'main':
         }
         
         .centered-subtext.first {
-            margin-top: 20px;
-            margin-bottom: -20px;
+            margin-top: 0px;
+            margin-bottom: 0px;
         }
 
         /* 박스 스타일 */
