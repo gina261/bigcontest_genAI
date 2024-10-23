@@ -568,6 +568,10 @@ elif st.session_state.page == 'next_page':
             padding: 10px;
         }
         
+        div[data-testid="stChatMessageContent"][aria-label="Chat message from user"] {
+            background-color: #ffffff;
+            padding: 10px;
+        }        
         
         </style>
         """,
