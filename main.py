@@ -645,13 +645,14 @@ elif st.session_state.page == 'next_page':
         
         div [data-baseweb="base-input"] {
             font-family: 'Pretendard', sans-serif;
-            color: #000000;
         }
         div [data-baseweb="textarea"] {
             background-color: #ffffff;
             border-color: #ffffff;
             border-radius: 30px;
             padding: 3px 15px;
+        }
+        textarea[data-testid="stChatInputTextArea"]{
             color: #000000;
         }
         div [data-testid="stChatInput"] {
