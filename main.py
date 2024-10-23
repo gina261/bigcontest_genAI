@@ -577,6 +577,7 @@ elif st.session_state.page == 'next_page':
             border-radius: 15px;
             width: auto;
             word-wrap: break-word;
+            display: inline-block;
         }
         
         div[data-testid="stMarkdown"] p {
