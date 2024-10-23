@@ -385,7 +385,7 @@ if st.session_state.page == 'main':
         st.session_state.selected_regions = []
 
     # 선택 초기화 버튼 클릭 시 선택된 지역 초기화
-    if st.button("선택 초기화"):
+    if st.button("↺"):
         st.session_state.selected_regions = []
         st.session_state.selected_regions.append('reset')
         
