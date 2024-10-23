@@ -378,8 +378,8 @@ if st.session_state.page == 'main':
 
     # 선택 초기화 버튼 클릭 시 선택된 지역 초기화
     if st.button("선택 초기화"):
-        st.session_state.selected_regions = []
         selected_region = None
+        st.session_state.selected_regions = []
         
     # 선택된 지역 텍스트를 위한 placeholder 생성
     selected_region_text = st.empty()
