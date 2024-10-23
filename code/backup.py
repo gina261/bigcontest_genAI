@@ -3,6 +3,7 @@ import folium
 from streamlit_folium import st_folium
 import json
 import requests
+import google.generativeai as genai
 
 # 세션 상태에서 페이지 상태를 관리
 if 'page' not in st.session_state:
@@ -504,30 +505,18 @@ elif st.session_state.page == 'next_page':
     
     GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
     
-    def get_gemini_response(user_input):
+    def get_gemini_response(prompt):
         # Gemini 1.5 flash에 요청을 보내기 위한 헤더와 데이터 준비
-        headers = {
-            "Authorization": f"Bearer {GEMINI_API_KEY}",
-            "Content-Type": "application/json"
-        }
+        genai.configure(api_key=GEMINI_API_KEY)
         
-        # API 호출을 위한 데이터
-        data = {
-            "model": "gemini-1.5-flash",
-            "messages": [
-                {"role": "system", "content": "You are a helpful assistant."},
-                {"role": "user", "content": user_input}
-            ]
-        }
+        model = genai.GenerativeModel("gemini-1.5-flash")
+        response = model.generate_content(prompt)
         
-        # API 호출
-        response = requests.post("https://api.gemini.com/v1/flash", headers=headers, json=data)
-        
-        # 응답 데이터 파싱
-        if response.status_code == 200:
-            return response.json()["choices"][0]["message"]["content"]
-        else:
-            return "Error: Could not retrieve response from Gemini API."
+        return response
+    
+    # 프로필 이미지 설정
+    assistant_avatar = "https://github.com/gina261/bigcontest_genAI/blob/main/images/chatbot_assistant.png?raw=true"
+    user_avatar = "https://github.com/gina261/bigcontest_genAI/blob/main/images/chatbot_user.png?raw=true"
     
     # 기본 배경 설정
     st.markdown(
@@ -542,25 +531,50 @@ elif st.session_state.page == 'next_page':
             color: black; /* 기본 텍스트 색상 */
         }
         
+        /* 아바타 이미지 크기 조정 */
+        .stMessageAvatar {
+            width: 100px !important;
+            height: 150px !important;
+        }
         </style>
         """,
         unsafe_allow_html=True
     )
     
-    # 페이지 로드 시 사용자 입력 처리
-    if user_input := st.chat_input("질문을 입력하세요"):
-        # Gemini API를 통해 응답을 생성
-        chatbot_response = get_gemini_response(user_input)
-        
-        # 사용자와 챗봇의 대화 기록을 추가
-        if "chat_history" not in st.session_state:
-            st.session_state.chat_history = []
-        
-        st.session_state.chat_history.append({"role": "user", "content": user_input})
-        st.session_state.chat_history.append({"role": "assistant", "content": chatbot_response})
-        
-        # 대화 기록을 화면에 표시
-        for message in st.session_state.chat_history:
-            role = message["role"]
-            content = message["content"]
-            st.write(f"{role.capitalize()}: {content}")
+    # session_state 초기화
+    if "messages" not in st.session_state.keys():
+        st.session_state.messages = [{"role": "assistant", "content": "오늘의 기분이나 상황을 입력해주세요. 그에 맞는 제주의 멋진 곳을 추천해드립니다."}]
+    
+    # 채팅 화면 초기화 함수
+    def clear_chat_history():
+        st.session_state.messages = [{"role": "assistant", "content": "오늘의 기분이나 상황을 입력해주세요. 그에 맞는 제주의 멋진 곳을 추천해드립니다."}]
+    
+    # 채팅 화면 표시
+    for message in st.session_state.messages:
+        avatar = user_avatar if message["role"] == "user" else assistant_avatar
+        with st.chat_message(message["role"], avatar=avatar):
+            st.write(message["content"])
+ 
+    if prompt := st.chat_input():
+        st.session_state.messages.append({"role": "user", "content": prompt})
+        with st.chat_message("user", avatar=user_avatar):
+            st.write(prompt)
+            
+    # 사용자가 새로운 메시지를 입력한 후 응답 생성
+    if st.session_state.messages[-1]["role"] != "assistant":
+        with st.chat_message("assistant", avatar=assistant_avatar):
+            with st.spinner("Thinking..."):
+                response = get_gemini_response(prompt)
+                placeholder = st.empty()
+                full_response = ''
+                
+                # 만약 response가 GenerateContentResponse 객체라면, 문자열로 변환하여 사용합니다.
+                if isinstance(response, str):
+                    full_response = response
+                else:
+                    full_response = response.text # response 객체에서 텍스트 부분 추출
+                
+                placeholder.markdown(full_response)
+        message = {"role": "assistant", "content": full_response}
+        st.session_state.messages.append(message)
+    
