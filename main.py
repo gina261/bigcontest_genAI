@@ -279,7 +279,9 @@ if st.session_state.page == 'main':
         }
         
         div [data-testid="stButton"] {
+            display: flex;
             justify-content: center;
+            margin: 10px;
         }
         
         
