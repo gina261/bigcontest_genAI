@@ -569,7 +569,7 @@ elif st.session_state.page == 'next_page':
             border-radius: 15px;
             width: auto;
             word-wrap: break-word;
-            display: inline-block;
+            display: inline-block !important;
         }
         
         div[data-testid="stChatMessageContent"][aria-label="Chat message from user"] {
@@ -578,7 +578,7 @@ elif st.session_state.page == 'next_page':
             border-radius: 15px;
             width: auto;
             word-wrap: break-word;
-            display: inline-block;
+            display: inline-block !important;
         }
         
         div[data-testid="stMarkdown"] p {
