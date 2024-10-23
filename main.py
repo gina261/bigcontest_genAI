@@ -587,6 +587,7 @@ elif st.session_state.page == 'next_page':
         
         div [data-baseweb="base-input"] {
             font-family: 'Pretendard', sans-serif;
+            background-color: #ffefcc;
         }
         div [data-baseweb="textarea"] {
             background-color: #ffffff;
