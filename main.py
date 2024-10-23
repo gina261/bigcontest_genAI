@@ -571,13 +571,15 @@ elif st.session_state.page == 'next_page':
         
         /* User 글씨 */
         div[data-testid="stChatMessageContent"][aria-label="Chat message from user"] {
-            text-align: right;
+            text-align: center;
             justify-content: center;
             background-color: #ffddaf;
             padding: 10px 20px;
             border-radius: 15px;
             width: auto;
             word-wrap: break-word;
+            display: flex;
+            justify-content: center;
         }
     
         /* 한 줄일 때 텍스트 중앙에 위치 */
