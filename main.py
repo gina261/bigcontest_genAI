@@ -579,7 +579,7 @@ elif st.session_state.page == 'next_page':
             word-wrap: break-word;
         }
         
-        div[data-testid="stMarkdown"] {
+        div[data-testid="stMarkdown"] p {
             width: auto;
         }
         
