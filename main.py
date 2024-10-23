@@ -585,6 +585,14 @@ elif st.session_state.page == 'next_page':
             background-color: #ffefcc;
         }
         
+        div [data-baseweb="base-input"] {
+            font-family: 'Pretendard', sans-serif;
+        }
+        div [data-baseweb="textarea"] {
+            background-color: #ffffff;
+            border-color: #ffffff;
+            border-radius: 20px;
+        }
         
         </style>
         """,
