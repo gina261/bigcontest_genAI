@@ -508,7 +508,7 @@ if st.session_state.page == 'main':
         selected_region = st_data['last_active_drawing']['properties']['adm_nm']
 
         # 지역이 이미 선택된 리스트에 없으면 추가
-        if selected_region not in st.session_state.selected_regions:
+        if selected_region_format(selected_region) not in st.session_state.selected_regions:
             st.session_state.selected_regions.append(selected_region_format(selected_region))
             
     
