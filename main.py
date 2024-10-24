@@ -562,7 +562,7 @@ if st.session_state.page == 'main':
     #     unsafe_allow_html=True
     # )
     
-    if st.button("채팅 시작", key="chat_start_button"):
+    if st.button("채팅 시작"):
         go_to_next_page()
         
     st.markdown('<div class="spacing-50px"></div>', unsafe_allow_html=True)
