@@ -729,4 +729,8 @@ elif st.session_state.page == 'next_page':
         message = {"role": "assistant", "content": full_response}
         st.session_state.messages.append(message)
         
-    st.button("⬅︎ 뒤로")
+    def go_to_previous():
+        st.session_state.page = 'main'
+        
+    if st.button("⬅︎ 뒤로"):
+        go_to_previous()
