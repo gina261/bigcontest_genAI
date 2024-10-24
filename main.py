@@ -675,8 +675,9 @@ elif st.session_state.page == 'next_page':
             min-height: 10px;
         }
         div [data-testid="stButton"] {
-            display: flex;
-            justify-content: flex-end;
+            position: fixed;
+            top: 10px;
+            left: 10px;
             margin: 10px;
             padding-right: 70px;
         }
@@ -724,4 +725,4 @@ elif st.session_state.page == 'next_page':
         message = {"role": "assistant", "content": full_response}
         st.session_state.messages.append(message)
         
-    st.button("<< 뒤로 가기")
+    st.button("⬅︎ 뒤로")
