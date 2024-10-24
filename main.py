@@ -520,7 +520,7 @@ if st.session_state.page == 'main':
             st.session_state.selected_regions = st.session_state.selected_regions[2:]
             
         
-    selected_regions_display = ", ".join([region for region in st.session_state.selected_regions])
+    selected_regions_display = ", ".join([display_format(region) for region in st.session_state.selected_regions])
 
     # 선택된 지역 업데이트
     if selected_regions_display:
