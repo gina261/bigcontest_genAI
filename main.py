@@ -288,12 +288,7 @@ if st.session_state.page == 'main':
             min-height: 10px;
         }
         
-        div [data-testid="stButton"] {
-            display: flex;
-            justify-content: flex-end;
-            margin: 10px;
-            padding-right: 70px;
-        }
+        
         
         
         /* 하단 채팅모양 */
