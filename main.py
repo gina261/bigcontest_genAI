@@ -487,15 +487,7 @@ if st.session_state.page == 'main':
 
     # Streamlit에서 지도 표시
     st_data = st_folium(jeju_map, width=800, height=400)
-
-    # 선택한 지역을 가져오기
-    if st_data and st_data.get('last_active_drawing'):
-        selected_region = st_data['last_active_drawing']['properties']['adm_nm']
-
-        # 지역이 이미 선택된 리스트에 없으면 추가
-        if selected_region not in st.session_state.selected_regions:
-            st.session_state.selected_regions.append(selected_region)
-            
+    
     # 선택된 지역 이름을 처리        
     def selected_region_format(region): # 제주특별자치도 서귀포시 남원읍
         region_parts = region.split(' ')
@@ -509,11 +501,18 @@ if st.session_state.page == 'main':
         if len(region_parts) == 2:
             return region_parts[1]
         else:
-            return region_parts[0]            
-        
-        
+            return region_parts[0]    
+
+    # 선택한 지역을 가져오기
+    if st_data and st_data.get('last_active_drawing'):
+        selected_region = st_data['last_active_drawing']['properties']['adm_nm']
+
+        # 지역이 이미 선택된 리스트에 없으면 추가
+        if selected_region not in st.session_state.selected_regions:
+            st.session_state.selected_regions.append(selected_region_format(selected_region))
+            
     
-    st.session_state.selected_regions = [selected_region_format(i) for i in st.session_state.selected_regions]
+    st.session_state.selected_regions = [i for i in st.session_state.selected_regions]
         
     if st.session_state.selected_regions:
         if st.session_state.selected_regions[0] == 'reset':
