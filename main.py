@@ -676,10 +676,11 @@ elif st.session_state.page == 'next_page':
         }
         div [data-testid="stButton"] {
             position: fixed;
-            top: 10px;
+            top: 100px;
             left: 10px;
             margin: 10px;
             padding-right: 70px;
+            z-index: 1000;
         }
         
         
