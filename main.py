@@ -496,19 +496,23 @@ if st.session_state.page == 'main':
         if selected_region not in st.session_state.selected_regions:
             st.session_state.selected_regions.append(selected_region)
             
-    # 선택된 지역 이름을 처리
-    def format_region_name(region):
+    # 선택된 지역 이름을 처리        
+    def selected_region_format(region): # 제주특별자치도 서귀포시 남원읍
         region_parts = region.split(' ')
         if region_parts[0] == "제주특별자치도" and len(region_parts) >= 3:
-            return region_parts[2]  # 세 번째 단어만 저장
+            return region_parts[1] + " " + region_parts[2]
         else:
-            return region_parts[0]  # 첫 단어만 저장
+            return region
+        
+    
+    st.session_state.selected_regions = [selected_region_format(i) for i in st.session_state.selected_regions]
         
     if st.session_state.selected_regions:
         if st.session_state.selected_regions[0] == 'reset':
             st.session_state.selected_regions = st.session_state.selected_regions[2:]
+            
         
-    selected_regions_display = ", ".join([format_region_name(region) for region in st.session_state.selected_regions])
+    selected_regions_display = ", ".join([region for region in st.session_state.selected_regions])
 
     # 선택된 지역 업데이트
     if selected_regions_display:
