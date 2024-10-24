@@ -668,7 +668,7 @@ elif st.session_state.page == 'next_page':
         /* 뒤로가기 버튼 */
         button[kind="secondary"] {
             background-color: #feefcc !important;
-            color: #a3a8b8;
+            color: #feddaf;
             border: none;
             border-radius: 20px;
             height: 35px;
