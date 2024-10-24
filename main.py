@@ -747,3 +747,4 @@ elif st.session_state.page == 'next_page':
         
     if st.button("⇦ 뒤로"):
         go_to_previous()
+        st.experimental_set_query_params(page='main')  # 쿼리 파라미터 설정으로 리렌더링 유도
