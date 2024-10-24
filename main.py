@@ -674,6 +674,9 @@ elif st.session_state.page == 'next_page':
             height: 35px;
             min-height: 10px;
         }
+        button[kind="secondary"]:hover {
+            color: #ee8124;
+        }
         div [data-testid="stButton"] {
             position: fixed;
             top: 100px;
