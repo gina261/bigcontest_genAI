@@ -743,7 +743,7 @@ elif st.session_state.page == 'next_page':
         
     def go_to_previous():
         st.session_state.page = 'main'
-        st.experimental_set_query_params(page='main')
+        st.query_params(page='main')
         
     if st.button("⇦ 뒤로"):
         go_to_previous()
