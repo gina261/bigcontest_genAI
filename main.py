@@ -665,6 +665,14 @@ elif st.session_state.page == 'next_page':
             padding: 1rem 1rem 30px;
         }
         
+        div [data-testid="stButton"] {
+            display: flex;
+            justify-content: flex-end;
+            margin: 10px;
+            padding-right: 70px;
+        }
+        
+        
         </style>
         """,
         unsafe_allow_html=True
