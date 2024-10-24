@@ -734,3 +734,4 @@ elif st.session_state.page == 'next_page':
         
     if st.button("⇦ 뒤로"):
         go_to_previous()
+        st.experimental_rerun()
