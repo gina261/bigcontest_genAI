@@ -665,6 +665,15 @@ elif st.session_state.page == 'next_page':
             padding: 1rem 1rem 30px;
         }
         
+        /* 뒤로가기 버튼 */
+        button[kind="secondary"] {
+            background-color: #ff8015 !important;
+            color: #ffffff;
+            border: none;
+            border-radius: 20px;
+            height: 35px;
+            min-height: 10px;
+        }
         div [data-testid="stButton"] {
             display: flex;
             justify-content: flex-end;
@@ -715,4 +724,4 @@ elif st.session_state.page == 'next_page':
         message = {"role": "assistant", "content": full_response}
         st.session_state.messages.append(message)
         
-    st.button("뒤로 가기")
+    st.button("<< 뒤로 가기")
