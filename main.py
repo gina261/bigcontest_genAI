@@ -504,6 +504,14 @@ if st.session_state.page == 'main':
         else:
             return region
         
+    def display_format(region): # 서귀포시 남원읍, 제주시 (제주특별자치도 북부)
+        region_parts = region.split(' ')
+        if len(region_parts) == 2:
+            return region_parts[1]
+        else:
+            return region_parts[0]            
+        
+        
     
     st.session_state.selected_regions = [selected_region_format(i) for i in st.session_state.selected_regions]
         
