@@ -668,6 +668,7 @@ elif st.session_state.page == 'next_page':
         }
         textarea[data-testid="stChatInputTextArea"]{
             color: #000000;
+            caret-color: #000000;
         }
         div [data-testid="stChatInput"] {
             background-color: #ffefcc;
