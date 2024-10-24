@@ -279,7 +279,14 @@ if st.session_state.page == 'main':
         
         
         /* 버튼 스타일 변경 */
-        
+        button[kind="secondary"] {
+            background-color: #ff8015 !important;
+            color: #ffffff;
+            border: none;
+            border-radius: 20px;
+            height: 35px;
+            min-height: 10px;
+        }
         
         div [data-testid="stButton"] {
             display: flex;
