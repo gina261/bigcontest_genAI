@@ -306,6 +306,7 @@ if st.session_state.page == 'main':
             justify-content: center;
             align-items: center;
             margin: 0 auto;
+            padding-right: 50px;
             overflow-x: auto;
             white-space: nowrap;
             font-size: 0.9em;
@@ -548,7 +549,7 @@ if st.session_state.page == 'main':
     st.markdown(
         """
         <div class="box_chatshape">
-            감사합니다! 이제&nbsp<span class="text-bold">제주의 멋진 곳</span>을 추천해드리겠습니다☺️ 오른쪽 버튼을 두 번 눌러주세요&nbsp→&ensp&ensp&ensp&ensp&ensp&ensp&ensp&ensp&ensp&ensp
+            감사합니다! 이제&nbsp<span class="text-bold">제주의 멋진 곳</span>을 추천해드리겠습니다☺️ 오른쪽 버튼을 두 번 눌러주세요&nbsp→
         </div>
         """,
         unsafe_allow_html=True
