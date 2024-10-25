@@ -308,7 +308,7 @@ if st.session_state.page == 'main':
             margin: 0 auto;
             overflow-x: auto;
             white-space: nowrap;
-            font-size: 0.8em;
+            font-size: 0.9em;
             
             position: relative;
             top: 52px;
