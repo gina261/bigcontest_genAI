@@ -306,7 +306,7 @@ if st.session_state.page == 'main':
             justify-content: center;
             align-items: center;
             margin: 0 auto;
-            padding-right: 50px;
+            padding-right: 60px;
             overflow-x: auto;
             white-space: nowrap;
             font-size: 0.9em;
