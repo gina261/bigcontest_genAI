@@ -4,6 +4,7 @@ import torch
 import google.generativeai as genai
 import yaml
 from transformers import AutoTokenizer, AutoModel
+import streamlit as st
 
 # Load configuration from config.yaml
 config_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'config.yaml')
@@ -11,7 +12,7 @@ with open(config_path, "r") as config_file:
     config = yaml.safe_load(config_file)
 
 # Configure your Google API key
-GOOGLE_API_KEY = config['google_api']['api_key']
+GOOGLE_API_KEY = st.secrets["GEMINI_API_KEY"]
 genai.configure(api_key=GOOGLE_API_KEY)
 
 # Set device
