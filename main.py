@@ -599,6 +599,22 @@ if st.session_state.page == 'main':
         go_to_next_page()
         
     st.markdown('<div class="spacing-50px"></div>', unsafe_allow_html=True)
+    
+    st.markdown("""
+        <div style="position: fixed; bottom: 20px; right: 20px; z-index: 100;">
+            <button onclick="scrollToTop()" style="
+                background-color: #ff8015; 
+                color: #ffffff; 
+                border: none; 
+                padding: 10px 20px; 
+                border-radius: 15px;
+                font-size: 1em;
+                cursor: pointer;
+            ">
+                위로 돌아가기
+            </button>
+        </div>
+        """, unsafe_allow_html=True)
         
 ####### 두 번째 페이지 #######
 elif st.session_state.page == 'next_page':
