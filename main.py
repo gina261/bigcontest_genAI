@@ -325,6 +325,12 @@ if st.session_state.page == 'main':
             z-index: 0;
         }
         
+        /* 최하단 박스 */
+        .box_info {
+            background-color: white;
+            height: 100px;
+            width: 100vw;
+        }
         
         </style>
         """,
@@ -571,6 +577,15 @@ if st.session_state.page == 'main':
         """
         <div class="box_chatshape">
             감사합니다! 이제&nbsp<span class="text-bold">제주의 멋진 곳</span>을 추천해드리겠습니다☺️ 오른쪽 버튼을 두 번 눌러주세요&nbsp→
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+    
+    st.markdown(
+        """
+        <div class="box_info">
+            예쁘DA
         </div>
         """,
         unsafe_allow_html=True
