@@ -1,9 +1,18 @@
 import streamlit as st
 import folium
 from streamlit_folium import st_folium
-import json
 import requests
-import google.generativeai as genai
+import numpy as np
+
+# utils 가져오기 
+from utils.config import model, df, text2_df, config 
+from utils.sql_utils import convert_question_to_sql, execute_sql_query_on_df
+from utils.faiss_utils import load_faiss_index, embed_text
+from utils.user_input_detector import detect_emotion_and_context
+from utils.text1_response_generator import generate_response_with_faiss, generate_gemini_response_from_results
+from utils.text2_response_generator import text2faiss, recommend_restaurant_from_subset
+from utils.filter_fixed_inputs import filter_fixed_address_purpose, filter_fixed_datetime_members
+
 
 # 세션 상태에서 페이지 상태를 관리
 if 'page' not in st.session_state:
@@ -361,24 +370,35 @@ if st.session_state.page == 'main':
 
         # 선택한 옵션에 따라 date_input 표시
         if date_option == "날짜 선택":
+            weekdays = ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일']
             selected_date = st.date_input("")
+            selected_date = weekdays[selected_date.weekday()]
+        # 선택안함 시 빈칸으로 저장
         else:
             selected_date = None
+        st.session_state.selected_date = selected_date
 
-        
+    # 시간대 선택 및 저장, 선택 안함 시 빈칸
     with col2:
         st.markdown("<div class='custom-label'>시간대를 선택해주세요.</div>", unsafe_allow_html=True)
         time_slot = st.selectbox(
             "", 
             ("선택 안함", "아침", "점심", "오후", "저녁", "밤")
         )
+        if time_slot == "선택 안함":
+            time_slot = ""
+        st.session_state.time_slot = time_slot
 
+    # 인원수 선택 및 저장, 선택 안함 시 빈칸
     with col3:
         st.markdown("<div class='custom-label'>인원수를 선택해주세요.</div>", unsafe_allow_html=True)
         members_num = st.selectbox(
             "", 
             ("선택 안함", "혼자", "2명", "3명", "4명 이상")
         )
+        if members_num == "선택 안함":
+            members_num = ""
+        st.session_state.members_num = members_num
 
 
     # 새 박스를 추가
@@ -392,13 +412,14 @@ if st.session_state.page == 'main':
     )
 
 
-    # 중앙에 selectbox를 배치
+    # 방문목적 선택 및 저장, 선택 안함 시 빈칸 : 중앙에 selectbox를 배치
     col_center = st.columns([1, 1, 1])
     with col_center[1]:
         visit_purpose = st.selectbox(
             "",
             ("선택 안함", "식사", "카페/디저트")
         )
+        st.session_state.visit_purpose = visit_purpose
         
 
     st.markdown(
@@ -574,15 +595,6 @@ elif st.session_state.page == 'next_page':
     
     GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
     
-    def get_gemini_response(prompt):
-        # Gemini 1.5 flash에 요청을 보내기 위한 헤더와 데이터 준비
-        genai.configure(api_key=GEMINI_API_KEY)
-        
-        model = genai.GenerativeModel("gemini-1.5-flash")
-        response = model.generate_content(prompt)
-        
-        return response
-    
     # 프로필 이미지 설정
     assistant_avatar = "https://github.com/gina261/bigcontest_genAI/blob/main/images/chatbot_assistant.png?raw=true"
     user_avatar = "https://github.com/gina261/bigcontest_genAI/blob/main/images/chatbot_user.png?raw=true"
@@ -728,8 +740,49 @@ elif st.session_state.page == 'next_page':
     # 사용자가 새로운 메시지를 입력한 후 응답 생성
     if st.session_state.messages[-1]["role"] != "assistant":
         with st.chat_message("assistant", avatar=assistant_avatar):
+            # (Step 1) 1번, 2번 중 어느 질문인지 반환 [첫번째 gemini 호출]
+            which_csv = detect_emotion_and_context(prompt)
+            print("이 질문은" + which_csv)
+            
             with st.spinner("Thinking..."):
-                response = get_gemini_response(prompt)
+                # (Step 2) 2번 질문일 경우 (추천형 질문)
+                if int(which_csv[0]) == 2:
+                    # (2-1) 고정질문 (방문지역, 방문목적) 기준으로 필터링
+                    fixed_filtered = filter_fixed_address_purpose(st.session_state.selected_regions, st.session_state.visit_purpose, text2_df)
+
+                    # (2-2) 고정질문 (날짜, 시간, 인원수) 기준으로 사용자 질문 수정
+                    print(f'날짜,시간,인원수: {st.session_state.selected_date}, {st.session_state.time_slot}, {st.session_state.members_num}')
+                    prompt = filter_fixed_datetime_members(st.session_state.selected_date, st.session_state.time_slot, st.session_state.members_num, prompt)
+
+                    # (2-3) FAISS 검색을 통해 유사도가 높은 15가지 레스토랑 추출
+                    top_15 = text2faiss(prompt, fixed_filtered) 
+                    print(f'faiss 추출 개수: {len(top_15)}')
+                    print(f'faiss 추천된 데이터 : {top_15["restaurant_name"]}')
+
+                    # (2-4) gemini 호출을 통해 추출된 15개의 레스토랑 중 추천 [두번째 gemini 호출]
+                    response = recommend_restaurant_from_subset(prompt, top_15)
+                    print(response)
+                    
+                # (Step 3) 1번 질문일 경우 (검색형 질문)
+                else: 
+                    # (3-1) sql 쿼리 반환 [두번째 gemini 호출]
+                    sql_query = convert_question_to_sql(which_csv)
+                    print(f"Generated SQL Query: {sql_query}")
+                    # (2-2) sql 쿼리 적용 및 결과 반환
+                    sql_results = execute_sql_query_on_df(sql_query, df)
+                    # (2-3) 반환된 데이터가 없을 시 faiss 적용, 있다면 그대로 gimini 호출 [세번째 gemini 호출]
+                    if sql_results.empty:
+                        print("SQL query failed or returned no results. Falling back to FAISS.")
+
+                        embeddings_path = config['faiss']['embeddings_path'] 
+
+                        embeddings = np.load(embeddings_path)
+                        response = generate_response_with_faiss(prompt, df, embeddings, model, embed_text)
+                        print(response)
+                    else:
+                        response = generate_gemini_response_from_results(sql_results, prompt)
+                        print(response)
+                
                 placeholder = st.empty()
                 full_response = ''
                 
