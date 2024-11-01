@@ -1,9 +1,18 @@
 import streamlit as st
 import folium
 from streamlit_folium import st_folium
-import json
 import requests
-import google.generativeai as genai
+import numpy as np
+
+# utils 가져오기 
+from utils.config import model, df, text2_df, config 
+from utils.sql_utils import convert_question_to_sql, execute_sql_query_on_df
+from utils.faiss_utils import load_faiss_index, embed_text
+from utils.user_input_detector import detect_emotion_and_context
+from utils.text1_response_generator import generate_response_with_faiss, generate_gemini_response_from_results
+from utils.text2_response_generator import text2faiss, recommend_restaurant_from_subset
+from utils.filter_fixed_inputs import filter_fixed_address_purpose, filter_fixed_datetime_members
+
 
 # 세션 상태에서 페이지 상태를 관리
 if 'page' not in st.session_state:
@@ -306,14 +315,15 @@ if st.session_state.page == 'main':
             justify-content: center;
             align-items: center;
             margin: 0 auto;
+            padding-right: 80px;
             overflow-x: auto;
             white-space: nowrap;
+            font-size: 0.9em;
             
             position: relative;
             top: 52px;
             z-index: 0;
         }
-        
         
         </style>
         """,
@@ -359,24 +369,35 @@ if st.session_state.page == 'main':
 
         # 선택한 옵션에 따라 date_input 표시
         if date_option == "날짜 선택":
+            weekdays = ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일']
             selected_date = st.date_input("")
+            selected_date = weekdays[selected_date.weekday()]
+        # 선택안함 시 빈칸으로 저장
         else:
             selected_date = None
+        st.session_state.selected_date = selected_date
 
-        
+    # 시간대 선택 및 저장, 선택 안함 시 빈칸
     with col2:
         st.markdown("<div class='custom-label'>시간대를 선택해주세요.</div>", unsafe_allow_html=True)
         time_slot = st.selectbox(
             "", 
             ("선택 안함", "아침", "점심", "오후", "저녁", "밤")
         )
+        if time_slot == "선택 안함":
+            time_slot = ""
+        st.session_state.time_slot = time_slot
 
+    # 인원수 선택 및 저장, 선택 안함 시 빈칸
     with col3:
         st.markdown("<div class='custom-label'>인원수를 선택해주세요.</div>", unsafe_allow_html=True)
         members_num = st.selectbox(
             "", 
             ("선택 안함", "혼자", "2명", "3명", "4명 이상")
         )
+        if members_num == "선택 안함":
+            members_num = ""
+        st.session_state.members_num = members_num
 
 
     # 새 박스를 추가
@@ -390,13 +411,14 @@ if st.session_state.page == 'main':
     )
 
 
-    # 중앙에 selectbox를 배치
+    # 방문목적 선택 및 저장, 선택 안함 시 빈칸 : 중앙에 selectbox를 배치
     col_center = st.columns([1, 1, 1])
     with col_center[1]:
         visit_purpose = st.selectbox(
             "",
             ("선택 안함", "식사", "카페/디저트")
         )
+        st.session_state.visit_purpose = visit_purpose
         
 
     st.markdown(
@@ -487,28 +509,39 @@ if st.session_state.page == 'main':
 
     # Streamlit에서 지도 표시
     st_data = st_folium(jeju_map, width=800, height=400)
+    
+    # 선택된 지역 이름을 처리        
+    def selected_region_format(region): # 제주특별자치도 서귀포시 남원읍
+        region_parts = region.split(' ')
+        if region_parts[0] == "제주특별자치도" and len(region_parts) >= 3:
+            return region_parts[1] + " " + region_parts[2]
+        else:
+            return region
+        
+    def display_format(region): # 서귀포시 남원읍, 제주시 (제주특별자치도 북부)
+        region_parts = region.split(' ')
+        if len(region_parts) == 2:
+            return region_parts[1]
+        else:
+            return region_parts[0]    
 
     # 선택한 지역을 가져오기
     if st_data and st_data.get('last_active_drawing'):
         selected_region = st_data['last_active_drawing']['properties']['adm_nm']
 
         # 지역이 이미 선택된 리스트에 없으면 추가
-        if selected_region not in st.session_state.selected_regions:
-            st.session_state.selected_regions.append(selected_region)
+        if selected_region_format(selected_region) not in st.session_state.selected_regions:
+            st.session_state.selected_regions.append(selected_region_format(selected_region))
             
-    # 선택된 지역 이름을 처리
-    def format_region_name(region):
-        region_parts = region.split(' ')
-        if region_parts[0] == "제주특별자치도" and len(region_parts) >= 3:
-            return region_parts[2]  # 세 번째 단어만 저장
-        else:
-            return region_parts[0]  # 첫 단어만 저장
+    
+    st.session_state.selected_regions = [i for i in st.session_state.selected_regions]
         
     if st.session_state.selected_regions:
         if st.session_state.selected_regions[0] == 'reset':
             st.session_state.selected_regions = st.session_state.selected_regions[2:]
+            
         
-    selected_regions_display = ", ".join([format_region_name(region) for region in st.session_state.selected_regions])
+    selected_regions_display = ", ".join([display_format(region) for region in st.session_state.selected_regions])
 
     # 선택된 지역 업데이트
     if selected_regions_display:
@@ -536,11 +569,12 @@ if st.session_state.page == 'main':
     st.markdown(
         """
         <div class="box_chatshape">
-            감사합니다! 이제&nbsp<span class="text-bold">제주의 멋진 곳</span>을 추천해드리겠습니다☺️&nbsp&nbsp&nbsp&nbsp&nbsp
+            감사합니다! 이제&nbsp<span class="text-bold">제주의 멋진 곳</span>을 추천해드리겠습니다☺️ 오른쪽 버튼을 두 번 눌러주세요&nbsp→
         </div>
         """,
         unsafe_allow_html=True
     )
+    
     
     # user_firstInput = st.text_input("", placeholder="여기에 입력하세요", key="user_input")
     
@@ -560,15 +594,6 @@ if st.session_state.page == 'main':
 elif st.session_state.page == 'next_page':
     
     GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
-    
-    def get_gemini_response(prompt):
-        # Gemini 1.5 flash에 요청을 보내기 위한 헤더와 데이터 준비
-        genai.configure(api_key=GEMINI_API_KEY)
-        
-        model = genai.GenerativeModel("gemini-1.5-flash")
-        response = model.generate_content(prompt)
-        
-        return response
     
     # 프로필 이미지 설정
     assistant_avatar = "https://github.com/gina261/bigcontest_genAI/blob/main/images/chatbot_assistant.png?raw=true"
@@ -657,12 +682,34 @@ elif st.session_state.page == 'next_page':
         }
         textarea[data-testid="stChatInputTextArea"]{
             color: #000000;
+            caret-color: #000000;
         }
         div [data-testid="stChatInput"] {
             background-color: #ffefcc;
         }
         div [data-testid="stBottomBlockContainer"] {
             padding: 1rem 1rem 30px;
+        }
+        
+        /* 뒤로가기 버튼 */
+        button[kind="secondary"] {
+            background-color: #feefcc !important;
+            color: #f7a660;
+            border: none;
+            border-radius: 20px;
+            height: 35px;
+            min-height: 10px;
+        }
+        button[kind="secondary"]:hover {
+            color: #ee8124;
+        }
+        div [data-testid="stButton"] {
+            position: fixed;
+            top: 80px;
+            left: 10px;
+            margin: 10px;
+            padding-right: 70px;
+            z-index: 1000;
         }
         
         
@@ -693,8 +740,49 @@ elif st.session_state.page == 'next_page':
     # 사용자가 새로운 메시지를 입력한 후 응답 생성
     if st.session_state.messages[-1]["role"] != "assistant":
         with st.chat_message("assistant", avatar=assistant_avatar):
+            # (Step 1) 1번, 2번 중 어느 질문인지 반환 [첫번째 gemini 호출]
+            which_csv = detect_emotion_and_context(prompt)
+            print("이 질문은" + which_csv)
+            
             with st.spinner("Thinking..."):
-                response = get_gemini_response(prompt)
+                # (Step 2) 2번 질문일 경우 (추천형 질문)
+                if int(which_csv[0]) == 2:
+                    # (2-1) 고정질문 (방문지역, 방문목적) 기준으로 필터링
+                    fixed_filtered = filter_fixed_address_purpose(st.session_state.selected_regions, st.session_state.visit_purpose, text2_df)
+
+                    # (2-2) 고정질문 (날짜, 시간, 인원수) 기준으로 사용자 질문 수정
+                    print(f'날짜,시간,인원수: {st.session_state.selected_date}, {st.session_state.time_slot}, {st.session_state.members_num}')
+                    prompt = filter_fixed_datetime_members(st.session_state.selected_date, st.session_state.time_slot, st.session_state.members_num, prompt)
+
+                    # (2-3) FAISS 검색을 통해 유사도가 높은 15가지 레스토랑 추출
+                    top_15 = text2faiss(prompt, fixed_filtered) 
+                    print(f'faiss 추출 개수: {len(top_15)}')
+                    print(f'faiss 추천된 데이터 : {top_15["restaurant_name"]}')
+
+                    # (2-4) gemini 호출을 통해 추출된 15개의 레스토랑 중 추천 [두번째 gemini 호출]
+                    response = recommend_restaurant_from_subset(prompt, top_15)
+                    print(response)
+                    
+                # (Step 3) 1번 질문일 경우 (검색형 질문)
+                else: 
+                    # (3-1) sql 쿼리 반환 [두번째 gemini 호출]
+                    sql_query = convert_question_to_sql(which_csv)
+                    print(f"Generated SQL Query: {sql_query}")
+                    # (2-2) sql 쿼리 적용 및 결과 반환
+                    sql_results = execute_sql_query_on_df(sql_query, df)
+                    # (2-3) 반환된 데이터가 없을 시 faiss 적용, 있다면 그대로 gimini 호출 [세번째 gemini 호출]
+                    if sql_results.empty:
+                        print("SQL query failed or returned no results. Falling back to FAISS.")
+
+                        embeddings_path = config['faiss']['embeddings_path'] 
+
+                        embeddings = np.load(embeddings_path)
+                        response = generate_response_with_faiss(prompt, df, embeddings, model, embed_text)
+                        print(response)
+                    else:
+                        response = generate_gemini_response_from_results(sql_results, prompt)
+                        print(response)
+                
                 placeholder = st.empty()
                 full_response = ''
                 
@@ -707,3 +795,9 @@ elif st.session_state.page == 'next_page':
                 placeholder.markdown(full_response)
         message = {"role": "assistant", "content": full_response}
         st.session_state.messages.append(message)
+        
+    def go_to_previous():
+        st.session_state.page = 'main'
+        
+    if st.button("⇦ 뒤로"):
+        go_to_previous()

@@ -29,6 +29,16 @@ def go_to_next_page():
 # 메인 페이지
 if st.session_state.page == 'main':
     
+    scroll_top_button_script = """
+        <script>
+            function scrollToTop() {
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            }
+        </script>
+    """
+    # Streamlit에 JavaScript 코드 포함
+    st.markdown(scroll_top_button_script, unsafe_allow_html=True)
+    
     # CSS for changing the entire background color and styling the page
     st.markdown(
         """
@@ -325,13 +335,6 @@ if st.session_state.page == 'main':
             z-index: 0;
         }
         
-        /* 최하단 박스 */
-        .box_info {
-            background-color: white;
-            height: 100px;
-            width: 100vw;
-        }
-        
         </style>
         """,
         unsafe_allow_html=True
@@ -582,14 +585,6 @@ if st.session_state.page == 'main':
         unsafe_allow_html=True
     )
     
-    st.markdown(
-        """
-        <div class="box_info">
-            예쁘DA
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
     
     # user_firstInput = st.text_input("", placeholder="여기에 입력하세요", key="user_input")
     
