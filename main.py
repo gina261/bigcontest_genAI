@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as components
 import folium
 from streamlit_folium import st_folium
 import requests
@@ -35,9 +36,21 @@ if st.session_state.page == 'main':
                 window.scrollTo({top: 0, behavior: 'smooth'});
             }
         </script>
+        
+        <div style="position: fixed; bottom: 20px; left: 20px; z-index: 100;">
+            <button onclick="scrollToTop()" style="
+                background-color: #ff8015; 
+                color: #ffffff; 
+                border: none; 
+                padding: 10px 20px; 
+                border-radius: 15px;
+                font-size: 1em;
+                cursor: pointer;
+            ">
+                위로 돌아가기
+            </button>
+        </div>
     """
-    # Streamlit에 JavaScript 코드 포함
-    st.markdown(scroll_top_button_script, unsafe_allow_html=True)
     
     # CSS for changing the entire background color and styling the page
     st.markdown(
@@ -600,21 +613,9 @@ if st.session_state.page == 'main':
         
     st.markdown('<div class="spacing-50px"></div>', unsafe_allow_html=True)
     
-    st.markdown("""
-        <div style="position: fixed; bottom: 20px; left: 20px; z-index: 100;">
-            <button onclick="scrollToTop()" style="
-                background-color: #ff8015; 
-                color: #ffffff; 
-                border: none; 
-                padding: 10px 20px; 
-                border-radius: 15px;
-                font-size: 1em;
-                cursor: pointer;
-            ">
-                위로 돌아가기
-            </button>
-        </div>
-        """, unsafe_allow_html=True)
+    components.html(scroll_top_button_script, height=0)
+    
+    
         
 ####### 두 번째 페이지 #######
 elif st.session_state.page == 'next_page':
