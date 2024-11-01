@@ -601,7 +601,7 @@ if st.session_state.page == 'main':
     st.markdown('<div class="spacing-50px"></div>', unsafe_allow_html=True)
     
     st.markdown("""
-        <div style="position: fixed; bottom: 20px; right: 20px; z-index: 100;">
+        <div style="position: fixed; bottom: 20px; left: 20px; z-index: 100;">
             <button onclick="scrollToTop()" style="
                 background-color: #ff8015; 
                 color: #ffffff; 
