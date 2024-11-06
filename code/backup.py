@@ -756,6 +756,13 @@ elif st.session_state.page == 'next_page':
                     fixed_filtered = filter_fixed_address_purpose(st.session_state.selected_regions, st.session_state.visit_purpose, text2_df)
 
                     # (2-2) 고정질문 (날짜, 시간, 인원수) 기준으로 사용자 질문 수정
+                    weekdays = ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일']
+                    
+                    if st.session_state.selected_date == None:
+                        st.session_state.selected_weekday = ""
+                    else:
+                        st.session_state.selected_weekday = weekdays[st.session_state.selected_date.weekday()]
+                    
                     print(f'날짜,시간,인원수: {st.session_state.selected_weekday}, {st.session_state.time_slot}, {st.session_state.members_num}')
                     prompt = filter_fixed_datetime_members(st.session_state.selected_weekday, st.session_state.time_slot, st.session_state.members_num, prompt)
 
@@ -835,13 +842,10 @@ elif st.session_state.page == 'next_page':
         
     if date_option == "날짜 선택":
         st.session_state.selected_date = st.sidebar.date_input("", st.session_state.selected_date)
-        
-        weekdays = ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일']
-        selected_weekday = weekdays[st.session_state.selected_date.weekday()]
     else:
-        selected_weekday = None
-    st.session_state.selected_weekday = selected_weekday
-    
+        st.session_state.selected_date = None
+        
+            
     
     # 시간대 확인 및 수정
     st.sidebar.subheader("시간대")
@@ -856,3 +860,5 @@ elif st.session_state.page == 'next_page':
     if time_slot == "선택 안함":
         time_slot = ""
     st.session_state.time_slot = time_slot
+    
+    
