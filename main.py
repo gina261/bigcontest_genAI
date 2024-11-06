@@ -818,9 +818,14 @@ elif st.session_state.page == 'next_page':
     st.sidebar.subheader("날짜")
     
     if st.session_state.selected_date != None:
-        date_option = st.sidebar.selectbox("", 
-                                           ["선택 안함", "날짜 선택"],
-                                           index=1)
+        date_option = st.sidebar.selectbox(
+            "", 
+            ["선택 안함", "날짜 선택"],
+            index=1)
+        
+        if date_option == "날짜 선택":
+            st.session_state.selected_date = st.sidebar.date_input("", st.session_state.selected_date)
+        
         st.write(st.session_state.selected_weekday)
         st.write(st.session_state.selected_date)
     
