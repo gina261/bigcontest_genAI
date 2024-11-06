@@ -807,3 +807,15 @@ elif st.session_state.page == 'next_page':
         
     if st.button("⇦ 뒤로"):
         go_to_previous()
+        
+        
+    # sidebar 생성
+    st.sidebar.header("선택한 옵션들")
+    
+    # 날짜 확인 및 수정
+    st.sidebar.subheader("날짜")
+    selected_date = st.sidebar.date_input(
+        "방문 날짜",
+        st.session_state.selected_date if 'selected_date' in st.session_state else None
+    )
+    st.session_state.selected_date = selected_date
