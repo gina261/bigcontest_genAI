@@ -623,7 +623,7 @@ if st.session_state.page == 'main':
             </body>
         </html>
         """,
-        height=0,   # 페이지 레이아웃에 영향을 주지 않도록 설정
+        height=600
     )
     
     
