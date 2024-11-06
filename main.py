@@ -617,13 +617,13 @@ if st.session_state.page == 'main':
                 
                 <script>
                     function scrollToTop() {
-                        window.scrollTo({top:0, behavior: 'smooth'});
+                        window.parent.scrollTo({top:0, behavior: 'smooth'});
                     }
                 </script>
             </body>
         </html>
         """,
-        height=600
+        height=150,
     )
     
     
