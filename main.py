@@ -866,5 +866,12 @@ elif st.session_state.page == 'next_page':
     st.sidebar.subheader("인원")
     if st.session_state.members_num == "":
         st.session_state.members_num = "선택 안함"
-        
-    st.write("인원수", st.session_state.members_num)
+    
+    members_num = st.sidebar.selectbox(
+        "",
+        ("선택 안함", "혼자", "2명", "3명", "4명 이상"),
+        index=["선택 안함", "혼자", "2명", "3명", "4명 이상"].index(st.session_state.members_num)
+    )
+    if members_num == "선택 안함":
+        members_num = ""
+    st.session_state.members_num = members_num
