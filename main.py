@@ -842,6 +842,8 @@ elif st.session_state.page == 'next_page':
         
     if date_option == "날짜 선택":
         st.session_state.selected_date = st.sidebar.date_input("", st.session_state.selected_date)
+    else:
+        st.session_state.selected_date = None
         
             
     
