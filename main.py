@@ -372,12 +372,12 @@ if st.session_state.page == 'main':
         if date_option == "날짜 선택":
             weekdays = ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일']
             selected_date = st.date_input("")
+            st.session_state.selected_date = selected_date
             selected_weekday = weekdays[selected_date.weekday()]
         # 선택안함 시 빈칸으로 저장
         else:
             selected_weekday = None
         st.session_state.selected_weekday = selected_weekday
-        st.session_state.selected_date = selected_date
 
     # 시간대 선택 및 저장, 선택 안함 시 빈칸
     with col2:
