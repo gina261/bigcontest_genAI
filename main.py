@@ -814,8 +814,6 @@ elif st.session_state.page == 'next_page':
     
     # 날짜 확인 및 수정
     st.sidebar.subheader("날짜")
-    selected_date = st.sidebar.date_input(
-        "방문 날짜",
-        st.session_state.selected_date if 'selected_date' in st.session_state else None
-    )
-    st.session_state.selected_date = selected_date
+    st.session_state.selected_date = st.sidebar.date_input("방문 날짜", st.session_state.selected_date)
+    
+    
