@@ -29,29 +29,7 @@ def go_to_next_page():
 
 # 메인 페이지
 if st.session_state.page == 'main':
-    
-    scroll_top_button_script = """
-        <script>
-            function scrollToTop() {
-                window.scrollTo({top: 0, behavior: 'smooth'});
-            }
-        </script>
         
-        <div style="position: fixed; bottom: 20px; left: 20px; z-index: 100;">
-            <button onclick="scrollToTop()" style="
-                background-color: #ff8015; 
-                color: #ffffff; 
-                border: none; 
-                padding: 10px 20px; 
-                border-radius: 15px;
-                font-size: 1em;
-                cursor: pointer;
-            ">
-                위로 돌아가기
-            </button>
-        </div>
-    """
-    
     # CSS for changing the entire background color and styling the page
     st.markdown(
         """
@@ -613,7 +591,40 @@ if st.session_state.page == 'main':
         
     st.markdown('<div class="spacing-50px"></div>', unsafe_allow_html=True)
     
-    components.html(scroll_top_button_script, height=0)
+    # HTML & JavaScript로 위로 돌아가기 버튼 구현
+    components.html(
+        """
+        <html>
+            <head>
+                <style>
+                    .scroll-top-button {
+                        position: fixed;
+                        bottom: 20px;
+                        left: 20px;
+                        z-index: 100;
+                        background-color: #ff8015;
+                        color: #ffffff;
+                        border: none;
+                        padding: 10px 20px;
+                        border-radius: 15px;
+                        font-size: 1em;
+                        cursor: pointer;
+                    }
+                </style>
+            </head>
+            <body>
+                <button class="scroll-top-button" onclick="scrollToTop()">위로</button>
+                
+                <script>
+                    function scrollToTop() {
+                        window.scrollTo({top:0, behavior: 'smooth'});
+                    }
+                </script>
+            </body>
+        </html>
+        """,
+        height=0,   # 페이지 레이아웃에 영향을 주지 않도록 설정
+    )
     
     
         
