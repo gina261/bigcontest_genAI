@@ -377,6 +377,7 @@ if st.session_state.page == 'main':
         else:
             selected_weekday = None
         st.session_state.selected_weekday = selected_weekday
+        st.session_state.selected_date = selected_date
 
     # 시간대 선택 및 저장, 선택 안함 시 빈칸
     with col2:
@@ -815,5 +816,6 @@ elif st.session_state.page == 'next_page':
     # 날짜 확인 및 수정
     st.sidebar.subheader("날짜")
     st.write(st.session_state.selected_weekday)
+    st.write(st.session_state.selected_date)
     
     
