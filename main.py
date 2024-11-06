@@ -816,7 +816,9 @@ elif st.session_state.page == 'next_page':
     
     # 날짜 확인 및 수정
     st.sidebar.subheader("날짜")
-    st.write(st.session_state.selected_weekday)
-    st.write(st.session_state.selected_date)
+    
+    if st.session_state.selected_date != None:
+        st.write(st.session_state.selected_weekday)
+        st.write(st.session_state.selected_date)
     
     
