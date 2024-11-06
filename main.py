@@ -848,7 +848,7 @@ elif st.session_state.page == 'next_page':
     time_slot = st.selectbox(
         "",
         ("선택 안함", "아침", "점심", "오후", "저녁", "밤"),
-        index=["선택 안함", "아침", "점심", "오후", "저녁", "밤"].index(st.session_state.time_slot)
+        index=["", "아침", "점심", "오후", "저녁", "밤"].index(st.session_state.time_slot)
     )
     if time_slot == "선택 안함":
         time_slot = ""
