@@ -867,4 +867,4 @@ elif st.session_state.page == 'next_page':
     if st.session_state.members_num == "":
         st.session_state.members_num == "선택 안함"
         
-    st.write(st.session_state.members_num )
+    st.write("인원수", st.session_state.members_num)
