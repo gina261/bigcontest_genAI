@@ -803,6 +803,7 @@ elif st.session_state.page == 'next_page':
     def go_to_previous():
         st.session_state.page = 'main'
         st.session_state.selected_regions = []
+        st.session_state.messages = [{"role": "assistant", "content": "오늘의 기분이나 상황을 입력해주세요. 그에 맞는 제주의 멋진 곳을 추천해드립니다."}]  # 채팅 기록 초기화
         
     if st.button("⇦ 뒤로"):
         go_to_previous()
