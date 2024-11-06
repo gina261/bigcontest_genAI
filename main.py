@@ -821,12 +821,21 @@ elif st.session_state.page == 'next_page':
         date_option = st.sidebar.selectbox(
             "", 
             ["선택 안함", "날짜 선택"],
-            index=1)
+            index=1
+        )
+    else:
+        date_option = st.sidebar.selectbox(
+            "",
+            ["선택 안함", "날짜 선택"],
+            index=0
+        )
         
-        if date_option == "날짜 선택":
-            st.session_state.selected_date = st.sidebar.date_input("", st.session_state.selected_date)
+    if date_option == "날짜 선택":
+        st.session_state.selected_date = st.sidebar.date_input("", st.session_state.selected_date)
         
-        st.write(st.session_state.selected_weekday)
-        st.write(st.session_state.selected_date)
-    
+        weekdays = ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일']
+        selected_weekday = weekdays[st.session_state.selected_date.weekday()]
+    else:
+        selected_weekday = None
+    st.session_state.selected_weekday = selected_weekday
     
