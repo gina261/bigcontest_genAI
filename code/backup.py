@@ -372,11 +372,12 @@ if st.session_state.page == 'main':
         if date_option == "날짜 선택":
             weekdays = ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일']
             selected_date = st.date_input("")
-            selected_date = weekdays[selected_date.weekday()]
+            st.session_state.selected_date = selected_date
+            selected_weekday = weekdays[selected_date.weekday()]
         # 선택안함 시 빈칸으로 저장
         else:
-            selected_date = None
-        st.session_state.selected_date = selected_date
+            selected_weekday = None
+        st.session_state.selected_weekday = selected_weekday
 
     # 시간대 선택 및 저장, 선택 안함 시 빈칸
     with col2:
@@ -755,8 +756,8 @@ elif st.session_state.page == 'next_page':
                     fixed_filtered = filter_fixed_address_purpose(st.session_state.selected_regions, st.session_state.visit_purpose, text2_df)
 
                     # (2-2) 고정질문 (날짜, 시간, 인원수) 기준으로 사용자 질문 수정
-                    print(f'날짜,시간,인원수: {st.session_state.selected_date}, {st.session_state.time_slot}, {st.session_state.members_num}')
-                    prompt = filter_fixed_datetime_members(st.session_state.selected_date, st.session_state.time_slot, st.session_state.members_num, prompt)
+                    print(f'날짜,시간,인원수: {st.session_state.selected_weekday}, {st.session_state.time_slot}, {st.session_state.members_num}')
+                    prompt = filter_fixed_datetime_members(st.session_state.selected_weekday, st.session_state.time_slot, st.session_state.members_num, prompt)
 
                     # (2-3) FAISS 검색을 통해 유사도가 높은 15가지 레스토랑 추출
                     top_15 = text2faiss(prompt, fixed_filtered) 
@@ -802,6 +803,56 @@ elif st.session_state.page == 'next_page':
         
     def go_to_previous():
         st.session_state.page = 'main'
+        st.session_state.selected_regions = []
+        st.session_state.selected_date = None
+        st.session_state.messages = [{"role": "assistant", "content": "오늘의 기분이나 상황을 입력해주세요. 그에 맞는 제주의 멋진 곳을 추천해드립니다."}]  # 채팅 기록 초기화
         
     if st.button("⇦ 뒤로"):
         go_to_previous()
+        
+        
+    # sidebar 생성
+    st.sidebar.header("선택한 옵션들")
+    
+    # 날짜 확인 및 수정
+    st.sidebar.subheader("날짜")
+    
+    if 'selected_date' not in st.session_state:
+        st.session_state.selected_date = None
+    
+    if st.session_state.selected_date != None:
+        date_option = st.sidebar.selectbox(
+            "", 
+            ["선택 안함", "날짜 선택"],
+            index=1
+        )
+    else:
+        date_option = st.sidebar.selectbox(
+            "",
+            ["선택 안함", "날짜 선택"],
+            index=0
+        )
+        
+    if date_option == "날짜 선택":
+        st.session_state.selected_date = st.sidebar.date_input("", st.session_state.selected_date)
+        
+        weekdays = ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일']
+        selected_weekday = weekdays[st.session_state.selected_date.weekday()]
+    else:
+        selected_weekday = None
+    st.session_state.selected_weekday = selected_weekday
+    
+    
+    # 시간대 확인 및 수정
+    st.sidebar.subheader("시간대")
+    if st.session_state.time_slot == "":
+        st.session_state.time_slot = "선택 안함"
+
+    time_slot = st.sidebar.selectbox(
+        "",
+        ("선택 안함", "아침", "점심", "오후", "저녁", "밤"),
+        index=["선택 안함", "아침", "점심", "오후", "저녁", "밤"].index(st.session_state.time_slot)
+    )
+    if time_slot == "선택 안함":
+        time_slot = ""
+    st.session_state.time_slot = time_slot
