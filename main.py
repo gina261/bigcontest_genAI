@@ -814,6 +814,6 @@ elif st.session_state.page == 'next_page':
     
     # 날짜 확인 및 수정
     st.sidebar.subheader("날짜")
-    print(st.session_state.selected_date)
+    st.write(st.session_state.selected_date)
     
     
