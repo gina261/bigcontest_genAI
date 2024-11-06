@@ -590,41 +590,7 @@ if st.session_state.page == 'main':
         go_to_next_page()
         
     st.markdown('<div class="spacing-50px"></div>', unsafe_allow_html=True)
-    
-    # HTML & JavaScript로 위로 돌아가기 버튼 구현
-    components.html(
-        """
-        <html>
-            <head>
-                <style>
-                    .scroll-top-button {
-                        position: fixed;
-                        bottom: 20px;
-                        left: 20px;
-                        z-index: 100;
-                        background-color: #ff8015;
-                        color: #ffffff;
-                        border: none;
-                        padding: 10px 20px;
-                        border-radius: 15px;
-                        font-size: 1em;
-                        cursor: pointer;
-                    }
-                </style>
-            </head>
-            <body>
-                <button class="scroll-top-button" onclick="scrollToTop()">위로</button>
-                
-                <script>
-                    function scrollToTop() {
-                        window.parent.scrollTo({top:0, behavior: 'smooth'});
-                    }
-                </script>
-            </body>
-        </html>
-        """,
-        height=150,
-    )
+
     
     
         
