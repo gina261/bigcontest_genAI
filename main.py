@@ -875,3 +875,16 @@ elif st.session_state.page == 'next_page':
     if members_num == "선택 안함":
         members_num = ""
     st.session_state.members_num = members_num
+    
+    
+    # 방문 목적 확인 및 수정
+    st.sidebar.subheader("방문 목적")
+    if st.session_state.visit_purpose == "":
+        st.session_state.visit_purpose = "선택 안함"
+        
+    st.session_state.visit_purpose = st.sidebar.selectbox(
+        "",
+        ("선택 안함", "식사", "카페/디저트"),
+        index=["선택 안함", "식사", "카페/디저트"].index(st.session_state.visit_purpose)
+    )
+    
