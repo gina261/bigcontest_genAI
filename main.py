@@ -865,6 +865,6 @@ elif st.session_state.page == 'next_page':
     # 인원수 확인 및 수정
     st.sidebar.subheader("인원")
     if st.session_state.members_num == "":
-        st.session_state.members_num = 
+        st.session_state.members_num = "선택 안함"
         
     st.write("인원수", st.session_state.members_num)
