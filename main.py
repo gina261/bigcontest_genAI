@@ -817,6 +817,9 @@ elif st.session_state.page == 'next_page':
     # 날짜 확인 및 수정
     st.sidebar.subheader("날짜")
     
+    if 'selected_date' not in st.session_state:
+        st.session_state.selected_date = None
+        
     if st.session_state.selected_date != None:
         date_option = st.sidebar.selectbox(
             "", 
