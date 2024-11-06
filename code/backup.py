@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as components
 import folium
 from streamlit_folium import st_folium
 import requests
@@ -28,7 +29,7 @@ def go_to_next_page():
 
 # 메인 페이지
 if st.session_state.page == 'main':
-    
+        
     # CSS for changing the entire background color and styling the page
     st.markdown(
         """
@@ -589,6 +590,9 @@ if st.session_state.page == 'main':
         go_to_next_page()
         
     st.markdown('<div class="spacing-50px"></div>', unsafe_allow_html=True)
+
+    
+    
         
 ####### 두 번째 페이지 #######
 elif st.session_state.page == 'next_page':

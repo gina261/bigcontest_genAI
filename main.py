@@ -802,6 +802,7 @@ elif st.session_state.page == 'next_page':
         
     def go_to_previous():
         st.session_state.page = 'main'
+        st.session_state.selected_regions = []
         
     if st.button("⇦ 뒤로"):
         go_to_previous()
