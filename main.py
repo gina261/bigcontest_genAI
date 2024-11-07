@@ -897,7 +897,7 @@ elif st.session_state.page == 'next_page':
     tmp_selected = st.sidebar.multiselect(
         "",
         regions_list,
-        index=regions_list.index(st.session_state.selected_regions)
+        default=st.session_state.selected_regions
     )
         
     st.write(st.session_state.selected_regions)
