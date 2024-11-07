@@ -738,6 +738,10 @@ elif st.session_state.page == 'next_page':
             font-family: 'Pretendard', sans-serif;
         }
         
+        div [data-testid="stExpanderDetails"] {
+            overflow-y: auto;
+        }
+        
         </style>
         """,
         unsafe_allow_html=True
