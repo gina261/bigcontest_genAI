@@ -900,4 +900,4 @@ elif st.session_state.page == 'next_page':
     )
         
     st.write(st.session_state.selected_regions)
-    print(tmp_selected)
+    st.write(tmp_selected)
