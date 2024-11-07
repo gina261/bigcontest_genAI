@@ -872,23 +872,35 @@ elif st.session_state.page == 'next_page':
             st.session_state.selected_date = st.date_input("", st.session_state.selected_date)
         else:
             st.session_state.selected_date = None
-    
-    
-    
-    
-    # 시간대 확인 및 수정
-    st.sidebar.subheader("시간대")
-    if st.session_state.time_slot == "":
-        st.session_state.time_slot = "선택 안함"
+            
+            
+        st.markdown(
+            """
+            <div class="expander-title">
+                시간대
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+        # 시간대 확인 및 수정
+        st.subheader("시간대")
+        if st.session_state.time_slot == "":
+            st.session_state.time_slot = "선택 안함"
 
-    time_slot = st.sidebar.selectbox(
-        "",
-        ("선택 안함", "아침", "점심", "오후", "저녁", "밤"),
-        index=["선택 안함", "아침", "점심", "오후", "저녁", "밤"].index(st.session_state.time_slot)
-    )
-    if time_slot == "선택 안함":
-        time_slot = ""
-    st.session_state.time_slot = time_slot
+        time_slot = st.selectbox(
+            "",
+            ("선택 안함", "아침", "점심", "오후", "저녁", "밤"),
+            index=["선택 안함", "아침", "점심", "오후", "저녁", "밤"].index(st.session_state.time_slot)
+        )
+        if time_slot == "선택 안함":
+            time_slot = ""
+        st.session_state.time_slot = time_slot
+        
+    
+    
+    
+    
+    
     
     
     # 인원수 확인 및 수정
