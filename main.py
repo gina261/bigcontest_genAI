@@ -899,6 +899,8 @@ elif st.session_state.page == 'next_page':
         regions_list,
         default=st.session_state.selected_regions
     )
-        
-    st.write(st.session_state.selected_regions)
-    st.write(tmp_selected)
+    
+    st.session_state.selected_regions = tmp_selected
+    
+    # st.write(st.session_state.selected_regions)
+    # st.write(tmp_selected)
