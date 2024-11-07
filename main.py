@@ -734,7 +734,7 @@ elif st.session_state.page == 'next_page':
         
         .expander-title {
             font-size: 0.9em;
-            font-weight: 150;
+            font-weight: 300;
             font-family: 'Pretendard', sans-serif;
         }
         
@@ -846,8 +846,7 @@ elif st.session_state.page == 'next_page':
             <div class="expander-detail">
                 선택한 옵션을 확인하거나 수정할 수 있습니다.
             </div>
-            
-            /* 날짜 확인 및 수정 */
+        
             <div class="expander-title">
                 날짜
             </div>
@@ -855,34 +854,27 @@ elif st.session_state.page == 'next_page':
             unsafe_allow_html=True
         )
         
+        if 'selected_date' not in st.session_state:
+            st.session_state.selected_date = None
+        if st.session_state.selected_date != None:
+            date_option = st.selectbox(
+                "", 
+                ["선택 안함", "날짜 선택"],
+                index=1
+            )
+        else:
+            date_option = st.selectbox(
+                "",
+                ["선택 안함", "날짜 선택"],
+                index=0
+            )
+        if date_option == "날짜 선택":
+            st.session_state.selected_date = st.date_input("", st.session_state.selected_date)
+        else:
+            st.session_state.selected_date = None
     
     
     
-    # 날짜 확인 및 수정
-    st.sidebar.subheader("날짜")
-    
-    if 'selected_date' not in st.session_state:
-        st.session_state.selected_date = None
-    
-    if st.session_state.selected_date != None:
-        date_option = st.sidebar.selectbox(
-            "", 
-            ["선택 안함", "날짜 선택"],
-            index=1
-        )
-    else:
-        date_option = st.sidebar.selectbox(
-            "",
-            ["선택 안함", "날짜 선택"],
-            index=0
-        )
-        
-    if date_option == "날짜 선택":
-        st.session_state.selected_date = st.sidebar.date_input("", st.session_state.selected_date)
-    else:
-        st.session_state.selected_date = None
-        
-            
     
     # 시간대 확인 및 수정
     st.sidebar.subheader("시간대")
