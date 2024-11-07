@@ -725,6 +725,13 @@ elif st.session_state.page == 'next_page':
             width: 250px;
         }
         
+        /* expander 글씨체1 */
+        .expander-head {
+            font-size: 1.0em;
+            font-weight: 100;
+            font-family: 'Pretendard', sans-serif;
+        }
+        
         </style>
         """,
         unsafe_allow_html=True
@@ -828,7 +835,15 @@ elif st.session_state.page == 'next_page':
     
     ####### sidebar 생성 #######
     with st.expander("⚙️ 설정", expanded=False):
-        st.subheader("선택한 옵션을 확인하거나 수정할 수 있습니다.")
+        st.markdown(
+            """
+            <div class="expander-head">
+                선택한 옵션을 확인하거나 수정할 수 있습니다.
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+        
     
     
     st.sidebar.header("선택한 옵션들")
