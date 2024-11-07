@@ -726,9 +726,15 @@ elif st.session_state.page == 'next_page':
         }
         
         /* expander 글씨체1 */
-        .expander-head {
-            font-size: 1.0em;
+        .expander-detail {
+            font-size: 0.7em;
             font-weight: 100;
+            font-family: 'Pretendard', sans-serif;
+        }
+        
+        .expander-title {
+            font-size: 0.9em;
+            font-weight: 150;
             font-family: 'Pretendard', sans-serif;
         }
         
@@ -837,8 +843,13 @@ elif st.session_state.page == 'next_page':
     with st.expander("⚙️ 설정", expanded=False):
         st.markdown(
             """
-            <div class="expander-head">
+            <div class="expander-detail">
                 선택한 옵션을 확인하거나 수정할 수 있습니다.
+            </div>
+            
+            /* 날짜 확인 및 수정 */
+            <div class="expander-title">
+                날짜
             </div>
             """,
             unsafe_allow_html=True
@@ -846,7 +857,6 @@ elif st.session_state.page == 'next_page':
         
     
     
-    st.sidebar.header("선택한 옵션들")
     
     # 날짜 확인 및 수정
     st.sidebar.subheader("날짜")
