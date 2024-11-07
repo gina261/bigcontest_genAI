@@ -820,6 +820,10 @@ elif st.session_state.page == 'next_page':
         
     
     ####### sidebar 생성 #######
+    with st.expander("설정 옵션", expanded=False):
+        st.write("여기에서 사용자 선택 옵션을 확인하거나 수정할 수 있습니다.")
+    
+    
     st.sidebar.header("선택한 옵션들")
     
     # 날짜 확인 및 수정
@@ -902,5 +906,3 @@ elif st.session_state.page == 'next_page':
     
     st.session_state.selected_regions = tmp_selected
     
-    # st.write(st.session_state.selected_regions)
-    # st.write(tmp_selected)

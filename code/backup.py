@@ -818,7 +818,8 @@ elif st.session_state.page == 'next_page':
         go_to_previous()
         
         
-    # sidebar 생성
+    
+    ####### sidebar 생성 #######
     st.sidebar.header("선택한 옵션들")
     
     # 날짜 확인 및 수정
@@ -861,4 +862,43 @@ elif st.session_state.page == 'next_page':
         time_slot = ""
     st.session_state.time_slot = time_slot
     
+    
+    # 인원수 확인 및 수정
+    st.sidebar.subheader("인원")
+    if st.session_state.members_num == "":
+        st.session_state.members_num = "선택 안함"
+    
+    members_num = st.sidebar.selectbox(
+        "",
+        ("선택 안함", "혼자", "2명", "3명", "4명 이상"),
+        index=["선택 안함", "혼자", "2명", "3명", "4명 이상"].index(st.session_state.members_num)
+    )
+    if members_num == "선택 안함":
+        members_num = ""
+    st.session_state.members_num = members_num
+    
+    
+    # 방문 목적 확인 및 수정
+    st.sidebar.subheader("방문 목적")
+    if st.session_state.visit_purpose == "":
+        st.session_state.visit_purpose = "선택 안함"
+        
+    st.session_state.visit_purpose = st.sidebar.selectbox(
+        "",
+        ("선택 안함", "식사", "카페/디저트"),
+        index=["선택 안함", "식사", "카페/디저트"].index(st.session_state.visit_purpose)
+    )
+    
+    
+    # 지역 확인 및 수정
+    st.sidebar.subheader("지역")
+    
+    regions_list = ["서귀포시 (제주특별자치도 남부)", "서귀포시 남원읍", "서귀포시 대정읍", "서귀포시 성산읍", "서귀포시 안덕면", "서귀포시 표선면", "제주시 (제주특별자치도 북부)", "제주시 구좌읍", "제주시 애월읍", "제주시 우도면", "제주시 조천읍", "제주시 한경면", "제주시 한림읍"]
+    tmp_selected = st.sidebar.multiselect(
+        "",
+        regions_list,
+        default=st.session_state.selected_regions
+    )
+    
+    st.session_state.selected_regions = tmp_selected
     
