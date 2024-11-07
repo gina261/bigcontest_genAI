@@ -720,9 +720,9 @@ elif st.session_state.page == 'next_page':
         /* 사용자 선택 옵션 expander */
         div [data-testid="stExpander"] {
             position: fixed;
-            top: 180px;
-            left: 10px;
-            width: 200px;
+            top: 150px;
+            left: 20px;
+            width: 250px;
         }
         
         </style>
@@ -827,8 +827,8 @@ elif st.session_state.page == 'next_page':
         
     
     ####### sidebar 생성 #######
-    with st.expander("설정 옵션", expanded=False):
-        st.write("여기에서 사용자 선택 옵션을 확인하거나 수정할 수 있습니다.")
+    with st.expander("⚙️ 설정", expanded=False):
+        st.subheader("선택한 옵션을 확인하거나 수정할 수 있습니다.")
     
     
     st.sidebar.header("선택한 옵션들")
