@@ -892,4 +892,10 @@ elif st.session_state.page == 'next_page':
     
     # 지역 확인 및 수정
     st.sidebar.subheader("지역")
+    
+    st.sidebar.multiselect(
+        "",
+        ["구좌읍", "남원읍", "대정읍", "서귀포시", "성산읍", "안덕면", "애월읍", "우도면", "제주시", "조천읍", "표선면", "한경면", "한림읍"]
+    )
+        
     st.write(st.session_state.selected_regions)
