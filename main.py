@@ -845,7 +845,7 @@ elif st.session_state.page == 'next_page':
         
     
     ####### sidebar 생성 #######
-    with st.expander("⚙️ 설정", expanded=False):
+    with st.expander("⚙️ 고정 질문", expanded=False):
         st.markdown(
             """
             <div class="expander-detail">
