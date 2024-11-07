@@ -818,7 +818,8 @@ elif st.session_state.page == 'next_page':
         go_to_previous()
         
         
-    # sidebar 생성
+    
+    ####### sidebar 생성 #######
     st.sidebar.header("선택한 옵션들")
     
     # 날짜 확인 및 수정
@@ -888,3 +889,7 @@ elif st.session_state.page == 'next_page':
         index=["선택 안함", "식사", "카페/디저트"].index(st.session_state.visit_purpose)
     )
     
+    
+    # 지역 확인 및 수정
+    st.sidebar.subheader("지역")
+    st.write(st.session_state.selected_regions)
