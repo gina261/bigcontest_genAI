@@ -717,6 +717,13 @@ elif st.session_state.page == 'next_page':
             z-index: 1000;
         }
         
+        /* 사용자 선택 옵션 expander */
+        div [data-testid="stExpander"] {
+            position: fixed;
+            top: 180px;
+            left: 10px;
+            width: 200px;
+        }
         
         </style>
         """,
