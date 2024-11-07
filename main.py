@@ -739,7 +739,7 @@ elif st.session_state.page == 'next_page':
         }
         
         label [data-testid="stWidgetLabel"] {
-            min-height: 0;
+            max-height: 0;
             height: 0;
         }
         
