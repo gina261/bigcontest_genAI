@@ -893,10 +893,11 @@ elif st.session_state.page == 'next_page':
     # 지역 확인 및 수정
     st.sidebar.subheader("지역")
     
+    regions_list = ["서귀포시 (제주특별자치도 남부)", "서귀포시 남원읍", "서귀포시 대정읍", "서귀포시 성산읍", "서귀포시 안덕면", "서귀포시 표선면", "제주시 (제주특별자치도 북부)", "제주시 구좌읍", "제주시 애월읍", "제주시 우도면", "제주시 조천읍", "제주시 한경면", "제주시 한림읍"]
     tmp_selected = st.sidebar.multiselect(
         "",
-        ["서귀포시 (제주특별자치도 남부)", "서귀포시 남원읍", "서귀포시 대정읍", "서귀포시 성산읍", "서귀포시 안덕면", "서귀포시 표선면",
-            "제주시 (제주특별자치도 북부)", "제주시 구좌읍", "제주시 애월읍", "제주시 우도면", "제주시 조천읍", "제주시 한경면", "제주시 한림읍"]
+        regions_list,
+        index=regions_list.index(st.session_state.selected_regions)
     )
         
     st.write(st.session_state.selected_regions)
