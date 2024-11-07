@@ -738,8 +738,9 @@ elif st.session_state.page == 'next_page':
             font-family: 'Pretendard', sans-serif;
         }
         
-        div [data-testid="stExpanderDetails"] {
-            overflow-y: auto;
+        label [data-testid="stWidgetLabel"] {
+            min-height: 0;
+            height: 0;
         }
         
         </style>
