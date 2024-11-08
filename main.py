@@ -758,6 +758,9 @@ elif st.session_state.page == 'next_page':
         .st-emotion-cache-p5msec:hover {
             color: #ee8124;
         }
+        .st-emotion-cache-p5msec:hover svg {
+            color: #ee8124;
+        }
         
         </style>
         """,
