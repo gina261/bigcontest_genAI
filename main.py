@@ -761,6 +761,12 @@ elif st.session_state.page == 'next_page':
         .st-emotion-cache-p5msec:hover svg {
             fill: #ee8124;
         }
+        .st-emotion-cache-jkfxgf p {
+            color: gray;
+        }
+        .st-emotion-cache-1pbsqtx {
+            fill: gray;
+        }
         
         </style>
         """,
