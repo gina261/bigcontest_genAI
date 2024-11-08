@@ -744,7 +744,7 @@ elif st.session_state.page == 'next_page':
             font-family: 'Pretendard', sans-serif;
         }
         
-        label [data-testid="stWidgetLabel"] {
+        .st-emotion-cache-ue6h4q {
             min-height: 5px;
         }
         
