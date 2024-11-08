@@ -725,6 +725,12 @@ elif st.session_state.page == 'next_page':
             width: 250px;
         }
         
+        /* expander 스크롤 */
+        div [data-testid="stExpanderDetails"] {
+            height: 400px;
+            overflow: scroll;
+        }
+        
         /* expander 글씨체1 */
         .expander-detail {
             font-size: 0.7em;
