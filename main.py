@@ -759,6 +759,7 @@ elif st.session_state.page == 'next_page':
         .st-emotion-cache-p5msec {
             width: 55%;
         }
+        /* hover 색 */
         .st-emotion-cache-p5msec:hover {
             color: #ee8124;
         }
