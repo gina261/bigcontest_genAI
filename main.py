@@ -747,7 +747,11 @@ elif st.session_state.page == 'next_page':
             font-family: 'Pretendard', sans-serif;
         }
         
+        /* expander 라벨 영역 없애기 */
         .st-emotion-cache-ue6h4q {
+            min-height: 5px;
+        }
+        .st-emotion-cache-1qg05tj {
             min-height: 5px;
         }
         
