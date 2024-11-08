@@ -68,10 +68,6 @@ if st.session_state.page == 'main':
         .st-emotion-cache-h4xjwg {
             background: #ffffff;
         }
-        .st-emotion-cache-15ecox0 {
-            background-color: #ee8124;
-            border-radius: 20px;
-        }
         .st-emotion-cache-kd13nv {
             background-color: black;
             border-radius: 10px;
