@@ -752,7 +752,12 @@ elif st.session_state.page == 'next_page':
         }
         
         /* expander 옵션 선택바 */
-        
+        .st-emotion-cache-p5msec {
+            width: 55%;
+        }
+        .st-emotion-cache-p5msec:hover {
+            color: #ee8124;
+        }
         
         </style>
         """,
