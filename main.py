@@ -748,6 +748,12 @@ elif st.session_state.page == 'next_page':
             min-height: 5px;
         }
         
+        /* expander 옵션 선택바 */
+        div [data-baseweb="select"] {
+            background-color: ffffff;
+            border-radius: 25px;
+        }
+        
         </style>
         """,
         unsafe_allow_html=True
