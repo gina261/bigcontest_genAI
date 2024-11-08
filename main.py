@@ -723,7 +723,9 @@ elif st.session_state.page == 'next_page':
             top: 150px;
             left: 20px;
             width: 250px;
-            border: none;
+        }
+        .st-emotion-cache-1h9usn1 {
+            border-style: none;
         }
         
         /* expander 스크롤 */
