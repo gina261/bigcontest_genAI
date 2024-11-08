@@ -73,7 +73,7 @@ if st.session_state.page == 'main':
             border-radius: 20px;
         }
         .st-emotion-cache-kd13nv {
-            background-color: black
+            background-color: black;
             border-radius: 10px;
         }
         
