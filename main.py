@@ -723,6 +723,7 @@ elif st.session_state.page == 'next_page':
             top: 150px;
             left: 20px;
             width: 250px;
+            border: none;
         }
         
         /* expander 스크롤 */
@@ -749,10 +750,7 @@ elif st.session_state.page == 'next_page':
         }
         
         /* expander 옵션 선택바 */
-        div [data-baseweb="select"] {
-            background-color: ffffff;
-            border-radius: 25px;
-        }
+        
         
         </style>
         """,
