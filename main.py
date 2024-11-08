@@ -72,7 +72,10 @@ if st.session_state.page == 'main':
             background-color: #ee8124;
             border-radius: 20px;
         }
-
+        .st-emotion-cache-kd13nv {
+            background-color: black
+            border-radius: 10px;
+        }
         
         iframe {
             width: 100% !important;
