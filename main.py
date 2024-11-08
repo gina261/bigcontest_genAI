@@ -14,17 +14,6 @@ from utils.text1_response_generator import generate_response_with_faiss, generat
 from utils.text2_response_generator import text2faiss, recommend_restaurant_from_subset
 from utils.filter_fixed_inputs import filter_fixed_address_purpose, filter_fixed_datetime_members
 
-# 다크모드 상단바
-st.markdown(
-    """
-    <style>
-    .st-emotion-cache-h4xjwg {
-        background: #ffffff;
-    }
-    </style>
-    """
-)
-
 
 # 세션 상태에서 페이지 상태를 관리
 if 'page' not in st.session_state:
@@ -73,6 +62,11 @@ if st.session_state.page == 'main':
             padding-top: 0 !important;
             padding-bottom: 0 !important;
             padding-right: 0 !important;
+        }
+        
+        /* 다크모드 상단바 */
+        .st-emotion-cache-h4xjwg {
+            background: #ffffff;
         }
         
         iframe {
