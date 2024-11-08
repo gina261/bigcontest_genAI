@@ -722,7 +722,7 @@ elif st.session_state.page == 'next_page':
             position: fixed;
             top: 150px;
             left: 20px;
-            width: 250px;
+            width: 200px;
         }
         .st-emotion-cache-1h9usn1 {
             border-style: none;
