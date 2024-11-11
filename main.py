@@ -798,6 +798,14 @@ elif st.session_state.page == 'next_page':
             fill: #ee8124;
         }
         
+        .expander-border {
+            position: fixed;
+            top: 150px;
+            left: 20px;
+            width: 100px;
+            border: 3px;
+        }
+        
         </style>
         """,
         unsafe_allow_html=True
