@@ -803,12 +803,12 @@ elif st.session_state.page == 'next_page':
             top: 155px;
             left: 22px;
             width: 130px;
-            background-color: transparent;
-            border: 1px solid black;
+            height: 35px;
+            background-color: #e0e0e0;
+            border: none;
             border-radius: 10px;
             padding: 10px;
             box-sizing: border-box;
-            z-index: 9999;
         }
         
         </style>
