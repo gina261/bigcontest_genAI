@@ -911,7 +911,7 @@ elif st.session_state.page == 'next_page':
     st.markdown(
         """
         <div class="expander-border">
-            왜 안뜬다냐
+            
         </div>
         """,
         unsafe_allow_html=True
