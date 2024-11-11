@@ -803,7 +803,7 @@ elif st.session_state.page == 'next_page':
             top: 150px;
             left: 20px;
             width: 100px;
-            border: 3px;
+            border: black;
         }
         
         </style>
@@ -911,6 +911,7 @@ elif st.session_state.page == 'next_page':
     st.markdown(
         """
         <div class="expander-border">
+        
         </div>
         """,
         unsafe_allow_html=True
