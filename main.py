@@ -800,9 +800,9 @@ elif st.session_state.page == 'next_page':
         
         .expander-border {
             position: fixed;
-            top: 160px;
-            left: 25px;
-            width: 150px;
+            top: 155px;
+            left: 22px;
+            width: 130px;
             background-color: transparent;
             border: 1px solid black;
             border-radius: 10px;
