@@ -922,7 +922,7 @@ elif st.session_state.page == 'next_page':
         unsafe_allow_html=True
     )
     
-    with st.expander("⚙️ &nbsp;고정 질문", expanded=False):
+    with st.expander("⚙️ &nbsp;&nbsp;고정 질문", expanded=False):
         st.markdown(
             """
             <div class="expander-detail">
