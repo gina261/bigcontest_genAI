@@ -912,7 +912,8 @@ elif st.session_state.page == 'next_page':
         """
         <div class="expander-border">
         </div>
-        """
+        """,
+        unsafe_allow_html=True
     )
     
     with st.expander("⚙️ 고정 질문", expanded=False):
