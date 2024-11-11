@@ -801,13 +801,13 @@ elif st.session_state.page == 'next_page':
         .expander-border {
             position: fixed;
             top: 160px;
-            left: 30px;
+            left: 25px;
             width: 150px;
             background-color: transparent;
-            border: 1px solid black;
+            border: 1px solid gray;
             border-radius: 10px;
-            padding: 10px;
             box-sizing: border-box;
+            z-index: 9999;
         }
         
         </style>
