@@ -804,7 +804,7 @@ elif st.session_state.page == 'next_page':
             left: 22px;
             width: 130px;
             height: 35px;
-            background-color: #e0e0e0;
+            background-color: #d8d2c5;
             border: none;
             border-radius: 10px;
             padding: 10px;
