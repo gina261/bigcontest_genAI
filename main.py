@@ -811,6 +811,11 @@ elif st.session_state.page == 'next_page':
             box-sizing: border-box;
         }
         
+        /* 지역 선택 박스 색상 */
+        .st-dd {
+            background-color: #ee8124;
+        }
+        
         </style>
         """,
         unsafe_allow_html=True
