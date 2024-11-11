@@ -800,7 +800,7 @@ elif st.session_state.page == 'next_page':
         
         .expander-border {
             position: fixed;
-            top: 154px;
+            top: 155px;
             left: 22px;
             width: 130px;
             height: 35px;
