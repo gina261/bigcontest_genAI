@@ -812,7 +812,7 @@ elif st.session_state.page == 'next_page':
         }
         
         /* 지역 선택 박스 색상 */
-        .st-dd {
+        .st-e9 {
             background-color: #ee8124;
         }
         
