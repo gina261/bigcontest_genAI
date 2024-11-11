@@ -803,7 +803,7 @@ elif st.session_state.page == 'next_page':
             top: 150px;
             left: 20px;
             width: 100px;
-            border: black;
+            background-color: white;
         }
         
         </style>
@@ -907,11 +907,11 @@ elif st.session_state.page == 'next_page':
         
         
     
-    ####### sidebar 생성 #######
+    ####### 옵션 수정 expander 생성 #######
     st.markdown(
         """
         <div class="expander-border">
-        
+            왜 안뜬다냐
         </div>
         """,
         unsafe_allow_html=True
