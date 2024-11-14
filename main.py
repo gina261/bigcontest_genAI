@@ -4,15 +4,18 @@ import folium
 from streamlit_folium import st_folium
 import requests
 import numpy as np
+import pandas as pd
+import os
+os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 
 # utils 가져오기 
-from utils.config import model, df, text2_df, config 
+from utils.config import model, df, text2_df, config, mapbox_key
 from utils.sql_utils import convert_question_to_sql, execute_sql_query_on_df
 from utils.faiss_utils import load_faiss_index, embed_text
 from utils.user_input_detector import detect_emotion_and_context
 from utils.text1_response_generator import generate_response_with_faiss, generate_gemini_response_from_results
 from utils.text2_response_generator import text2faiss, recommend_restaurant_from_subset
-from utils.filter_fixed_inputs import filter_fixed_address_purpose, filter_fixed_datetime_members
+from utils.filter_fixed_inputs import filter_fixed_address_purpose, filter_fixed_datetime_members, filter_fixed_address_purpose_text1
 
 
 # 세션 상태에서 페이지 상태를 관리
@@ -26,10 +29,10 @@ if 'chat_history' not in st.session_state:
 # 페이지 이동 함수
 def go_to_next_page():
     st.session_state.page = 'next_page'
-
+    
 # 메인 페이지
 if st.session_state.page == 'main':
-        
+    
     # CSS for changing the entire background color and styling the page
     st.markdown(
         """
@@ -76,9 +79,6 @@ if st.session_state.page == 'main':
         }
         .st-emotion-cache-q16mip {
             background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0iY3VycmVudENvbG9yIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGNvbG9yPSIjMzEzMzNGIj48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTguMDA2NjIgMC4zNTAwMDZDMy41NzkxNyAwLjM1MDAwNiAwIDMuODU1NCAwIDguMTkyMDZDMCAxMS42NTg2IDIuMjkzMjkgMTQuNTkyOSA1LjQ3NDcgMTUuNjMxNUM1Ljg3MjQ2IDE1LjcwOTUgNi4wMTgxNiAxNS40NjI3IDYuMDE4MTYgMTUuMjU1MUM2LjAxODE2IDE1LjA3MzMgNi4wMDUwNSAxNC40NTAxIDYuMDA1MDUgMTMuODAwOUMzLjc3NzggMTQuMjY4MyAzLjMxMzk5IDEyLjg2NiAzLjMxMzk5IDEyLjg2NkMyLjk1NjA2IDExLjk1NzIgMi40MjU3MiAxMS43MjM2IDIuNDI1NzIgMTEuNzIzNkMxLjY5Njc0IDExLjI0MzIgMi40Nzg4MiAxMS4yNDMyIDIuNDc4ODIgMTEuMjQzMkMzLjI4NzQ0IDExLjI5NTEgMy43MTE3NSAxMi4wNDgyIDMuNzExNzUgMTIuMDQ4MkM0LjQyNzQ1IDEzLjI0MjUgNS41ODA3NCAxMi45MDUxIDYuMDQ0NzEgMTIuNjk3M0M2LjExMDkyIDEyLjE5MDkgNi4zMjMxNSAxMS44NDA0IDYuNTQ4NSAxMS42NDU3QzQuNzcyMTEgMTEuNDYzOSAyLjkwMzEyIDEwLjc4ODggMi45MDMxMiA3Ljc3NjUxQzIuOTAzMTIgNi45MTk2IDMuMjIxMDcgNi4yMTg1MiAzLjcyNDg2IDUuNjczMjdDMy42NDUzOCA1LjQ3ODU2IDMuMzY2OTMgNC42NzM0NCAzLjgwNDUxIDMuNTk1ODRDMy44MDQ1MSAzLjU5NTg0IDQuNDgwNTUgMy4zODgwNyA2LjAwNDg4IDQuNDAwODFDNi42NTc1IDQuMjI5MTUgNy4zMzA1NCA0LjE0MTgzIDguMDA2NjIgNC4xNDEwOUM4LjY4MjY2IDQuMTQxMDkgOS4zNzE4MSA0LjIzMjA3IDEwLjAwODIgNC40MDA4MUMxMS41MzI3IDMuMzg4MDcgMTIuMjA4NyAzLjU5NTg0IDEyLjIwODcgMy41OTU4NEMxMi42NDYzIDQuNjczNDQgMTIuMzY3NyA1LjQ3ODU2IDEyLjI4ODIgNS42NzMyN0MxMi44MDUzIDYuMjE4NTIgMTMuMTEwMSA2LjkxOTYgMTMuMTEwMSA3Ljc3NjUxQzEzLjExMDEgMTAuNzg4OCAxMS4yNDExIDExLjQ1MDggOS40NTE0NiAxMS42NDU3QzkuNzQzMTggMTEuODkyMyA5Ljk5NDkyIDEyLjM1OTcgOS45OTQ5MiAxMy4wOTk4QzkuOTk0OTIgMTQuMTUxNCA5Ljk4MTgxIDE0Ljk5NTQgOS45ODE4MSAxNS4yNTVDOS45ODE4MSAxNS40NjI3IDEwLjEyNzcgMTUuNzA5NSAxMC41MjUzIDE1LjYzMTZDMTMuNzA2NyAxNC41OTI4IDE2IDExLjY1ODYgMTYgOC4xOTIwNkMxNi4wMTMxIDMuODU1NCAxMi40MjA4IDAuMzUwMDA2IDguMDA2NjIgMC4zNTAwMDZaIj48L3BhdGg+PC9zdmc+") center center / contain no-repeat;
-        }
-        .st-b6 {
-            color: black;
         }
         
         iframe {
@@ -343,6 +343,7 @@ if st.session_state.page == 'main':
             z-index: 0;
         }
         
+        
         </style>
         """,
         unsafe_allow_html=True
@@ -385,7 +386,7 @@ if st.session_state.page == 'main':
         st.markdown("<div class='custom-label'>날짜를 선택해주세요.</div>", unsafe_allow_html=True)
         date_option = st.selectbox("", ["선택 안함", "날짜 선택"])
 
-        # 선택한 옵션에 따라 date_input 표시
+        # 선택한 옵션은 selected_date, 이를 요일로 변환해 selected_weekday에 저장
         if date_option == "날짜 선택":
             weekdays = ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일']
             selected_date = st.date_input("")
@@ -477,7 +478,8 @@ if st.session_state.page == 'main':
     # 제주도 중심 좌표
     jeju_center = [33.38, 126.6] # 기존 33.4996, 126.5312
 
-    mapbox_token = st.secrets["MAPBOX_API_KEY"]
+    # mapbox_token = st.secrets["MAPBOX_API_KEY"]
+    mapbox_token = mapbox_key
 
     # 커스텀 Mapbox 스타일 URL 적용
     mapbox_style = 'mapbox://styles/gina261/cm2f34dvz000g01pygoj0g41c'
@@ -594,28 +596,25 @@ if st.session_state.page == 'main':
         unsafe_allow_html=True
     )
     
-    
-    # user_firstInput = st.text_input("", placeholder="여기에 입력하세요", key="user_input")
-    
-    # st.markdown(
-    #     f"""
-    #     <input class="custom-input" type="text" placeholder="여기에 입력하세요" value="{user_firstInput}">
-    #     """,
-    #     unsafe_allow_html=True
-    # )
-    
     if st.button("채팅 시작"):
         go_to_next_page()
         
     st.markdown('<div class="spacing-50px"></div>', unsafe_allow_html=True)
 
-    
-    
-        
+
+
 ####### 두 번째 페이지 #######
+
+# 변수 : selected_date, time_slot, members_num, visit_purpose, selected_regions(리스트) 
+# -time_slot : "선택 안함", "아침", "점심", "오후", "저녁", "밤"
+# -members_num : "선택 안함", "혼자", "2명", "3명", "4명 이상"
+# -visit_purpose : "선택안함", "식사" "카페/디저트"
+# -prompt : 사용자 input
+
+
 elif st.session_state.page == 'next_page':
     
-    GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
+    # GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
     
     # 프로필 이미지 설정
     assistant_avatar = "https://github.com/gina261/bigcontest_genAI/blob/main/images/chatbot_assistant.png?raw=true"
@@ -646,7 +645,6 @@ elif st.session_state.page == 'next_page':
         .st-emotion-cache-q16mip {
             background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0iY3VycmVudENvbG9yIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGNvbG9yPSIjMzEzMzNGIj48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTguMDA2NjIgMC4zNTAwMDZDMy41NzkxNyAwLjM1MDAwNiAwIDMuODU1NCAwIDguMTkyMDZDMCAxMS42NTg2IDIuMjkzMjkgMTQuNTkyOSA1LjQ3NDcgMTUuNjMxNUM1Ljg3MjQ2IDE1LjcwOTUgNi4wMTgxNiAxNS40NjI3IDYuMDE4MTYgMTUuMjU1MUM2LjAxODE2IDE1LjA3MzMgNi4wMDUwNSAxNC40NTAxIDYuMDA1MDUgMTMuODAwOUMzLjc3NzggMTQuMjY4MyAzLjMxMzk5IDEyLjg2NiAzLjMxMzk5IDEyLjg2NkMyLjk1NjA2IDExLjk1NzIgMi40MjU3MiAxMS43MjM2IDIuNDI1NzIgMTEuNzIzNkMxLjY5Njc0IDExLjI0MzIgMi40Nzg4MiAxMS4yNDMyIDIuNDc4ODIgMTEuMjQzMkMzLjI4NzQ0IDExLjI5NTEgMy43MTE3NSAxMi4wNDgyIDMuNzExNzUgMTIuMDQ4MkM0LjQyNzQ1IDEzLjI0MjUgNS41ODA3NCAxMi45MDUxIDYuMDQ0NzEgMTIuNjk3M0M2LjExMDkyIDEyLjE5MDkgNi4zMjMxNSAxMS44NDA0IDYuNTQ4NSAxMS42NDU3QzQuNzcyMTEgMTEuNDYzOSAyLjkwMzEyIDEwLjc4ODggMi45MDMxMiA3Ljc3NjUxQzIuOTAzMTIgNi45MTk2IDMuMjIxMDcgNi4yMTg1MiAzLjcyNDg2IDUuNjczMjdDMy42NDUzOCA1LjQ3ODU2IDMuMzY2OTMgNC42NzM0NCAzLjgwNDUxIDMuNTk1ODRDMy44MDQ1MSAzLjU5NTg0IDQuNDgwNTUgMy4zODgwNyA2LjAwNDg4IDQuNDAwODFDNi42NTc1IDQuMjI5MTUgNy4zMzA1NCA0LjE0MTgzIDguMDA2NjIgNC4xNDEwOUM4LjY4MjY2IDQuMTQxMDkgOS4zNzE4MSA0LjIzMjA3IDEwLjAwODIgNC40MDA4MUMxMS41MzI3IDMuMzg4MDcgMTIuMjA4NyAzLjU5NTg0IDEyLjIwODcgMy41OTU4NEMxMi42NDYzIDQuNjczNDQgMTIuMzY3NyA1LjQ3ODU2IDEyLjI4ODIgNS42NzMyN0MxMi44MDUzIDYuMjE4NTIgMTMuMTEwMSA2LjkxOTYgMTMuMTEwMSA3Ljc3NjUxQzEzLjExMDEgMTAuNzg4OCAxMS4yNDExIDExLjQ1MDggOS40NTE0NiAxMS42NDU3QzkuNzQzMTggMTEuODkyMyA5Ljk5NDkyIDEyLjM1OTcgOS45OTQ5MiAxMy4wOTk4QzkuOTk0OTIgMTQuMTUxNCA5Ljk4MTgxIDE0Ljk5NTQgOS45ODE4MSAxNS4yNTVDOS45ODE4MSAxNS40NjI3IDEwLjEyNzcgMTUuNzA5NSAxMC41MjUzIDE1LjYzMTZDMTMuNzA2NyAxNC41OTI4IDE2IDExLjY1ODYgMTYgOC4xOTIwNkMxNi4wMTMxIDMuODU1NCAxMi40MjA4IDAuMzUwMDA2IDguMDA2NjIgMC4zNTAwMDZaIj48L3BhdGg+PC9zdmc+") center center / contain no-repeat;
         }
-        
         
         /* 아바타 이미지 (둘 다) */
         div[data-testid="stChatMessage"] > img {
@@ -811,11 +809,6 @@ elif st.session_state.page == 'next_page':
             box-sizing: border-box;
         }
         
-        /* 지역 선택 박스 색상 */
-        .st-e9 {
-            background-color: #ee8124;
-        }
-        
         </style>
         """,
         unsafe_allow_html=True
@@ -825,6 +818,7 @@ elif st.session_state.page == 'next_page':
     if "messages" not in st.session_state.keys():
         st.session_state.messages = [{"role": "assistant", "content": "오늘의 기분이나 상황을 입력해주세요. 그에 맞는 제주의 멋진 곳을 추천해드립니다."}]
     
+    
     # 채팅 화면 초기화 함수
     def clear_chat_history():
         st.session_state.messages = [{"role": "assistant", "content": "오늘의 기분이나 상황을 입력해주세요. 그에 맞는 제주의 멋진 곳을 추천해드립니다."}]
@@ -833,20 +827,22 @@ elif st.session_state.page == 'next_page':
     for message in st.session_state.messages:
         avatar = user_avatar if message["role"] == "user" else assistant_avatar
         with st.chat_message(message["role"], avatar=avatar):
-            st.write(message["content"])
+            st.write(message["content"],unsafe_allow_html=True)
+
  
     if prompt := st.chat_input():
         st.session_state.messages.append({"role": "user", "content": prompt})
         with st.chat_message("user", avatar=user_avatar):
             st.write(prompt)
             
+           
     # 사용자가 새로운 메시지를 입력한 후 응답 생성
     if st.session_state.messages[-1]["role"] != "assistant":
         with st.chat_message("assistant", avatar=assistant_avatar):
             # (Step 1) 1번, 2번 중 어느 질문인지 반환 [첫번째 gemini 호출]
             which_csv = detect_emotion_and_context(prompt)
             print("이 질문은" + which_csv)
-            
+
             with st.spinner("Thinking..."):
                 # (Step 2) 2번 질문일 경우 (추천형 질문)
                 if int(which_csv[0]) == 2:
@@ -872,27 +868,46 @@ elif st.session_state.page == 'next_page':
                     # (2-4) gemini 호출을 통해 추출된 15개의 레스토랑 중 추천 [두번째 gemini 호출]
                     response = recommend_restaurant_from_subset(prompt, top_15)
                     print(response)
-                    
+
                 # (Step 3) 1번 질문일 경우 (검색형 질문)
                 else: 
+                    # (3-1) 신한카드 데이터에 고정질문 (방문지역, 방문 목적 기준으로)
+                    print(f'고정질문: {st.session_state.selected_regions, st.session_state.visit_purpose}')
+
+                    if st.session_state.selected_regions == []:
+                        filtered_df = df.copy()
+                    else:
+                        filtered_df = df[df['address_map'].apply(lambda x: isinstance(x, str) and any(addr in x for addr in st.session_state.selected_regions))]
+                        print(f'지역 필터링 완료, 길이: {len(filtered_df)}')
+
+                    if st.session_state.visit_purpose != '선택 안함':
+                        filtered_df = filtered_df[filtered_df['목적'] == st.session_state.visit_purpose]
+
+
                     # (3-1) sql 쿼리 반환 [두번째 gemini 호출]
                     sql_query = convert_question_to_sql(which_csv)
                     print(f"Generated SQL Query: {sql_query}")
                     # (2-2) sql 쿼리 적용 및 결과 반환
-                    sql_results = execute_sql_query_on_df(sql_query, df)
-                    # (2-3) 반환된 데이터가 없을 시 faiss 적용, 있다면 그대로 gimini 호출 [세번째 gemini 호출]
+
+                    sql_results = execute_sql_query_on_df(sql_query, filtered_df)
+
+                    # (2-3) 반환된 데이터가 없을 시 faiss 적용, 있다면 그대로 gemini 호출 [세번째 gemini 호출]
+
                     if sql_results.empty:
                         print("SQL query failed or returned no results. Falling back to FAISS.")
 
+                        filtered_fix= filter_fixed_address_purpose_text1(st.session_state.selected_regions, st.session_state.visit_purpose, df)
+                        
                         embeddings_path = config['faiss']['embeddings_path'] 
 
                         embeddings = np.load(embeddings_path)
-                        response = generate_response_with_faiss(prompt, df, embeddings, model, embed_text)
+                        response = generate_response_with_faiss(prompt, filtered_fix, embeddings, model, embed_text)
                         print(response)
                     else:
                         response = generate_gemini_response_from_results(sql_results, prompt)
                         print(response)
-                
+
+            
                 placeholder = st.empty()
                 full_response = ''
                 
@@ -902,21 +917,28 @@ elif st.session_state.page == 'next_page':
                 else:
                     full_response = response.text # response 객체에서 텍스트 부분 추출
                 
-                placeholder.markdown(full_response)
+                placeholder.markdown(full_response,unsafe_allow_html=True)
         message = {"role": "assistant", "content": full_response}
         st.session_state.messages.append(message)
         
+
+    # 뒤로가기 버튼 클릭 시 초기화 함수
     def go_to_previous():
+        # 메인 페이지로 이동
         st.session_state.page = 'main'
         st.session_state.selected_regions = []
         st.session_state.selected_date = None
         st.session_state.messages = [{"role": "assistant", "content": "오늘의 기분이나 상황을 입력해주세요. 그에 맞는 제주의 멋진 곳을 추천해드립니다."}]  # 채팅 기록 초기화
         
+        # 대화 기록 초기화
+        # clear_chat_history()
+
+    # 뒤로가기 버튼 생성
     if st.button("⇦ 뒤로"):
         go_to_previous()
-        
-        
-    
+
+
+
     ####### 옵션 수정 expander 생성 #######
     st.markdown(
         """
