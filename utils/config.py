@@ -11,8 +11,8 @@ with open(config_path, "r") as config_file:
     config = yaml.safe_load(config_file)
 
 # Configure your Google API key
-GOOGLE_API_KEY = config['google_api']['api_key']
-genai.configure(api_key=GOOGLE_API_KEY)
+# GOOGLE_API_KEY = config['google_api']['api_key']
+# genai.configure(api_key=GOOGLE_API_KEY)
 
 # Set device
 device = config['device'] if torch.cuda.is_available() else "cpu"
