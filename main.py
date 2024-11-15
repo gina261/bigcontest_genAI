@@ -385,7 +385,6 @@ if st.session_state.page == 'main':
     with col1:
         st.markdown("<div class='custom-label'>날짜를 선택해주세요.</div>", unsafe_allow_html=True)
         date_option = st.selectbox("", ["선택 안함", "날짜 선택"])
-        print(f"!!!!!!!!!!!!{date_option}")
 
         # 선택한 옵션은 selected_date, 이를 요일로 변환해 selected_weekday에 저장
         if date_option == "날짜 선택":
